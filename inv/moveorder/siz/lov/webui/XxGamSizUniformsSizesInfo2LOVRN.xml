@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" scope="/" amDefName="xxgam.oracle.apps.inv.moveorder.siz.lov.server.XxGamSizesInfoLOVAM">
+   <ui:contents>
+      <oa:table name="XxGamSizUniformsSizesInfo2LOVRN" id="XxGamSizeUniformsSizesInfoLOV1" amDefName="xxgam.oracle.apps.inv.moveorder.siz.lov.server.XxGamSizesInfoLOVAM" controllerClass="xxgam.oracle.apps.inv.moveorder.siz.lov.webui.XxGamSizUniformsSizesLOVCO" blockSize="15">
+         <ui:contents>
+            <oa:messageStyledText id="DotaId" dataType="NUMBER" prompt="DotaId" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="DotaId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="TallaId" dataType="NUMBER" prompt="TallaId" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="TallaId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="KitCod" dataType="VARCHAR2" prompt="KitCod" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="KitCod" maximumLength="20" rendered="false"/>
+            <oa:messageStyledText id="TallaNbr" dataType="VARCHAR2" prompt="Talla" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="TallaNbr" maximumLength="20" queryable="true" sortState="no"/>
+            <oa:messageStyledText id="Description" dataType="VARCHAR2" prompt="Descripción" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="Description" maximumLength="102"/>
+            <oa:messageStyledText id="InventoryId" dataType="NUMBER" prompt="InventoryId" viewName="XxGamSizeUniformsSizesInfoLOV1" viewAttr="InventoryId" rendered="false"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

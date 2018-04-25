@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaApproverHierarchyLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverHierarchyLovVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverHierarchyLovVOImpl"
+   ComponentInterface="xxgam.oracle.apps.xbol.maf.lov.server.common.XxGamMaApproverHierarchyLovVO"
+   ClientProxyName="xxgam.oracle.apps.xbol.maf.lov.server.client.XxGamMaApproverHierarchyLovVOClient"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <Variable
+      Name="pVersion"
+      Kind="where"
+      Type="oracle.jbo.domain.Number" >
+   </Variable>
+   <Variable
+      Name="pJobNameId"
+      Kind="where"
+      Type="oracle.jbo.domain.Number" >
+   </Variable>
+   <SQLQuery><![CDATA[
+select 
+       p.person_id approver_id,
+       p.full_name approver_full_name,
+       p.first_name approver_firt_name,
+       p.last_name approver_last_name,
+       j.name approver_job_name
+from per_all_people_f p, 
+     per_all_assignments_f a,
+     per_jobs j,
+     fnd_user fuser
+where 1 = 1
+  and  p.person_id = a.person_id 
+  and  p.person_id = fuser.employee_id
+  AND  A.ASSIGNMENT_TYPE = 'E'
+  and  trunc(sysdate) >= trunc(p.effective_start_date)
+  and  trunc(sysdate) <= trunc(p.effective_end_date) 
+  and  trunc(sysdate) >= trunc(a.effective_start_date)
+  and trunc(sysdate) <= trunc(a.effective_end_date)  
+  and trunc(sysdate) >= trunc(j.date_from)
+  and trunc(sysdate) <= trunc(NVL(j.date_to,trunc(sysdate)))
+  and  trunc(sysdate) >= trunc(fuser.start_date)
+  and trunc(sysdate) <= trunc(NVL(fuser.end_date,trunc(sysdate)))
+  and  a.job_id = j.job_id
+  and  a.position_id in (
+         select pap.position_id
+         from per_position_structures pps,
+              per_pos_structure_elements ppe,
+              per_pos_structure_versions ppv,
+              per_all_positions pap,
+              per_jobs j
+         where 1=1 
+           and pps.position_structure_id = ppv.position_structure_id 
+           and ppe.pos_structure_version_id =ppv.pos_structure_version_id
+           and trunc (sysdate ) >= trunc(ppv.date_from)
+           and trunc (sysdate ) <= trunc(nvl(ppv.date_to,sysdate+1))
+           and  ppe.parent_position_id = pap.position_id
+           and  pap.job_id = j.job_id
+           and  to_number(substr(j.name,1,2),'99') < :pJobNameId
+           and  ppe.pos_structure_version_id = :pVersion
+       AND REGEXP_LIKE(UPPER(j.name), '05|04|03|02|01')
+      )
+GROUP BY p.full_name,
+           p.person_id,
+         p.full_name,
+         p.first_name,
+         p.last_name,
+         j.name
+ORDER BY approver_full_name ASC
+   ]]></SQLQuery>
+   <ViewAttribute
+      Name="ApproverId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="APPROVER_ID"
+      Expression="APPROVER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverFullName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_FULL_NAME"
+      Expression="APPROVER_FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverFirtName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_FIRT_NAME"
+      Expression="APPROVER_FIRT_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverLastName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_LAST_NAME"
+      Expression="APPROVER_LAST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverJobName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_JOB_NAME"
+      Expression="APPROVER_JOB_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="ApproverId" />
+   </AttrArray>
+</ViewObject>

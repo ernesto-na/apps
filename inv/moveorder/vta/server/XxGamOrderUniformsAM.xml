@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="XxGamOrderUniformsAM"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAMImpl" >
+   <Properties>
+      <Property Name ="RETENTION_LEVEL" Value ="MANAGE_STATE" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="XxGamPersonVtaUniformInfoVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamPersonVtaUniformInfoVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamInputOrderUniformsVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInputOrderUniformsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamReviewInpOrderUniformsVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamReviewInpOrderUniformsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamSalesOrderHdrInfoVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamSalesOrderHdrInfoVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamInvVtaUnifHdrVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifHdrVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamFollOrderUnifHdrVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifHdrVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamInvVtaUnifLinVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifLinVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamFollOrderUnifLinVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifLinVO" >
+   </ViewUsage>
+</AppModule>

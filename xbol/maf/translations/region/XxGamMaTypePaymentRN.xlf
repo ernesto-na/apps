@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamMaTypePaymentRN" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaTypePaymentRN..TypePaymentId...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>TypePaymentId</source>
+            <target>TypePaymentId</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaTypePaymentRN..TemplatePayment...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>TemplatePayment</source>
+            <target>TemplatePayment</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaTypePaymentRN..FlexConcactenated...prompt" translate="yes" maxbytes="4000" maxwidth="42" size-unit="char">
+            <source>FlexConcactenated</source>
+            <target>FlexConcactenated</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaTypePaymentRN..TypePaymentDesc...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Advance Payment Type</source>
+            <target>Tipo de Anticipo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

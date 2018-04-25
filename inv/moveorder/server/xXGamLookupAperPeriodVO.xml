@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamLookupAperPeriodVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.server.xXGamLookupAperPeriodVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamLookupAperPeriodVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT FLV.LOOKUP_CODE
+     , FLV.MEANING
+     , FLV.DESCRIPTION 
+     , TRUNC(FLV.START_DATE_ACTIVE) FECHA_INICIAL
+     , TRUNC(flv.end_date_active) FECHA_FINAL
+     , TRUNC(sysdate)  FECHA_ACTUAL
+     ,CASE
+        WHEN TRUNC(SYSDATE) BETWEEN TRUNC(FLV.START_DATE_ACTIVE) AND TRUNC(flv.end_date_active) THEN 'ABIERTO'
+        WHEN TRUNC(SYSDATE) NOT BETWEEN TRUNC(FLV.START_DATE_ACTIVE) AND TRUNC(flv.end_date_active) THEN 'CERRADO'
+      END STATUS_PERIODO
+   
+FROM FND_LOOKUP_VALUES FLV
+WHERE 1 = 1
+AND FLV.LOOKUP_TYPE = 'XXGAM_APERTURA_DE_PERIODOS'
+AND FLV.ENABLED_FLAG = 'Y'
+AND LANGUAGE (+) = USERENV('LANG')
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="LookupCode"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_CODE"
+      Expression="LOOKUP_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Meaning"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MEANING"
+      Expression="MEANING"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DESCRIPTION"
+      Expression="DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaInicial"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_INICIAL"
+      Expression="FECHA_INICIAL"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaFinal"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_FINAL"
+      Expression="FECHA_FINAL"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaActual"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_ACTUAL"
+      Expression="FECHA_ACTUAL"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusPeriodo"
+      IsPersistent="false"
+      Precision="7"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="STATUS_PERIODO"
+      Expression="STATUS_PERIODO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

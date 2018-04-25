@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="XxGamModAntAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>DAEMXI</JDBCName>
+         <jbo.project>XxGamModAnt</jbo.project>
+         <AppModuleJndiName>xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <ConnectionDefinition name="TAEMXI">
+      <ENTRY name="JDBC_PORT" value="10510"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="vmohsaemx001.oracleoutsourcing.com"/>
+      <ENTRY name="user" value="apps"/>
+      <ENTRY name="ConnectionName" value="TAEMXI"/>
+      <ENTRY name="ServiceName" value="TAEMXI"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">{904}05FF2C7359EAF37F52C8742F3B9E448388A764F9F905DCA4D6</ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
+</BC4JConfig>

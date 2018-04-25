@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM" scope="/">
+   <ui:contents>
+      <oa:table name="xXGamInvEmplRN" id="xXGamInvEmplTBL" controllerClass="xxgam.oracle.apps.inv.moveorder.lov.webui.xXGamInvEmplCO">
+         <ui:contents>
+            <oa:messageStyledText id="FullName" viewName="xXGamInvEmplVO1" viewAttr="FullName" queryable="true" prompt="Nombre Completo" maximumLength="240"/>
+            <oa:messageStyledText id="employeeNumber" queryable="true" viewName="xXGamInvEmplVO1" viewAttr="EmployeeNumber" prompt="Nro Empleado"/>
+            <oa:messageStyledText id="lastName" viewName="xXGamInvEmplVO1" viewAttr="LastName" prompt="Apellido" queryable="true"/>
+            <oa:messageStyledText id="firstName" queryable="true" viewName="xXGamInvEmplVO1" viewAttr="FirstName" prompt="Nombre"/>
+            <oa:formValue id="PersonId" viewName="xXGamInvEmplVO1" viewAttr="PersonId" dataType="NUMBER"/>
+            <oa:formValue id="UserId" viewName="xXGamInvEmplVO1" viewAttr="UserId" dataType="NUMBER"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

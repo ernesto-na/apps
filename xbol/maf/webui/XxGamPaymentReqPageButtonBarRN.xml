@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:pageButtonBar version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqPageButtonBarCO">
+   <ui:contents>
+      <oa:navigationBar id="XxGamPaymentReqNavBarRN" maxValue="3" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM">
+         <ui:contents>
+            <oa:link id="Step1" destination="/xxgam/oracle/apps/xbol/maf/webui/XxGamPaymentReqInfoGeneralPG&amp;retainAM=Y" warnAboutChanges="false" text="General Information"/>
+            <oa:link id="Step2" destination="/xxgam/oracle/apps/xbol/maf/webui/XxGamPaymentReqDetailPG&amp;retainAM=Y" warnAboutChanges="false" text="Detail of Advance payment request"/>
+            <oa:link id="Step3" destination="/xxgam/oracle/apps/xbol/maf/webui/XxGamPaymentReqReviewPG&amp;retainAM=Y" warnAboutChanges="false" text="Review and Payment Proposal">
+               <ui:primaryClientAction>
+                  <ui:fireAction event="goStep3"/>
+               </ui:primaryClientAction>
+            </oa:link>
+         </ui:contents>
+      </oa:navigationBar>
+   </ui:contents>
+</oa:pageButtonBar>

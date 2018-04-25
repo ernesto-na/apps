@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--*[Enter Javadoc like developer documentation, delete this line once you fill the included template.] [Put a one line description of the region here.] [Put a brief description of the usage of the region here.] @param [Parameter_name] [Put parameter use here.] @param [Parameter_name] [Put parameter use here.] @see [Put any additional links apart from controller class and BC4J objects directly referenced by this region]-->
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM" scope="/" postDefault="true">
+   <ui:contents>
+      <oa:table name="xXGamInvTallaRN" id="xXGamInvTallaVO1" standalone="false" controllerClass="xxgam.oracle.apps.inv.moveorder.lov.webui.xXGamInvTallaCO" blockSize="11">
+         <ui:contents>
+            <oa:messageStyledText id="TallaNbr" dataType="VARCHAR2" prompt="Talla" viewName="xXGamInvTallaVO1" viewAttr="TallaNbr" queryable="true" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="inventoryCod" viewName="xXGamInvTallaVO1" viewAttr="InventoryCod" prompt="Artículo"/>
+            <oa:messageStyledText id="description" viewName="xXGamInvTallaVO1" viewAttr="Description" prompt="Descripción" queryable="false"/>
+            <oa:messageStyledText id="NpCod" dataType="VARCHAR2" prompt="Código Parte" viewName="xXGamInvTallaVO1" viewAttr="NpCod" maximumLength="20" queryable="false"/>
+            <oa:formValue id="TallaId" dataType="VARCHAR2" prompt="" viewName="xXGamInvTallaVO1" viewAttr="TallaId"/>
+            <oa:formValue id="DotaId" dataType="NUMBER" prompt="" viewName="xXGamInvTallaVO1" viewAttr="DotaId"/>
+            <oa:formValue id="InventoryCod" viewName="xXGamInvTallaVO1" viewAttr="InventoryCod" prompt=""/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

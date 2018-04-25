@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="XxGamSizesUniformsAM"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsAMImpl" >
+   <Properties>
+      <Property Name ="MANAGE_STATE" Value ="RETENTION_LEVEL" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="XxGamPersonalUniformInfoVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamPersonalUniformInfoVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamKitItemsInfoVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamKitItemsInfoVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamSizesUniformsHistoryVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsHistoryVO" >
+   </ViewUsage>
+</AppModule>

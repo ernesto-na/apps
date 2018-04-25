@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAM" advancedSearchAllowed="true" scope="/">
+   <ui:contents>
+      <oa:table name="XxGamMaApproverRN" id="XxGamMaApproverByEmployeeIdLovVO1">
+         <ui:contents>
+            <oa:formValue id="PersonId" dataType="NUMBER" prompt="Person Id" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="PersonId" queryable="false" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="EmployeeNumber" dataType="VARCHAR2" prompt="Employee Number" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="EmployeeNumber" maximumLength="30" queryable="false" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="EmailAddress" dataType="VARCHAR2" prompt="Email Address" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="EmailAddress" maximumLength="240" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+            <oa:messageStyledText id="FullName" dataType="VARCHAR2" prompt="Full Name" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="FullName" maximumLength="240" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+            <oa:messageStyledText id="LastName" dataType="VARCHAR2" prompt="Last Name" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="LastName" maximumLength="150" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+            <oa:messageStyledText id="FirstName" dataType="VARCHAR2" prompt="First Name" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="FirstName" maximumLength="150" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+            <oa:messageStyledText id="WorkTelephone" dataType="VARCHAR2" prompt="Work Telephone" viewName="XxGamMaApproverByEmployeeIdLovVO1" viewAttr="WorkTelephone" maximumLength="60" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

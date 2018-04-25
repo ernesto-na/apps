@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvSoliVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="VO_ATTR.xXGamInvSoliDtlVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.xXGamInvSoliDtlVO.VO_QUALIFIED_NAME" Value ="Number" />
+   </Properties>
+   <SQLQuery><![CDATA[
+SELECT xXGamInvSoliEO.kit_id,
+       xik.kit_cod,
+       xik.kit_des,
+       xXGamInvSoliEO.soli_id, 
+       xXGamInvSoliEO.nro_solicitud, 
+       xXGamInvSoliEO.person_id, 
+       xXGamInvSoliEO.employee_number, 
+       xXGamInvSoliEO.rfc, 
+       xXGamInvSoliEO.category, 
+       xXGamInvSoliEO.adscription, 
+       xXGamInvSoliEO.cont_due_date, 
+       xXGamInvSoliEO.soli_date, 
+       xXGamInvSoliEO.station, 
+       xXGamInvSoliEO.cost_center, 
+       xXGamInvSoliEO.expense_acc, 
+       xXGamInvSoliEO.header_id, 
+       xXGamInvSoliEO.status, 
+       flv.meaning as status_dsp,
+       xXGamInvSoliEO.expense_desc,
+       xXGamInvSoliEO.created_by, 
+       xXGamInvSoliEO.creation_date, 
+       xXGamInvSoliEO.last_updated_by, 
+       xXGamInvSoliEO.last_update_date, 
+       xXGamInvSoliEO.last_update_login,
+       xXGamInvSoliEO.observaciones_uni,
+ papf.FULL_NAME
+FROM xxgam_inv_soli xXGamInvSoliEO,
+     xxgam_inv_kit xik,
+     fnd_lookup_values flv,
+     PER_ALL_PEOPLE_F papf
+WHERE xXGamInvSoliEO.kit_id = xik.kit_id
+AND flv.lookup_type(+) = 'XXGAM_INV_REQ_STATUS'
+AND flv.language(+) = 'ESA'
+AND xXGamInvSoliEO.status = flv.lookup_code(+)
+AND papf.PERSON_ID = xXGamInvSoliEO.person_id
+AND TRUNC(xXGamInvSoliEO.creation_date) between papf.effective_start_date and papf.effective_end_date /* 02/02/2017 Proyecto Historial tallas */
+AND xXGamInvSoliEO.soli_id = :1
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="xXGamInvSoliEO"
+      Entity="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="true" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="KitId"
+      IsNotNull="true"
+      EntityAttrName="KitId"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="KIT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="KIT_COD"
+      Expression="KIT_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitDes"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="KIT_DES"
+      Expression="KIT_DES"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoliId"
+      IsNotNull="true"
+      EntityAttrName="SoliId"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="SOLI_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NroSolicitud"
+      IsNotNull="true"
+      EntityAttrName="NroSolicitud"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="NRO_SOLICITUD" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonId"
+      IsNotNull="true"
+      EntityAttrName="PersonId"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="PERSON_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeNumber"
+      IsNotNull="true"
+      EntityAttrName="EmployeeNumber"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="EMPLOYEE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Rfc"
+      EntityAttrName="Rfc"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="RFC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Category"
+      EntityAttrName="Category"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="CATEGORY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Adscription"
+      EntityAttrName="Adscription"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="ADSCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContDueDate"
+      EntityAttrName="ContDueDate"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="CONT_DUE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoliDate"
+      EntityAttrName="SoliDate"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="SOLI_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Station"
+      EntityAttrName="Station"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="STATION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenter"
+      EntityAttrName="CostCenter"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="COST_CENTER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExpenseAcc"
+      EntityAttrName="ExpenseAcc"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="EXPENSE_ACC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderId"
+      EntityAttrName="HeaderId"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="HEADER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      EntityAttrName="Status"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="STATUS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDsp"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DSP"
+      Expression="STATUS_DSP"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExpenseDesc"
+      EntityAttrName="ExpenseDesc"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="EXPENSE_DESC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ObservacionesUni"
+      EntityAttrName="ObservacionesUni"
+      EntityUsage="xXGamInvSoliEO"
+      AliasName="OBSERVACIONES_UNI" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FULL_NAME"
+      Expression="FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="XxGamInvAssignExcept"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="xXGamInvSoliSummaryVO"
+      ViewLink="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolSummaryVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+   <ViewLinkAccessor
+      Name="xXGamInvSoliDtlVO"
+      ViewLink="xxgam.oracle.apps.inv.moveorder.server.xXGamInvRelSolDtlVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

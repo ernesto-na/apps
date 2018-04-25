@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamFollOrderUnifLinVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifLinVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifLinVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <Variable
+      Name="pSoHeaderID"
+      Kind="where"
+      Type="oracle.jbo.domain.Number"
+      DefaultValue="-1" >
+   </Variable>
+   <SQLQuery><![CDATA[
+select oola.ORDERED_ITEM
+        ,(select itl.description
+   from inv.mtl_system_items_b i
+       ,inv.mtl_system_items_tl itl
+  where 1=1
+   and i.INVENTORY_ITEM_ID = itl.INVENTORY_ITEM_ID
+   and i.organization_id = itl.organization_id
+   and i.organization_id = oola.ship_from_org_id
+   and itl.language= 'ESA'
+   and i.inventory_item_id = oola.INVENTORY_ITEM_ID) inv_item_desc
+   ,( select  lin.talla_nbr 
+   from  XXGAM_INV_VTA_UNIF_HDR hdr
+        ,XXGAM_INV_VTA_UNIF_LIN lin    
+  where hdr.hdr_id = lin.hdr_id
+    and hdr.so_header_id = oola.header_id
+    and lin.so_inv_item_id =oola.INVENTORY_ITEM_ID ) talla_nbr
+   ,ORDERED_QUANTITY
+   ,UNIT_LIST_PRICE
+   ,ORDERED_QUANTITY*(oola.UNIT_SELLING_PRICE)+oola.tax_value TOTAL_AMOUNT 
+    ,( select ol.MEANING 
+            from oe_lookups ol
+           where ol.lookup_type = 'FLOW_STATUS' 
+             and ol.lookup_code = oola.FLOW_STATUS_CODE ) flow_status
+   from oe_order_lines_all oola
+  where 1=1 /* org_id =  nvl(:pOrgID,-1) */
+    and header_id = nvl(:pSoHeaderID,-1)
+   ]]></SQLQuery>
+   <ViewAttribute
+      Name="OrderedItem"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="2000"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ORDERED_ITEM"
+      Expression="ORDERED_ITEM"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvItemDesc"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INV_ITEM_DESC"
+      Expression="INV_ITEM_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaNbr"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="300"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TALLA_NBR"
+      Expression="TALLA_NBR"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="300" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderedQuantity"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORDERED_QUANTITY"
+      Expression="ORDERED_QUANTITY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitListPrice"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="UNIT_LIST_PRICE"
+      Expression="UNIT_LIST_PRICE"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TotalAmount"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TOTAL_AMOUNT"
+      Expression="TOTAL_AMOUNT"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FlowStatus"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FLOW_STATUS"
+      Expression="FLOW_STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

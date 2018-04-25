@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="XxGamUniformsLOVAM"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamUniformsLOVAMImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="XxGamVtaUniformsPricesLOVVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamVtaUniformsPricesLOVVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamSoEmpleadosLOVVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamSoEmpleadosLOVVO" >
+   </ViewUsage>
+</AppModule>

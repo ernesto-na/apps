@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<customization xmlns="http://xmlns.oracle.com/jrad" version="9.0.6.0.0_45" xml:lang="en-US" customizes="/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudActualizaPG" package="/xxgam/oracle/apps/inv/moveorder/webui/customizations/site/0">
+   <modifications>
+      <modify element="QtyNbr1" readOnly="${oa.xXGamInvSoliDtlVO1.ReadOnlyBool}"/>
+      <modify element="TallaNbr1" readOnly="${oa.xXGamInvSoliDtlVO1.ReadOnlyBool}"/>
+   </modifications>
+</customization>

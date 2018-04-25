@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAM" advancedSearchAllowed="true" scope="/">
+   <ui:contents>
+      <oa:table name="XxGamMaStatusIExpensesRN" id="XxGamMaStatusIExpensesLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="LookupCode" dataType="VARCHAR2" prompt="Status IExpenses Code" viewName="XxGamMaStatusIExpensesLovVO1" viewAttr="LookupCode" maximumLength="30" queryable="false" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="Meaning" dataType="VARCHAR2" prompt="Status IExpenses" viewName="XxGamMaStatusIExpensesLovVO1" viewAttr="Meaning" maximumLength="80" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+            <oa:messageStyledText id="Description" dataType="VARCHAR2" prompt="Description" viewName="XxGamMaStatusIExpensesLovVO1" viewAttr="Description" maximumLength="240" queryable="true" selectiveSearchCriteria="false" sortState="ascending"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

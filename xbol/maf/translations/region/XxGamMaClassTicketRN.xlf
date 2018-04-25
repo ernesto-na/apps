@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamMaClassTicketRN" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaClassTicketRN..LookupCode...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>Class Pass</source>
+            <target>Clase del Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaClassTicketRN..Tag...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Discount Rate</source>
+            <target>Porcentaje de Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaClassTicketRN..Description...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Tariff</source>
+            <target>Tarifa</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaClassTicketRN..Display...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>Class Pass</source>
+            <target>Clase del Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

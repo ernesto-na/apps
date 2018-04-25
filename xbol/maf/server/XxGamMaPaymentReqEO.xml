@@ -1,0 +1,794 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="XxGamMaPaymentReqEO"
+   DBObjectType="table"
+   DBObjectName="XXGAM_MA_PAYMENT_REQ"
+   AliasName="XxGamMaPaymentReqEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Init|Access" />
+   </DesignTime>
+   <Attribute
+      Name="Id"
+      IsNotNull="true"
+      Precision="12"
+      Scale="0"
+      ColumnName="ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="GeneralReqId"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      ColumnName="GENERAL_REQ_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="InitialDate"
+      IsNotNull="true"
+      ColumnName="INITIAL_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FinalDate"
+      IsNotNull="true"
+      ColumnName="FINAL_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TypePayment"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      ColumnName="TYPE_PAYMENT"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Amount"
+      IsNotNull="true"
+      Precision="14"
+      Scale="2"
+      ColumnName="AMOUNT"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="AmountMx"
+      Precision="14"
+      Scale="2"
+      ColumnName="AMOUNT_MX"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Justification"
+      IsNotNull="true"
+      Precision="500"
+      ColumnName="JUSTIFICATION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="500" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CodeCombinationId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CODE_COMBINATION_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CurrencyCode"
+      IsNotNull="true"
+      Precision="5"
+      ColumnName="CURRENCY_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_PAYMENT_REQ" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="5" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      HistoryColumn="DateHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      HistoryColumn="UserHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      HistoryColumn="DateHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      HistoryColumn="UserHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_PAYMENT_REQ"
+      HistoryColumn="UserHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="XxGamMaTicketPEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO.XxGamMaTicketPEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO.XxGamMaPaymentReqEO"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaGeneralReqEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqAO.XxGamMaGeneralReqEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqAO.XxGamMaPaymentReqEO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEOImpl" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaGeneralReqEO1"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqAXxGamMaPaymentReqAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqAXxGamMaPaymentReqAO.XxGamMaGeneralReqEO1"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqAXxGamMaPaymentReqAO.XxGamMaPaymentReqEO1"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEOImpl" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaTicketPEO1"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO.XxGamMaTicketPEO1"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO.XxGamMaPaymentReqEO1"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC00271506" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271506" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271507" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;GENERAL_REQ_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271507" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271508" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.InitialDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INITIAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271508" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271509" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.TypePayment" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TYPE_PAYMENT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271509" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271510" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Amount" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271510" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271511" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.AmountMx" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT_MX&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271511" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271512" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Justification" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;JUSTIFICATION&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271512" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271513" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CodeCombinationId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CODE_COMBINATION_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271513" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271514" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CurrencyCode" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CURRENCY_CODE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271514" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271515" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271515" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271516" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271516" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277666" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277666" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277667" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;GENERAL_REQ_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277667" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277668" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.InitialDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INITIAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277668" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277669" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.TypePayment" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TYPE_PAYMENT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277669" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277670" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Amount" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277670" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277671" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.AmountMx" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT_MX&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277671" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277672" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Justification" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;JUSTIFICATION&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277672" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277673" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CodeCombinationId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CODE_COMBINATION_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277673" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277674" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CurrencyCode" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CURRENCY_CODE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277674" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277675" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277675" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277676" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277676" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287932" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287932" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287933" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;GENERAL_REQ_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287933" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287934" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.InitialDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INITIAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287934" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287935" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.FinalDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;FINAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287935" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287936" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.TypePayment" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TYPE_PAYMENT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287936" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287937" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Amount" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287937" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287939" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Justification" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;JUSTIFICATION&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287939" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287940" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CodeCombinationId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CODE_COMBINATION_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287940" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287941" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CurrencyCode" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CURRENCY_CODE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287941" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287942" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287942" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00287943" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00287943" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008083" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008083" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008084" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;GENERAL_REQ_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008084" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008085" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.InitialDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INITIAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008085" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008086" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.TypePayment" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TYPE_PAYMENT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008086" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008087" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Amount" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008087" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008088" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.AmountMx" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;AMOUNT_MX&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008088" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008089" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Justification" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;JUSTIFICATION&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008089" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008090" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CodeCombinationId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CODE_COMBINATION_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008090" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008091" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CurrencyCode" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CURRENCY_CODE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008091" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008092" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008092" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008093" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008093" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaPaymentReqFinalDateCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.FinalDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;FINAL_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isNotNull" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_PAYMENT_REQ_FINAL_DAT" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaPaymentReqPk" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_PAYMENT_REQ_PK" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaPaymentReqXxgaFk1" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXGAM_MA_GENERAL_REQ_PK" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_PAYMENT_REQ_XXGA_FK1" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="fk_XxGamMaPaymentReqEO" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="SYS_C00271527" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="FK_XX_GAM_MA_PAYMENT_REQ_EO" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="fk_XxGamMaPaymentReqEO1" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="SYS_C00271527" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="FK_XX_GAM_MA_PAYMENT_REQ_EO1" />
+      </DesignTime>
+   </Key>
+</Entity>

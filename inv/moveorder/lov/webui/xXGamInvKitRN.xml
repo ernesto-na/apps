@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" scope="/" amDefName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM">
+   <ui:contents>
+      <oa:table name="xXGamInvKitRN" id="xXGamInvKitVO1" controllerClass="xxgam.oracle.apps.inv.moveorder.lov.webui.xXGamInvKitCO">
+         <ui:contents>
+            <oa:messageStyledText id="KitDes" dataType="VARCHAR2" prompt="KitDes" viewName="xXGamInvKitVO1" viewAttr="KitDes" maximumLength="80" queryable="true"/>
+            <oa:messageStyledText id="KitCod" dataType="VARCHAR2" prompt="KitCod" viewName="xXGamInvKitVO1" viewAttr="KitCod" maximumLength="30" queryable="true"/>
+            <oa:formValue id="KitId" dataType="NUMBER" prompt="KitId" viewName="xXGamInvKitVO1" viewAttr="KitId"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

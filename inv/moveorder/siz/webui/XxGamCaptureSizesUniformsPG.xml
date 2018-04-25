@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsAM" windowTitle="Capturar Tallas Uniformes" title="Capturar Tallas Uniformes" controllerClass="xxgam.oracle.apps.inv.moveorder.siz.webui.XxGamCaptureSizesUniformsCO" helpTargetAppShortName="XBOL" helpTarget="XXGAM_DOTACION_UNIFORMES_HomePG">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:contentContainer id="HeaderEmployeeContainerRN" background="transparent" text="Información Personal" width="100%">
+               <ui:contents>
+                  <oa:messageComponentLayout id="MsgCompLayEmployeeRN" rows="3" columns="3" width="100%" promptWidth="20%" fieldWidth="80%">
+                     <ui:contents>
+                        <oa:messageStyledText id="PersonFullName" viewName="XxGamPersonalUniformInfoVO1" viewAttr="PersonFullName" prompt="Nombre Empleado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="CategoriaGr" viewName="XxGamPersonalUniformInfoVO1" viewAttr="CategoriaGr" prompt="Categoria:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="Station" viewName="XxGamPersonalUniformInfoVO1" viewAttr="Station" prompt="Estación:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="EmployeeNumber" viewName="XxGamPersonalUniformInfoVO1" viewAttr="EmployeeNumber" styleClass="OraFieldText" prompt="Clave Empleado:"/>
+                        <oa:messageStyledText id="PersonType" viewName="XxGamPersonalUniformInfoVO1" viewAttr="PersonType" prompt="Adscripción:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="CostCenter" viewName="XxGamPersonalUniformInfoVO1" viewAttr="CostCenter" prompt="Centro de Costos:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="Rfc" viewName="XxGamPersonalUniformInfoVO1" viewAttr="Rfc" prompt="R.F.C.:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="AccountCombination" viewName="XxGamPersonalUniformInfoVO1" viewAttr="AccountCombination" styleClass="OraFieldText" prompt="Cuenta:"/>
+                        <oa:messageStyledText id="userKit" viewName="XxGamPersonalUniformInfoVO1" viewAttr="userKit" prompt="Kit Asignado:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:contentContainer>
+            <oa:header id="region2" text="Artículos Disponibles">
+               <ui:contents>
+                  <oa:tip id="Tip1" text="Si no encuentras tu talla envía un correo a amplanmatgral@aeromexico.com con la prenda y talla requerida."/>
+                  <oa:tip id="Tip2" text="Para seleccionar su talla de clic en la Lupa"/>
+                  <oa:table id="EmployeeKitSizesRN" width="70%">
+                     <ui:contents>
+                        <oa:messageStyledText id="KitCode" viewName="XxGamKitItemsInfoVO1" viewAttr="KitCode" prompt="KitCode" rendered="false"/>
+                        <oa:messageStyledText id="DotaId" viewName="XxGamKitItemsInfoVO1" viewAttr="DotaId" prompt="DotaId" rendered="false"/>
+                        <oa:messageStyledText id="UniformTypeCode" viewName="XxGamKitItemsInfoVO1" viewAttr="UniformTypeCode" prompt="UniformTypeCode" rendered="false"/>
+                        <oa:messageStyledText id="PlantaQTY" viewName="XxGamKitItemsInfoVO1" viewAttr="PlantaQTY" prompt="PlantaQTY" rendered="false"/>
+                        <oa:messageStyledText id="MeaureUnitcode" viewName="XxGamKitItemsInfoVO1" viewAttr="MeasureUnitCode" prompt="MeaureUnitCode" rendered="false"/>
+                        <oa:messageStyledText id="CycleCode" viewName="XxGamKitItemsInfoVO1" viewAttr="CycleCode" prompt="CycleCode" rendered="false"/>
+                        <oa:messageStyledText id="Nomenclature" viewName="XxGamKitItemsInfoVO1" viewAttr="Nomenclature" prompt="Artículos de Dotación"/>
+                        <oa:messageStyledText id="NPCode" viewName="XxGamKitItemsInfoVO1" viewAttr="NPCode" prompt="Num Parte"/>
+                        <oa:messageLovInput id="SizesLOV" viewName="XxGamKitItemsInfoVO1" viewAttr="SizeLOV" prompt="Captura de Talla" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/siz/lov/webui/XxGamSizUniformsSizesInfo2LOVRN" lookAheadEnabled="false" unvalidated="true">
+                           <lovMappings>
+                              <lovMap id="lovMap2" lovItem="TallaNbr" resultTo="SizesLOV" criteriaFrom="SizesLOV"/>
+                              <lovMap id="lovMap3" lovItem="TallaId" resultTo="TallaIDFD"/>
+                              <lovMap id="lovMap4" lovItem="InventoryId" resultTo="InventoryIdFD"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:formValue id="TallaIDFD" viewName="XxGamKitItemsInfoVO1" viewAttr="TallaId"/>
+                        <oa:messageStyledText id="TallaID" viewName="XxGamKitItemsInfoVO1" viewAttr="TallaId" prompt="Talla ID" rendered="false"/>
+                        <oa:formValue id="InventoryIdFD" viewName="XxGamKitItemsInfoVO1" viewAttr="InventoryId"/>
+                        <oa:messageStyledText id="InventoryID" viewName="XxGamKitItemsInfoVO1" viewAttr="InventoryId" prompt="InventoryId" rendered="false"/>
+                        <oa:messageTextInput id="Observaciones" viewName="XxGamKitItemsInfoVO1" viewAttr="Observaciones" prompt="Observaciones"/>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="region3">
+                           <ui:contents>
+                              <oa:button id="SaveSizesButton" text="Guardar Tallas" prompt="Guardar Tallas">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="updateSizes" id="fireAction2"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:table>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="ButtonLaunchRN" text="Guardar Tallas" rendered="false">
+               <ui:contents>
+                  <oa:rowLayout id="ButtonLaunchRL">
+                     <ui:contents>
+                        <oa:cellFormat id="ButtonLaunchCF">
+                           <ui:contents>
+                              <oa:button id="UpdateInsertSizes" text="Guardar Datos" prompt="Guardar Datos" hAlign="center">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="updateSizes" id="fireAction1"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:pageButtonBar id="PageButtonBarRN">
+               <ui:contents>
+                  <oa:button id="GenerarDotBtn" text="Generar Dotación" prompt="Generar Dotación">
+                     <ui:primaryClientAction>
+                        <ui:fireAction event="GenerarDotEvt"/>
+                     </ui:primaryClientAction>
+                  </oa:button>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ToReviewUnis" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudPG&amp;retainAM=Y" text="Volver a Consulta Solicitud"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

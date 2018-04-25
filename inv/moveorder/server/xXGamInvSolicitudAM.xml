@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="xXGamInvSolicitudAM"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAMImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="xXGamInvSoliSummaryVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliSummaryVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliDtlVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvLineDtlVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvLineDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliRenderedVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliRenderedVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXgamInvEmpleadosVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamLookupAperPeriodVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamLookupAperPeriodVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvMotivosVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvMotivosVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvFechaNvoEmplVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaNvoEmplVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvFechaCreacionEnPeriodoVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaCreacionEnPeriodoVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliDtlDisabledVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlDisabledVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvFechaSolicitudActivaVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaSolicitudActivaVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvKitVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvKitVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXgamInvEmpleadosVO2"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliDtlVO2"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSoliDtlVO3"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvErrorsDevVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvErrorsDevVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvAvailableKitsVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvAvailableKitsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamV2InvSoliDtlVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamV2InvSoliDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamV2InvSoliVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.server.xXGamV2InvSoliVO" >
+   </ViewUsage>
+</AppModule>

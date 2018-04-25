@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamMaBlankPagePG" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamMaBlankPagePG..BlankPageRN...windowTitle" translate="yes" maxbytes="4000" maxwidth="60" size-unit="char">
+            <source>General Information Page</source>
+            <target>Página de Información General</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">windowTitle</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamMaBlankPagePG..BlankPageRN...title" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>General Information Page</source>
+            <target>Página de Información General</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">title</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

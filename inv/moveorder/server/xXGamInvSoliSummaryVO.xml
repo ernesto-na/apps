@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvSoliSummaryVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliSummaryVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliSummaryVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="VO_ATTR.xXGamInvSoliVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.xXGamInvSoliVO.VO_QUALIFIED_NAME" Value ="Number" />
+   </Properties>
+   <SQLQuery><![CDATA[
+SELECT xis.soli_id,
+  xis.nro_solicitud,
+  xis.status,
+  flv.meaning AS status_dsp,
+  xis.soli_date,
+  xis.person_id,
+  DECODE(status,'CERRADO', 'UpdateDisabled','CANCELADO', 'UpdateDisabled', 'UpdateEnabled' ) AS UPDATE_SWITCHER,
+  DECODE(status,'PREAPROBADO', 'PrintEnabled', 'CERRADO', 'PrintEnabled', 'PrintDisabled')   AS PRINT_SWITCHER,
+  TO_CHAR('Y')                                                                               AS select_flag
+  ,pap.employee_number
+, xis.CREATED_BY
+FROM xxgam_inv_soli xis,
+  fnd_lookup_values flv
+ ,   per_all_people_f pap
+WHERE 1=1
+AND xis.person_id = pap.person_id
+AND SYSDATE BETWEEN pap.effective_start_date AND pap.effective_end_date
+AND EXISTS
+  (SELECT 1
+  FROM per_all_people_f ppf
+  WHERE SYSDATE BETWEEN ppf.effective_start_date AND ppf.effective_end_date
+  AND xis.person_id = ppf.person_id
+  AND (ppf.person_id = DECODE(fnd_profile.value('XXGAM_INV_USUARIO_UNIFORME'), 'N',
+    (SELECT employee_id FROM fnd_user WHERE user_id = FND_GLOBAL.USER_ID
+    ) ,ppf.person_id)
+    OR
+    ppf.person_id = DECODE(fnd_profile.value('PERFIL_UNIFORMES'), 'N',
+    (SELECT employee_id FROM fnd_user WHERE user_id = FND_GLOBAL.USER_ID
+    ) ,ppf.person_id)
+    )
+  )
+AND flv.lookup_type(+) = 'XXGAM_INV_REQ_STATUS'
+AND flv.language (+)                = USERENV('LANG')
+AND flv.lookup_code(+) = xis.status
+ORDER BY xis.soli_id DESC
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="SoliId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SOLI_ID"
+      Expression="SOLI_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NroSolicitud"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="40"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NRO_SOLICITUD"
+      Expression="NRO_SOLICITUD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="40" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      IsPersistent="false"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS"
+      Expression="STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDsp"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DSP"
+      Expression="STATUS_DSP"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoliDate"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="SOLI_DATE"
+      Expression="SOLI_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PERSON_ID"
+      Expression="PERSON_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UpdateSwitcher"
+      IsPersistent="false"
+      Precision="14"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UPDATE_SWITCHER"
+      Expression="UPDATE_SWITCHER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="14" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrintSwitcher"
+      IsPersistent="false"
+      Precision="13"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRINT_SWITCHER"
+      Expression="PRINT_SWITCHER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="13" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SelectFlag"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SELECT_FLAG"
+      Expression="SELECT_FLAG"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeNumber"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMPLOYEE_NUMBER"
+      Expression="EMPLOYEE_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CREATED_BY"
+      Expression="CREATED_BY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SelectFlag1"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="SELECT_FLAG"
+      Expression="SELECT_FLAG"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LinkTransient"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="xXGamInvSoliVO"
+      ViewLink="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolSummaryVL"
+      Type="oracle.jbo.Row"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

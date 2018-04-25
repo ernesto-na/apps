@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvSoliDtlVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT xXGamInvSoliDtlEO.soli_id
+       ,xXGamInvSoliDtlEO.soli_dtl_id
+       ,xXGamInvSoliEO.nro_solicitud
+       ,xXGamInvSoliEO.kit_id
+       ,xik.kit_cod
+       ,xXGamInvSoliEO.person_id
+       ,xXGamInvSoliEO.header_id
+       ,xXGamInvSoliDtlEO.dota_id
+       ,xid.uniform_type_cod
+       ,xid.nomenclature
+       ,xid.np_cod
+       ,xid.measure_unit_cod
+       ,xid.cycle_cod
+       ,xid.planta_qty
+       ,xid.event_qty
+       ,xXGamInvSoliDtlEO.qty_planta
+       ,xXGamInvSoliDtlEO.qty_eventual
+       ,xXGamInvSoliDtlEO.talla_id
+       ,xit.talla_nbr
+       ,xXGamInvSoliDtlEO.qty_nbr
+       ,xit.inventory_id
+       ,xXGamInvSoliDtlEO.last_deliv_date
+       ,xXGamInvSoliDtlEO.line_number
+       ,xXGamInvSoliDtlEO.status
+       ,flv.meaning as status_dsp
+       ,xXGamInvSoliDtlEO.dota_id_f
+       ,xXGamInvSoliDtlEO.attribute1 as attribute1
+       ,xXGamInvSoliDtlEO.attribute2
+       ,xXGamInvSoliDtlEO.attribute3
+       ,xXGamInvSoliDtlEO.attribute4
+       ,xXGamInvSoliDtlEO.attribute5
+       ,xXGamInvSoliDtlEO.CREATED_BY 
+       ,xXGamInvSoliDtlEO.CREATION_DATE
+       ,xXGamInvSoliDtlEO.LAST_UPDATED_BY
+       ,xXGamInvSoliDtlEO.LAST_UPDATE_DATE
+       ,xXGamInvSoliDtlEO.LAST_UPDATE_LOGIN
+       ,DECODE(nvl(xid.SUST_FLAG,'N')
+                             , 'N' 
+                             ,  'SustitucionEmpty'
+                             ,'Y'
+                             ,  DECODE( xXGamInvSoliDtlEO.attribute4
+                                       , 'SUSTITUIDO'
+                                       , 'SustitucionDisabled'
+                                       , 'SustitucionEnabled'
+                                       )
+              ) as SUSTITUCION_SWITCHER
+       ,'Show' as MOSTRAR
+       ,DECODE((SELECT count(*)
+               FROM mtl_txn_request_lines mtrl
+               WHERE mtrl.line_id = xXGamInvSoliDtlEO.line_id
+                AND (nvl(mtrl.line_status,-1) = 5 
+                     OR
+                     mtrl.QUANTITY_DELIVERED IS NOT NULL))        
+               , 0
+               , 'N'
+               , 'Y') TALLA_READONLY
+		,xXGamInvSoliDtlEO.OBSERVACIONES_SLTUD
+		,xXGamInvSoliDtlEO.MOTIVO
+		,xXGamInvSoliDtlEO.TALLA_DEV_ID
+                ,dev.TALLA_NBR_DEV
+		,xXGamInvSoliDtlEO.QTY_DEV
+		,xXGamInvSoliDtlEO.OBSERVACIONES_DEV
+    ,xit_dev.inventory_id inventory_id_dev
+ ,MTL.QUANTITY_DELIVERED
+,xit.inventory_cod
+,msi.description
+, xXGamInvSoliDtlEO.month_dota mes_dotacion
+FROM XXGAM_INV_SOLI_DTL xXGamInvSoliDtlEO,
+     xxgam_inv_soli     xXGamInvSoliEO,
+     xxgam_inv_kit      xik,
+     xxgam_inv_dota     xid,
+     xxgam_inv_talla    xit,
+     fnd_lookup_values flv,
+     xxgam_inv_talla    xit_dev,
+     (SELECT TALLA_ID TALLA_ID_DEV,
+      TALLA_NBR TALLA_NBR_DEV FROM xxgam_inv_talla) dev
+,MTL_TXN_REQUEST_LINES MTL
+,mtl_system_items_b msi
+WHERE xXGamInvSoliEO.soli_id= xXGamInvSoliDtlEO.soli_id
+  AND xXGamInvSoliEO.kit_id = xik.kit_id
+  AND xid.kit_id            = xik.kit_id
+  AND xid.dota_id           = xXGamInvSoliDtlEO.dota_id
+  AND xit.talla_id (+)      = xXGamInvSoliDtlEO.talla_id
+  AND flv.lookup_type(+)       = 'XXGAM_INV_REQ_STATUS'
+  AND flv.language (+)         = 'ESA'
+  AND xXGamInvSoliDtlEO.STATUS = flv.lookup_code (+)
+  AND xXGamInvSoliDtlEO.TALLA_DEV_ID = dev.TALLA_ID_DEV(+)
+  AND xXGamInvSoliDtlEO.soli_id = :1
+  AND xit_dev.talla_id (+)      = xXGamInvSoliDtlEO.talla_dev_id
+AND xXGamInvSoliDtlEO.LINE_ID = MTL.LINE_ID(+)
+       AND msi.INVENTORY_ITEM_ID (+) = xit.INVENTORY_ID
+       AND msi.ORGANIZATION_ID(+)    = xit.ORGANIZATION_ID
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="xXGamInvSoliDtlEO"
+      Entity="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="SoliId"
+      IsNotNull="true"
+      EntityAttrName="SoliId"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="SOLI_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoliDtlId"
+      IsNotNull="true"
+      EntityAttrName="SoliDtlId"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="SOLI_DTL_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NroSolicitud"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="40"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NRO_SOLICITUD"
+      Expression="NRO_SOLICITUD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="40" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="KIT_ID"
+      Expression="KIT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="KIT_COD"
+      Expression="KIT_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PERSON_ID"
+      Expression="PERSON_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="HEADER_ID"
+      Expression="HEADER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DotaId"
+      IsNotNull="true"
+      EntityAttrName="DotaId"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="DOTA_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UniformTypeCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UNIFORM_TYPE_COD"
+      Expression="UNIFORM_TYPE_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Nomenclature"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NOMENCLATURE"
+      Expression="NOMENCLATURE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NpCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NP_COD"
+      Expression="NP_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MeasureUnitCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MEASURE_UNIT_COD"
+      Expression="MEASURE_UNIT_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CycleCod"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CYCLE_COD"
+      Expression="CYCLE_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PlantaQty"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PLANTA_QTY"
+      Expression="PLANTA_QTY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EventQty"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="EVENT_QTY"
+      Expression="EVENT_QTY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QtyPlanta"
+      EntityAttrName="QtyPlanta"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="QTY_PLANTA" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QtyEventual"
+      EntityAttrName="QtyEventual"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="QTY_EVENTUAL" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaId"
+      EntityAttrName="TallaId"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="TALLA_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaNbr"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TALLA_NBR"
+      Expression="TALLA_NBR"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QtyNbr"
+      EntityAttrName="QtyNbr"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="QTY_NBR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InventoryId"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="INVENTORY_ID"
+      Expression="INVENTORY_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastDelivDate"
+      EntityAttrName="LastDelivDate"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="LAST_DELIV_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      EntityAttrName="LineNumber"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="LINE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      EntityAttrName="Status"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="STATUS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDsp"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DSP"
+      Expression="STATUS_DSP"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DotaIdF"
+      EntityAttrName="DotaIdF"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="DOTA_ID_F" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="ATTRIBUTE1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="ATTRIBUTE2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="ATTRIBUTE3" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="ATTRIBUTE4" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="ATTRIBUTE5" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SustitucionSwitcher"
+      IsPersistent="false"
+      Precision="19"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SUSTITUCION_SWITCHER"
+      Expression="SUSTITUCION_SWITCHER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="19" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Mostrar"
+      IsPersistent="false"
+      Precision="4"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="MOSTRAR"
+      Expression="MOSTRAR"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaReadonly"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TALLA_READONLY"
+      Expression="TALLA_READONLY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ObservacionesSltud"
+      EntityAttrName="ObservacionesSltud"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="OBSERVACIONES_SLTUD" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Motivo"
+      EntityAttrName="Motivo"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="MOTIVO" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaDevId"
+      EntityAttrName="TallaDevId"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="TALLA_DEV_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaNbrDev"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TALLA_NBR_DEV"
+      Expression="TALLA_NBR_DEV"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QtyDev"
+      EntityAttrName="QtyDev"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="QTY_DEV" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ObservacionesDev"
+      EntityAttrName="ObservacionesDev"
+      EntityUsage="xXGamInvSoliDtlEO"
+      AliasName="OBSERVACIONES_DEV" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InventoryIdDev"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="INVENTORY_ID_DEV"
+      Expression="INVENTORY_ID_DEV"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QuantityDelivered"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="QUANTITY_DELIVERED"
+      Expression="QUANTITY_DELIVERED"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InventoryCod"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INVENTORY_COD"
+      Expression="INVENTORY_COD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DESCRIPTION"
+      Expression="DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MesDotacion"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MES_DOTACION"
+      Expression="MES_DOTACION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MonthDota"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MONTH_DOTA"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReadOnlyBool"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CheckBoxSelected"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ObservacionesDevDisabled"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CantidadDevDisabled"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaDevDisabled"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MotivoDisabled"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CheckBoxDisabled"
+      IsSelected="false"
+      IsPersistent="false"
+      DefaultValue="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailFlag"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      Passivate="true"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Dummy"
+      IsUpdateable="false"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="xXGamInvSoliVO"
+      ViewLink="xxgam.oracle.apps.inv.moveorder.server.xXGamInvRelSolDtlVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor></ViewObject>

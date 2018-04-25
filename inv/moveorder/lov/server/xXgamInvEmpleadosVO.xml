@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXgamInvEmpleadosVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT ppf.person_id,
+       fu.user_id,
+       ppf.full_name           AS nombre_empleado,
+       ppf.employee_number     AS clave_empleado,
+       ppf.national_identifier AS rfc,
+       paaf.date_probation_end AS fecha_termino_contrato,
+       DECODE(paaf.date_probation_end, null, 'planta', 'eventual') AS adscripcion,
+       gcc.segment4              AS estacion,
+       gcc.segment3              AS centro_costos,
+       flv.meaning               AS categoria,
+       gcc.concatenated_segments AS cuenta,
+       paaf.payroll_id,
+       paaf.pay_basis_id,
+       paaf.grade_id,
+       paaf.position_id,
+       paaf.job_id
+FROM per_all_people_f ppf,
+     fnd_user fu,
+     per_all_assignments_f paaf,
+     gl_code_combinations_kfv gcc,
+     fnd_lookup_values flv
+WHERE fu.employee_id (+) = ppf.person_id
+  AND SYSDATE BETWEEN ppf.effective_start_date   AND ppf.effective_end_date 
+  AND SYSDATE BETWEEN paaf.effective_start_date  AND paaf.effective_end_date 
+  AND ppf.person_id = paaf.person_id
+  AND gcc.code_combination_id (+) = paaf.default_code_comb_id
+  AND flv.lookup_type (+)  = 'EMPLOYEE_CATG'
+  AND flv.lookup_code(+)   = paaf.employee_category
+AND flv.language (+)                = USERENV('LANG')
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="PersonId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PERSON_ID"
+      Expression="PERSON_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UserId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="USER_ID"
+      Expression="USER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NombreEmpleado"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NOMBRE_EMPLEADO"
+      Expression="NOMBRE_EMPLEADO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ClaveEmpleado"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CLAVE_EMPLEADO"
+      Expression="CLAVE_EMPLEADO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Rfc"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="RFC"
+      Expression="RFC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaTerminoContrato"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_TERMINO_CONTRATO"
+      Expression="FECHA_TERMINO_CONTRATO"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Adscripcion"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="8"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADSCRIPCION"
+      Expression="ADSCRIPCION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="8" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Estacion"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ESTACION"
+      Expression="ESTACION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CentroCostos"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CENTRO_COSTOS"
+      Expression="CENTRO_COSTOS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Categoria"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CATEGORIA"
+      Expression="CATEGORIA"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Cuenta"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="207"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUENTA"
+      Expression="CUENTA"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="207" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PayrollId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="9"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PAYROLL_ID"
+      Expression="PAYROLL_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PayBasisId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="9"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PAY_BASIS_ID"
+      Expression="PAY_BASIS_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="GradeId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="GRADE_ID"
+      Expression="GRADE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PositionId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="POSITION_ID"
+      Expression="POSITION_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="JobId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="JOB_ID"
+      Expression="JOB_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

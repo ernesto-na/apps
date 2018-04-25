@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAM" windowTitle="Revisar Orden Uniformes" title="Revisar Orden Uniformes" controllerClass="xxgam.oracle.apps.inv.moveorder.vta.webui.XxGamReviewOrderUniformsCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtonBarRN">
+               <ui:contents>
+                  <oa:button id="RegresarBtn" text="Regresar" prompt="Regresar">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="RegresarBtnEvt"/>
+                     </ui:primaryClientAction>
+                  </oa:button>
+                  <oa:submitButton id="EjecutarBtn" text="Ejecutar" prompt="Ejecutar"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+            <oa:defaultSingleColumn id="ReviewPrendDefSinColRN" text="Revisión Prendas">
+               <ui:contents>
+                  <oa:table id="XxGamReviewInpOrderUniformsVO">
+                     <ui:contents>
+                        <oa:messageStyledText id="KitID" dataType="VARCHAR2" prompt="KitID" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="KitID" rendered="false"/>
+                        <oa:messageStyledText id="KitCod" dataType="VARCHAR2" prompt="KitCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="KitCod" rendered="false"/>
+                        <oa:messageStyledText id="DotaID" dataType="VARCHAR2" prompt="DotaID" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="DotaID" rendered="false"/>
+                        <oa:messageStyledText id="UniformTypeCod" dataType="VARCHAR2" prompt="UniformTypeCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="UniformTypeCod" rendered="false"/>
+                        <oa:messageStyledText id="PlantaQty" dataType="VARCHAR2" prompt="PlantaQty" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="PlantaQty" rendered="false"/>
+                        <oa:messageStyledText id="EventQty" dataType="VARCHAR2" prompt="EventQty" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="EventQty" rendered="false"/>
+                        <oa:messageStyledText id="MeasureUnitCod" dataType="VARCHAR2" prompt="MeasureUnitCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="MeasureUnitCod" rendered="false"/>
+                        <oa:messageStyledText id="CycleCod" dataType="VARCHAR2" prompt="CycleCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="CycleCod" rendered="false"/>
+                        <oa:messageStyledText id="Nomenclature" dataType="VARCHAR2" prompt="Prenda" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="Nomenclature"/>
+                        <oa:messageStyledText id="NpCod" dataType="VARCHAR2" prompt="NpCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="NpCod" rendered="false"/>
+                        <oa:messageStyledText id="SustFlag" dataType="VARCHAR2" prompt="SustFlag" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="SustFlag" rendered="false"/>
+                        <oa:messageStyledText id="TallaID" dataType="VARCHAR2" prompt="TallaID" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="TallaID" rendered="false"/>
+                        <oa:messageStyledText id="TallaNbr" dataType="VARCHAR2" prompt="Talla" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="TallaNbr"/>
+                        <oa:messageStyledText id="InventoryID" dataType="VARCHAR2" prompt="InventoryID" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="InventoryID" rendered="false"/>
+                        <oa:messageStyledText id="InventoryCod" dataType="VARCHAR2" prompt="InventoryCod" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="InventoryCod" rendered="false"/>
+                        <oa:messageStyledText id="OrganizationID" dataType="VARCHAR2" prompt="OrganizationID" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="OrganizationID" rendered="false"/>
+                        <oa:messageStyledText id="Quantity" dataType="VARCHAR2" prompt="Cantidad" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="Quantity"/>
+                        <oa:messageStyledText id="Price" dataType="NUMBER" prompt="Precio" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="Price"/>
+                        <oa:messageStyledText id="TotAmount" dataType="NUMBER" prompt="Total" viewName="XxGamReviewInpOrderUniformsVO1" viewAttr="TotAmount" totalValue="false"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:table id="XxGamSalesOrderHdrInfoVO" rendered="false">
+               <ui:contents>
+                  <oa:messageStyledText id="TransactionTypeID" dataType="VARCHAR2" prompt="TransactionTypeID" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="TransactionTypeID"/>
+                  <oa:messageStyledText id="TransactionType" dataType="VARCHAR2" prompt="TransactionType" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="TransactionType"/>
+                  <oa:messageStyledText id="ListHdrID" dataType="VARCHAR2" prompt="ListHdrID" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="ListHdrID"/>
+                  <oa:messageStyledText id="ListHdr" dataType="VARCHAR2" prompt="ListHdr" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="ListHdr"/>
+                  <oa:messageStyledText id="CustomerID" dataType="VARCHAR2" prompt="CustomerID" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="CustomerID"/>
+                  <oa:messageStyledText id="CustomerNum" dataType="VARCHAR2" prompt="CustomerNum" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="CustomerNum"/>
+                  <oa:messageStyledText id="ShipLocID" dataType="VARCHAR2" prompt="ShipLocID" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="ShipLocID"/>
+                  <oa:messageStyledText id="ShipLocNum" dataType="VARCHAR2" prompt="ShipLocNum" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="ShipLocNum"/>
+                  <oa:messageStyledText id="BillLocID" dataType="VARCHAR2" prompt="BillLocID" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="BillLocID"/>
+                  <oa:messageStyledText id="BillLocNum" dataType="VARCHAR2" prompt="BillLocNum" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="BillLocNum"/>
+                  <oa:messageStyledText id="CurrencyCode" dataType="VARCHAR2" prompt="CurrencyCode" viewName="XxGamSalesOrderHdrInfoVO1" viewAttr="CurrencyCode"/>
+               </ui:contents>
+            </oa:table>
+            <oa:contentContainer id="TotalesImpuestosRN" text="Resumen" background="transparent" width="50%">
+               <ui:contents>
+                  <oa:tableLayout id="TableLayoutRN" hAlign="center" width="30%">
+                     <ui:contents>
+                        <oa:rowLayout id="RowLayout1" width="30%">
+                           <ui:contents>
+                              <oa:cellFormat id="CellFormat1" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item1" prompt="Subtotal:"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="CellFormat2" width="4%" hAlign="center"/>
+                              <oa:cellFormat id="CellFormat3" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="Subtotal" prompt="" styleClass="OraFieldNumber" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="RowLayout2" width="30%">
+                           <ui:contents>
+                              <oa:cellFormat id="CellFormat4" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item2" prompt="Impuesto:"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="CellFormat5" width="4%" hAlign="center"/>
+                              <oa:cellFormat id="CellFormat6" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="Impuesto" prompt="" styleClass="OraFieldNumber" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="RowLayout3" width="30%">
+                           <ui:contents>
+                              <oa:cellFormat id="CellFormat7" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item3" prompt="Total:"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="CellFormat8" width="4%" hAlign="center"/>
+                              <oa:cellFormat id="CellFormat9" width="13%" hAlign="right">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="Total" prompt="" styleClass="OraFieldNumber" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+               </ui:contents>
+            </oa:contentContainer>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="MainRN" controllerClass="xxgam.oracle.apps.inv.moveorder.webui.xXGamSolicitudImprimeCO" amDefName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="region1" extends="/oracle/apps/xdo/oa/common/webui/DocumentViewerRn.MainRegion"/>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnNavigate" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudPG&amp;retainAM=Y" text="Volver a Consulta Solicitud" targetFrame="_parent" rendered="false"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

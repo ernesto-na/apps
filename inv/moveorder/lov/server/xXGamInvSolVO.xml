@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvSolVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvSolVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvSolVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT nro_solicitud,
+  soli_id
+FROM xxgam_inv_soli
+WHERE EXISTS
+  (SELECT 1
+  FROM per_all_people_f ppf
+  WHERE SYSDATE BETWEEN ppf.effective_start_date AND ppf.effective_end_date
+  AND xxgam_inv_soli.person_id = ppf.person_id
+  AND (ppf.person_id            = DECODE(fnd_profile.value('PERFIL_UNIFORMES'), 'N',
+    (SELECT employee_id FROM fnd_user WHERE user_id = FND_GLOBAL.USER_ID
+    ) ,ppf.person_id)
+    OR
+    ppf.person_id            = DECODE(fnd_profile.value('XXGAM_INV_USUARIO_UNIFORME'), 'N',
+    (SELECT employee_id FROM fnd_user WHERE user_id = FND_GLOBAL.USER_ID
+    ) ,ppf.person_id))
+  )
+ORDER BY nro_solicitud ASC
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="NroSolicitud"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="40"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NRO_SOLICITUD"
+      Expression="NRO_SOLICITUD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="40" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoliId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SOLI_ID"
+      Expression="SOLI_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

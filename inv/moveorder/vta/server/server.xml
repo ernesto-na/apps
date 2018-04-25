@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.inv.moveorder.vta.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="XxGamFollOrderUnifHdrVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifHdrVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamFollOrderUnifLinVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamFollOrderUnifLinVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamInputOrderUniformsVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInputOrderUniformsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamInvVtaUnifHdrVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifHdrVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamInvVtaUnifLinVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifLinVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamOrderUniformsAM"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="XxGamPersonVtaUniformInfoVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamPersonVtaUniformInfoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamReviewInpOrderUniformsVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamReviewInpOrderUniformsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamSalesOrderHdrInfoVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamSalesOrderHdrInfoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

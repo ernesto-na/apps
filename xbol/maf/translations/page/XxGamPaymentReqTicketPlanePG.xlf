@@ -1,0 +1,1304 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamPaymentReqTicketPlanePG" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..PaymentReqTicketPRN...windowTitle" translate="yes" maxbytes="4000" maxwidth="50" size-unit="char">
+            <source>Plane ticket request</source>
+            <target>Solicitud de Boleto de Avión</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">windowTitle</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..PaymentReqTicketPRN...title" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Detailed Information</source>
+            <target>Información detallada</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">title</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FullNameEmployee...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Employee</source>
+            <target>Empleado</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..CostCenter...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Cost Center</source>
+            <target>Centro de Costo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..CurrencyDesc...prompt" translate="yes" maxbytes="4000" maxwidth="55" size-unit="char">
+            <source>Reimbursement Currency</source>
+            <target>Divisa de Reembolso</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..CostCenterFlex...prompt" translate="yes" maxbytes="4000" maxwidth="52" size-unit="char">
+            <source>Cost Center Alternate</source>
+            <target>Centro de Costo Alterno</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TemplatePayment...prompt" translate="yes" maxbytes="4000" maxwidth="60" size-unit="char">
+            <source>Advance Payment Template</source>
+            <target>Plantilla de Anticipos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Purpose...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Purpose</source>
+            <target>Propósito</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ApproverId...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Approver</source>
+            <target>Aprobador</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..VirtualCard...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Virtual Card</source>
+            <target>Tarjeta Virtual</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..VirtualCard...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Virtual Card</source>
+            <target>Virtual Card</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..VirtualCardXX...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Virtual Card</source>
+            <target>Virtual Card</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..VirtualCardXX...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Virtual Card</source>
+            <target>Virtual Card</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NumberPayment...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Number of Document</source>
+            <target>Número de Documento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..StatusNotCod...prompt" translate="yes" maxbytes="4000" maxwidth="47" size-unit="char">
+            <source>Status Notification</source>
+            <target>Status Notification</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TypeEmissionT...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Type Emission</source>
+            <target>Tipo de Emisión</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageRadioGroup</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TypeEmissionT1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Type Emission</source>
+            <target>Type Emission</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AmountDiscount...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Amount Discount</source>
+            <target>Importe con Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Filial...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Filial</source>
+            <target>Filial</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Tax...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Tax</source>
+            <target>Impuestos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ClassPass...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>Class Pass</source>
+            <target>Clase del Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TotalAmount...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Total Amount</source>
+            <target>Importe Total</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DiscountRate...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Discount Rate</source>
+            <target>Porcentaje de Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr1...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TypeEmission1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Type Emission</source>
+            <target>Tipo de Emisión</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Folio1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Number</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AmountDiscount6...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Amount Discount</source>
+            <target>Importe con Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Filial6...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Filial</source>
+            <target>Filial</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Tax6...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Tax</source>
+            <target>Impuestos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ClassPass6...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>Class Pass</source>
+            <target>Clase del Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TotalAmount6...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Total Amount</source>
+            <target>Importe Total</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DiscountRate6...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Discount Rate</source>
+            <target>Porcentaje de Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr2...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone2...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice2...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TypeEmission...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Type Emission</source>
+            <target>Tipo de Emisión</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Folio...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Number</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AmountDiscount61...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Amount Discount</source>
+            <target>Importe con Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Filial61...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Filial</source>
+            <target>Filial</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Tax61...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Tax</source>
+            <target>Impuestos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ClassPass61...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>Class Pass</source>
+            <target>Clase del Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TotalAmount61...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Total Amount</source>
+            <target>Importe Total</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DiscountRate61...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Discount Rate</source>
+            <target>Porcentaje de Descuento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr3...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone3...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice3...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Relationship...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Relationship</source>
+            <target>Relación</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Benefits...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Benefits</source>
+            <target>Beneficios</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Company...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Company</source>
+            <target>Empresa</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Beneficiary...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Beneficiary</source>
+            <target>Beneficiario</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem...prompt" translate="yes" maxbytes="4000" maxwidth="57" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageRadioGroup</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageRadioGroup</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageRadioGroup</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageRadioGroup</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovChoice</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovChoice</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovChoice</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovChoice</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr4...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice4...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Beneficiary1...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Beneficiary</source>
+            <target>Beneficiario</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Relationship1...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Relationship</source>
+            <target>Relación</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Benefits1...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Benefits</source>
+            <target>Beneficios</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Company1...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Company</source>
+            <target>Empresa</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone4...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ticketNumberLB...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Number</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem41...prompt" translate="yes" maxbytes="4000" maxwidth="57" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem41...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem41...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem41...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries41...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr21...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone21...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TypeEmission2...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Type Emission</source>
+            <target>Tipo de Emisión</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice21...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Pnr41...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>PNR</source>
+            <target>PNR</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ContactPhone41...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Contact Phone</source>
+            <target>Teléfono de contacto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Beneficiary11...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Beneficiary</source>
+            <target>Beneficiario</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketOffice41...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Office</source>
+            <target>Oficina de Boletos</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Relationship11...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Relationship</source>
+            <target>Relación</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Benefits11...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Benefits</source>
+            <target>Beneficios</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Company11...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Company</source>
+            <target>Empresa</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..folio...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Ticket Number</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem411...prompt" translate="yes" maxbytes="4000" maxwidth="57" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketAvailableItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Subject to availability</source>
+            <target>Subject to availability</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem411...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketEmbargoedItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>With embargoed</source>
+            <target>With embargoed</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem411...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketClassItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Class</source>
+            <target>Ticket Class</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem411...prompt" translate="yes" maxbytes="4000" maxwidth="27" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketRateItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Rate</source>
+            <target>Ticket Rate</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries411...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..Commentaries411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Commentaries</source>
+            <target>Commentaries</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NumeroBoletosEmitir...prompt" translate="yes" maxbytes="4000" maxwidth="65" size-unit="char">
+            <source>Número de Boletos a Emitir</source>
+            <target>Número de Boletos a Emitir</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NumeroBoletosEmitir...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de Boletos a Emitir</source>
+            <target>Número de Boletos a Emitir</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO4...text" translate="yes" maxbytes="4000" maxwidth="70" size-unit="char">
+            <source>Información de Pasajeros VO4</source>
+            <target>Información de Pasajeros VO4</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO4...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Información de Pasajeros V04</source>
+            <target>Información de Pasajeros V04</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..IdItem41...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>ID</source>
+            <target>ID</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..IdItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>ID</source>
+            <target>ID</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..nameItem...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Nombre de Pasajero</source>
+            <target>Nombre de Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..nameItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Nombre de Pasajero</source>
+            <target>Nombre de Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Numero de Telefono</source>
+            <target>Numero de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Numero de Telefono</source>
+            <target>Numero de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ticketNumberItem...prompt" translate="yes" maxbytes="4000" maxwidth="40" size-unit="char">
+            <source>Número de boleto</source>
+            <target>Número de boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ticketNumberItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de boleto</source>
+            <target>Número de boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketPIdItem...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Ticket Id</source>
+            <target>Ticket Id</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketPIdItem...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Ticket Id</source>
+            <target>Ticket Id</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DeleteRowInfoPasaj...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Borrar</source>
+            <target>Borrar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DeleteRowInfoPasaj...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Borrar</source>
+            <target>Borrar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AddRow2...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>Add Row2</source>
+            <target>Add Row2</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AddRow2...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Add Row2</source>
+            <target>Add Row2</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO41...text" translate="yes" maxbytes="4000" maxwidth="72" size-unit="char">
+            <source>Información de Pasajeros VO41</source>
+            <target>Información de Pasajeros VO41</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Información de Pasajeros VO41</source>
+            <target>Información de Pasajeros VO41</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NameItem41...prompt" translate="yes" maxbytes="4000" maxwidth="47" size-unit="char">
+            <source>Nombre del Pasajero</source>
+            <target>Nombre del Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NameItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Nombre del Pasajero</source>
+            <target>Nombre del Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem41...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Número de Telefono</source>
+            <target>Número de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de Telefono</source>
+            <target>Número de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketNumberItem41...prompt" translate="yes" maxbytes="4000" maxwidth="40" size-unit="char">
+            <source>Número de Boleto</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketNumberItem41...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de Boleto</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO411...text" translate="yes" maxbytes="4000" maxwidth="75" size-unit="char">
+            <source>Información de Pasajeros VO411</source>
+            <target>Información de Pasajeros VO411</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..XxGamMaPasajerosInfoVO411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Informacion de Pasajeros VO411</source>
+            <target>Informacion de Pasajeros VO411</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NameItem411...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Nombre de Pasajero</source>
+            <target>Nombre de Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..NameItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Nomnre de Pasajero</source>
+            <target>Nomnre de Pasajero</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem411...prompt" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Número de Telefono</source>
+            <target>Número de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..FhoneNumberItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de Telefono</source>
+            <target>Número de Telefono</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketNumberItem411...prompt" translate="yes" maxbytes="4000" maxwidth="40" size-unit="char">
+            <source>Número de Boleto</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TicketNumberItem411...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Número de Boleto</source>
+            <target>Número de Boleto</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingFrom1...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Traveling From</source>
+            <target>Viajando desde</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DepartureDate1...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Departure Date</source>
+            <target>Fecha de salida</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingTo1...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Traveling To</source>
+            <target>Viajando hasta</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ReturnDate1...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Arrival Date</source>
+            <target>Fecha de llegada</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AddRow1...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Add Row</source>
+            <target>Agregar Registro</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DepartureDate3...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Departure Date</source>
+            <target>Fecha de salida</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingFrom3...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Traveling From</source>
+            <target>Viajando desde</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingTo3...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Traveling To</source>
+            <target>Viajando hasta</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ReturnDate3...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Arrival Date</source>
+            <target>Fecha de llegada</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingFrom2...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Traveling From</source>
+            <target>Viajando desde</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DepartureDate2...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Departure Date</source>
+            <target>Fecha de salida</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingTo2...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Traveling To</source>
+            <target>Viajando hasta</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ReturnDate2...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Arrival Date</source>
+            <target>Fecha de llegada</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingFrom...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Traveling From</source>
+            <target>Viajando desde</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..DepartureDate...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Departure Date</source>
+            <target>Fecha de salida</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..TravelingTo...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Traveling To</source>
+            <target>Viajando hasta</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageLovInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..ReturnDate...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Arrival Date</source>
+            <target>Fecha de llegada</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..AddRow...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Add Row</source>
+            <target>Agregar Registro</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..return...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Return</source>
+            <target>Regresar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..send...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Send</source>
+            <target>Enviar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..sendConfirmation...prompt" translate="yes" maxbytes="4000" maxwidth="42" size-unit="char">
+            <source>Send Confirmation</source>
+            <target>Enviar confirmación</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..CancelRequest...prompt" translate="yes" maxbytes="4000" maxwidth="20" size-unit="char">
+            <source>No Usado</source>
+            <target>No Usado</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqTicketPlanePG..CancelRequest...shortDesc" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Cancelacion de solicitud</source>
+            <target>Cancelacion de solicitud</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">button</prop>
+               <prop prop-type="attributeName">shortDesc</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

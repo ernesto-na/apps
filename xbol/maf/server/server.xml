@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.xbol.maf.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="XxGamAdvanceRequestVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamAdvanceRequestVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaFlightInf0EO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaFlightInf0ToXxGamMaTicketPAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0ToXxGamMaTicketPAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaFlightInf0ToXxGamMaTicketPVL"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0ToXxGamMaTicketPVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="XxGamMaFlightInf0VO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0VO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralAndTicketPVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralAndTicketPVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralPaymentTicketPVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralPaymentTicketPVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralReqAXxGamMaPaymentReqAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqAXxGamMaPaymentReqAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralReqEO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralReqToXxGamMaTicketAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqToXxGamMaTicketAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralReqToXxGamMaTicketVL"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqToXxGamMaTicketVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="XxGamMaGeneralReqVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPasajerosInfoEO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPasajerosInfoEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPasajerosInfoToXxGamMaTicketPAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPasajerosInfoToXxGamMaTicketPAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPasajerosInfoToXxGamMaTicketPVL"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPasajerosInfoToXxGamMaTicketPVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPasajerosInfoVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPasajerosInfoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentReqEO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentReqToXxGamMaGeneralReqAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentReqToXxGamMaGeneralReqVL"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentReqToXxGamMaTicketPAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentReqVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMarouteFlightToXxGamMAFlightFromAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaRouteFlightToXxGamMAFlightToAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaRuteFlightEO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaStatusRequestVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaStatusRequestVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaStatusTicketVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaStatusTicketVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxgamMaTicketP2EO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketPEO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketPToXxGamMaPaymentReqAO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketPToXxGamMaPaymentReqVL"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketPVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaVsMcpBudgetControlVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaVsMcpBudgetControlVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaVsMcpPeriodsAmountVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamMaVsMcpPeriodsAmountVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamModAntAM"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="XxGamRequestConsultationVO"
+      FullName="xxgam.oracle.apps.xbol.maf.server.XxGamRequestConsultationVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

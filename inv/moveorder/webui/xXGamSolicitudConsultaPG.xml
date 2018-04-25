@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: xXGamSolicitudConsultaPG.xml 120.0 2013/02/07 04:27 eroncoroni noship $">
+   <content>
+      <!--*[Enter Javadoc like developer documentation, delete this line once you fill the included template.] [Put a one line description of the region here.] [Put a brief description of the usage of the region here.] @param [Parameter_name] [Put parameter use here.] @param [Parameter_name] [Put parameter use here.] @see [Put any additional links apart from controller class and BC4J objects directly referenced by this region]-->
+      <oa:pageLayout id="PageLayoutConsultaRN" amDefName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM" windowTitle="Consultar Solicitud" adminCustomizable="false" title="" controllerClass="xxgam.oracle.apps.inv.moveorder.webui.xXGamSolicitudConsultaCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="ConsultaHeader"/>
+            <oa:defaultSingleColumn id="SingleColumnConsultaRG1" text="Solicitud">
+               <ui:contents>
+                  <oa:messageStyledText id="nroSolicitud" viewName="xXGamInvSoliVO1" viewAttr="NroSolicitud" prompt="Número de Solicitud:" styleClass="OraFieldText"/>
+                  <oa:formValue id="SoliIdH" viewName="xXGamInvSoliVO1" viewAttr="SoliId" dataType="NUMBER"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingleColumnConsultaRG2" text="Detalle de la Solicitud">
+               <ui:contents>
+                  <oa:messageComponentLayout id="region1" columns="3" rows="3">
+                     <ui:contents>
+                        <oa:messageStyledText id="nombreEmpleado" prompt="Nombre Empleado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="category" viewName="xXGamInvSoliVO1" viewAttr="Category" styleClass="OraFieldText" prompt="Categoria:"/>
+                        <oa:messageStyledText id="estacion" viewName="xXGamInvSoliVO1" viewAttr="Station" prompt="Estación:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="employeeNumber" viewName="xXGamInvSoliVO1" viewAttr="EmployeeNumber" prompt="Clave Empleado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="adscripcion" viewName="xXGamInvSoliVO1" viewAttr="Adscription" prompt="Adscripción:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="centroCosto" viewName="xXGamInvSoliVO1" viewAttr="CostCenter" prompt="Centro de Costo:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="rfc" viewName="xXGamInvSoliVO1" viewAttr="Rfc" prompt="R.F.C.:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="fechaContrato" viewName="xXGamInvSoliVO1" viewAttr="ContDueDate" prompt="Fecha de Termino de Contrato:" dataType="DATE" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="fechaSolicitud" dataType="DATE" viewName="xXGamInvSoliVO1" viewAttr="SoliDate" prompt="Fecha Solicitud:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:messageComponentLayout id="region2" rows="2" columns="2" fieldWidth="100%">
+                     <ui:contents>
+                        <oa:messageStyledText id="kit" viewName="xXGamInvSoliVO1" viewAttr="KitCod" prompt="Kit Asignado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="kitDescripcion" viewName="xXGamInvSoliVO1" viewAttr="KitDes" styleClass="OraFieldText" prompt=""/>
+                        <oa:messageStyledText id="Cuenta" viewName="xXGamInvSoliVO1" viewAttr="ExpenseDesc" styleClass="OraFieldText" prompt="Cuenta:"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingleColumnConsultaRG3" text="Dotaciones de la Solicitud">
+               <ui:contents>
+                  <oa:table id="xXGamInvSoliDtlVO11" width="100%" blockSize="20">
+                     <ui:contents>
+                        <oa:switcher id="SwitcherSustitucionRN" use="/oracle/apps/fnd/attributesets/Buttons/Update" prompt="Permite Sustitución" viewName="xXGamInvSoliDtlVO1" viewAttr="SustitucionSwitcher">
+                           <ui:case name="SustitucionDisabled">
+                              <oa:image id="SustitucionDisabled" prompt="" source="okind_status.gif" shortDesc="Sustituido"/>
+                           </ui:case>
+                           <ui:case name="SustitucionEnabled">
+                              <oa:image id="SustitucionEnabled" shortDesc="Permite Sustituir" source="okind_active.gif" prompt="" imageHeight="16" imageWidth="16"/>
+                           </ui:case>
+                        </oa:switcher>
+                        <oa:messageStyledText id="UniformTypeCod1" dataType="VARCHAR2" prompt="Tipo" viewName="xXGamInvSoliDtlVO1" viewAttr="UniformTypeCod" maximumLength="20"/>
+                        <oa:messageStyledText id="QtyPlanta1" dataType="NUMBER" prompt="(P)" viewName="xXGamInvSoliDtlVO1" viewAttr="QtyPlanta" maximumLength="15"/>
+                        <oa:messageStyledText id="QtyEventual1" dataType="NUMBER" prompt="(E)" viewName="xXGamInvSoliDtlVO1" viewAttr="QtyEventual" maximumLength="15"/>
+                        <oa:messageStyledText id="MeasureUnitCod1" dataType="VARCHAR2" prompt="Unidad" viewName="xXGamInvSoliDtlVO1" viewAttr="MeasureUnitCod" maximumLength="20"/>
+                        <oa:messageStyledText id="CycleCod1" dataType="VARCHAR2" prompt="Ciclo" viewName="xXGamInvSoliDtlVO1" viewAttr="CycleCod" maximumLength="20"/>
+                        <oa:messageStyledText id="Nomenclature1" dataType="VARCHAR2" prompt="Nomenclatura" viewName="xXGamInvSoliDtlVO1" viewAttr="Nomenclature" maximumLength="80"/>
+                        <oa:messageStyledText id="TallaNbr1" dataType="VARCHAR2" prompt="Talla" viewName="xXGamInvSoliDtlVO1" viewAttr="TallaNbr"/>
+                        <oa:messageStyledText id="QtyNbr1" dataType="NUMBER" prompt="Cantidad" viewName="xXGamInvSoliDtlVO1" viewAttr="QtyNbr" maximumLength="24"/>
+                        <oa:link id="Show" viewName="xXGamInvSoliDtlVO1" viewAttr="Mostrar" destination="" text="Historia Entregas" targetFrame="_blank">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="linkPage"/>
+                           </ui:primaryClientAction>
+                        </oa:link>
+                        <oa:messageStyledText id="StatusDsp" dataType="VARCHAR2" prompt="Estado Dotación" viewName="xXGamInvSoliDtlVO1" viewAttr="StatusDsp" maximumLength="80"/>
+                        <oa:formValue id="HeaderId" dataType="NUMBER" prompt="HeaderId" viewName="xXGamInvSoliDtlVO1" viewAttr="HeaderId"/>
+                        <oa:formValue id="TallaId" dataType="NUMBER" prompt="TallaId" viewName="xXGamInvSoliDtlVO1" viewAttr="TallaId"/>
+                        <oa:formValue id="DotaId" dataType="NUMBER" prompt="DotaId" viewName="xXGamInvSoliDtlVO1" viewAttr="DotaId"/>
+                        <oa:formValue id="SoliId" dataType="NUMBER" prompt="SoliId" viewName="xXGamInvSoliDtlVO1" viewAttr="SoliId"/>
+                        <oa:formValue id="LineNumber" dataType="NUMBER" prompt="LineNumber" viewName="xXGamInvSoliDtlVO1" viewAttr="LineNumber"/>
+                        <oa:formValue id="SoliDtlId" viewName="xXGamInvSoliDtlVO1" viewAttr="SoliDtlId" dataType="NUMBER"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnSearch" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudPG&amp;retainAM=Y" text="Volver a Consulta Solicitud"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

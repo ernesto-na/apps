@@ -1,0 +1,384 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: xXGamSolicitudCrearSuperUserCO.xml 120.0 2013/02/07 04:27 eroncoroni noship $">
+   <content>
+      <!--*[Enter Javadoc like developer documentation, delete this line once you fill the included template.] [Put a one line description of the region here.] [Put a brief description of the usage of the region here.] @param [Parameter_name] [Put parameter use here.] @param [Parameter_name] [Put parameter use here.] @see [Put any additional links apart from controller class and BC4J objects directly referenced by this region]-->
+      <oa:pageLayout id="PageLayoutCreaSuperUserRN" amDefName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM" windowTitle="Crear Solicitud" adminCustomizable="false" title="" controllerClass="xxgam.oracle.apps.inv.moveorder.webui.xXGamV2SolicitudCrearSuperUserCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="region5SingleColumnCreaSuperUserRG0">
+               <ui:contents>
+                  <oa:messageLovInput id="SelectEmployeeName" prompt="Nombre del Empleado" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvEmplRN" queryable="true" required="yes" styleClass="OraFieldText" maximumLength="240" columns="70">
+                     <lovMappings>
+                        <lovMap id="lovMap4" lovItem="FullName" resultTo="SelectEmployeeName" criteriaFrom="SelectEmployeeName"/>
+                        <lovMap id="lovMap5" lovItem="PersonId" resultTo="PersonIdSL"/>
+                        <lovMap id="lovMap6" lovItem="UserId" resultTo="userIdSL"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:button id="CrearPedido" prompt="Crear Pedido" shortDesc="Creo el Pedido del Empleado Seleccionado" rendered="true" disabled="${oa.xXGamInvSoliRenderedVO1.BtnCrearPedidoSuperRender}">
+                     <ui:primaryClientAction>
+                        <ui:fireAction event="crea"/>
+                     </ui:primaryClientAction>
+                  </oa:button>
+                  <oa:formValue id="PersonIdSL" dataType="NUMBER"/>
+                  <oa:formValue id="userIdSL" dataType="NUMBER"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingleColumnCreaSuperUserRG1" text="Crear Solicitud">
+               <ui:contents>
+                  <oa:messageStyledText id="nroSolicitud" viewName="xXGamInvSoliVO1" viewAttr="NroSolicitud" prompt="Número de Solicitud:" styleClass="OraFieldText"/>
+                  <oa:formValue id="SoliIdH" viewName="xXGamInvSoliVO1" viewAttr="SoliId" dataType="NUMBER"/>
+                  <oa:formValue id="StatusHDR" viewName="xXGamInvSoliVO1" viewAttr="Status"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingleColumnCreaSuperUserRG2" text="Detalle de la Solicitud">
+               <ui:contents>
+                  <oa:messageComponentLayout id="region1" columns="3" rows="3">
+                     <ui:contents>
+                        <oa:messageStyledText id="nombreEmpleado" prompt="Nombre Empleado:" styleClass="OraFieldText" viewName="xXGamInvSoliVO1" viewAttr="FullName"/>
+                        <oa:messageStyledText id="category" viewName="xXGamInvSoliVO1" viewAttr="Category" styleClass="OraFieldText" prompt="Categoria:"/>
+                        <oa:messageStyledText id="estacion" viewName="xXGamInvSoliVO1" viewAttr="Station" prompt="Estación:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="employeeNumber" viewName="xXGamInvSoliVO1" viewAttr="EmployeeNumber" prompt="Clave Empleado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="adscripcion" viewName="xXGamInvSoliVO1" viewAttr="Adscription" prompt="Adscripción:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="centroCosto" viewName="xXGamInvSoliVO1" viewAttr="CostCenter" prompt="Centro de Costos:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="rfc" viewName="xXGamInvSoliVO1" viewAttr="Rfc" prompt="R.F.C.:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="fechaContrato" viewName="xXGamInvSoliVO1" viewAttr="ContDueDate" prompt="Fecha de Termino de Contrato:" dataType="DATE" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="fechaSolicitud" dataType="DATE" viewName="xXGamInvSoliVO1" viewAttr="SoliDate" prompt="Fecha Solicitud:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:messageComponentLayout id="region2" rows="2" columns="2" fieldWidth="100%">
+                     <ui:contents>
+                        <oa:messageStyledText id="kit" viewName="xXGamInvSoliVO1" viewAttr="KitCod" prompt="Kit Asignado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="kitDescripcion" viewName="xXGamInvSoliVO1" viewAttr="KitDes" styleClass="OraFieldText" prompt=""/>
+                        <oa:messageStyledText id="Cuenta" viewName="xXGamInvSoliVO1" viewAttr="ExpenseDesc" styleClass="OraFieldText" prompt="Cuenta:"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:formValue id="KitId" viewName="xXGamInvSoliVO1" viewAttr="KitId" dataType="NUMBER"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingleColumnCreaSuperUserRG3" text="Dotaciones de la Solicitud">
+               <ui:contents>
+                  <oa:advancedTable id="xXGamInvSoliDtlVO" width="100%" tableBanding="columnBanding" viewName="xXGamInvSoliDtlVO1" text="Solicitudes">
+                     <ui:contents>
+                        <oa:column id="column1">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader1" prompt="Sustitución"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:switcher id="SwitcherSustitucionRN" use="/oracle/apps/fnd/attributesets/Buttons/Update" viewAttr="SustitucionSwitcher">
+                                 <ui:case name="SustitucionDisabled">
+                                    <oa:image id="SustitucionDisabled" source="okind_status.gif" shortDesc="Sustituido"/>
+                                 </ui:case>
+                                 <ui:case name="SustitucionEnabled">
+                                    <oa:image id="SustitucionEnabled" shortDesc="Sustituir Dotacion" source="okind_active.gif"/>
+                                 </ui:case>
+                              </oa:switcher>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column2">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader2" prompt="Tipo"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="UniformTypeCod1" dataType="VARCHAR2" prompt="Tipo" viewAttr="UniformTypeCod" maximumLength="20"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column3">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader3" prompt="(P)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="QtyPlanta1" dataType="NUMBER" prompt="(P)" viewAttr="QtyPlanta" maximumLength="15"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column4">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader4" prompt="(E)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="QtyEventual1" dataType="NUMBER" prompt="(E)" viewAttr="QtyEventual" maximumLength="15"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column5">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader5" prompt="Unidad de Medida"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="MeasureUnitCod1" dataType="VARCHAR2" prompt="Unidad de Medida" viewAttr="MeasureUnitCod" maximumLength="20"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column6">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader6" prompt="Ciclo"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="CycleCod1" dataType="VARCHAR2" prompt="Ciclo" viewAttr="CycleCod" maximumLength="20"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column7">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader7" prompt="Nomenclatura"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="Nomenclature1" dataType="VARCHAR2" prompt="Nomenclatura" viewAttr="Nomenclature" maximumLength="80"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column8">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader8" prompt="Talla"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageLovInput id="TallaNbr" viewAttr="TallaNbr" maximumLength="20" columns="7" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvTallasAllRN" queryable="true" selectiveSearchCriteria="true" disabled="${oa.xXGamInvSoliDtlVO1.TallaDevDisabled}">
+                                 <lovMappings>
+                                    <lovMap id="lovMap7" lovItem="TallaNbr" resultTo="TallaNbr" criteriaFrom="TallaNbr"/>
+                                    <lovMap id="lovMap8" lovItem="TallaId" resultTo="TallaId"/>
+                                    <lovMap id="lovMap9" lovItem="DotaId" resultTo="DotaId"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column9">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader9" prompt="Cantidad"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="QtyNbr1" dataType="NUMBER" prompt="Cantidad" viewAttr="QtyNbr" maximumLength="10" columns="5" disabled="${oa.xXGamInvSoliDtlVO1.CantidadDevDisabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column11">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader11" prompt="Observaciones"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Observaciones" prompt="Observaciones" viewAttr="ObservacionesSltud" maximumLength="240" columns="30" disabled="${oa.xXGamInvSoliDtlVO1.ObservacionesDevDisabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column10">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader10" prompt="Estado Dotación"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="StatusDsp" dataType="VARCHAR2" prompt="Estado Dotación" viewAttr="StatusDsp" maximumLength="80"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:formValue id="HeaderId" dataType="NUMBER" prompt="HeaderId" viewAttr="HeaderId"/>
+                        <oa:formValue id="TallaId" dataType="NUMBER" prompt="TallaId" viewAttr="TallaId"/>
+                        <oa:formValue id="DotaId" dataType="NUMBER" prompt="DotaId" viewAttr="DotaId"/>
+                        <oa:formValue id="SoliId" dataType="NUMBER" prompt="SoliId" viewAttr="SoliId"/>
+                        <oa:formValue id="LineNumber" dataType="NUMBER" prompt="LineNumber" viewAttr="LineNumber"/>
+                        <oa:formValue id="status" viewAttr="Status"/>
+                        <oa:formValue id="SoliDtlId" viewAttr="SoliDtlId"/>
+                        <oa:formValue id="SustitucionSwitcher1" viewAttr="SustitucionSwitcher"/>
+                        <oa:formValue id="DotaIdF" viewAttr="DotaIdF" prompt="Dotacion Padre" dataType="NUMBER"/>
+                        <oa:formValue id="Attribute1" viewAttr="Attribute1"/>
+                        <oa:formValue id="Attribute2" viewAttr="Attribute2"/>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="region5">
+                           <ui:contents>
+                              <oa:pageButtonBar id="region6">
+                                 <ui:contents>
+                                    <oa:button id="save" text="Grabar" prompt="Grabar">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="grabar" id="fireAction1"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="generarpedido" text="Generar Pedido de Movimiento" prompt="Generar Pedido de Movimiento">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="generarpedido" id="fireAction2">
+                                             <ui:parameters>
+                                                <ui:parameter key="pgSoliId" value="${oa.xXGamInvSoliDtlVO1.SoliId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:advancedTable>
+                  <oa:separator id="Separador"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingColEmpInfo" text="Detalle de la Solicitud">
+               <ui:contents>
+                  <oa:messageComponentLayout id="region7" rows="3" columns="3" promptWidth="20%" fieldWidth="80%">
+                     <ui:contents>
+                        <oa:messageStyledText id="V2NombreEmpleado" prompt="Nombre Empleado:" viewName="xXGamV2InvSoliVO1" viewAttr="FullName" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2category" viewName="xXGamV2InvSoliVO1" viewAttr="Category" prompt="Categoria:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2estacion" viewName="xXGamV2InvSoliVO1" viewAttr="Station" prompt="Estación:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2employeeNumber" viewName="xXGamV2InvSoliVO1" viewAttr="EmployeeNumber" prompt="Clave Empleado:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2adscripcion" viewName="xXGamV2InvSoliVO1" viewAttr="Adscription" prompt="Adscripción:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2centroCosto" viewName="xXGamV2InvSoliVO1" viewAttr="CostCenter" prompt="Centro de Costos:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2rfc" viewName="xXGamV2InvSoliVO1" viewAttr="Rfc" prompt="R.F.C.:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2fechaContrato" viewName="xXGamV2InvSoliVO1" viewAttr="ContDueDate" prompt="Fecha de Termino de Contrato:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2fechaSolicitud" viewName="xXGamV2InvSoliVO1" viewAttr="FechaSolicitud" prompt="Fecha Solicitud:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:messageComponentLayout id="region8" rows="1" columns="3" promptWidth="20%" fieldWidth="80%">
+                     <ui:contents>
+                        <oa:messageChoice id="AvailableKits" pickListViewName="xXGamInvSolicitudAM.xXGamInvAvailableKitsVO1" pickListDispAttr="KitDesc" pickListValAttr="KitCode" prompt="Kits Disponibles" styleClass="OraNav3Selected">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="AvailableKitEvt" id="fireAction4"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageStyledText id="V2Cuenta" viewName="xXGamV2InvSoliVO1" viewAttr="ExpenseDesc" prompt="Cuenta:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="V2Kit" viewName="xXGamV2InvSoliVO1" viewAttr="KitCod" prompt="Kit Asignados:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:defaultSingleColumn id="SingColDotacionInfo" text="Dotaciones de la Solicitud">
+               <ui:contents>
+                  <oa:advancedTable id="xXGamV2InvSoliDtlVO" viewName="xXGamV2InvSoliDtlVO1" tableBanding="columnBanding" width="100%">
+                     <ui:contents>
+                        <oa:column id="column20">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader20" prompt="Sustitución"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:switcher id="V2SwitcherSustitucionRN" viewAttr="SustitucionSwitcher">
+                                 <ui:case name="V2SustitucionDisabled">
+                                    <oa:image id="V2SustitucionDisabled" source="okind_status.gif"/>
+                                 </ui:case>
+                                 <ui:case name="V2SustitucionEnabled">
+                                    <oa:image id="V2SustitucionEnabled" source="okind_active.gif"/>
+                                 </ui:case>
+                              </oa:switcher>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column21">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader12" prompt="Tipo"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2UniformTypeCod" viewAttr="UniformTypeCod"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column12">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader121" prompt="(P)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2PlantaQty" viewAttr="PlantaQty"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column13">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader13" prompt="(E)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2EventQty" viewAttr="EventQty"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column14">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader14" prompt="Unidad de Medida"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2MeasureUnitCod" viewAttr="MeasureUnitCod"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column15">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader15" prompt="Ciclo"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2CycleCod" viewAttr="CycleCod"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column16">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader16" prompt="Nomenclatura"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2Nomenclature" viewAttr="Nomenclature"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column17">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader17" prompt="Talla"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageLovInput id="V2TallaNbr" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvTallasAllRN" viewAttr="TallaNbr" unvalidated="true" readOnly="false" disabled="${oa.xXGamV2InvSoliDtlVO1.TallaDevDisabled}" columns="7">
+                                 <lovMappings>
+                                    <lovMap id="lovMap41" lovItem="TallaNbr" resultTo="V2TallaNbr" criteriaFrom="V2TallaNbr"/>
+                                    <lovMap id="lovMap51" lovItem="TallaId" resultTo="V2TallaIdFv"/>
+                                    <lovMap id="lovMap61" lovItem="DotaId" criteriaFrom="V2DotaIdFv"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column18">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader18" prompt="Cantidad"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:switcher id="region9" viewAttr="CantidadDevDisabledFlag">
+                                 <ui:case name="CantidadDevDisabledFlagN">
+                                    <oa:messageTextInput id="CantidadDevDisabledFlagN" viewAttr="QtyNbr" dataType="NUMBER" columns="5"/>
+                                 </ui:case>
+                                 <ui:case name="CantidadDevDisabledFlagY">
+                                    <oa:messageTextInput id="CantidadDevDisabledFlagY" viewAttr="QtyNbr" readOnly="false" dataType="NUMBER" disabled="true" columns="5"/>
+                                 </ui:case>
+                              </oa:switcher>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column22">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader122" prompt="Observaciones"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="V2Observaciones" viewAttr="ObservacionesSltud" maximumLength="240" columns="30"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column19">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader19" prompt="Estado Dotación"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="V2StatusDsp" viewAttr="StatusDsp"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:formValue id="V2TallaIdFv" viewAttr="TallaId"/>
+                        <oa:formValue id="V2DotaIdFv" viewAttr="DotaId"/>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="region10">
+                           <ui:contents>
+                              <oa:pageButtonBar id="region11">
+                                 <ui:contents>
+                                    <oa:button id="V2save" text="Grabar" prompt="Grabar">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="V2GrabarEvt"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="V2generarpedido" text="Generar Pedido de Movimiento" prompt="Generar Pedido de Movimiento" rendered="false">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="V2generarpedido"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:spacer id="spacio11" height="20" width="5"/>
+            <oa:link id="linkDownLoadPDF" text="Politicas de Asignación y Uso de Uniformes Personal NO Sindicalizado" rendered="true" serverUnvalidated="true">
+               <ui:primaryClientAction>
+                  <ui:fireAction event="downLoadPDF" id="fireAction3" unvalidated="true"/>
+               </ui:primaryClientAction>
+            </oa:link>
+            <oa:spacer id="spacio1" height="5" width="5"/>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnSearch" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudPG&amp;retainAM=Y" text="Volver a Consulta Solicitud"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

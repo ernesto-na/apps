@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvEmplVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEmplVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEmplVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select papf.full_name,
+       papf.employee_number,
+       papf.last_name,
+       papf.first_name,
+       papf.person_id,
+       fu.user_id
+ from per_all_people_f papf
+     ,per_all_assignments_f paaf  
+     , fnd_user fu
+ where 1=1 
+   and papf.person_id = paaf.person_id
+   and papf.person_id = fu.employee_id
+   and trunc(sysdate) between papf.effective_start_date and papf.effective_end_date 
+   and trunc(sysdate) between paaf.effective_start_date and paaf.effective_end_date 
+   and trunc(sysdate) between nvl(fu.start_date,trunc(sysdate)) and nvl(fu.end_date,to_date ('31/12/4197','DD/MM/YYYY'))
+   and papf.employee_number is not null 
+   and paaf.primary_flag = 'Y'
+   and paaf.assignment_status_type_id in (  select pas.assignment_status_type_id
+                                              from per_assignment_status_types pas
+                                             where  pas.user_status in ('Active Assignment', 'Suspensi'||chr(50099)||'n Con IMSS y PyD') 
+                                            )
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="FullName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FULL_NAME"
+      Expression="FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeNumber"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMPLOYEE_NUMBER"
+      Expression="EMPLOYEE_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastName"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LAST_NAME"
+      Expression="LAST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FirstName"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FIRST_NAME"
+      Expression="FIRST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PERSON_ID"
+      Expression="PERSON_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UserId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="USER_ID"
+      Expression="USER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

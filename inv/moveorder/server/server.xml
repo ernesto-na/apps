@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.inv.moveorder.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="xXGamInvAvailableKitsVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvAvailableKitsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvErrorsDevVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvErrorsDevVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvFechaCreacionEnPeriodoVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaCreacionEnPeriodoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvFechaNvoEmplVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaNvoEmplVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvFechaSolicitudActivaVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaSolicitudActivaVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvLineDtlVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvLineDtlVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvMotivosVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvMotivosVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvRelSolDtlAS"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvRelSolDtlAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="xXGamInvRelSolDtlVL"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvRelSolDtlVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSolicitudAM"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliDtlDisabledVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlDisabledVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliDtlEO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliDtlVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliDtlVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliEO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliRenderedVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliRenderedVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliSummaryVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSoliVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSoliVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSolSummaryVL"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolSummaryVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="xXGamLookupAperPeriodVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamLookupAperPeriodVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamV2InvSoliDtlVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamV2InvSoliDtlVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamV2InvSoliVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.server.xXGamV2InvSoliVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

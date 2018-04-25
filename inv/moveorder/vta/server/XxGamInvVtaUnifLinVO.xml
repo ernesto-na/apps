@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamInvVtaUnifLinVO"
+   SelectList="XxGamInvVtaUnifLinEO.LIN_ID, 
+       XxGamInvVtaUnifLinEO.HDR_ID, 
+       XxGamInvVtaUnifLinEO.SO_INV_ITEM_ID, 
+       XxGamInvVtaUnifLinEO.SO_ORDERED_QTY, 
+       XxGamInvVtaUnifLinEO.SO_SHIP_FROM_ORG_ID, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE_CATEGORY, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE1, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE2, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE3, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE4, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE5, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE6, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE7, 
+       XxGamInvVtaUnifLinEO.ATTRIBUTE8, 
+       XxGamInvVtaUnifLinEO.CREATED_BY, 
+       XxGamInvVtaUnifLinEO.CREATION_DATE, 
+       XxGamInvVtaUnifLinEO.LAST_UPDATE_DATE, 
+       XxGamInvVtaUnifLinEO.LAST_UPDATED_BY, 
+       XxGamInvVtaUnifLinEO.LAST_UPDATE_LOGIN, 
+       XxGamInvVtaUnifLinEO.KIT_ID, 
+       XxGamInvVtaUnifLinEO.KIT_COD, 
+       XxGamInvVtaUnifLinEO.DOTA_ID, 
+       XxGamInvVtaUnifLinEO.TALLA_ID, 
+       XxGamInvVtaUnifLinEO.TALLA_NBR"
+   FromList="XXGAM_INV_VTA_UNIF_LIN XxGamInvVtaUnifLinEO"
+   BindingStyle="OracleName"
+   CustomQuery="false"
+   RowClass="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifLinVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamInvVtaUnifLinVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="XxGamInvVtaUnifLinEO"
+      Entity="xxgam.oracle.apps.inv.moveorder.vta.schema.server.XxGamInvVtaUnifLinEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="LinId"
+      IsNotNull="true"
+      EntityAttrName="LinId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="LIN_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HdrId"
+      EntityAttrName="HdrId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="HDR_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoInvItemId"
+      EntityAttrName="SoInvItemId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="SO_INV_ITEM_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoOrderedQty"
+      EntityAttrName="SoOrderedQty"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="SO_ORDERED_QTY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SoShipFromOrgId"
+      EntityAttrName="SoShipFromOrgId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="SO_SHIP_FROM_ORG_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttributeCategory"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE_CATEGORY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE3" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE4" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE5" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute6"
+      EntityAttrName="Attribute6"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE6" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute7"
+      EntityAttrName="Attribute7"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE7" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute8"
+      EntityAttrName="Attribute8"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="ATTRIBUTE8" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitId"
+      EntityAttrName="KitId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="KIT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitCod"
+      EntityAttrName="KitCod"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="KIT_COD" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DotaId"
+      EntityAttrName="DotaId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="DOTA_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaId"
+      EntityAttrName="TallaId"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="TALLA_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaNbr"
+      EntityAttrName="TallaNbr"
+      EntityUsage="XxGamInvVtaUnifLinEO"
+      AliasName="TALLA_NBR" >
+   </ViewAttribute>
+</ViewObject>

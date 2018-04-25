@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.inv.moveorder.siz.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="XxGamKitItemsInfoVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamKitItemsInfoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamPersonalUniformInfoVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamPersonalUniformInfoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamSizesUniformsAM"
+      FullName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="XxGamSizesUniformsHistoryVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsHistoryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

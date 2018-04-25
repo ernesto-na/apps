@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.inv.moveorder.lov.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="xXgamInvEmpleadosVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvEmplVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEmplVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvEstadosVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEstadosVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvKitVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvKitVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvSolVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvSolVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvTallaVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvTallaVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="xXGamInvUniformesLovAM"
+      FullName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM"
+      ObjectType="AppModule" >
+   </Containee>
+</JboPackage>

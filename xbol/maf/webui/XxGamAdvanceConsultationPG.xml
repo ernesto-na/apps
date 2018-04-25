@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="XxGamAdvanceConsultationRN" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamAdvanceConsultationCO" windowTitle="Query of requests advance payment Employees and Franchises" title="Query of requests advance payment" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="formRN" text="Search criteria">
+               <ui:contents>
+                  <oa:labeledFieldLayout id="searchRN" columns="3">
+                     <ui:contents>
+                        <oa:messageLovInput id="OperatingUnitSearch" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaOperatingUnitLovRN" prompt="Operating Unit" styleClass="OraFieldText" shortDesc="Operating Unit Aditional text" tipMessageName="Tip Message Name">
+                           <lovMappings>
+                              <lovMap id="lovMap108" lovItem="OrgName" resultTo="OperatingUnitSearch" criteriaFrom="OperatingUnitSearch" useForValidation="yes"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageTextInput id="advanceNumber" prompt="Number of Document"/>
+                        <oa:messageLovInput id="employeeName" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaEmployeeRN" prompt="Employee name" selectiveSearchCriteria="true">
+                           <lovMappings>
+                              <lovMap id="lovMap1" lovItem="FullName" resultTo="employeeName" criteriaFrom="employeeName"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLovInput id="SupervisorName" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaApproverRN" prompt="Supervisor" selectiveSearchCriteria="true">
+                           <lovMappings>
+                              <lovMap id="lovMap2" lovItem="FullName" resultTo="SupervisorName" criteriaFrom="SupervisorName"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLovInput id="ApproverAllHierarchyLov" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaAllApproverHierarchyRN" prompt="Approver By Hierarchical" showRequired="false" required="no" rendered="true" selectiveSearchCriteria="true">
+                           <lovMappings>
+                              <lovMap id="lovMap12" lovItem="ApproverFullName" resultTo="ApproverAllHierarchyLov" criteriaFrom="ApproverAllHierarchyLov"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageTextInput id="CostCenterEdit" prompt="Cost Center"/>
+                        <oa:messageLovInput id="CostCenterFlexLov" prompt="Cost Center Alternate" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterFlexRN" maximumLength="25" selectiveSearchCriteria="true">
+                           <lovMappings>
+                              <lovMap id="lovMap104" lovItem="CostCenterFlex" resultTo="CostCenterFlexLov" criteriaFrom="CostCenterFlexLov"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLovInput id="costCenterMI" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterRN" prompt="Cost center" selectiveSearchCriteria="true" rendered="false">
+                           <lovMappings>
+                              <lovMap id="lovMap3" lovItem="Segment3" resultTo="costCenterMI" criteriaFrom="costCenterMI"/>
+                              <lovMap id="lovMap4" resultTo="costCenter" lovItem="CodeCombinationId"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLovInput id="virtualCard" prompt="Virtual card" maximumLength="100" columns="25" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaVCMeaningRN">
+                           <lovMappings>
+                              <lovMap id="lovMap109" lovItem="VcMeaningxx" resultTo="virtualCard" criteriaFrom="virtualCard" programmaticQuery="false"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageChoice id="ticketState" prompt="Ticket state" pickListViewDef="xxgam.oracle.apps.xbol.maf.server.XxGamMaStatusTicketVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode"/>
+                        <oa:messageChoice id="requestState" prompt="Request state" pickListViewDef="xxgam.oracle.apps.xbol.maf.server.XxGamMaStatusRequestVO" pickListDispAttr="Meaning" pickListValAttr="Meaning"/>
+                        <oa:messageTextInput id="fromDate" dataType="DATE" prompt="From date"/>
+                        <oa:messageTextInput id="toDate" dataType="DATE" prompt="To date"/>
+                        <oa:formValue id="costCenter"/>
+                     </ui:contents>
+                  </oa:labeledFieldLayout>
+                  <oa:spacer id="Spacer" height="25"/>
+                  <oa:tableLayout id="butonSearchRN" hAlign="center">
+                     <ui:contents>
+                        <oa:rowLayout id="rowSearch" hAlign="center">
+                           <ui:contents>
+                              <oa:cellFormat id="cellSearch" hAlign="center">
+                                 <ui:contents>
+                                    <oa:submitButton id="searchButton" text="Search" prompt="Search" hAlign="center"/>
+                                    <oa:spacer id="Spacer2" height="10" width="25"/>
+                                    <oa:submitButton id="export" text="Export" prompt="Export"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+                  <oa:spacer id="Spacer1" height="15"/>
+                  <oa:table id="XxGamMaGeneralReqVO1" width="100%" text="Results" detailViewAttr="isDisclosure">
+                     <ui:contents>
+                        <oa:messageTextInput id="OperatingUnit" readOnly="true" viewName="XxGamRequestConsultationVO1" viewAttr="OperatingUnit" prompt="Operating Unit" maximumLength="100"/>
+                        <oa:link id="numberRequest" viewName="XxGamRequestConsultationVO1" viewAttr="NumberPayment" text="Number of Document">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="showDetailReq" id="fireAction21">
+                                 <ui:parameters>
+                                    <ui:parameter key="requestId" value="${oa.XxGamRequestConsultationVO1.Id}"/>
+                                    <ui:parameter key="statusRequest" value="${oa.XxGamRequestConsultationVO1.StatusRequest}"/>
+                                    <ui:parameter key="statusFranchise" value="${oa.XxGamRequestConsultationVO1.StatusFranchise}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:link>
+                        <oa:messageTextInput id="EmployeName" dataType="VARCHAR2" prompt="Employe name" viewName="XxGamRequestConsultationVO1" viewAttr="EmployeName" maximumLength="301" readOnly="true"/>
+                        <oa:messageTextInput id="VirtualCard" dataType="VARCHAR2" prompt="Virtual card" viewName="XxGamRequestConsultationVO1" viewAttr="VirtualCard" maximumLength="100" readOnly="true" rendered="false"/>
+                        <oa:messageTextInput id="VirtualCardMask" dataType="VARCHAR2" prompt="Virtual card" viewName="XxGamRequestConsultationVO1" viewAttr="VirtualCardMask" maximumLength="102" readOnly="true"/>
+                        <oa:messageTextInput id="RequestPaymentDate" dataType="DATE" prompt="Request date" viewName="XxGamRequestConsultationVO1" viewAttr="RequestPaymentDate" readOnly="true"/>
+                        <oa:messageTextInput id="TotalPayment" dataType="NUMBER" prompt="Total" viewName="XxGamRequestConsultationVO1" viewAttr="TotalPayment" maximumLength="14" readOnly="true"/>
+                        <oa:messageTextInput id="CurrencyName" dataType="VARCHAR2" prompt="Currency name" viewName="XxGamRequestConsultationVO1" viewAttr="CurrencyName" maximumLength="80" readOnly="true"/>
+                        <oa:messageTextInput id="StatusDescription" dataType="VARCHAR2" prompt="Status request" viewName="XxGamRequestConsultationVO1" viewAttr="StatusDescription" maximumLength="80" readOnly="true"/>
+                        <oa:messageTextInput id="CostCenterDesc" dataType="VARCHAR2" prompt="Cost center" viewName="XxGamRequestConsultationVO1" viewAttr="Segment3" readOnly="true" maximumLength="25"/>
+                        <oa:messageStyledText id="CostCenterFlex" viewName="XxGamRequestConsultationVO1" viewAttr="CostCenterFlex" maximumLength="25" prompt="Cost Center Alternate"/>
+                        <oa:messageTextInput id="statusTicket" maximumLength="80" viewName="XxGamRequestConsultationVO1" viewAttr="StatusTicket" prompt="Status Ticket" readOnly="true"/>
+                        <oa:messageTextInput id="approverNAme" maximumLength="301" prompt="Approver name" viewName="XxGamRequestConsultationVO1" viewAttr="ApproverName" readOnly="true"/>
+                        <oa:messageStyledText id="approverNameAlt" maximumLength="301" prompt="Aprobador Alterno" viewName="XxGamRequestConsultationVO1" viewAttr="ApproverNameAlt"/>
+                     </ui:contents>
+                     <ui:detail>
+                        <oa:labeledFieldLayout id="DetailTicket" columns="2">
+                           <ui:contents>
+                              <oa:messageStyledText id="Beneficiary" dataType="VARCHAR2" prompt="Beneficiary" viewName="XxGamRequestConsultationVO1" viewAttr="Beneficiary" maximumLength="100" styleClass="OraFieldText"/>
+                              <oa:messageStyledText id="Company" dataType="VARCHAR2" prompt="Company" viewName="XxGamRequestConsultationVO1" viewAttr="Company" maximumLength="200" styleClass="OraFieldText"/>
+                              <oa:messageStyledText id="BenefitsDsc" dataType="VARCHAR2" prompt="Benefits" viewName="XxGamRequestConsultationVO1" viewAttr="BenefitsDsc" maximumLength="80" styleClass="OraFieldText"/>
+                              <oa:messageStyledText id="RelationShipDsc" dataType="VARCHAR2" prompt="Relation ship" viewName="XxGamRequestConsultationVO1" viewAttr="RelationShipDsc" maximumLength="80" styleClass="OraFieldText"/>
+                           </ui:contents>
+                        </oa:labeledFieldLayout>
+                     </ui:detail>
+                  </oa:table>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

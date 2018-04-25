@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAM" windowTitle="Seguimiento Orden Uniformes Detalle" title="Seguimiento Orden Uniformes Detalle" controllerClass="xxgam.oracle.apps.inv.moveorder.vta.webui.XxGamFollowOrderUniformsLinCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="PrendasLinDefSingColRN" text="Detalle Pedido">
+               <ui:contents>
+                  <oa:table id="XxGamFollOrderUnifLinVO" blockSize="30">
+                     <ui:contents>
+                        <oa:messageStyledText id="OrderedItem" dataType="VARCHAR2" prompt="OrderedItem" viewName="XxGamFollOrderUnifLinVO1" viewAttr="OrderedItem" maximumLength="2000" rendered="false"/>
+                        <oa:messageStyledText id="InvItemDesc" dataType="VARCHAR2" prompt="Prenda" viewName="XxGamFollOrderUnifLinVO1" viewAttr="InvItemDesc" maximumLength="240"/>
+                        <oa:messageStyledText id="TallaNbr" dataType="VARCHAR2" prompt="Talla" viewName="XxGamFollOrderUnifLinVO1" viewAttr="TallaNbr" maximumLength="300"/>
+                        <oa:messageStyledText id="OrderedQuantity" dataType="NUMBER" prompt="Cantidad" viewName="XxGamFollOrderUnifLinVO1" viewAttr="OrderedQuantity"/>
+                        <oa:messageStyledText id="UnitListPrice" dataType="NUMBER" prompt="Precio" viewName="XxGamFollOrderUnifLinVO1" viewAttr="UnitListPrice"/>
+                        <oa:messageStyledText id="TotalAmount" dataType="NUMBER" prompt="Monto" viewName="XxGamFollOrderUnifLinVO1" viewAttr="TotalAmount" totalValue="true"/>
+                        <oa:messageStyledText id="FlowStatus" dataType="VARCHAR2" prompt="Estado" viewName="XxGamFollOrderUnifLinVO1" viewAttr="FlowStatus" maximumLength="80"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:link id="ToHdrLink" text="Regresar" destination="">
+               <ui:primaryClientAction>
+                  <ui:firePartialAction event="ToHdrEvt"/>
+               </ui:primaryClientAction>
+            </oa:link>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

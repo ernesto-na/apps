@@ -1,0 +1,189 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <!--*[Enter Javadoc like developer documentation, delete this line once you fill the included template.] [Put a one line description of the region here.] [Put a brief description of the usage of the region here.] @param [Parameter_name] [Put parameter use here.] @param [Parameter_name] [Put parameter use here.] @see [Put any additional links apart from controller class and BC4J objects directly referenced by this region]-->
+      <oa:pageLayout id="xXGamInvSolicitudRN" amDefName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM" windowTitle="Solicitud de Dotación" title="" controllerClass="xxgam.oracle.apps.inv.moveorder.webui.xXGamInvSolicitudCO" helpTargetAppShortName="INV">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:query id="QuerySolicitudRN" mode="autoCustomizationCriteria" dispSimple="false" dispCustomized="false" dispAdvanced="false" hidePersonalize="false" defaultPanel="simple" comment="" simpleSearchInstrTexts="" simpleSearchPanelButtonLabel="" customizeInstrTexts="" viewConfPanelButtonLabel="" customizePanelTitle="" saveSearchButtonText="" advancedSearchInstrTexts="" advSearchPanelButtonLabel="">
+               <oa:simpleSearchPanel>
+                  <oa:header text="Buscar" id="SimpleSearchHdr">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="CustomSimpleSearch" rows="3" columns="2">
+                           <ui:contents>
+                              <oa:messageLovInput id="NroSolicitudDesde" selectiveSearchCriteria="true" maximumLength="40" prompt="Nro. de Solicitud" columns="40" styleClass="OraFieldText" unvalidated="true" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvSolRN" queryable="false" translatableDefaultValue="" lookAheadSearchType="startsWith" lookAheadSelectionEventEnabled="true">
+                                 <lovMappings>
+                                    <lovMap id="lovMap1" lovItem="NroSolicitud" resultTo="NroSolicitudDesde" criteriaFrom="NroSolicitudDesde" programmaticQuery="false" useForValidation="no"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="FechaSolicitudDesde" queryable="false" selectiveSearchCriteria="true" dataType="DATE" maximumLength="20" styleClass="OraFieldText" prompt="Fecha Solicitud" columns="20"/>
+                              <oa:messageChoice id="StatusChoice" pickListViewDef="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEstadosVO" pickListViewName="xXGamInvEstadosVO1" pickListDispAttr="Meaning" pickListValAttr="LookupCode" defaultValue="" readOnly="false" allowBlankValue="true" prompt="Estado" required="no" styleClass="OraFieldText" selectiveSearchCriteria="true"/>
+                              <oa:messageLovInput id="NroSolicitudHasta" maximumLength="40" styleClass="OraFieldText" prompt="Nro. de Solicitud Hasta" columns="40" dataType="VARCHAR2" selectiveSearchCriteria="true" unvalidated="true" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvSolRN" lookAheadSearchType="contains">
+                                 <lovMappings>
+                                    <lovMap id="lovMap2" lovItem="NroSolicitud" resultTo="NroSolicitudHasta" criteriaFrom="NroSolicitudHasta"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="FechaSolicitudHasta" dataType="DATE" maximumLength="20" prompt="Fecha Solicitud Hasta" columns="20" styleClass="OraFieldText" selectiveSearchCriteria="true"/>
+                              <oa:messageLovInput id="ClaveEmpleado" selectiveSearchCriteria="true" dataType="NUMBER" maximumLength="8" styleClass="OraFieldText" prompt="Clave Empleado" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/lov/webui/xXGamInvEmpleadosRN" unvalidated="true" rendered="${oa.xXGamInvSoliRenderedVO1.ClvEmplRender}">
+                                 <lovMappings>
+                                    <lovMap id="lovMap3" lovItem="ClaveEmpleado" resultTo="ClaveEmpleado" criteriaFrom="ClaveEmpleado"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:header>
+               </oa:simpleSearchPanel>
+               <ui:contents>
+                  <oa:advancedTable id="xXGamInSolicitudResultsADTable" blockSize="10" viewName="xXGamInvSoliSummaryVO1" width="100%" text="Solicitudes" comment="" helpTarget="">
+                     <ui:contents>
+                        <oa:column id="columnUpdate">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader4" prompt="Actualizar"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:switcher id="updateSwitcherRN" use="/oracle/apps/fnd/attributesets/Buttons/Update" viewAttr="UpdateSwitcher">
+                                 <ui:case name="UpdateDisabled">
+                                    <oa:image id="UpdateDisabled" source="updateicon_disabled.gif" shortDesc="Actualizar Solicitud Deshabilitado" imageHeight="24" imageWidth="24"/>
+                                 </ui:case>
+                                 <ui:case name="UpdateEnabled">
+                                    <oa:image id="UpdateEnabled" source="updateicon_enabled.gif" shortDesc="Actualizar Solicitud" imageHeight="24" imageWidth="24" destination="" comment="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudActualizaPG&amp;SoliId={@SoliId}">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction id="fireAction4">
+                                             <ui:parameters>
+                                                <ui:parameter key="SoliId" value="${oa.xXGamInvSoliSummaryVO1.SoliId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:image>
+                                 </ui:case>
+                              </oa:switcher>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="NoSolicitud">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader1" prompt="Nro. de Solicitud"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:link id="NroSolicitud" viewAttr="NroSolicitud" userCustomizable="true" destination="">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="linkPage"/>
+                                 </ui:primaryClientAction>
+                              </oa:link>
+                              <oa:formValue id="SoliId" dataType="NUMBER" prompt="SoliId" viewAttr="SoliId"/>
+                              <oa:formValue id="PersonId" dataType="NUMBER" prompt="PersonId" viewAttr="PersonId"/>
+                              <oa:formValue id="Status" dataType="VARCHAR2" prompt="Status" viewAttr="Status" queryable="true" selectiveSearchCriteria="true" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="Estado">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader2" prompt="Estado"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="StatusDsp" maximumLength="40" viewAttr="StatusDsp" prompt="Estado" queryable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="SolicitudFecha">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader3" prompt="Fecha de Solicitud"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="SoliDate" dataType="DATE" prompt="Fecha de Solicitud" viewAttr="SoliDate" queryable="true" selectiveSearchCriteria="true" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="columnPrint">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader5" prompt="Imprimir"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:switcher id="printSwitcherRN" viewAttr="PrintSwitcher" use="/oracle/apps/fnd/attributesets/Buttons/Update">
+                                 <ui:case name="PrintDisabled">
+                                    <oa:image id="PrintDisabled" source="notesicon_disabled.gif" shortDesc="Imprimir Solicitud Deshabilitado" imageHeight="24" imageWidth="24"/>
+                                 </ui:case>
+                                 <ui:case name="PrintEnabled">
+                                    <oa:image id="PrintEnabled" source="notesicon_enabled.gif" shortDesc="Imprimir Solicitud" imageHeight="24" imageWidth="24" destination="">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="print">
+                                             <ui:parameters>
+                                                <ui:parameter key="SoliId" value="${oa.xXGamInvSoliSummaryVO1.SoliId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:image>
+                                 </ui:case>
+                              </oa:switcher>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:tableSelection>
+                        <oa:singleSelection id="singleSelection2" text="Selecion Solicitud" viewAttr="SelectFlag1" rendered="${oa.xXGamInvSoliRenderedVO1.BtnCancelarPedidoRender}"/>
+                     </ui:tableSelection>
+                     <ui:tableActions>
+                        <oa:flowLayout id="region2">
+                           <ui:contents>
+                              <oa:spacer id="item213" height="15"/>
+                              <oa:pageButtonBar id="region1">
+                                 <ui:contents>
+                                    <oa:button id="crearsolicitud" text="Crear Solicitud" prompt="Crear Solicitud" disabled="${oa.xXGamInvSoliRenderedVO1.BtnCrearSolicitudRender}">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="crearsolicitud" id="fireAction1"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="generarpedido" text="Crear Pedido de Movimiento" prompt="Crear Pedido de Movimiento" rendered="${oa.xXGamInvSoliRenderedVO1.BtnGeneraPedidoRender}">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="generarpedido" id="fireAction2">
+                                             <ui:parameters>
+                                                <ui:parameter key="pSoliId" value="${oa.xXGamInvSoliSummaryVO1.SoliId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="cancelarpedido" text="Cancelar Pedido de Movimiento" prompt="Cancelar Pedido de Movimiento" rendered="${oa.xXGamInvSoliRenderedVO1.BtnCancelarPedidoRender}">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="cancelarpedido" id="fireAction3">
+                                             <ui:parameters>
+                                                <ui:parameter key="pSoliId" value="${oa.xXGamInvSoliSummaryVO1.SoliId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:separator id="separator"/>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                              <oa:spacer id="item212" height="15"/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                     <ui:footer>
+                        <oa:tableFooter id="tableFooter1">
+                           <ui:contents>
+                              <oa:spacer id="item211" height="25"/>
+                              <oa:spacer id="item21" width="50"/>
+                              <oa:tip id="tipActualizar" text="Dar clic en la opción Actualizar para cargar Talla y Cantidad" tipMessageAppShortName="Dar clic en la opción Actualizar para cargar Talla y Cantidad" rendered="false"/>
+                              <oa:spacer id="item2" height="25"/>
+                           </ui:contents>
+                        </oa:tableFooter>
+                     </ui:footer>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:query>
+            <oa:spacer id="spacio11" height="20" width="5"/>
+            <oa:link id="linkDownLoadPDF" text="Politicas de Asignación y Uso de Uniformes Personal NO Sindicalizado" rendered="true">
+               <ui:primaryClientAction>
+                  <ui:fireAction event="downLoadPDF"/>
+               </ui:primaryClientAction>
+            </oa:link>
+            <oa:spacer id="spacio1" height="5" width="5"/>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="xXGamInvSolicitudStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText id="PageHelp" styleClass="OraInstructionText" messageAppShortName="AK" messageName="FWK_TBX_T_PAGE_GENERAL" text="xxxxxxxxxxxxx" prompt="xxxxxxxxxxxxx"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

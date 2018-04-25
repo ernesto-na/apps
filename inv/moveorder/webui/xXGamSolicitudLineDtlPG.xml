@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="xXGamSolitiduLineDtlRN" amDefName="xxgam.oracle.apps.inv.moveorder.server.xXGamInvSolicitudAM" windowTitle="Consulta Línea" controllerClass="xxgam.oracle.apps.inv.moveorder.webui.xXGamSolicitudLineDtlCO" helpTargetAppShortName="INV">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="ConsultaLinea"/>
+            <oa:table id="xXGamInvLineDtlVO" width="100%">
+               <ui:contents>
+                  <oa:messageStyledText id="NroSolicitud" dataType="VARCHAR2" prompt="Nro. Solicitud" viewName="xXGamInvLineDtlVO1" viewAttr="NroSolicitud" maximumLength="40" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="MonthDota" dataType="VARCHAR2" prompt="Mes Dotación" viewName="xXGamInvLineDtlVO1" viewAttr="MonthDota" maximumLength="20" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="LastDelivDate" dataType="DATE" prompt="Fecha de Salida" viewName="xXGamInvLineDtlVO1" viewAttr="LastDelivDate" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="LineNumber" dataType="NUMBER" prompt="Nro. de Línea" viewName="xXGamInvLineDtlVO1" viewAttr="LineNumber" maximumLength="15" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="InventoryCod" dataType="VARCHAR2" prompt="Nro. de Artículo" viewName="xXGamInvLineDtlVO1" viewAttr="InventoryCod" maximumLength="30" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="UniformTypeCod" dataType="VARCHAR2" prompt="Unidad de Medida" viewName="xXGamInvLineDtlVO1" viewAttr="UniformTypeCod" maximumLength="20" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="Attribute5" dataType="VARCHAR2" prompt="Cantidad" viewName="xXGamInvLineDtlVO1" viewAttr="Attribute5" maximumLength="10" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="Description" dataType="VARCHAR2" prompt="Descripción" viewName="xXGamInvLineDtlVO1" viewAttr="Description" maximumLength="30" styleClass="OraFieldText"/>
+                  <oa:formValue id="QtyNbr" dataType="NUMBER" prompt="QtyNbr" viewName="xXGamInvLineDtlVO1" viewAttr="QtyNbr"/>
+               </ui:contents>
+            </oa:table>
+            <oa:link id="item1" text="Regresar">
+               <ui:primaryClientAction>
+                  <ui:fireAction event="linkPage"/>
+               </ui:primaryClientAction>
+            </oa:link>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="return" text="Cerrar Ventana" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/webui/xXGamSolicitudPG&amp;retainAM=Y" rendered="false">
+               <ui:primaryClientAction>
+                  <ui:fireAction event="return"/>
+               </ui:primaryClientAction>
+            </oa:link>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

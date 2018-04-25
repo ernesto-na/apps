@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="xXGamInvUniformesLovAM"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAMImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="xXgamInvEmpleadosVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXgamInvEmpleadosVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvSolVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvSolVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvTallaVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvTallaVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvKitVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvKitVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvEstadosVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEstadosVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="xXGamInvEmplVO1"
+      ViewObjectName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvEmplVO" >
+   </ViewUsage>
+</AppModule>

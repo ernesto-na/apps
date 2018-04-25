@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="xXGamInvFechaNvoEmplVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaNvoEmplVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.server.xXGamInvFechaNvoEmplVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT start_date_Active FECHA_INICIO
+ , end_date_active FECHA_FINAL
+ ,fl.FECHA_INGRESO
+ FROM  fnd_lookup_values flv
+ , xxgam_inv_kit xik
+ ,(SELECT   PPF.person_id  
+     ,TRUNC(ppf.effective_start_date)+30 FECHA_LIMITE
+     ,TRUNC(effective_start_date) FECHA_INGRESO  
+FROM per_all_people_f ppf
+WHERE 1 = 1
+and ppf.person_id = :1) fl
+WHERE 1               =1
+AND flv.lookup_type   = 'XXGAM_APERTURA_DE_PERIODOS'
+AND flv.enabled_flag  = 'Y'
+AND flv.language (+)  = USERENV('LANG')
+AND flv.meaning   = xik.kit_cod
+and xik.kit_id = :2
+AND FL.FECHA_INGRESO >= end_date_active
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="FechaInicio"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_INICIO"
+      Expression="FECHA_INICIO"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaFinal"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_FINAL"
+      Expression="FECHA_FINAL"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FechaIngreso"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="FECHA_INGRESO"
+      Expression="FECHA_INGRESO"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

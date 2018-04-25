@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM" scope="/">
+   <ui:contents>
+      <oa:table name="xXGamInvEmpleadosRN" id="xXgamInvEmpleadosVO1" controllerClass="xxgam.oracle.apps.inv.moveorder.lov.webui.xXGamInvEmpleadosCO">
+         <ui:contents>
+            <oa:messageStyledText id="ClaveEmpleado" dataType="VARCHAR2" prompt="Clave Empleado" viewName="xXgamInvEmpleadosVO1" viewAttr="ClaveEmpleado" maximumLength="30" queryable="true"/>
+            <oa:messageStyledText id="NombreEmpleado" dataType="VARCHAR2" prompt="Nombre Empleado" viewName="xXgamInvEmpleadosVO1" viewAttr="NombreEmpleado" maximumLength="240" queryable="true"/>
+            <oa:formValue id="PersonId" dataType="NUMBER" prompt="PersonId" viewName="xXgamInvEmpleadosVO1" viewAttr="PersonId"/>
+            <oa:formValue id="UserId" dataType="NUMBER" prompt="UserId" viewName="xXgamInvEmpleadosVO1" viewAttr="UserId"/>
+            <oa:formValue id="Rfc" dataType="VARCHAR2" prompt="Rfc" viewName="xXgamInvEmpleadosVO1" viewAttr="Rfc"/>
+            <oa:formValue id="FechaTerminoContrato" dataType="DATE" prompt="FechaTerminoContrato" viewName="xXgamInvEmpleadosVO1" viewAttr="FechaTerminoContrato"/>
+            <oa:formValue id="Adscripcion" dataType="VARCHAR2" prompt="Adscripcion" viewName="xXgamInvEmpleadosVO1" viewAttr="Adscripcion"/>
+            <oa:formValue id="Estacion" dataType="VARCHAR2" prompt="Estacion" viewName="xXgamInvEmpleadosVO1" viewAttr="Estacion"/>
+            <oa:formValue id="CentroCostos" dataType="VARCHAR2" prompt="CentroCostos" viewName="xXgamInvEmpleadosVO1" viewAttr="CentroCostos"/>
+            <oa:formValue id="Categoria" dataType="VARCHAR2" prompt="Categoria" viewName="xXgamInvEmpleadosVO1" viewAttr="Categoria"/>
+            <oa:formValue id="Cuenta" dataType="VARCHAR2" prompt="Cuenta" viewName="xXgamInvEmpleadosVO1" viewAttr="Cuenta"/>
+            <oa:formValue id="PayrollId" dataType="NUMBER" prompt="PayrollId" viewName="xXgamInvEmpleadosVO1" viewAttr="PayrollId"/>
+            <oa:formValue id="PayBasisId" dataType="NUMBER" prompt="PayBasisId" viewName="xXgamInvEmpleadosVO1" viewAttr="PayBasisId"/>
+            <oa:formValue id="GradeId" dataType="NUMBER" prompt="GradeId" viewName="xXgamInvEmpleadosVO1" viewAttr="GradeId"/>
+            <oa:formValue id="PositionId" dataType="NUMBER" prompt="PositionId" viewName="xXgamInvEmpleadosVO1" viewAttr="PositionId"/>
+            <oa:formValue id="JobId" dataType="NUMBER" prompt="JobId" viewName="xXgamInvEmpleadosVO1" viewAttr="JobId"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

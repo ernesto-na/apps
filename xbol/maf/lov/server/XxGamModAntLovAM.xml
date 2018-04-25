@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="XxGamModAntLovAM"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAMImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="XxGamMaUserDataLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaUserDataLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCostCenterByPersonIdLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterByPersonIdLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTemplatePaymentLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaApproverByEmployeeIdLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverByEmployeeIdLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaPurposeLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaStatusIExpensesLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCurrencyLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCurrencyLovVO2"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTypePaymentLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaPersonDataLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaPersonDataLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCurrencyConversionLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyConversionLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaStatusRequestLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTicketOfficeLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketOfficeLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaFlightRouteLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaFlightRouteLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaLookupGenericLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTypeEmissionLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypeEmissionLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaRelationShipLovVo1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaRelationShipLovVo" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaVirtualCardLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaBenefitsLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaBenefitsLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTypeRequestLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypeRequestLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaApproverHierarchyLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverHierarchyLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaSupervisorLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaSupervisorLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaResponsibilityAppLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaResponsibilityAppLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCostCenterFlexLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterFlexLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTemplatePaymentFlexLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentFlexLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaInfoRouteLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaFlightRouteLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaAllApproverHierarchyLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaAllApproverHierarchyLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaStatusNotificationTicketOfficeLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaStatusNotificationTicketOfficeLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaApproverHierarchyLovVO2"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverHierarchyLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaChiefByPositionIdLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaChiefByPositionIdLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaLimitScheduleOptionVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLimitScheduleOptionVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaOperatingUnitLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaOperatingUnitLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTicketClassLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketClassLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaTicketRateLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketRateLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCategoriaGastoLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCategoriaGastoLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaPaymentTimesLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaPaymentTimesLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaClassTicketLovVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaClassTicketLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="XxGamMaCostCenterFlexLovVO2_1"
+      ViewObjectName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterFlexLovVO2" >
+   </ViewUsage>
+</AppModule>

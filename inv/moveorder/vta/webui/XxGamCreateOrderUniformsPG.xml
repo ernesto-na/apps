@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAM" windowTitle="Capturar Pedido Uniformes" title="Capturar Pedido Uniformes" controllerClass="xxgam.oracle.apps.inv.moveorder.vta.webui.XxGamCreateOrderUniformsCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:contentContainer id="CabeceraDefSinColRN" text="Información Personal" background="transparent" width="100%">
+               <ui:contents>
+                  <oa:messageComponentLayout id="CabeceraMsgComLayRN" rows="3" columns="3" width="100%" promptWidth="20%" fieldWidth="80%">
+                     <ui:contents>
+                        <oa:messageStyledText id="PersonFullNameCab" dataType="VARCHAR2" prompt="Nombre Empleado:" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonFullName" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="CategoriaGrCab" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="CategoriaGr" prompt="Categoria:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="StationCab" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Station" prompt="Estación:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="EmployeeNumberCab" dataType="VARCHAR2" prompt="Clave Empleado:" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="EmployeeNumber" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="PersonTypeCab" dataType="VARCHAR2" prompt="Adscripción:" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonType" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="CostCenterCab" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="CostCenter" prompt="Centro de Costos:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="RfcCab" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Rfc" prompt="R.F.C.:" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="AccountCombinationCab" dataType="VARCHAR2" prompt="Cuenta:" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="AccountCombination" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="PositionCab" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Position" prompt="Posición:" styleClass="OraFieldText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:contentContainer>
+            <oa:defaultSingleColumn id="PrendasDefSinColRN" text="Prendas">
+               <ui:contents>
+                  <oa:rawText id="item1"/>
+                  <oa:tip id="Tip1" text="Si no encuentras tu talla envía un correo a amplanmatgral@aeromexico.com con la prenda y talla requerida."/>
+                  <oa:table id="XxGamInputOrderUniformsVO">
+                     <ui:contents>
+                        <oa:messageStyledText id="KitID" dataType="VARCHAR2" prompt="Kit ID" viewName="XxGamInputOrderUniformsVO1" viewAttr="KitID" rendered="false"/>
+                        <oa:messageStyledText id="KitCod" dataType="VARCHAR2" prompt="Kit Cod" viewName="XxGamInputOrderUniformsVO1" viewAttr="KitCod" rendered="false"/>
+                        <oa:messageStyledText id="DotaID" dataType="VARCHAR2" prompt="Dota ID" viewName="XxGamInputOrderUniformsVO1" viewAttr="DotaID" rendered="false"/>
+                        <oa:messageStyledText id="UniformTypeCod" dataType="VARCHAR2" prompt="Uniform Type Cod" viewName="XxGamInputOrderUniformsVO1" viewAttr="UniformTypeCod" rendered="false"/>
+                        <oa:messageStyledText id="PlantaQty" dataType="VARCHAR2" prompt="Planta Qty" viewName="XxGamInputOrderUniformsVO1" viewAttr="PlantaQty" rendered="false"/>
+                        <oa:messageStyledText id="EventQty" dataType="VARCHAR2" prompt="Event Qty" viewName="XxGamInputOrderUniformsVO1" viewAttr="EventQty" rendered="false"/>
+                        <oa:messageStyledText id="MeasureUnitCod" dataType="VARCHAR2" prompt="Measure Unit Cod" viewName="XxGamInputOrderUniformsVO1" viewAttr="MeasureUnitCod" rendered="false"/>
+                        <oa:messageStyledText id="CycleCod" dataType="VARCHAR2" prompt="Cycle Cod" viewName="XxGamInputOrderUniformsVO1" viewAttr="CycleCod" rendered="false"/>
+                        <oa:messageStyledText id="Nomenclature" dataType="VARCHAR2" prompt="Prenda" viewName="XxGamInputOrderUniformsVO1" viewAttr="Nomenclature"/>
+                        <oa:messageStyledText id="NpCod" dataType="VARCHAR2" prompt="Np Cod" viewName="XxGamInputOrderUniformsVO1" viewAttr="NpCod" rendered="false"/>
+                        <oa:messageStyledText id="SustFlag" dataType="VARCHAR2" prompt="Sust Flag" viewName="XxGamInputOrderUniformsVO1" viewAttr="SustFlag" rendered="false"/>
+                        <oa:messageLovInput id="TallaNbr" dataType="VARCHAR2" prompt="Talla" viewName="XxGamInputOrderUniformsVO1" viewAttr="TallaNbr" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/vta/lov/webui/XxGamVtaUniformsPricesLOVRN" lookAheadEnabled="false">
+                           <lovMappings>
+                              <lovMap id="lovMap1" lovItem="TallaNbr" resultTo="TallaNbr" criteriaFrom="TallaNbr"/>
+                              <lovMap id="lovMap2" lovItem="InventoryItemId" resultTo="fvInventoryID"/>
+                              <lovMap id="lovMap3" lovItem="TallaId" resultTo="fvTallaID"/>
+                              <lovMap id="lovMap4" lovItem="OrganizationId" resultTo="fvOrganizationID"/>
+                              <lovMap id="lovMap5" lovItem="InventoryCod" resultTo="fvInventoryCod"/>
+                              <lovMap id="lovMap6" lovItem="Operand" resultTo="fvPrice"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageStyledText id="InventoryID" dataType="VARCHAR2" prompt="InventoryID" viewName="XxGamInputOrderUniformsVO1" viewAttr="InventoryID" rendered="false"/>
+                        <oa:messageStyledText id="TallaID" dataType="VARCHAR2" prompt="TallaID" viewName="XxGamInputOrderUniformsVO1" viewAttr="TallaID" rendered="false"/>
+                        <oa:messageStyledText id="OrganizationID1" dataType="VARCHAR2" prompt="OrganizationID" viewName="XxGamInputOrderUniformsVO1" viewAttr="OrganizationID" rendered="false"/>
+                        <oa:messageStyledText id="InventoryCod" dataType="VARCHAR2" prompt="InventoryCod" viewName="XxGamInputOrderUniformsVO1" viewAttr="InventoryCod" rendered="false"/>
+                        <oa:messageStyledText id="Price" dataType="NUMBER" prompt="Precio" viewName="XxGamInputOrderUniformsVO1" viewAttr="Price"/>
+                        <oa:messageTextInput id="Quantity" dataType="NUMBER" prompt="Cantidad" viewName="XxGamInputOrderUniformsVO1" viewAttr="Quantity"/>
+                        <oa:messageStyledText id="Amount" viewName="XxGamInputOrderUniformsVO1" viewAttr="Amount" totalValue="true" prompt="Total" dataType="NUMBER" rendered="false"/>
+                        <oa:formValue id="fvPrice" viewName="XxGamInputOrderUniformsVO1" viewAttr="Price"/>
+                        <oa:formValue id="fvInventoryID" viewName="XxGamInputOrderUniformsVO1" viewAttr="InventoryID"/>
+                        <oa:formValue id="fvTallaID" viewName="XxGamInputOrderUniformsVO1" viewAttr="TallaID"/>
+                        <oa:formValue id="fvOrganizationID" viewName="XxGamInputOrderUniformsVO1" viewAttr="OrganizationID"/>
+                        <oa:formValue id="fvInventoryCod" viewName="XxGamInputOrderUniformsVO1" viewAttr="InventoryCod"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:table id="XxGamPersonVtaUniformInfoVO" rendered="false">
+               <ui:contents>
+                  <oa:messageStyledText id="UserID" dataType="VARCHAR2" prompt="User ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="UserID"/>
+                  <oa:messageStyledText id="PersonID" dataType="VARCHAR2" prompt="Person ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonID"/>
+                  <oa:messageStyledText id="PersonFullName" dataType="VARCHAR2" prompt="Person Full Name" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonFullName"/>
+                  <oa:messageStyledText id="EmployeeNumber" dataType="VARCHAR2" prompt="Employee Number" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="EmployeeNumber"/>
+                  <oa:messageStyledText id="PersonType" dataType="VARCHAR2" prompt="Person Type" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonType"/>
+                  <oa:messageStyledText id="PersonTypeID" dataType="VARCHAR2" prompt="Person Type ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PersonTypeID"/>
+                  <oa:messageStyledText id="Sex" dataType="VARCHAR2" prompt="Sex" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Sex"/>
+                  <oa:messageStyledText id="AssigmentID" dataType="VARCHAR2" prompt="Assigment ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="AssigmentID"/>
+                  <oa:messageStyledText id="Organization" dataType="VARCHAR2" prompt="Organization" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Organization"/>
+                  <oa:messageStyledText id="OrganizationID" dataType="VARCHAR2" prompt="Organization ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="OrganizationID"/>
+                  <oa:messageStyledText id="Grade" dataType="VARCHAR2" prompt="Grade" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Grade"/>
+                  <oa:messageStyledText id="GradeID" dataType="VARCHAR2" prompt="Grade ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="GradeID"/>
+                  <oa:messageStyledText id="Position" dataType="VARCHAR2" prompt="Position" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Position"/>
+                  <oa:messageStyledText id="PositionID" dataType="VARCHAR2" prompt="Position ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PositionID"/>
+                  <oa:messageStyledText id="Payroll" dataType="VARCHAR2" prompt="Payroll" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Payroll"/>
+                  <oa:messageStyledText id="PayrollID" dataType="VARCHAR2" prompt="Payroll ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="PayrollID"/>
+                  <oa:messageStyledText id="Station" dataType="VARCHAR2" prompt="Station" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="Station"/>
+                  <oa:messageStyledText id="AccountCombination" dataType="VARCHAR2" prompt="Account Combination" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="AccountCombination"/>
+                  <oa:messageStyledText id="CodeCombinationID" dataType="VARCHAR2" prompt="Code Combination ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="CodeCombinationID"/>
+                  <oa:messageStyledText id="OperatingUnit" dataType="VARCHAR2" prompt="Operating Unit" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="OperatingUnit"/>
+                  <oa:messageStyledText id="OperatingUnitID" dataType="VARCHAR2" prompt="Operating Unit ID" viewName="XxGamPersonVtaUniformInfoVO1" viewAttr="OperatingUnitID"/>
+               </ui:contents>
+            </oa:table>
+            <oa:pageButtonBar id="PageButtonBarRN">
+               <ui:contents>
+                  <oa:submitButton id="ComprarBtn" text="Comprar" prompt="Comprar"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

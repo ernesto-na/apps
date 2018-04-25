@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaGeneralReqVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="VO_ATTR.GeneralReqId.VO_REF_ASSOC" Value ="true" />
+      <Property Name ="VO_ATTR.XxGamMaPaymentReqVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.XxGamMaPaymentReqVO.VO_QUALIFIED_NAME" Value ="Number" />
+      <Property Name ="VO_ATTR.XxGamMaTicketPVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.XxGamMaTicketPVO.VO_QUALIFIED_NAME" Value ="Number" />
+   </Properties>
+   <SQLQuery><![CDATA[
+SELECT XxGamMaGeneralReqEO.ID,
+       XxGamMaGeneralReqEO.NUMBER_PAYMENT,
+       XxGamMaGeneralReqEO.EMPLOYEE_ID, 
+       XxGamMaGeneralReqEO.REQUEST_PAYMENT_DATE, 
+       XxGamMaGeneralReqEO.STATUS_REQUEST, 
+       XxGamMaGeneralReqEO.TOTAL_PAYMENT, 
+       XxGamMaGeneralReqEO.PURPOSE, 
+       XxGamMaGeneralReqEO.APPROVAL_DATE, 
+       XxGamMaGeneralReqEO.APPROVER_ID, 
+       XxGamMaGeneralReqEO.APPROVER_ALT_ID,
+       XxGamMaGeneralReqEO.COST_CENTER,
+       XxGamMaGeneralReqEO.COST_CENTER_FLEX,
+       XxGamMaGeneralReqEO.GROUP_PAYMENT, 
+       XxGamMaGeneralReqEO.TEMPLATE_PAYMENT, 
+       XxGamMaGeneralReqEO.CURRENCY_CODE, 
+       XxGamMaGeneralReqEO.VIRTUAL_CARD, 
+       XxGamMaGeneralReqEO.STATUS_NOTIFICATION, 
+       XxGamMaGeneralReqEO.CREATION_DATE, 
+       XxGamMaGeneralReqEO.CREATED_BY, 
+       XxGamMaGeneralReqEO.LAST_UPDATE_LOGIN, 
+       XxGamMaGeneralReqEO.LAST_UPDATED_BY, 
+       XxGamMaGeneralReqEO.LAST_UPDATE_DATE,       
+       'N' IS_VIEW,
+       PropositoSolicitud.MEANING PURPOSE_DESCRIPTION,
+       EstatusSolicitud.MEANING STATUS_DESCRIPTION,
+       CurrencyCode.NAME CURRENCY_NAME,
+       (SELECT FIRST_NAME||' '||LAST_NAME 
+        FROM per_all_people_f 
+        WHERE 1 = 1 
+          AND person_id =XxGamMaGeneralReqEO.EMPLOYEE_ID
+          AND SYSDATE BETWEEN effective_start_date AND effective_end_date)EMPLOYE_NAME,
+          (SELECT FIRST_NAME||' '||LAST_NAME 
+        FROM per_all_people_f 
+        WHERE 1 = 1 
+          AND person_id =XxGamMaGeneralReqEO.APPROVER_ID
+          AND SYSDATE BETWEEN effective_start_date AND effective_end_date)APPROVER_NAME,
+          (SELECT NVL(FULL_NAME,FIRST_NAME||' '||LAST_NAME)
+        FROM per_all_people_f 
+        WHERE 1 = 1 
+          AND person_id =XxGamMaGeneralReqEO.APPROVER_ALT_ID
+          AND SYSDATE BETWEEN effective_start_date AND nvl(effective_end_date,sysdate+1))APPROVER_NAME_ALT,
+          EstatusBoleto.MEANING STATUS_TICKET,
+          exr.report_type,
+      XxGamMaGeneralReqEO.STATUS_FRANCHISE,
+      CASE NVL(SUBSTR(XxGamMaGeneralReqEO.number_payment,1,2),'00')
+        WHEN 'PC' THEN 'Solicitud de anticipos'
+        WHEN 'PF' THEN 'Franquicias'
+        ELSE 'No identificado'
+      END TIPO_SOLICITUD,
+      EstatusFranquicia.MEANING STATUS_FRANCHISE_DSC,
+       (SELECT CASE COUNT(ID) 
+          WHEN 0 then 'False'
+          ELSE 'True'
+        END IS_DETAIL
+        FROM XXGAM_MA_TICKET_P XxGamMaTicketPEO
+        WHERE 1 = 1
+          AND XxGamMaTicketPEO.GENERAL_REQ_ID =XxGamMaGeneralReqEO.ID) IS_DETAIL,
+       XxGamMaGeneralReqEO.REASON,
+       XxGamMaGeneralReqEO.COMMENTS,
+       XxGamMaGeneralReqEO.OPERATING_UNIT,
+       XxGamMaGeneralReqEO.ORIGIN,
+       substr(XxGamMaGeneralReqEO.VIRTUAL_CARD,1,length(XxGamMaGeneralReqEO.VIRTUAL_CARD)-2)||'XX' VC_MEANINGXX,
+       XxGamMaGeneralReqEO.DEPART_TIME,
+       XxGamMaGeneralReqEO.ARRIVAL_TIME
+FROM XXGAM_MA_GENERAL_REQ XxGamMaGeneralReqEO, 
+     FND_LOOKUP_VALUES PropositoSolicitud,
+     FND_LOOKUP_VALUES EstatusSolicitud,
+     fnd_currencies_tl CurrencyCode,
+     FND_LOOKUP_VALUES EstatusBoleto,
+     AP_EXPENSE_REPORTS_ALL exr,
+     FND_LOOKUP_VALUES EstatusFranquicia
+WHERE 1 = 1
+  AND CurrencyCode.CURRENCY_CODE (+) =XxGamMaGeneralReqEO.CURRENCY_CODE
+  AND CurrencyCode.LANGUAGE(+) = USERENV('LANG')
+  /**LOOKUPS**/
+  AND PropositoSolicitud.LOOKUP_TYPE ='XXGAM_PROPOSITOS_SOLICITUD'
+  AND PropositoSolicitud.LOOKUP_CODE =XxGamMaGeneralReqEO.PURPOSE
+  AND PropositoSolicitud.LANGUAGE= USERENV('LANG')
+  AND PropositoSolicitud.ENABLED_FLAG ='Y'
+  AND PropositoSolicitud.VIEW_APPLICATION_ID = 200
+  /**LOOKUPS**/
+  AND EstatusFranquicia.LOOKUP_TYPE(+) ='XXGAM_STATUS_FRANCHISE'
+  AND EstatusFranquicia.LOOKUP_CODE(+) =XxGamMaGeneralReqEO.STATUS_FRANCHISE
+  AND EstatusFranquicia.LANGUAGE(+)= USERENV('LANG')
+  AND EstatusFranquicia.ENABLED_FLAG(+) ='Y'
+  AND EstatusFranquicia.VIEW_APPLICATION_ID(+) = 200
+  /**ESTATUS DE LA SOLICITUD**/
+  AND EstatusSolicitud.LOOKUP_TYPE(+) ='EXPENSE REPORT STATUS'
+  AND EstatusSolicitud.LOOKUP_CODE(+) = XxGamMaGeneralReqEO.STATUS_REQUEST
+  AND EstatusSolicitud.LANGUAGE(+) = USERENV('LANG')
+  AND EstatusSolicitud.ENABLED_FLAG(+) ='Y'
+  AND EstatusSolicitud.VIEW_APPLICATION_ID(+) = 200
+  AND EstatusBoleto.LOOKUP_TYPE(+) ='XXGAM_NOTIFICATION_REQ'
+  AND EstatusBoleto.LOOKUP_CODE(+) = XxGamMaGeneralReqEO.STATUS_NOTIFICATION
+  AND EstatusBoleto.LANGUAGE (+)= USERENV('LANG')
+  AND EstatusBoleto.ENABLED_FLAG (+)='Y'
+  AND EstatusBoleto.VIEW_APPLICATION_ID (+)= 200
+  AND exr.EXPENSE_REPORT_ID (+)= XxGamMaGeneralReqEO.TEMPLATE_PAYMENT
+  AND exr.inactive_date IS NULL
+  AND exr.web_enabled_flag (+) = 'Y'
+  AND NVL(TRIM(XxGamMaGeneralReqEO.STATUS_REQUEST), TRIM(XxGamMaGeneralReqEO.STATUS_FRANCHISE)) <> 'DELETED'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="XxGamMaGeneralReqEO"
+      Entity="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="true" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="Id"
+      IsNotNull="true"
+      EntityAttrName="Id"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NumberPayment"
+      EntityAttrName="NumberPayment"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="NUMBER_PAYMENT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="EMPLOYEE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RequestPaymentDate"
+      IsNotNull="true"
+      EntityAttrName="RequestPaymentDate"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="REQUEST_PAYMENT_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusRequest"
+      EntityAttrName="StatusRequest"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="STATUS_REQUEST" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TotalPayment"
+      IsNotNull="true"
+      EntityAttrName="TotalPayment"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="TOTAL_PAYMENT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Purpose"
+      IsNotNull="true"
+      EntityAttrName="Purpose"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="PURPOSE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalDate"
+      EntityAttrName="ApprovalDate"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="APPROVAL_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverId"
+      IsNotNull="true"
+      EntityAttrName="ApproverId"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="APPROVER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverAltId"
+      EntityAttrName="ApproverAltId"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="APPROVER_ALT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenter"
+      IsNotNull="true"
+      EntityAttrName="CostCenter"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="COST_CENTER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenterFlex"
+      EntityAttrName="CostCenterFlex"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="COST_CENTER_FLEX" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="GroupPayment"
+      IsNotNull="true"
+      EntityAttrName="GroupPayment"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="GROUP_PAYMENT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TemplatePayment"
+      IsNotNull="true"
+      EntityAttrName="TemplatePayment"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="TEMPLATE_PAYMENT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsNotNull="true"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="CURRENCY_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VirtualCard"
+      IsNotNull="true"
+      EntityAttrName="VirtualCard"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="VIRTUAL_CARD" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusNotification"
+      IsNotNull="true"
+      EntityAttrName="StatusNotification"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="STATUS_NOTIFICATION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsUpdateable="false"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsUpdateable="false"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsUpdateable="false"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsUpdateable="false"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsUpdateable="false"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsView"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="IS_VIEW"
+      Expression="IS_VIEW"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PurposeDescription"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PURPOSE_DESCRIPTION"
+      Expression="PURPOSE_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDescription"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DESCRIPTION"
+      Expression="STATUS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyName"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY_NAME"
+      Expression="CURRENCY_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeName"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMPLOYE_NAME"
+      Expression="EMPLOYE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverName"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_NAME"
+      Expression="APPROVER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverNameAlt"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_NAME_ALT"
+      Expression="APPROVER_NAME_ALT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusTicket"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_TICKET"
+      Expression="STATUS_TICKET"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReportType"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="REPORT_TYPE"
+      Expression="REPORT_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusFranchise"
+      EntityAttrName="StatusFranchise"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="STATUS_FRANCHISE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TipoSolicitud"
+      IsPersistent="false"
+      Precision="22"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TIPO_SOLICITUD"
+      Expression="TIPO_SOLICITUD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusFranchiseDsc"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_FRANCHISE_DSC"
+      Expression="STATUS_FRANCHISE_DSC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsDetail"
+      IsPersistent="false"
+      Precision="5"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="IS_DETAIL"
+      Expression="IS_DETAIL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="5" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Reason"
+      EntityAttrName="Reason"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="REASON" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Comments"
+      EntityAttrName="Comments"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="COMMENTS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OperatingUnit"
+      EntityAttrName="OperatingUnit"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="OPERATING_UNIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Origin"
+      EntityAttrName="Origin"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="ORIGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VcMeaningxx"
+      IsPersistent="false"
+      Precision="102"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VC_MEANINGXX"
+      Expression="VC_MEANINGXX"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="102" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullNameEmployee"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullNameApprover"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullNameApproverAlt"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyDesc"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TypeTemplateDesc"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PurposeDesc"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenterDesc"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenterTmp"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsApproverBySys"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsNotApproverBySys"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsDisableTemplatePayment"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsDisableTemplatePaymentFlex"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsRespFranchise"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsVisibleApproverAlt"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DepartTime"
+      EntityAttrName="DepartTime"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="DEPART_TIME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ArrivalTime"
+      EntityAttrName="ArrivalTime"
+      EntityUsage="XxGamMaGeneralReqEO"
+      AliasName="ARRIVAL_TIME" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="XxGamMaPaymentReqVO"
+      ViewLink="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+   <ViewLinkAccessor
+      Name="XxGamMaTicketPVO"
+      ViewLink="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqToXxGamMaTicketVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

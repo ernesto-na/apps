@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="XxGamSizesInfoLOVAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>DAEMXI</JDBCName>
+         <jbo.project>InventariosUniformesProy</jbo.project>
+         <AppModuleJndiName>xxgam.oracle.apps.inv.moveorder.siz.lov.server.XxGamSizesInfoLOVAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>xxgam.oracle.apps.inv.moveorder.siz.lov.server.XxGamSizesInfoLOVAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <ConnectionDefinition name="DAEMXI">
+      <ENTRY name="JDBC_PORT" value="10710"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="vmohsaemx001.oracleoutsourcing.com"/>
+      <ENTRY name="user" value="APPS"/>
+      <ENTRY name="ConnectionName" value="DAEMXI"/>
+      <ENTRY name="SID" value="DAEMXI"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">
+         <![CDATA[{904}0567D61AF3C40C3400E2AA83A9094A5C10F72A9A1CE356E7F1]]>
+      </ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
+</BC4JConfig>

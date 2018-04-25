@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaChiefByPositionIdLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaChiefByPositionIdLovVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaChiefByPositionIdLovVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <Variable
+      Name="pPositionId"
+      Kind="where"
+      Type="oracle.jbo.domain.Number" >
+   </Variable>
+   <SQLQuery><![CDATA[
+SELECT substr(j.name, 1, 2) SUB_JOB_NAME_ID,
+       assign.person_id SUBORDINATE_ID,
+       assign.position_id SUB_POSITION_ID,
+       substr(j2.name, 1, 2) CHIEF_JOB_NAME_ID,
+       assign2.person_id CHIEF_ID,
+       assign2.position_id CHIEF_POSITION_ID
+FROM per_position_structures pps,
+     per_pos_structure_elements ppe,
+     per_pos_structure_versions ppv,
+     per_all_positions pap,
+     per_jobs j, 
+     per_jobs j2,
+     per_all_assignments_f assign,
+     per_all_assignments_f assign2
+WHERE 1 = 1
+  
+  AND assign.job_id = j.job_id
+  AND j2.job_id = assign2.job_id
+  AND assign.position_id = pap.position_id
+  AND assign.position_id = ppe.subordinate_position_id
+  
+  AND ppe.parent_position_id = assign2.position_id
+  
+  AND SYSDATE BETWEEN assign.effective_start_date AND assign.effective_end_date
+  AND SYSDATE BETWEEN assign2.effective_start_date AND assign2.effective_end_date
+  
+  AND pps.position_structure_id = ppv.position_structure_id
+  AND ppe.pos_structure_version_id =ppv.pos_structure_version_id
+  AND SYSDATE BETWEEN ppv.date_from AND nvl(ppv.date_to, SYSDATE + 1)
+  
+  AND UPPER(pps.name) = UPPER(fnd_profile.value('XXGAM_OIE_JERARQUIA_ANTICIPOS'))
+
+  AND ppe.subordinate_position_id = pap.position_id
+  
+  AND pap.job_id = j.job_id
+  AND ppe.subordinate_position_id = :pPositionId
+  
+ORDER BY CHIEF_JOB_NAME_ID ASC
+   ]]></SQLQuery>
+   <ViewAttribute
+      Name="SubJobNameId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SUB_JOB_NAME_ID"
+      Expression="SUB_JOB_NAME_ID"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SubordinateId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SUBORDINATE_ID"
+      Expression="SUBORDINATE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SubPositionId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SUB_POSITION_ID"
+      Expression="SUB_POSITION_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChiefJobNameId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CHIEF_JOB_NAME_ID"
+      Expression="CHIEF_JOB_NAME_ID"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChiefId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CHIEF_ID"
+      Expression="CHIEF_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChiefPositionId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CHIEF_POSITION_ID"
+      Expression="CHIEF_POSITION_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="SubordinateId" />
+      <Item Value="ChiefId" />
+   </AttrArray>
+</ViewObject>

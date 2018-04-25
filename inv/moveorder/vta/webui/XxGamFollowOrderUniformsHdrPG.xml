@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.inv.moveorder.vta.server.XxGamOrderUniformsAM" windowTitle="Seguimiento Orden Uniformes" title="Seguimiento Orden Uniformes" controllerClass="xxgam.oracle.apps.inv.moveorder.vta.webui.XxGamFollowOrderUniformsHdrCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtonBarRN">
+               <ui:contents>
+                  <oa:submitButton id="CrearOrdenBtn" text="Comprar" prompt="Comprar"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+            <oa:header id="SimpleSearchHdr" text="Busqueda">
+               <ui:contents>
+                  <oa:messageComponentLayout id="SimpleSearch" rows="5" columns="1" width="50%">
+                     <ui:contents>
+                        <oa:messageTextInput id="PFechaOrdenDesde" dataType="DATE" prompt="Fecha Orden Desde"/>
+                        <oa:messageTextInput id="PFechaOrdenHasta" dataType="DATE" prompt="Fecha Orden Hasta"/>
+                        <oa:messageTextInput id="PSoNumeroOrden" prompt="No Orden"/>
+                        <oa:messageChoice id="PSoEstatus" prompt="Estatus" pickListViewDef="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamSoFlowStatusLOVVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode"/>
+                        <oa:messageLovInput id="PNumeroEmpleado" prompt="No Empleado" externalListOfValues="/xxgam/oracle/apps/inv/moveorder/vta/lov/webui/XxGamSoEmpleadosLOVRN">
+                           <lovMappings>
+                              <lovMap id="lovMap1" lovItem="EmployeeNumber" resultTo="PNumeroEmpleado" criteriaFrom="PNumeroEmpleado"/>
+                              <lovMap id="lovMap2" lovItem="PersonId" resultTo="fvPersonID"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:button id="GoBtn" text="Ir" prompt="Ir">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="GoBtnEvt"/>
+                     </ui:primaryClientAction>
+                  </oa:button>
+                  <oa:formValue id="fvPersonID"/>
+               </ui:contents>
+            </oa:header>
+            <oa:defaultSingleColumn id="ResultadosDefSinColRN" text="Resultados">
+               <ui:contents>
+                  <oa:table id="XxGamFollOrderUnifHdrVO">
+                     <ui:contents>
+                        <oa:messageStyledText id="HdrId" dataType="NUMBER" prompt="HdrId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="HdrId" rendered="false"/>
+                        <oa:messageStyledText id="PersonId" dataType="NUMBER" prompt="PersonId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="PersonId" rendered="false"/>
+                        <oa:messageStyledText id="FullName" dataType="VARCHAR2" prompt="FullName" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="FullName" maximumLength="300" rendered="false"/>
+                        <oa:messageStyledText id="EmployeeNumber" dataType="VARCHAR2" prompt="EmployeeNumber" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="EmployeeNumber" maximumLength="50" rendered="false"/>
+                        <oa:messageStyledText id="AssigmentId" dataType="NUMBER" prompt="AssigmentId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="AssigmentId" rendered="false"/>
+                        <oa:messageStyledText id="OperatingUnitId" dataType="NUMBER" prompt="OperatingUnitId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="OperatingUnitId" rendered="false"/>
+                        <oa:messageStyledText id="HrOrgId" dataType="NUMBER" prompt="HrOrgId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="HrOrgId" rendered="false"/>
+                        <oa:messageStyledText id="SoListHdrId" dataType="NUMBER" prompt="SoListHdrId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoListHdrId" rendered="false"/>
+                        <oa:messageStyledText id="SoTransactionTypeId" dataType="NUMBER" prompt="SoTransactionTypeId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoTransactionTypeId" rendered="false"/>
+                        <oa:messageStyledText id="SoCustId" dataType="NUMBER" prompt="SoCustId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoCustId" rendered="false"/>
+                        <oa:messageStyledText id="SoShipId" dataType="NUMBER" prompt="SoShipId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoShipId" rendered="false"/>
+                        <oa:messageStyledText id="SoBillId" dataType="NUMBER" prompt="SoBillId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoBillId" rendered="false"/>
+                        <oa:messageStyledText id="SoCurrencyCode" dataType="VARCHAR2" prompt="SoCurrencyCode" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoCurrencyCode" maximumLength="25" rendered="false"/>
+                        <oa:messageStyledText id="SoHeaderId" dataType="NUMBER" prompt="SoHeaderId" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoHeaderId" rendered="false"/>
+                        <oa:messageStyledText id="SoOrderNumber" dataType="VARCHAR2" prompt="No de Orden" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoOrderNumber" maximumLength="500" rendered="false"/>
+                        <oa:link id="ToLineslink" destination="OA.jsp?page=/xxgam/oracle/apps/inv/moveorder/vta/webui/XxGamFollowOrderUniformsLinPG&amp;retainAM=Y" text="No de Orden" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="SoOrderNumber">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction event="ToLinesEvt" id="firePartialAction1">
+                                 <ui:parameters>
+                                    <ui:parameter key="pXxGamHdrId" value="${oa.XxGamFollOrderUnifHdrVO1.HdrId}"/>
+                                    <ui:parameter key="pSoHeaderId" value="${oa.XxGamFollOrderUnifHdrVO1.SoHeaderId}"/>
+                                    <ui:parameter key="pOperatingUnitId" value="${oa.XxGamFollOrderUnifHdrVO1.OperatingUnitId}"/>
+                                 </ui:parameters>
+                              </ui:firePartialAction>
+                           </ui:primaryClientAction>
+                        </oa:link>
+                        <oa:messageStyledText id="AttributeCategory" dataType="VARCHAR2" prompt="AttributeCategory" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="AttributeCategory" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute1" dataType="VARCHAR2" prompt="Attribute1" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute1" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute2" dataType="VARCHAR2" prompt="Attribute2" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute2" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute3" dataType="VARCHAR2" prompt="Attribute3" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute3" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute4" dataType="VARCHAR2" prompt="Attribute4" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute4" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute5" dataType="VARCHAR2" prompt="Attribute5" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute5" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute6" dataType="VARCHAR2" prompt="Attribute6" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute6" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute7" dataType="VARCHAR2" prompt="Attribute7" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute7" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="Attribute8" dataType="VARCHAR2" prompt="Attribute8" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="Attribute8" maximumLength="500" rendered="false"/>
+                        <oa:messageStyledText id="CreatedBy" dataType="NUMBER" prompt="CreatedBy" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="CreatedBy" maximumLength="15" rendered="false"/>
+                        <oa:messageStyledText id="CreationDate" dataType="DATE" prompt="Fecha de creación" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="CreationDate"/>
+                        <oa:messageStyledText id="LastUpdateDate" dataType="DATE" prompt="LastUpdateDate" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="LastUpdateDate" rendered="false"/>
+                        <oa:messageStyledText id="LastUpdatedBy" dataType="NUMBER" prompt="LastUpdatedBy" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="LastUpdatedBy" maximumLength="15" rendered="false"/>
+                        <oa:messageStyledText id="LastUpdateLogin" dataType="NUMBER" prompt="LastUpdateLogin" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="LastUpdateLogin" maximumLength="15" rendered="false"/>
+                        <oa:messageStyledText id="FlowStatus" dataType="VARCHAR2" prompt="Estatus" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="FlowStatus" maximumLength="80"/>
+                        <oa:messageStyledText id="TotalPedido" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="TotalPedido" prompt="Total de pedido"/>
+                        <oa:messageStyledText id="FechaEntrega" prompt="Fecha de entrega" viewName="XxGamFollOrderUnifHdrVO1" viewAttr="FechaEntrega"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.inv.moveorder.vta.lov.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <Containee
+      Name="XxGamSoEmpleadosLOVVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamSoEmpleadosLOVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamSoFlowStatusLOVVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamSoFlowStatusLOVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamUniformsLOVAM"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamUniformsLOVAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="XxGamVtaUniformsPricesLOVVO"
+      FullName="xxgam.oracle.apps.inv.moveorder.vta.lov.server.XxGamVtaUniformsPricesLOVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

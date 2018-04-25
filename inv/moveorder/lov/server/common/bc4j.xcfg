@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="xXGamInvUniformesLovAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>DBConnection_TAEMXI</JDBCName>
+         <jbo.project>XXGAM_SCM_INV_MOVEORDER_PRJ</jbo.project>
+         <AppModuleJndiName>xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>xxgam.oracle.apps.inv.moveorder.lov.server.xXGamInvUniformesLovAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

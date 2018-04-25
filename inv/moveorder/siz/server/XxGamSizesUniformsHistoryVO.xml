@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamSizesUniformsHistoryVO"
+   SelectList="XxGamSizesUniformsHistoryEO.UNIF_ID, 
+       XxGamSizesUniformsHistoryEO.PERSON_ID, 
+       XxGamSizesUniformsHistoryEO.ASSIGNMENT_ID, 
+       XxGamSizesUniformsHistoryEO.JOB_ID, 
+       XxGamSizesUniformsHistoryEO.CODE_COMBINATION_ID, 
+       XxGamSizesUniformsHistoryEO.PERSON_TYPE_ID, 
+       XxGamSizesUniformsHistoryEO.KIT_COD, 
+       XxGamSizesUniformsHistoryEO.DOTA_ID, 
+       XxGamSizesUniformsHistoryEO.TALLA_ID, 
+       XxGamSizesUniformsHistoryEO.TALLA_NBR, 
+       XxGamSizesUniformsHistoryEO.INVENTORY_ID, 
+       XxGamSizesUniformsHistoryEO.HR_ORG_ID, 
+       XxGamSizesUniformsHistoryEO.OPERATING_UNIT_ID, 
+       XxGamSizesUniformsHistoryEO.INV_ORG_ID, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE_CATEGORY, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE1, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE2, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE3, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE4, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE5, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE6, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE7, 
+       XxGamSizesUniformsHistoryEO.ATTRIBUTE8, 
+       XxGamSizesUniformsHistoryEO.LAST_UPDATE_DATE, 
+       XxGamSizesUniformsHistoryEO.LAST_UPDATED_BY, 
+       XxGamSizesUniformsHistoryEO.LAST_UPDATE_LOGIN, 
+       XxGamSizesUniformsHistoryEO.CREATED_BY, 
+       XxGamSizesUniformsHistoryEO.CREATION_DATE, 
+       XxGamSizesUniformsHistoryEO.NOMENCLATURE"
+   FromList="BOLINF.XXGAM_INV_SIZ_UNIF_HISTORY XxGamSizesUniformsHistoryEO"
+   BindingStyle="OracleName"
+   CustomQuery="false"
+   RowClass="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsHistoryVORowImpl"
+   ComponentClass="xxgam.oracle.apps.inv.moveorder.siz.server.XxGamSizesUniformsHistoryVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="XxGamSizesUniformsHistoryEO"
+      Entity="xxgam.oracle.apps.inv.moveorder.siz.schema.server.XxGamSizesUniformsHistoryEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="UnifId"
+      IsNotNull="true"
+      EntityAttrName="UnifId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="UNIF_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonId"
+      EntityAttrName="PersonId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="PERSON_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AssignmentId"
+      EntityAttrName="AssignmentId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ASSIGNMENT_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="JobId"
+      EntityAttrName="JobId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="JOB_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CodeCombinationId"
+      EntityAttrName="CodeCombinationId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="CODE_COMBINATION_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonTypeId"
+      EntityAttrName="PersonTypeId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="PERSON_TYPE_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KitCod"
+      EntityAttrName="KitCod"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="KIT_COD" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DotaId"
+      EntityAttrName="DotaId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="DOTA_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaId"
+      EntityAttrName="TallaId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="TALLA_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TallaNbr"
+      EntityAttrName="TallaNbr"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="TALLA_NBR" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InventoryId"
+      EntityAttrName="InventoryId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="INVENTORY_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HrOrgId"
+      EntityAttrName="HrOrgId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="HR_ORG_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OperatingUnitId"
+      EntityAttrName="OperatingUnitId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="OPERATING_UNIT_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvOrgId"
+      EntityAttrName="InvOrgId"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="INV_ORG_ID" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttributeCategory"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE_CATEGORY" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE1" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE2" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE3" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE4" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE5" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute6"
+      EntityAttrName="Attribute6"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE6" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute7"
+      EntityAttrName="Attribute7"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE7" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute8"
+      EntityAttrName="Attribute8"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="ATTRIBUTE8" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="LAST_UPDATE_DATE" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="LAST_UPDATED_BY" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="CREATED_BY" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="CREATION_DATE" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Nomenclature"
+      EntityAttrName="Nomenclature"
+      EntityUsage="XxGamSizesUniformsHistoryEO"
+      AliasName="NOMENCLATURE" >
+      <Properties>
+         <Property Name ="CRAWL_VISIBILITY_LEVEL" Value ="GLOBAL" />
+      </Properties>
+   </ViewAttribute>
+</ViewObject>
