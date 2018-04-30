@@ -396,7 +396,7 @@ public class XxGamMAnticiposUtil2
   }
 
  ///Procedimiento por Usuario de Aplicaciones 
- 
+ /*1*/
   public static String getOrgNameByUserId(int UserID
                                         , OAPageContext pageContext
                                         ,  OADBTransaction oadbTransaction

@@ -55,7 +55,9 @@ public class XxGamPaymentReqDetailCO extends OAControllerImpl
                     currencyChoiceBean.setValue(pageContext,userCurrency);
                     currencyChoiceBean.setDisabled(true);
                    }else{
-                       currencyChoiceBean.setDisabled(false);
+                      currencyChoiceBean.setValue(pageContext,userCurrency); /*seteo*/
+                       currencyChoiceBean.setDisabled(true);
+                       // currencyChoiceBean.setDisabled(true);
                    }
               }
               

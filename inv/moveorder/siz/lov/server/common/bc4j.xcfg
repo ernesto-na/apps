@@ -19,7 +19,7 @@
       <ENTRY name="SID" value="DAEMXI"/>
       <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
       <ENTRY name="password">
-         <![CDATA[{904}0567D61AF3C40C3400E2AA83A9094A5C10F72A9A1CE356E7F1]]>
+         <![CDATA[{904}0545FE5C7CCCA9D816A8A904A7E67EC771663C100E062FCAC5]]>
       </ENTRY>
       <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
       <ENTRY name="DeployPassword" value="true"/>

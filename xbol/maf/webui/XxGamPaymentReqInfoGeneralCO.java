@@ -140,14 +140,20 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                 webBean.findChildRecursive("FormEditVO");
             OAWebBean formGeneralReqReadOnly = 
                 webBean.findChildRecursive("FormReadOnly");
-            OAWebBean currencyName = 
-                webBean.findChildRecursive("CurrencyNameR");
+            /*OAWebBean currencyName = 
+                webBean.findChildRecursive("CurrencyNameR");*/
+             OAWebBean currencyName= webBean.findChildRecursive("CurrencyNameR");
+            
+             
+            //webBean.findChildRecursive("CurrencyNameR");
+                System.out.println("--divisa--> "+currencyName.toString());
             OAWebBean templateLov = 
                 webBean.findChildRecursive("TemplatePaymentLov");
             OAWebBean templateFlexLov = 
                 webBean.findChildRecursive("TemplatePaymentFlexLov");
             OAWebBean currencyNameRO = 
                 webBean.findChildRecursive("CurrencyDescRO");
+            System.out.println("--divisa--> "+currencyNameRO.toString());
             OAWebBean templateDescRO = 
                 webBean.findChildRecursive("TemplateDescRO");
             OAWebBean returnButton = 
