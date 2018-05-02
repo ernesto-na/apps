@@ -42,12 +42,14 @@ public class XxGamPaymentReqDetailCO extends OAControllerImpl
                
                 //Se agrego para filtrar el poplist de acuerdo a la nomina del empleado
                 String userCurrency=XxGamMAnticiposUtil2.getDivisa(pageContext, webBean);
+                System.out.println("------->: "+userCurrency);
                              if (userCurrency.length()<4){          
                                 if(userCurrency.equals("MXN")){
                                     currencyChoiceBean.setValue(pageContext,userCurrency);
-                                    currencyChoiceBean.setDisabled(true);
+                                    currencyChoiceBean.setDisabled(false);
                                    }else{
                                        currencyChoiceBean.setDisabled(false);
+                                       
                                    }
                               }
                               
