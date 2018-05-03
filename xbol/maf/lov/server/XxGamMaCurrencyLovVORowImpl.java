@@ -8,14 +8,13 @@ import oracle.jbo.server.AttributeDefImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaCurrencyLovVORowImpl extends OAViewRowImpl
-{
-  public static final int CURRENCYCODE = 0;
-  public static final int CURRENCYNAME = 1;
-  public static final int CURRENCYDESC = 2;
+public class XxGamMaCurrencyLovVORowImpl extends OAViewRowImpl {
+    public static final int CURRENCYCODE = 0;
+    public static final int CURRENCYNAME = 1;
+    public static final int CURRENCYDESC = 2;
 
-  /**This is the default constructor (do not remove)
-   */
+    /**This is the default constructor (do not remove)
+     */
     public XxGamMaCurrencyLovVORowImpl() {
     }
 
@@ -59,28 +58,26 @@ public class XxGamMaCurrencyLovVORowImpl extends OAViewRowImpl
      */
     protected Object getAttrInvokeAccessor(int index, 
                                            AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case CURRENCYCODE:
-      return getCurrencyCode();
-    case CURRENCYNAME:
-      return getCurrencyName();
-    case CURRENCYDESC:
-      return getCurrencyDesc();
-    default:
-      return super.getAttrInvokeAccessor(index, attrDef);
+        switch (index) {
+        case CURRENCYCODE:
+            return getCurrencyCode();
+        case CURRENCYNAME:
+            return getCurrencyName();
+        case CURRENCYDESC:
+            return getCurrencyDesc();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
     }
-  }
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
     protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    default:
-      super.setAttrInvokeAccessor(index, value, attrDef);
-      return;
+        switch (index) {
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
     }
-  }
 }
