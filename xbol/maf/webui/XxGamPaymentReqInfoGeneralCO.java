@@ -170,7 +170,7 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
             String step1Flag = //--> la primera vez que lanza el error este dato viene null posteriormente biene como create
                 (String)pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_ONE);
 
-            //Verifica la responsabilidad de empleado
+            //Verifica la responsabilidad de empleado TODO:01
             if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
                                                             webBean, 
                                                             new Number(pageContext.getResponsibilityId()), 
@@ -960,7 +960,10 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                 OAMessageStyledTextBean ccMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterDescRO");
                 OAMessageStyledTextBean ccaMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterFlexRO");
                 OAMessageStyledTextBean temMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("TemplateDescRO");
-                
+                  OAMessageStyledTextBean tvMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("VirtualCardRO");
+                  OAMessageStyledTextBean tvMSTextBean2 = (OAMessageStyledTextBean)webBean.findChildRecursive("VirtualCardROXX");
+                  System.out.println("TV1: "+tvMSTextBean.getValue(pageContext));
+                  System.out.println("TV2: "+tvMSTextBean2.getValue(pageContext));
                 System.out.println("CC: " + ccMSTextBean.getValue(pageContext));
                 System.out.println("CCA: " + ccaMSTextBean.getValue(pageContext));
                 System.out.println("TEMPLATE: " + temMSTextBean.getValue(pageContext));
