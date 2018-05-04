@@ -1110,7 +1110,7 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
 
                 if ("CostCenterFlexLov".equals(lovInputSourceId)) {
 
-                    initSuccess = false;
+                    initSuccess = false;// TODO :02 probar la llamada del sig metodo 
                     pageContext.putSessionValue("ListVal",""); //Agregado para que al seleccionar un nuevo centro de costos la pantilla del anterior no se conserve
                   
                   if( (null!=orgShortNameEmp)&&(!"02".equals(orgShortNameEmp))){
@@ -1140,7 +1140,7 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                                                           null, OAException.WARNING, null);
                     }
                     
-                    
+                    //TODO 03  Verificar que no este amarrado a 02
                   }else if((null!=orgShortNameEmp)&&("02".equals(orgShortNameEmp))){
                     System.out.println("Inicializa lista de valores para centro de costos Alternos Unidad Operativa:"+paramorgNameEmp);
                     //Inicializa lista de valores para centro de costos

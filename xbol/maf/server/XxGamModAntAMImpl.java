@@ -1143,7 +1143,7 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                 if (rowGeneralReq.getCostCenter() != null) {
                     String costCenter = null;
                     String currency = null;
-
+                    //TODO 06: Tarjeta virtual
                     //Verifica el origen del la tarjeta virtual
                     String virtualCard = null;
                     if (rowGeneralReq.getCostCenterFlex() == null) {
@@ -5461,6 +5461,7 @@ sum.add(amountAux);
                                             amLov.initPurposeLov();
                                             amLov.initCostCenterFlex(vcLookupType);
                                             System.out.println("Comentado por recustrucion del metodo para que sea MultiOrg \n  isInitSuccess = initTemplatePayment();");
+
                                             isInitSuccess = 
                                                     XxGamMAnticiposUtil2.initTemplatePayment(pageContext, 
                                                                                              webBean);

@@ -40,7 +40,7 @@ public class XxGamMaResponsibilityAppLovVOImpl extends OAViewObjectImpl {
      */
     public void setSearchRespAppVc(Number responsibilityId) {
 
-        //Declaración de los recursos
+        //Declaracion de los recursos
         ViewCriteria vc = null;
         ViewCriteriaRow vcRow = null;
 

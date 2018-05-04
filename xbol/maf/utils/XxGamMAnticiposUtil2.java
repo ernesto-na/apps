@@ -583,7 +583,7 @@ public class XxGamMAnticiposUtil2
 
   /******** Puntos a Considerar 
    ******** Al cambiar un centro de costos Alterno, el empleado al pertenecer a una organizacion Distinta 
-   ******** Se le debe Asignar una nueva targeta Virtual 
+   ******** Se le debe Asignar una nueva tarjeta Virtual 
    ********
    ********
    ********
@@ -622,7 +622,8 @@ public class XxGamMAnticiposUtil2
           costCenterId = generalRow.getCostCenter();
           String virtualCard = null;
           if (costCenterId != null) {
-            System.out.println("Ya no es necesario buscar el valor de la targeta virtual ya que este valor se establece" +
+          //TODO 04: si
+            System.out.println("Ya no es necesario buscar el valor de la tarjeta virtual ya que este valor se establece" +
             "\n al principio Hay que ver el comportamiento para cuando se elige un centro de costos Alterno"); 
           } //END if (costCenterId != null) {   
         }else {

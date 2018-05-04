@@ -4535,7 +4535,8 @@ new oracle.jbo.domain.Date(new Timestamp(jdFecha.getTime()));
                
                if(amLov != null){
                    XxGamMaResponsibilityAppLovVORowImpl respRow = amLov.getResponsibilityAppById(responsabilityId);
-                   if(respRow != null){
+                   if(respRow != null){//TODO Important: 05 VALIDACION RESPO
+                   System.out.println("RESPO: "+responsabilityKey.toUpperCase().trim().toString()+" ==== "+respRow.getResponsibilityKey().toUpperCase().trim().toString());
                        if(responsabilityKey.toUpperCase().trim().equals(respRow.getResponsibilityKey().toUpperCase().trim())){
                            isSuccess = true;
                        }
