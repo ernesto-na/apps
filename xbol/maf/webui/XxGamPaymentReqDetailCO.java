@@ -46,9 +46,10 @@ public class XxGamPaymentReqDetailCO extends OAControllerImpl
                              if (userCurrency.length()<4){          
                                 if(userCurrency.equals("MXN")){
                                     currencyChoiceBean.setValue(pageContext,userCurrency);
-                                    currencyChoiceBean.setDisabled(false);
+                                    currencyChoiceBean.setDisabled(true);
                                    }else{
-                                       currencyChoiceBean.setDisabled(false);
+                                       currencyChoiceBean.setDisabled(true);
+                                       currencyChoiceBean.setValue(pageContext,userCurrency);
                                        
                                    }
                               }
