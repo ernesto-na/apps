@@ -1201,7 +1201,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
     }
 
     /**
-     * Obtiene los datos de la responsabilidad de la aplicaciÃ³n por id de responsabilidad
+     * Obtiene los datos de la responsabilidad de la aplicacion por id de responsabilidad
      * @param responsibilityId contiene el id de la responsabilidad
      * @return devuelve el registro con datos de la responsabilidad
      */
@@ -1211,6 +1211,8 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
         if(responsibilityId != null){
             
             XxGamMaResponsibilityAppLovVOImpl respImpl = getXxGamMaResponsibilityAppLovVO1();
+            
+            System.out.println("==================================="+respImpl.getValue("AM_ANTICIPOS_INTERNACIONAL"));
             if(respImpl != null){
                 respImpl.setSearchResponsibilityApp(responsibilityId);
                 

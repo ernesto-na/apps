@@ -16,6 +16,7 @@ public class XxGamConstantsUtil
     public static final String FLIGHT_ID = "FlightIdAdvance";
     public static final String FLIGHT_ID_FRANCHISE = "FlightIdFranchise";
     public static final String RESPONSABILITY_EMPLOYEE = "GAM_ANTICIPOS_EMPLEADOS";
+    //public static final String RESPONSIBILITY_EMPLOYEE_INT="OA FRAMEWORK TOOLBOX TUTORIAL";
     public static final String RESPONSABILITY_APPROVER = "GAM_ANTICIPOS_APROBADOR";
     public static final String RESPONSABILITY_OFFICE_TICKET = "GAM_OFICINA_BOLETOS";
     public static final String RESPONSABILITY_AUDITOR = "GAM_ANTICIPOS_AUDITOR";

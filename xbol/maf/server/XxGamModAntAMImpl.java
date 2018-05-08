@@ -5350,8 +5350,8 @@ sum.add(amountAux);
             }
 
             boolean isFranchise = false;
-            String vcLookupType = null;
-            if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)) {
+            String vcLookupType = null;//TODO 08 cambiar respo Internacional
+            if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)|| "AM_ANTICIPOS_INTERNACIONAL".equals(responsibility)) {
                 vcLookupType = 
                         XxGamConstantsUtil.LOOKUP_TYPE_TARJETA_VIRTUAL_COMISION;
             } else if (XxGamConstantsUtil.RESPONSABILITY_FRANCHISE.equals(responsibility) || 

@@ -181,7 +181,7 @@ public class XxGamPaymentInitAdvanceCO extends OAControllerImpl {
         if (pageContext == null || webBean == null)
             return;
 
-        //setea los componentes por responsabilidad
+        //setea los componentes por responsabilidad   --TODO O5-B
         if (XxGamMAnticiposUtil.validatesResponsability(pageContext, webBean, 
                                                         new Number(pageContext.getResponsibilityId()), 
                                                         XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE)) { //Aplica para solicitudes
