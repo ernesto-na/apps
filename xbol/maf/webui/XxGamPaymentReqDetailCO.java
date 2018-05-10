@@ -29,7 +29,7 @@ public class XxGamPaymentReqDetailCO extends OAControllerImpl
         String errorCurrency="";
         
         if(pageContext != null && webBean != null)
-        {
+        {                                                               /* TODO 09 RESPO HARDCODE */
             pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityFlight", "true");
             pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityDetail", "false");
             if(XxGamMAnticiposUtil.validatesResponsability(pageContext, webBean, new Number(pageContext.getResponsibilityId()), "GAM_ANTICIPOS_EMPLEADOS"))

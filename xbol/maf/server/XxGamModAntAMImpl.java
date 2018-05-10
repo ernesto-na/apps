@@ -24,6 +24,8 @@ import oracle.apps.fnd.framework.server.OADBTransaction;
 import oracle.apps.fnd.framework.webui.OAPageContext;
 import oracle.apps.fnd.framework.webui.beans.OAWebBean;
 
+import oracle.apps.fnd.framework.webui.beans.message.OAMessageChoiceBean;
+
 import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSetIterator;
@@ -5308,6 +5310,19 @@ sum.add(amountAux);
 
         System.out.println("Finaliza validacion cancelacion de boletos capa AM");
     }
+/**
+ * Obtener la descripcion de la moneda
+ */
+ private String setCurrencyDesc(OAPageContext pageContext, OAWebBean webBean)
+  {
+      String currencyDesc = null;
+      OAMessageChoiceBean currencyChoiceBean = (OAMessageChoiceBean)webBean.findChildRecursive("CurrencyCodeEditAll");
+          currencyDesc = currencyChoiceBean.getSelectionText(pageContext);
+      return currencyDesc;
+  }
+
+
+
 
     /** Metodo Sobrecargado para incluir OAWebBean
      * Inicializa el registro de una nueva solicitud de anticipos, asignando los datos del
@@ -5432,10 +5447,16 @@ sum.add(amountAux);
                                                     if (costCenterRow.getCurrencyCode() != 
                                                         null) {
                                                         generalReqRow.setCurrencyCode(costCenterRow.getCurrencyCode());
+                                                        System.out.println("C_C :"+costCenterRow.getCurrencyCode().toString());
                                                     }
                                                     if (costCenterRow.getCurrencyName() != 
                                                         null) {
-                                                        generalReqRow.setCurrencyDesc(costCenterRow.getCurrencyName());
+                                                        //generalReqRow.setCurrencyDesc(costCenterRow.getCurrencyName()); //TODO 0:ll  armar correctamente el metodo de moneda
+                                                       String userCurrency="test--";
+                                                         userCurrency=XxGamMAnticiposUtil2.getDivisaDesc(pageContext, webBean);
+                                                       System.out.println("-->test_currency_desc"+userCurrency);
+                                                         generalReqRow.setCurrencyDesc(userCurrency);
+                                                        System.out.println("C_N :"+costCenterRow.getCurrencyName().toString());
                                                     }
                                                     /// Agregado para llenar el campo de Unidad Operativa 08/06/2015
                                                     System.out.println("Agregado para llenar el campo de Unidad Operativa 08/06/2015");

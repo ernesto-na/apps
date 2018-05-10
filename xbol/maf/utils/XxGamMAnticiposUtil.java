@@ -636,6 +636,7 @@ public class XxGamMAnticiposUtil {
      * @param pageContext contiene el objeto OAPageContext
      * @param webBean contiene el objeto OAWebBean
      */
+     //TODO 10: searchCostCenterLoc
     public static void searchCostCenterLovVO1(Number personId,
                                               String responsability,
                                               OAPageContext pageContext,
