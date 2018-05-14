@@ -781,7 +781,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                 }
                 /**
                  * @Author EAB 
-                 * Se comento el código, debido a que la parte de arriba en el hasNext() ya valida que traiga o no registros
+                 * Se comento el codigo, debido a que la parte de arriba en el hasNext() ya valida que traiga o no registros
                  */
                /* 
                  //costCenterImpl.getRowSetIterators();

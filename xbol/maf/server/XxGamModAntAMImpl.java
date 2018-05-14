@@ -5439,6 +5439,8 @@ sum.add(amountAux);
                                                     if (costCenterRow.getVcMeaning() != 
                                                         null) {
                                                         generalReqRow.setVirtualCard(costCenterRow.getVcMeaning());
+                                                        System.out.println("Tarj Vrt: "+costCenterRow.getVcMeaning().toString());
+                                                    
                                                     }
                                                     if (costCenterRow.getVcMeaningxx() != 
                                                         null) {
@@ -5528,6 +5530,7 @@ sum.add(amountAux);
                                             null && 
                                             generalReqRow.getVirtualCard() != 
                                             null && isInitSuccess) {
+                                            System.out.println("VC: "+generalReqRow.getVirtualCard().toString());
                                             isInitSuccess = true;
                                         }
                                     }
