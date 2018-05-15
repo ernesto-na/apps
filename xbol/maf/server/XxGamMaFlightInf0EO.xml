@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="XxGamMaFlightInf0EO"
+   DBObjectType="table"
+   DBObjectName="XXGAM_MA_FLIGHT_INFO"
+   AliasName="XxGamMaFlightInf0EO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Init|Access" />
+   </DesignTime>
+   <Attribute
+      Name="Id"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_FLIGHT_INFO"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TicketPId"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="TICKET_P_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TravelingFrom"
+      IsNotNull="true"
+      Precision="200"
+      ColumnName="TRAVELING_FROM"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="200" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TravelingTo"
+      IsNotNull="true"
+      Precision="200"
+      ColumnName="TRAVELING_TO"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="200" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DepartureDate"
+      IsNotNull="true"
+      ColumnName="DEPARTURE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ReturnDate"
+      IsNotNull="true"
+      ColumnName="RETURN_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_FLIGHT_INFO" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_FLIGHT_INFO"
+      HistoryColumn="DateHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_FLIGHT_INFO"
+      HistoryColumn="UserHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_FLIGHT_INFO"
+      HistoryColumn="UserHistory" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="XxGamMaTicketPEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0ToXxGamMaTicketPAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0ToXxGamMaTicketPAO.XxGamMaTicketPEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0ToXxGamMaTicketPAO.XxGamMaFlightInf0EO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPEOImpl" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaRuteFlightEO1"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO.XxGamMaRuteFlightEO1"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO.XxGamMaFlightInf0EO1"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEOImpl" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaRuteFlightEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO.XxGamMaRuteFlightEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO.XxGamMaFlightInf0EO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC00271518" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271518" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271519" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TICKET_P_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271519" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271520" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingFrom" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_FROM&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271520" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271521" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingTo" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_TO&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271521" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271522" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.DepartureDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;DEPARTURE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271522" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271523" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.ReturnDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;RETURN_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271523" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271524" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271524" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00271525" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00271525" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277657" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277657" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277658" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TICKET_P_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277658" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277659" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingFrom" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_FROM&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277659" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277660" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingTo" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_TO&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277660" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277661" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.DepartureDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;DEPARTURE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277661" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277662" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.ReturnDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;RETURN_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277662" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277663" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277663" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277664" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277664" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288214" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288214" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288215" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TICKET_P_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288215" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288216" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingFrom" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_FROM&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288216" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288217" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingTo" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_TO&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288217" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288218" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.DepartureDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;DEPARTURE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288218" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288219" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.ReturnDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;RETURN_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288219" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288220" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288220" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00288221" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00288221" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008102" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008102" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008103" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TICKET_P_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008103" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008104" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingFrom" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_FROM&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008104" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008105" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TravelingTo" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRAVELING_TO&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008105" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008106" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.DepartureDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;DEPARTURE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008106" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008107" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.ReturnDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;RETURN_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008107" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008108" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008108" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008109" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008109" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaFlightInf0Pk" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_FLIGHT_INFO_PK" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaFlightInf0XxgaFk1" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXGAM_MA_TICKET_P_PK" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_FLIGHT_INFO_XXGA_FK1" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="fk_XxGamMaFlightInf0EO" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EO.TicketPId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="SYS_C00271919" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="FK_XX_GAM_MA_FLIGHT_INF0EO" />
+      </DesignTime>
+   </Key>
+</Entity>

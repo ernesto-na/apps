@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaTemplatePaymentLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentLovVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentLovVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT exr.report_type template_desc,
+       exr.expense_report_id template_Id,
+       combinations.code_combination_id code_combination_id,
+       exr.org_id,
+       (select hou.name
+          from  HR_OPERATING_UNITS hou
+           where hou.organization_id = exr.org_id) unidad_operativa
+ FROM  ap_expense_reports_all exr,
+       gl_code_combinations combinations
+ WHERE 1 = 1
+   AND exr.web_enabled_flag = 'Y'
+   AND trunc(SYSDATE) BETWEEN trunc(SYSDATE) AND NVL(exr.inactive_date, to_date('31/12/4712','DD/MM/RRRR'))
+   AND combinations.segment3 =  substr(exr.description,1, instr(exr.description,'-')-1)
+   AND exr.web_enabled_flag = 'Y'
+   AND trunc(SYSDATE) BETWEEN trunc(SYSDATE) AND NVL(exr.inactive_date, to_date('31/12/4712','DD/MM/RRRR'))
+   AND combinations.segment3 =  substr(exr.description,1, instr(exr.description,'-')-1)
+   AND exr.report_type LIKE '98%'   
+  /* AND EXISTS (select 'Y' 
+                 from  HR_OPERATING_UNITS hou
+                where hou.organization_id = exr.org_id
+                  and substr(hou.name,1,2) = nvl(:shortOrgName,substr(hou.name,1,2))
+                  ) */
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="TemplateDesc"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TEMPLATE_DESC"
+      Expression="TEMPLATE_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TemplateId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TEMPLATE_ID"
+      Expression="TEMPLATE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CodeCombinationId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CODE_COMBINATION_ID"
+      Expression="CODE_COMBINATION_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnidadOperativa"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UNIDAD_OPERATIVA"
+      Expression="UNIDAD_OPERATIVA"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="ExpenseReportId" />
+   </AttrArray>
+</ViewObject>

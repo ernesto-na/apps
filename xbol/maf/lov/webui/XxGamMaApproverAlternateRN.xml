@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_1312" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" advancedSearchAllowed="true" amDefName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAM">
+   <ui:contents>
+      <oa:table name="XxGamMaApproverAlternateRN" id="XxGamMaApproverHierarchyLovVO2">
+         <ui:contents>
+            <oa:formValue id="ApproverId" dataType="NUMBER" prompt="ApproverId" viewName="XxGamMaApproverHierarchyLovVO2" viewAttr="ApproverId"/>
+            <oa:messageStyledText id="ApproverFullName" dataType="VARCHAR2" prompt="Full Name" viewName="XxGamMaApproverHierarchyLovVO2" viewAttr="ApproverFullName" maximumLength="240" queryable="true" sortState="ascending" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="ApproverFirtName" dataType="VARCHAR2" prompt="First Name" viewName="XxGamMaApproverHierarchyLovVO2" viewAttr="ApproverFirtName" maximumLength="150"/>
+            <oa:messageStyledText id="ApproverLastName" dataType="VARCHAR2" prompt="Last Name" viewName="XxGamMaApproverHierarchyLovVO2" viewAttr="ApproverLastName" maximumLength="150"/>
+            <oa:messageStyledText id="ApproverJobName" dataType="VARCHAR2" prompt="Approver Job" viewName="XxGamMaApproverHierarchyLovVO2" viewAttr="ApproverJobName" maximumLength="240"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

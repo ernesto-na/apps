@@ -1,0 +1,208 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamPaymentInitAdvancePG" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..PageLayoutRN...windowTitle" translate="yes" maxbytes="4000" maxwidth="100" size-unit="char">
+            <source>Initial page of advance payment requests</source>
+            <target>Página Inicial de Solicitudes de Anticipo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">windowTitle</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..PageLayoutRN...title" translate="yes" maxbytes="4000" maxwidth="4000" size-unit="char">
+            <source>Advance payments requests</source>
+            <target>Solicitudes de Anticipo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">pageLayout</prop>
+               <prop prop-type="attributeName">title</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..irCreateReq...prompt" translate="yes" maxbytes="4000" maxwidth="77" size-unit="char">
+            <source>Create Advance payments Request</source>
+            <target>Crear Solicitud de Anticipo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">submitButton</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..irCreateReq1...prompt" translate="yes" maxbytes="4000" maxwidth="77" size-unit="char">
+            <source>Create Franchise Request</source>
+            <target>Crear Solicitud de Franquicia</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">submitButton</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..solicitudAnticiposCont30RN...text" translate="yes" maxbytes="4000" maxwidth="72" size-unit="char">
+            <source>Requests advance payment in process or processed</source>
+            <target>Solicitudes de anticipo en proceso o procesadas</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">defaultSingleColumn</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..XxGamAdvanceRequestVO1...text" translate="yes" maxbytes="4000" maxwidth="97" size-unit="char">
+            <source>Requests of the advance payment of the last 30 days</source>
+            <target>Solicitudes de anticipo de los últimos 30 días</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">table</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..NumberPayment...text" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Number of Document</source>
+            <target>Número de Documento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">link</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..RequestPaymentDate...prompt" translate="yes" maxbytes="4000" maxwidth="62" size-unit="char">
+            <source>Execution date in advance</source>
+            <target>Fecha de Ejecución del Anticipo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..EstatusRequest11...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Status</source>
+            <target>Estatus</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..TotalPayment...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Total Amount</source>
+            <target>Importe Total</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..DescriptionPurpose...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Purpose</source>
+            <target>Propósito</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..statusFranchise...prompt" translate="yes" maxbytes="4000" maxwidth="40" size-unit="char">
+            <source>Status</source>
+            <target>Status</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..Notifications...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Notifications</source>
+            <target>Notificaciones</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..duplicate...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Duplicate</source>
+            <target>Duplicar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..actualizarSolicAntRN...text" translate="yes" maxbytes="4000" maxwidth="75" size-unit="char">
+            <source>Upgrade Advance payment requests in progess</source>
+            <target>Actualización de solicitudes de anticipo en progreso</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">defaultDoubleColumn</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..NumberPayment1...text" translate="yes" maxbytes="4000" maxwidth="45" size-unit="char">
+            <source>Number of Document</source>
+            <target>Número de Documento</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">link</prop>
+               <prop prop-type="attributeName">text</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..RequestPaymentDate1...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Date of Request</source>
+            <target>Fecha de Solicitud</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..EstatusRequest1...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>State</source>
+            <target>Estatus</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..TotalPayment1...prompt" translate="yes" maxbytes="4000" maxwidth="30" size-unit="char">
+            <source>Total Amount</source>
+            <target>Importe Total</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..DescriptionPurpose1...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Purpose</source>
+            <target>Propósito</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..StatusFra...prompt" translate="yes" maxbytes="4000" maxwidth="40" size-unit="char">
+            <source>Status</source>
+            <target>Status</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageTextInput</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..updateRow...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Update</source>
+            <target>Actualizar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..duplicate1...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Duplicate</source>
+            <target>Duplicar</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..True...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Remove</source>
+            <target>Remover</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentInitAdvancePG..False...prompt" translate="yes" maxbytes="4000" maxwidth="15" size-unit="char">
+            <source>Remove</source>
+            <target>Remover</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">image</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

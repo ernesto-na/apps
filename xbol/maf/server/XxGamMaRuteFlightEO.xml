@@ -1,0 +1,615 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="XxGamMaRuteFlightEO"
+   DBObjectType="table"
+   DBObjectName="APPLSYS.FND_LOOKUP_VALUES"
+   AliasName="XxGamMaRuteFlightEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <Attribute
+      Name="LookupType"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_TYPE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Language"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LANGUAGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LookupCode"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Meaning"
+      IsNotNull="true"
+      Precision="80"
+      ColumnName="MEANING"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Description"
+      Precision="240"
+      ColumnName="DESCRIPTION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="EnabledFlag"
+      IsNotNull="true"
+      Precision="1"
+      ColumnName="ENABLED_FLAG"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="StartDateActive"
+      ColumnName="START_DATE_ACTIVE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="EndDateActive"
+      ColumnName="END_DATE_ACTIVE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SourceLang"
+      IsNotNull="true"
+      Precision="4"
+      ColumnName="SOURCE_LANG"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SecurityGroupId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="SECURITY_GROUP_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ViewApplicationId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="VIEW_APPLICATION_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TerritoryCode"
+      Precision="2"
+      ColumnName="TERRITORY_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="AttributeCategory"
+      Precision="30"
+      ColumnName="ATTRIBUTE_CATEGORY"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute1"
+      Precision="150"
+      ColumnName="ATTRIBUTE1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute2"
+      Precision="150"
+      ColumnName="ATTRIBUTE2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute3"
+      Precision="150"
+      ColumnName="ATTRIBUTE3"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute4"
+      Precision="150"
+      ColumnName="ATTRIBUTE4"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute5"
+      Precision="150"
+      ColumnName="ATTRIBUTE5"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute6"
+      Precision="150"
+      ColumnName="ATTRIBUTE6"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute7"
+      Precision="150"
+      ColumnName="ATTRIBUTE7"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute8"
+      Precision="150"
+      ColumnName="ATTRIBUTE8"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute9"
+      Precision="150"
+      ColumnName="ATTRIBUTE9"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute10"
+      Precision="150"
+      ColumnName="ATTRIBUTE10"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute11"
+      Precision="150"
+      ColumnName="ATTRIBUTE11"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute12"
+      Precision="150"
+      ColumnName="ATTRIBUTE12"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute13"
+      Precision="150"
+      ColumnName="ATTRIBUTE13"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute14"
+      Precision="150"
+      ColumnName="ATTRIBUTE14"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute15"
+      Precision="150"
+      ColumnName="ATTRIBUTE15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Tag"
+      Precision="150"
+      ColumnName="TAG"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LeafNode"
+      Precision="1"
+      ColumnName="LEAF_NODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="APPLSYS.FND_LOOKUP_VALUES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="XxGamMaFlightInf0EO1"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO.XxGamMaFlightInf0EO1"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaRouteFlightToXxGamMAFlightToAO.XxGamMaRuteFlightEO1"
+      Type="oracle.jbo.RowIterator" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaFlightInf0EO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO.XxGamMaFlightInf0EO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMarouteFlightToXxGamMAFlightFromAO.XxGamMaRuteFlightEO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaFlightInf0EOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC0011508" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LookupType" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LOOKUP_TYPE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011508" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011509" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.Language" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LANGUAGE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011509" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011510" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LookupCode" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LOOKUP_CODE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011510" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011511" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.Meaning" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;MEANING&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011511" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011512" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.EnabledFlag" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ENABLED_FLAG&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011512" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011513" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011513" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011514" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011514" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011515" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011515" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011516" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011516" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011517" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.SourceLang" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SOURCE_LANG&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011517" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011518" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.SecurityGroupId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SECURITY_GROUP_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011518" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC0011519" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.ViewApplicationId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;VIEW_APPLICATION_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C0011519" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgammaruteflighteoPrimaryKey" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LookupType" />
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.LookupCode" />
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaRuteFlightEO.Language" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAMMARUTEFLIGHTEO_PRIMARY_KE" />
+      </DesignTime>
+   </Key>
+</Entity>

@@ -1,0 +1,768 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamRequestConsultationVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxGamRequestConsultationVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.server.XxGamRequestConsultationVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT DISTINCT XxGamMaGeneralReqEO.ID,
+      XxGamMaGeneralReqEO.NUMBER_PAYMENT,
+      XxGamMaGeneralReqEO.EMPLOYEE_ID, 
+      XxGamMaGeneralReqEO.REQUEST_PAYMENT_DATE, 
+      XxGamMaGeneralReqEO.STATUS_REQUEST, 
+      XxGamMaGeneralReqEO.TOTAL_PAYMENT, 
+      XxGamMaGeneralReqEO.PURPOSE, 
+      XxGamMaGeneralReqEO.APPROVAL_DATE, 
+      XxGamMaGeneralReqEO.APPROVER_ID, 
+      XxGamMaGeneralReqEO.COST_CENTER,
+      XxGamMaGeneralReqEO.COST_CENTER_FLEX,
+      XxGamMaGeneralReqEO.GROUP_PAYMENT, 
+      XxGamMaGeneralReqEO.TEMPLATE_PAYMENT, 
+      XxGamMaGeneralReqEO.CURRENCY_CODE, 
+     substr(XxGamMaGeneralReqEO.VIRTUAL_CARD,1,length(XxGamMaGeneralReqEO.VIRTUAL_CARD)-2) || 'XX' VIRTUAL_CARD, 
+      substr(XxGamMaGeneralReqEO.VIRTUAL_CARD,1,length(XxGamMaGeneralReqEO.VIRTUAL_CARD)-2) || 'XX' VIRTUAL_CARD_MASK,
+      XxGamMaGeneralReqEO.STATUS_NOTIFICATION, 
+      XxGamMaGeneralReqEO.CREATION_DATE, 
+      XxGamMaGeneralReqEO.CREATED_BY, 
+      XxGamMaGeneralReqEO.LAST_UPDATE_LOGIN, 
+      XxGamMaGeneralReqEO.LAST_UPDATED_BY, 
+      XxGamMaGeneralReqEO.LAST_UPDATE_DATE,       
+      'N' IS_VIEW,
+      PropositoSolicitud.MEANING PURPOSE_DESCRIPTION,
+      EstatusSolicitud.MEANING STATUS_REQUEST_DSC,
+      NVL(EstatusSolicitud.MEANING, EstatusFranquicia.MEANING) STATUS_DESCRIPTION,
+      CurrencyCode.NAME CURRENCY_NAME,
+      (SELECT NVL(FULL_NAME,FIRST_NAME||' '||LAST_NAME)
+       FROM per_all_people_f
+       WHERE 1 = 1 
+        AND person_id =XxGamMaGeneralReqEO.EMPLOYEE_ID
+        AND trunc(SYSDATE) BETWEEN effective_start_date AND effective_end_date
+      )EMPLOYE_NAME,
+      (
+       SELECT NVL(FULL_NAME,FIRST_NAME||' '||LAST_NAME)
+       FROM per_all_people_f 
+       WHERE 1 = 1 
+        AND person_id =XxGamMaGeneralReqEO.APPROVER_ID
+        AND trunc(SYSDATE) BETWEEN effective_start_date AND effective_end_date
+      )APPROVER_NAME,
+      (
+       SELECT NVL(FULL_NAME,FIRST_NAME||' '||LAST_NAME)
+       FROM per_all_people_f 
+       WHERE 1 = 1 
+        AND person_id =XxGamMaGeneralReqEO.APPROVER_ALT_ID
+        AND trunc(SYSDATE) BETWEEN effective_start_date AND effective_end_date
+      )APPROVER_NAME_ALT,
+      EstatusBoleto.MEANING STATUS_TICKET,
+      exr.report_type,
+      XxGamMaGeneralReqEO.STATUS_FRANCHISE,
+      EstatusFranquicia.MEANING STATUS_FRANCHISE_DSC,
+      combinations.segment3 || '-' || combinations.segment4 segment3,
+      ticket.ID TICKET_ID,
+      ticket.BENEFICIARY,
+      ticket.COMPANY,
+      benefits.MEANING BENEFITS_DSC,
+      relationship.MEANING RELATION_SHIP_DSC,
+      CASE
+      WHEN (ticket.GENERAL_REQ_ID IS NOT NULL) THEN 'Y'
+      ELSE 'N'
+      END AS IS_FRANCHISE, 
+      XxGamMaGeneralReqEO.OPERATING_UNIT
+FROM XXGAM_MA_GENERAL_REQ XxGamMaGeneralReqEO, 
+     FND_LOOKUP_VALUES PropositoSolicitud,
+     FND_LOOKUP_VALUES EstatusSolicitud,
+     fnd_currencies_tl CurrencyCode,
+     FND_LOOKUP_VALUES EstatusBoleto,
+     AP_EXPENSE_REPORTS_ALL exr,
+     FND_LOOKUP_VALUES EstatusFranquicia,
+     per_all_people_f people,
+     per_all_assignments_f assignament,
+     ap_suppliers suppliers,
+     gl_code_combinations combinations,
+     gl_ledgers l,
+     fnd_currencies_tl currenciestl,
+     fnd_currencies currencies,
+     XXGAM_MA_TICKET_P ticket,
+     FND_LOOKUP_VALUES benefits,
+     FND_LOOKUP_VALUES relationship
+WHERE 1 = 1
+  AND CurrencyCode.CURRENCY_CODE (+) =XxGamMaGeneralReqEO.CURRENCY_CODE
+  AND CurrencyCode.LANGUAGE(+) = USERENV('LANG')
+  /** LOOKUPS **/
+  AND PropositoSolicitud.LOOKUP_TYPE ='XXGAM_PROPOSITOS_SOLICITUD'
+  AND PropositoSolicitud.LOOKUP_CODE =XxGamMaGeneralReqEO.PURPOSE
+  AND PropositoSolicitud.LANGUAGE= USERENV('LANG')
+  AND PropositoSolicitud.ENABLED_FLAG ='Y'
+  AND PropositoSolicitud.VIEW_APPLICATION_ID = 200
+  /** LOOKUPS **/
+  AND EstatusFranquicia.LOOKUP_TYPE(+) ='XXGAM_STATUS_FRANCHISE'
+  AND EstatusFranquicia.LOOKUP_CODE(+) = XxGamMaGeneralReqEO.STATUS_FRANCHISE
+  AND EstatusFranquicia.LANGUAGE(+) = USERENV('LANG')
+  AND EstatusFranquicia.ENABLED_FLAG(+) = 'Y'
+  AND EstatusFranquicia.VIEW_APPLICATION_ID(+) = 200
+  AND NVL(TRIM(XxGamMaGeneralReqEO.STATUS_REQUEST), TRIM(XxGamMaGeneralReqEO.STATUS_FRANCHISE)) <> 'DELETED'
+  /** ESTATUS DE LA SOLICITUD **/
+  AND EstatusSolicitud.LOOKUP_TYPE(+) = 'EXPENSE REPORT STATUS'
+  AND EstatusSolicitud.LOOKUP_CODE(+) = XxGamMaGeneralReqEO.STATUS_REQUEST
+  AND EstatusSolicitud.LANGUAGE(+) = USERENV('LANG')
+  AND EstatusSolicitud.ENABLED_FLAG(+) ='Y'
+  AND EstatusBoleto.LOOKUP_TYPE(+) ='XXGAM_NOTIFICATION_REQ'
+  AND EstatusBoleto.LOOKUP_CODE(+) = XxGamMaGeneralReqEO.STATUS_NOTIFICATION
+  AND EstatusBoleto.LANGUAGE (+)= USERENV('LANG')
+  AND EstatusBoleto.ENABLED_FLAG (+)='Y'
+  AND exr.EXPENSE_REPORT_ID (+)= XxGamMaGeneralReqEO.TEMPLATE_PAYMENT
+  AND exr.inactive_date IS NULL
+  AND exr.web_enabled_flag (+) = 'Y'
+  AND people.person_id = XxGamMaGeneralReqEO.EMPLOYEE_ID
+  AND combinations.code_combination_id = XxGamMaGeneralReqEO.COST_CENTER
+  and people.person_id = assignament.person_id
+  and assignament.person_id = suppliers.employee_id
+  and assignament.default_code_comb_id = combinations.code_combination_id
+  and assignament.set_of_books_id = l.ledger_id 
+  and trunc(XxGamMaGeneralReqEO.REQUEST_PAYMENT_DATE) between people.effective_start_date and people.effective_end_date
+  and trunc(XxGamMaGeneralReqEO.REQUEST_PAYMENT_DATE) between   assignament.effective_start_date and assignament.effective_end_date
+  and suppliers.vendor_type_lookup_code = 'EMPLOYEE'
+  AND currencies.CURRENCY_CODE = l.currency_code
+  AND currenciestl.language = USERENV('LANG')
+  AND currenciestl.CURRENCY_CODE = currencies.CURRENCY_CODE
+  AND currencies.enabled_flag = 'Y'
+  AND trunc(SYSDATE) BETWEEN  NVL(currencies.start_date_active, trunc(sysdate)) and nvl(currencies.end_date_active,trunc(sysdate)+1)
+  AND XxGamMaGeneralReqEO.ID = ticket.GENERAL_REQ_ID(+)
+  AND ticket.BENEFITS = benefits.LOOKUP_CODE(+)
+  AND benefits.LOOKUP_TYPE(+) = 'FRANQUICIA_BENEFICIO'
+  AND benefits.enabled_flag(+) = 'Y'
+  AND benefits.language(+) = USERENV('LANG')
+  AND ticket.RELATIONSHIP = relationship.LOOKUP_CODE(+)
+  AND relationship.LOOKUP_TYPE(+) = 'FRANQUICIA_RELACION'
+  AND relationship.enabled_flag(+) = 'Y'
+  AND relationship.language(+) = USERENV('LANG')
+  ORDER BY XxGamMaGeneralReqEO.REQUEST_PAYMENT_DATE DESC
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="Id"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="10"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ID"
+      Expression="ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NumberPayment"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="NUMBER_PAYMENT"
+      Expression="NUMBER_PAYMENT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="EMPLOYEE_ID"
+      Expression="EMPLOYEE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RequestPaymentDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="REQUEST_PAYMENT_DATE"
+      Expression="REQUEST_PAYMENT_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusRequest"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_REQUEST"
+      Expression="STATUS_REQUEST"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TotalPayment"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="14"
+      Scale="2"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TOTAL_PAYMENT"
+      Expression="TOTAL_PAYMENT"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Purpose"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="500"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PURPOSE"
+      Expression="PURPOSE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="500" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="APPROVAL_DATE"
+      Expression="APPROVAL_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="APPROVER_ID"
+      Expression="APPROVER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenter"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="COST_CENTER"
+      Expression="COST_CENTER"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostCenterFlex"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COST_CENTER_FLEX"
+      Expression="COST_CENTER_FLEX"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="GroupPayment"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="GROUP_PAYMENT"
+      Expression="GROUP_PAYMENT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TemplatePayment"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TEMPLATE_PAYMENT"
+      Expression="TEMPLATE_PAYMENT"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="5"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY_CODE"
+      Expression="CURRENCY_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="5" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VirtualCard"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIRTUAL_CARD"
+      Expression="VIRTUAL_CARD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VirtualCardMask"
+      IsPersistent="false"
+      Precision="102"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIRTUAL_CARD_MASK"
+      Expression="VIRTUAL_CARD_MASK"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="102" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusNotification"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="3"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_NOTIFICATION"
+      Expression="STATUS_NOTIFICATION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="3" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="CREATION_DATE"
+      Expression="CREATION_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CREATED_BY"
+      Expression="CREATED_BY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LAST_UPDATE_LOGIN"
+      Expression="LAST_UPDATE_LOGIN"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LAST_UPDATED_BY"
+      Expression="LAST_UPDATED_BY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="LAST_UPDATE_DATE"
+      Expression="LAST_UPDATE_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsView"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="IS_VIEW"
+      Expression="IS_VIEW"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PurposeDescription"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PURPOSE_DESCRIPTION"
+      Expression="PURPOSE_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusRequestDsc"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_REQUEST_DSC"
+      Expression="STATUS_REQUEST_DSC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDescription"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DESCRIPTION"
+      Expression="STATUS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY_NAME"
+      Expression="CURRENCY_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMPLOYE_NAME"
+      Expression="EMPLOYE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_NAME"
+      Expression="APPROVER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproverNameAlt"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVER_NAME_ALT"
+      Expression="APPROVER_NAME_ALT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusTicket"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_TICKET"
+      Expression="STATUS_TICKET"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReportType"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="REPORT_TYPE"
+      Expression="REPORT_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusFranchise"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_FRANCHISE"
+      Expression="STATUS_FRANCHISE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusFranchiseDsc"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_FRANCHISE_DSC"
+      Expression="STATUS_FRANCHISE_DSC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Segment3"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SEGMENT3"
+      Expression="SEGMENT3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TicketId"
+      IsPersistent="false"
+      Precision="14"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TICKET_ID"
+      Expression="TICKET_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Beneficiary"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BENEFICIARY"
+      Expression="BENEFICIARY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Company"
+      IsPersistent="false"
+      Precision="200"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COMPANY"
+      Expression="COMPANY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="200" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BenefitsDsc"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BENEFITS_DSC"
+      Expression="BENEFITS_DSC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RelationShipDsc"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="RELATION_SHIP_DSC"
+      Expression="RELATION_SHIP_DSC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="IsFranchise"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="IS_FRANCHISE"
+      Expression="IS_FRANCHISE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="5" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OperatingUnit"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="OPERATING_UNIT"
+      Expression="OPERATING_UNIT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BlnIsFranchise"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="isDisclosure"
+      IsSelected="false"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.Boolean"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="BIT" >
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="Id" />
+   </AttrArray>
+</ViewObject>

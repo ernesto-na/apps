@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="xxgam.oracle.apps.xbol.maf.lov.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="XxGamMaAllApproverHierarchyLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaAllApproverHierarchyLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaApproverByEmployeeIdLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverByEmployeeIdLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaApproverHierarchyLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaApproverHierarchyLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaBenefitsLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaBenefitsLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaCategoriaGastoLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCategoriaGastoLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaChiefByPositionIdLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaChiefByPositionIdLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaClassTicketLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaClassTicketLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaCostCenterByPersonIdLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterByPersonIdLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaCostCenterFlexLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterFlexLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaCurrencyConversionLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyConversionLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaCurrencyLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaFlightRouteLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaFlightRouteLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaLimitScheduleOptionVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLimitScheduleOptionVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaLookupGenericLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLookupGenericLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaOperatingUnitLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaOperatingUnitLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPaymentTimesLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaPaymentTimesLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaPersonDataLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaPersonDataLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaRelationShipLovVo"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaRelationShipLovVo"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaResponsibilityAppLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaResponsibilityAppLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaStatusNotificationTicketOfficeLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaStatusNotificationTicketOfficeLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaSupervisorLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaSupervisorLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTemplatePaymentFlexLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentFlexLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTemplatePaymentLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTemplatePaymentLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketClassLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketClassLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketOfficeLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketOfficeLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTicketRateLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTicketRateLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTypeEmissionLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypeEmissionLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTypePaymentLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaTypeRequestLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypeRequestLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamMaUserDataLovVO"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaUserDataLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxgamMaVCMeanig"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxgamMaVCMeanig"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="XxGamModAntLovAM"
+      FullName="xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAM"
+      ObjectType="AppModule" >
+   </Containee>
+</JboPackage>

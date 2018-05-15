@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaTypePaymentLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVOImpl"
+   ComponentInterface="xxgam.oracle.apps.xbol.maf.lov.server.common.XxGamMaTypePaymentLovVO"
+   ClientProxyName="xxgam.oracle.apps.xbol.maf.lov.server.client.XxGamMaTypePaymentLovVOClient"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select ant.parameter_id type_payment_id,
+       ant.expense_report_id template_payment,
+       ant.flex_concactenated, 
+       ant.prompt type_payment_desc
+from ap_expense_reports_all tem, ap_expense_report_params_all ant
+where 1 = 1
+and tem.expense_report_id = ant.expense_report_id
+and tem.web_enabled_flag = 'Y'
+and SYSDATE BETWEEN SYSDATE AND NVL(ant.end_date, SYSDATE)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="TypePaymentId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TYPE_PAYMENT_ID"
+      Expression="TYPE_PAYMENT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TemplatePayment"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TEMPLATE_PAYMENT"
+      Expression="TEMPLATE_PAYMENT"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FlexConcactenated"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FLEX_CONCACTENATED"
+      Expression="FLEX_CONCACTENATED"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TypePaymentDesc"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="40"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TYPE_PAYMENT_DESC"
+      Expression="TYPE_PAYMENT_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="40" />
+      </DesignTime>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="TypePaymentId" />
+   </AttrArray>
+</ViewObject>

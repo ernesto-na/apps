@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="XxgamMaTicketP2EO"
+   DBObjectType="synonym"
+   DBObjectName="XXGAM_MA_TICKET_P"
+   AliasName="XxgamMaTicketP2EO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <Attribute
+      Name="Id"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="PaymentReqId"
+      Precision="12"
+      Scale="0"
+      ColumnName="PAYMENT_REQ_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Pnr"
+      IsNotNull="true"
+      Precision="100"
+      ColumnName="PNR"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TicketOffice"
+      IsNotNull="true"
+      Precision="100"
+      ColumnName="TICKET_OFFICE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ContactPhone"
+      Precision="14"
+      ColumnName="CONTACT_PHONE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="14" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Email"
+      Precision="60"
+      ColumnName="EMAIL"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TypeEmission"
+      Precision="20"
+      ColumnName="TYPE_EMISSION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Folio"
+      Precision="20"
+      ColumnName="FOLIO"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="14"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="RowID"
+      IsUpdateable="false"
+      ColumnName="ROWID"
+      Type="oracle.jbo.domain.RowID"
+      ColumnType="ROWID"
+      SQLType="ROWID"
+      TableName="XXGAM_MA_TICKET_P"
+      PrimaryKey="true" >
+   </Attribute>
+   <Attribute
+      Name="GeneralReqId"
+      Precision="10"
+      Scale="0"
+      ColumnName="GENERAL_REQ_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Beneficiary"
+      Precision="100"
+      ColumnName="BENEFICIARY"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Relationship"
+      Precision="30"
+      ColumnName="RELATIONSHIP"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Benefits"
+      Precision="30"
+      ColumnName="BENEFITS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Company"
+      Precision="200"
+      ColumnName="COMPANY"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="200" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      Precision="14"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXGAM_MA_TICKET_P" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="XxGamMaPaymentReqEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO.XxGamMaPaymentReqEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaTicketPToXxGamMaPaymentReqAO.XxGamMaTicketPEO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEOImpl" >
+   </AccessorAttribute>
+   <AccessorAttribute
+      Name="XxGamMaPaymentReqEO"
+      Association="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO"
+      AssociationEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO.XxGamMaPaymentReqEO"
+      AssociationOtherEnd="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaTicketPAO.XxgamMaTicketP2EO"
+      Type="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC008095" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008095" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008096" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.Pnr" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;PNR&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008096" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008097" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.TicketOffice" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TICKET_OFFICE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008097" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008098" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.TypeEmission" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TYPE_EMISSION&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008098" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008099" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008099" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC008100" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C008100" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaTicketPFk" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXGAM_MA_GENERAL_REQ_PK" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_TICKET_P_FK" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxgamMaTicketPXxgamMFk1" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxgamMaTicketP2EO.PaymentReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXGAM_MA_PAYMENT_REQ_PK" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXGAM_MA_TICKET_P_XXGAM_M_FK1" />
+      </DesignTime>
+   </Key>
+</Entity>

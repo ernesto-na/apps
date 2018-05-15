@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PaymentReqReviewRN" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqReviewCO" windowTitle="Review and Payment Proposal" title="Review and Payment Proposal">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:labeledFieldLayout id="XxGamMaGeneralReqVO1" columns="2" viewLinkName="XxgamMaPaymentReqXxgaFk1Link1">
+               <ui:contents>
+                  <oa:messageStyledText id="FullNameEmployee" dataType="VARCHAR2" prompt="Full name employee" viewName="XxGamMaGeneralReqVO1" viewAttr="EmployeName" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="CostCenterDesc" dataType="VARCHAR2" prompt="Cost center" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="CostCenterFlex" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" prompt="Cost Center Alternate" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="CurrencyDesc" dataType="VARCHAR2" prompt="Reimbursement Currency" viewName="XxGamMaGeneralReqVO1" viewAttr="CurrencyDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="TypeTemplateDesc" dataType="VARCHAR2" prompt="Advance Payment Template" viewName="XxGamMaGeneralReqVO1" viewAttr="TypeTemplateDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="PurposeDesc" dataType="VARCHAR2" prompt="Purpose" viewName="XxGamMaGeneralReqVO1" viewAttr="PurposeDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="FullNameApprover" dataType="VARCHAR2" prompt="Full name approver" viewName="XxGamMaGeneralReqVO1" viewAttr="FullNameApprover" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="FullNameApproverAlt" dataType="VARCHAR2" prompt="Full name approver alternate" viewName="XxGamMaGeneralReqVO1" viewAttr="FullNameApproverAlt" styleClass="OraFieldText" rendered="${oa.XxGamMaGeneralReqVO1.IsVisibleApproverAlt}"/>
+                  <oa:messageStyledText id="VirtualCard" dataType="VARCHAR2" prompt="Virtual Card" viewName="XxGamMaGeneralReqVO1" viewAttr="VirtualCard" maximumLength="100" styleClass="OraFieldText" shortDesc="Virtual Card" rendered="false"/>
+                  <oa:messageStyledText id="VirtualCardXX" dataType="VARCHAR2" prompt="Virtual Card" viewName="XxGamMaGeneralReqVO1" viewAttr="VcMeaningxx" maximumLength="100" styleClass="OraFieldText" shortDesc="Virtual Card"/>
+                  <oa:messageStyledText id="NumberPayment" viewName="XxGamMaGeneralReqVO1" viewAttr="NumberPayment" prompt="Number of Document" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="DepartTime" viewName="XxGamMaGeneralReqVO1" viewAttr="DepartTime" prompt="Depart Time" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="ArrivalTime" viewName="XxGamMaGeneralReqVO1" viewAttr="ArrivalTime" prompt="Arrival Time" styleClass="OraFieldText"/>
+               </ui:contents>
+            </oa:labeledFieldLayout>
+            <oa:table id="XxGamMaPaymentReqVO2" text="Detail of Advance payment request">
+               <ui:contents>
+                  <oa:messageStyledText id="InitialDate" dataType="DATE" prompt="Initial date" viewName="XxGamMaPaymentReqVO2" viewAttr="InitialDate" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="FinalDate" dataType="DATE" prompt="Final date" viewName="XxGamMaPaymentReqVO2" viewAttr="FinalDate" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="TypePymentDesc" dataType="VARCHAR2" prompt="Advance Payment Type" viewName="XxGamMaPaymentReqVO2" viewAttr="TypePymentDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="Amount" dataType="NUMBER" prompt="Amount" viewName="XxGamMaPaymentReqVO2" viewAttr="Amount" maximumLength="14" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="CurrencyCodeDesc" dataType="VARCHAR2" prompt="Currency" viewName="XxGamMaPaymentReqVO2" viewAttr="CurrencyDesc" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="Justification" dataType="VARCHAR2" prompt="Justification" viewName="XxGamMaPaymentReqVO2" viewAttr="Justification" maximumLength="500" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="AmountMx" dataType="NUMBER" prompt="Amount Mx" viewName="XxGamMaPaymentReqVO2" viewAttr="AmountMx" maximumLength="14" styleClass="OraFieldText"/>
+                  <oa:switcher id="region1" prompt="View detail" viewName="XxGamMaPaymentReqVO2" viewAttr="IsDetail">
+                     <ui:case name="True">
+                        <oa:image id="True" source="/OA_MEDIA/export_enabled.gif">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="showDetailReq" id="fireAction21">
+                                 <ui:parameters>
+                                    <ui:parameter key="paymentId" value="${oa.XxGamMaPaymentReqVO2.Id}"/>
+                                    <ui:parameter key="OperatingUnit" value="${oa.XxGamMaGeneralReqVO1.OperatingUnit}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:image>
+                     </ui:case>
+                     <ui:case name="False">
+                        <oa:image id="False" source="/OA_MEDIA/export_disabled.gif"/>
+                     </ui:case>
+                  </oa:switcher>
+               </ui:contents>
+            </oa:table>
+            <oa:spacer id="spacerXx" height="10"/>
+            <oa:tableLayout id="BarButtons" hAlign="center">
+               <ui:contents>
+                  <oa:rowLayout id="RowBarButton">
+                     <ui:contents>
+                        <oa:cellFormat id="CellBarButton" hAlign="center" vAlign="middle">
+                           <ui:contents>
+                              <oa:button id="SaveButton" text="Save" use="/oracle/apps/fnd/attributesets/Buttons/Save">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="save" id="fireAction22"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                              <oa:spacer id="spacer1" height="1" width="20"/>
+                              <oa:button id="CancelButton" text="Cancel" serverUnvalidated="true" use="/oracle/apps/fnd/attributesets/Buttons/Cancel">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="cancel" unvalidated="true" id="fireAction23"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                              <oa:spacer id="spacer12" height="1" width="20"/>
+                              <oa:button id="ReserveFundsButton" text="Reserve Funds" prompt="Reserve Funds">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="reserveFunds" id="fireAction24"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                              <oa:spacer id="spacer13" height="1" width="20"/>
+                              <oa:button id="ReturnButton" text="Return" prompt="Return" serverUnvalidated="true">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="return" unvalidated="true" id="fireAction25"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                              <oa:spacer id="spacer11" height="1" width="20"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="CellButtonNav" hAlign="center" vAlign="middle">
+                           <ui:contents>
+                              <oa:pageButtonBar id="ButtonNavRN" extends="/xxgam/oracle/apps/xbol/maf/webui/XxGamPaymentReqPageButtonBarRN"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:tableLayout>
+            <oa:table id="XxGamMaVsMcpPeriodsAmountRN" rendered="false">
+               <ui:contents>
+                  <oa:messageStyledText id="PeriodName" dataType="VARCHAR2" prompt="Period Name" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="PeriodName" maximumLength="15"/>
+                  <oa:messageStyledText id="LastPeriodName" dataType="VARCHAR2" prompt="Last Period Name" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="LastPeriodName" maximumLength="15"/>
+                  <oa:messageStyledText id="StartDate" dataType="DATE" prompt="Start Date" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="StartDate"/>
+                  <oa:messageStyledText id="EndDate" dataType="DATE" prompt="End Date" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="EndDate"/>
+                  <oa:messageStyledText id="YearStartDate" dataType="DATE" prompt="Year Start Date" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="YearStartDate"/>
+                  <oa:messageStyledText id="QuarterStartDate" dataType="DATE" prompt="Quarter Start Date" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="QuarterStartDate"/>
+                  <oa:messageStyledText id="PeriodType" dataType="VARCHAR2" prompt="Period Type" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="PeriodType" maximumLength="15"/>
+                  <oa:messageStyledText id="PeriodYear" dataType="NUMBER" prompt="Period Year" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="PeriodYear" maximumLength="15"/>
+                  <oa:messageStyledText id="PeriodNum" dataType="NUMBER" prompt="Period Num" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="PeriodNum" maximumLength="15"/>
+                  <oa:messageStyledText id="QuarterNum" dataType="NUMBER" prompt="Quarter Num" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="QuarterNum" maximumLength="15"/>
+                  <oa:messageStyledText id="BAmount" dataType="NUMBER" prompt="BAmount" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="BAmount"/>
+                  <oa:messageStyledText id="EAmount" dataType="NUMBER" prompt="EAmount" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="EAmount"/>
+                  <oa:messageStyledText id="RAmount" dataType="NUMBER" prompt="RAmount" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="RAmount"/>
+                  <oa:messageStyledText id="TAmount" dataType="NUMBER" prompt="TAmount" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="TAmount"/>
+                  <oa:messageStyledText id="PeriodSetName" dataType="VARCHAR2" prompt="Period Set Name" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="PeriodSetName" maximumLength="200"/>
+                  <oa:messageStyledText id="ClosureStatus" dataType="VARCHAR2" prompt="Closure Status" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="ClosureStatus" maximumLength="20"/>
+                  <oa:messageStyledText id="AmountType" dataType="VARCHAR2" prompt="Amount Type" viewName="XxGamMaVsMcpPeriodsAmountVO1" viewAttr="AmountType" maximumLength="20"/>
+               </ui:contents>
+            </oa:table>
+            <oa:messageStyledText id="flexConcatenated" prompt="flexConcatenated" styleClass="OraFieldText" rendered="false"/>
+         </ui:contents>
+         <ui:location>
+            <oa:train id="TrainNavRN" extends="/xxgam/oracle/apps/xbol/maf/webui/XxGamPaymentReqTrainNavRN"/>
+         </ui:location>
+      </oa:pageLayout>
+   </content>
+</page>

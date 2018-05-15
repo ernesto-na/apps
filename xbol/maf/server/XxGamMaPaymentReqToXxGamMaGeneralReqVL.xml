@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<ViewLink
+   Name="XxGamMaPaymentReqToXxGamMaGeneralReqVL"
+   EntityAssociation="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqToXxGamMaGeneralReqAO" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="XxGamMaGeneralReqVO1"
+      Cardinality="1"
+      Owner="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqVO.Id" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="XxGamMaGeneralReqVO1" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="XxGamMaPaymentReqVO"
+      Cardinality="-1"
+      Owner="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="xxgam.oracle.apps.xbol.maf.server.XxGamMaPaymentReqVO.GeneralReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="XxGamMaPaymentReqVO" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

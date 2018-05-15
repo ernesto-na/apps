@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="approvalRequestRN" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamApprovalRequestCO" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM" windowTitle="Approval of advance payment Request" title="Approval of advance payment Request">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultDoubleColumn id="approvalPaymentRequestRN" text="Advance Payment Request">
+               <ui:contents>
+                  <oa:labeledFieldLayout id="region6RN" columns="2">
+                     <ui:contents>
+                        <oa:messageTextInput id="numberRequestMI" prompt="Number request"/>
+                        <oa:messageTextInput id="nameEmployeeMI" prompt="Employee name"/>
+                        <oa:messageTextInput id="startDateMI" dataType="DATE" prompt="Start date" tipType="none"/>
+                        <oa:messageTextInput id="purposeMI" prompt="Purpose"/>
+                        <oa:messageTextInput id="endDateMI" prompt="End date" dataType="DATE"/>
+                        <oa:messageLovInput id="advancesTemplateIdMI" prompt="Advances payment template" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaTemplatePaymentRN">
+                           <lovMappings>
+                              <lovMap id="lovMap2" lovItem="ReportType" resultTo="advancesTemplateIdMI" criteriaFrom="advancesTemplateIdMI"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLovInput id="costCenter" queryable="false" sortState="no" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterRN" readOnly="false" vAlign="middle" prompt="Cost center">
+                           <lovMappings>
+                              <lovMap id="lovMap1" lovItem="Segment3" resultTo="costCenter" criteriaFrom="costCenter"/>
+                              <lovMap id="lovMap3" lovItem="CodeCombinationId" resultTo="costCenterMI"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageChoice id="typeRequestMI" pickListViewDef="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypeRequestLovVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" prompt="Type request"/>
+                        <oa:formValue id="costCenterMI"/>
+                     </ui:contents>
+                  </oa:labeledFieldLayout>
+                  <oa:tableLayout id="butonsRN" hAlign="center">
+                     <ui:contents>
+                        <oa:rowLayout id="RowFormat" hAlign="center" vAlign="bottom">
+                           <ui:contents>
+                              <oa:cellFormat id="cellFormat" vAlign="middle" hAlign="center">
+                                 <ui:contents>
+                                    <oa:submitButton id="search" use="/oracle/apps/fnd/attributesets/Buttons/Go" text="Search Request" prompt="Search Request" hAlign="center"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+                  <oa:table id="XxGamMaGeneralReqVO1" width="100%" userCustomizable="true" detailViewAttr="IsView" viewLinkName="XxgamMaPaymentReqXxgaFk1Link1">
+                     <ui:contents>
+                        <oa:link id="NumberPayment" viewName="XxGamMaGeneralReqVO1" viewAttr="NumberPayment" userCustomizable="true" text="Number request">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="showDetailReq" id="fireAction21">
+                                 <ui:parameters>
+                                    <ui:parameter key="requestId" value="${oa.XxGamMaGeneralReqVO1.Id}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:link>
+                        <oa:messageTextInput id="typeRequest" viewName="XxGamMaGeneralReqVO1" viewAttr="TipoSolicitud" prompt="Type request" maximumLength="22" readOnly="true"/>
+                        <oa:messageTextInput id="FullNameEmployee" dataType="VARCHAR2" prompt="Employee name" viewName="XxGamMaGeneralReqVO1" viewAttr="EmployeName" queryable="true" disabled="false" sortState="ascending" initSortSeq="none" selectiveSearchCriteria="true" userCustomizable="true" maximumLength="301" readOnly="true" vAlign="bottom"/>
+                        <oa:messageTextInput id="CostCenter" dataType="VARCHAR2" prompt="Cost Center" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterTmp" maximumLength="50" queryable="true" sortState="ascending" initSortSeq="none" selectiveSearchCriteria="true" userCustomizable="true" readOnly="true" vAlign="middle"/>
+                        <oa:messageTextInput id="currency" viewName="XxGamMaGeneralReqVO1" viewAttr="CurrencyName" prompt="Currency" maximumLength="80" readOnly="true"/>
+                        <oa:messageTextInput id="purpose" viewName="XxGamMaGeneralReqVO1" viewAttr="PurposeDescription" prompt="Purpose" vAlign="middle" maximumLength="80" readOnly="true"/>
+                        <oa:messageTextInput id="status" viewName="XxGamMaGeneralReqVO1" viewAttr="StatusDescription" prompt="Status" vAlign="middle" maximumLength="80" readOnly="true"/>
+                        <oa:messageTextInput id="reportType" maximumLength="25" readOnly="true" prompt="Advance payment template" viewName="XxGamMaGeneralReqVO1" viewAttr="ReportType"/>
+                     </ui:contents>
+                     <ui:detail>
+                        <oa:header id="detailRequest" text="Detail of the request">
+                           <ui:contents>
+                              <oa:table id="XxGamMaPaymentReqVO2" viewLinkName="XxgamMaPaymentReqXxgaFk1Link1">
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InitialDate" dataType="DATE" prompt="Initial date" viewName="XxGamMaPaymentReqVO2" viewAttr="InitialDate" readOnly="true"/>
+                                    <oa:messageTextInput id="FinalDate" dataType="DATE" prompt="Final date" viewName="XxGamMaPaymentReqVO2" viewAttr="FinalDate" readOnly="true"/>
+                                    <oa:messageTextInput id="TypePayment" dataType="NUMBER" prompt="Advance payment type" viewName="XxGamMaPaymentReqVO2" viewAttr="TypePayment" readOnly="true" maximumLength="10"/>
+                                    <oa:messageTextInput id="Amount" dataType="NUMBER" prompt="Amount" viewName="XxGamMaPaymentReqVO2" viewAttr="Amount" maximumLength="14" readOnly="true"/>
+                                    <oa:messageTextInput id="AmountMx" dataType="NUMBER" prompt="Amount Mx" viewName="XxGamMaPaymentReqVO2" viewAttr="AmountMx" maximumLength="14" readOnly="true"/>
+                                    <oa:messageTextInput id="Justification" dataType="VARCHAR2" prompt="Justification" viewName="XxGamMaPaymentReqVO2" viewAttr="Justification" maximumLength="500" readOnly="true"/>
+                                    <oa:messageTextInput id="TypePymentDesc" dataType="VARCHAR2" prompt="Advance payment type" viewName="XxGamMaPaymentReqVO2" viewAttr="TypePymentDesc" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:table>
+                           </ui:contents>
+                        </oa:header>
+                     </ui:detail>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultDoubleColumn>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

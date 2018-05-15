@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaLimitScheduleOptionVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLimitScheduleOptionVORowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaLimitScheduleOptionVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT c.flex_concactenated
+                   ,lin.rate 
+                   ,c.prompt
+                   ,c.parameter_id
+                   ,c.expense_report_id
+                   ,pol.currency_code
+              FROM ap_pol_lines lin,
+                   ap_pol_schedule_options pol,
+                   ap_expense_report_params_all c,
+                   ap_expense_reports_all tem
+             WHERE     1 = 1
+                   AND lin.policy_id = pol.policy_id
+                   AND pol.policy_id = c.company_policy_id
+                   AND c.expense_report_id = tem.expense_report_id
+                  /*** AND c.expense_report_id = :p_expense_report_id ***/
+                  /*** AND c.parameter_id = :p_parameter_id  ***/
+                   AND tem.web_enabled_flag = 'Y'
+                   AND pol.currency_code = lin.currency_code
+                  /*** AND pol.currency_code = :p_currency_code  ***/
+                   AND lin.last_update_date in
+                          (SELECT MAX (last_update_date)
+                             FROM ap_pol_lines
+                            WHERE     1 = 1
+                                  AND policy_id = lin.policy_id
+                                  AND currency_code = lin.currency_code)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="FlexConcactenated"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FLEX_CONCACTENATED"
+      Expression="FLEX_CONCACTENATED"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Rate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="RATE"
+      Expression="RATE"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Prompt"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="40"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROMPT"
+      Expression="PROMPT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="40" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParameterId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARAMETER_ID"
+      Expression="PARAMETER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExpenseReportId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="EXPENSE_REPORT_ID"
+      Expression="EXPENSE_REPORT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsPersistent="false"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY_CODE"
+      Expression="CURRENCY_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

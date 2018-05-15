@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamMaApproverRN" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..PersonId...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Person Id</source>
+            <target>Id Persona</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">formValue</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..EmployeeNumber...prompt" translate="yes" maxbytes="4000" maxwidth="37" size-unit="char">
+            <source>Employee Number</source>
+            <target>Número de Empleado</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..EmailAddress...prompt" translate="yes" maxbytes="4000" maxwidth="32" size-unit="char">
+            <source>Email Address</source>
+            <target>Correo electrónico</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..FullName...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Full Name</source>
+            <target>Nombre completo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..LastName...prompt" translate="yes" maxbytes="4000" maxwidth="22" size-unit="char">
+            <source>Last Name</source>
+            <target>Apellido</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..FirstName...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>First Name</source>
+            <target>Nombre</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaApproverRN..WorkTelephone...prompt" translate="yes" maxbytes="4000" maxwidth="35" size-unit="char">
+            <source>Work Telephone</source>
+            <target>Teléfono de trabajo</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

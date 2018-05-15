@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="XxGamMaCostCenterFlexLovVO2"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCostCenterFlexLovVO2Impl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT b.flex_value || '-' || bu.flex_value cost_center_flex,
+               b.enabled_flag enabled_flag,
+               b.summary_flag summary_flag,
+               T.description description,
+               lt.meaning vc_meaning,
+               lt.lookup_type vc_lookup_type,
+               lt.lookup_code vc_lookup_code,
+               b.compiled_value_attributes,
+               SUBSTR (lt.meaning, 1, LENGTH (lt.meaning) - 2) || 'XX'
+                  vc_meaningxx
+          FROM fnd_flex_value_sets fvs,
+               fnd_flex_values_tl T,
+               fnd_flex_values b,                                  /** ubi **/
+               fnd_flex_value_sets fvu,
+               fnd_flex_values_tl tu,
+               fnd_flex_values bu,                                   /**lkp**/
+               fnd_lookup_values lt
+         WHERE     1 = 1
+               AND fvs.flex_value_set_id = b.flex_value_set_id
+               AND b.flex_value_id = T.flex_value_id
+               AND T.LANGUAGE = USERENV ('LANG')
+               AND b.enabled_flag = 'Y'
+               AND b.summary_flag = 'N'
+               AND TRUNC (SYSDATE) BETWEEN NVL (trunc(b.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (trunc(b.end_date_active),TRUNC (SYSDATE)) 
+               AND fvs.flex_value_set_name = 'GAM_GL_CENTRO_COSTOS' 
+               AND fvu.flex_value_set_id = bu.flex_value_set_id
+               AND bu.flex_value_id = tu.flex_value_id
+               AND tu.LANGUAGE = USERENV ('LANG')
+               AND bu.end_date_active IS NULL
+               AND bu.enabled_flag = 'Y'
+               AND bu.summary_flag = 'N'
+               AND TRUNC (SYSDATE) BETWEEN NVL (TRUNC(bu.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (TRUNC(bu.end_date_active),TRUNC(SYSDATE))
+               AND fvu.flex_value_set_name = 'GAM_GL_UBICACION'      /**lkp**/
+               AND lt.LANGUAGE = USERENV ('LANG')
+               AND lt.enabled_flag = 'Y'
+               AND lt.lookup_code = b.flex_value || '-' || bu.flex_value
+               AND TRUNC (SYSDATE) BETWEEN NVL (TRUNC(lt.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (TRUNC(lt.end_date_active),TRUNC(SYSDATE)) /** 26/11/2015**/
+        UNION ALL/** Agregado para considerar las unidades opera que no sean 02_AEROMEXICO **/
+        SELECT b.flex_value || '-' || bu.flex_value cost_center_flex,
+               b.enabled_flag enabled_flag,
+               b.summary_flag summary_flag,
+               T.description description,
+               lt.description vc_meaning, /** Se remplazo lt.meaning vc_meaning, **/
+               lt.lookup_type vc_lookup_type,
+               lt.meaning vc_lookup_code, /** Se remplazo lt.lookup_code vc_lookup_code, **/
+               b.compiled_value_attributes,
+                  SUBSTR (lt.description, 1, LENGTH (lt.description) - 2)
+               || 'XX'
+                  vc_meaningxx
+          FROM fnd_flex_value_sets fvs,
+               fnd_flex_values_tl T,
+               fnd_flex_values b,                                  /** ubi **/
+               fnd_flex_value_sets fvu,
+               fnd_flex_values_tl tu,
+               fnd_flex_values bu,
+               fnd_lookup_values lt
+         WHERE     1 = 1
+               AND fvs.flex_value_set_id = b.flex_value_set_id
+               AND b.flex_value_id = T.flex_value_id
+               AND T.LANGUAGE = USERENV ('LANG')
+               AND b.enabled_flag = 'Y'
+               AND b.summary_flag = 'N'
+               AND TRUNC (SYSDATE) BETWEEN NVL (TRUNC(lt.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (TRUNC(lt.end_date_active),TRUNC(SYSDATE))
+               AND fvs.flex_value_set_name = 'GAM_GL_CENTRO_COSTOS'  /**ubi**/
+               AND fvu.flex_value_set_id = bu.flex_value_set_id
+               AND bu.flex_value_id = tu.flex_value_id
+               AND tu.LANGUAGE = USERENV ('LANG')
+               AND bu.end_date_active IS NULL
+               AND bu.enabled_flag = 'Y'
+               AND bu.summary_flag = 'N'
+               AND TRUNC (SYSDATE) BETWEEN NVL (TRUNC(lt.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (TRUNC(lt.end_date_active),TRUNC(SYSDATE)) /** 26/11/2015**/
+               AND fvu.flex_value_set_name = 'GAM_GL_UBICACION'      /**lkp**/
+               AND lt.LANGUAGE = USERENV ('LANG')
+               AND lt.enabled_flag = 'Y'
+               AND lt.meaning = b.flex_value || '-' || bu.flex_value /** AND lt.lookup_code = b.flex_value||'-'||bu.flex_value **/
+               AND TRUNC (SYSDATE) BETWEEN NVL (TRUNC(lt.start_date_active),TRUNC (SYSDATE))
+                                       AND NVL (TRUNC(lt.end_date_active),TRUNC(SYSDATE))/** 26/11/2015**/
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="CostCenterFlex"
+      IsPersistent="false"
+      Precision="301"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COST_CENTER_FLEX"
+      Expression="COST_CENTER_FLEX"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EnabledFlag"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ENABLED_FLAG"
+      Expression="ENABLED_FLAG"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SummaryFlag"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SUMMARY_FLAG"
+      Expression="SUMMARY_FLAG"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DESCRIPTION"
+      Expression="DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VcMeaning"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VC_MEANING"
+      Expression="VC_MEANING"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VcLookupType"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VC_LOOKUP_TYPE"
+      Expression="VC_LOOKUP_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VcLookupCode"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VC_LOOKUP_CODE"
+      Expression="VC_LOOKUP_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CompiledValueAttributes"
+      IsPersistent="false"
+      Precision="2000"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COMPILED_VALUE_ATTRIBUTES"
+      Expression="COMPILED_VALUE_ATTRIBUTES"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VcMeaningxx"
+      IsPersistent="false"
+      Precision="962"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VC_MEANINGXX"
+      Expression="VC_MEANINGXX"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="962" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

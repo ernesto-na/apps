@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--DBDRV: -->
+<xliff version="1.0">
+   <file datatype="jdr" original="XxGamMaBenefitsRN" product-version="$Header$" source-language="en-US" target-language="es-US">
+      <body>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaBenefitsRN..Meaning...prompt" translate="yes" maxbytes="4000" maxwidth="17" size-unit="char">
+            <source>Benefits</source>
+            <target>Beneficio</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaBenefitsRN..Description...prompt" translate="yes" maxbytes="4000" maxwidth="47" size-unit="char">
+            <source>Description</source>
+            <target>Descripción</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+         <trans-unit id=".xxgam.oracle.apps.xbol.maf.lov.webui.XxGamMaBenefitsRN..LookupCode...prompt" translate="yes" maxbytes="4000" maxwidth="25" size-unit="char">
+            <source>LookupCode</source>
+            <target>Código</target>
+            <prop-group name="ora_untranslatable">
+               <prop prop-type="tagName">messageStyledText</prop>
+               <prop prop-type="attributeName">prompt</prop>
+            </prop-group>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>
