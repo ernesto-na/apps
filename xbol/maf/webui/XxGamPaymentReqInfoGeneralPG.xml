@@ -101,10 +101,10 @@
                   <oa:messageStyledText id="TemplateDescRO" dataType="VARCHAR2" prompt="Advance Payment Template" viewName="XxGamMaGeneralReqVO1" viewAttr="TypeTemplateDesc" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="PurposeDescRO" dataType="VARCHAR2" prompt="Purpose" viewName="XxGamMaGeneralReqVO1" viewAttr="PurposeDesc" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="CostCenterDescRO" dataType="VARCHAR2" prompt="Cost Center" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterDesc" styleClass="OraFieldText"/>
-                  <oa:messageStyledText id="CostCenterFlexRO" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" prompt="Cost Center Alternate" styleClass="OraFieldText"/>
-                  <oa:messageStyledText id="VirtualCardRO" viewName="XxGamMaGeneralReqVO1" viewAttr="VirtualCard" styleClass="OraFieldText" prompt="Virtual Card" shortDesc="Virtual Card" rendered="false"/>
+                  <oa:messageStyledText id="VirtualCardRO" viewName="XxGamMaGeneralReqVO1" viewAttr="VirtualCard" styleClass="OraFieldText" prompt="Virtual Card" shortDesc="Virtual Card" rendered="false" serverUnvalidated="false"/>
                   <oa:messageStyledText id="VirtualCardROXX" viewName="XxGamMaGeneralReqVO1" viewAttr="VcMeaningxx" prompt="Virtual Card" maximumLength="100" styleClass="OraFieldText" shortDesc="Virtual Card" rendered="false"/>
                   <oa:messageStyledText id="NumberPaymentRO" viewName="XxGamMaGeneralReqVO1" viewAttr="NumberPayment" prompt="Number of Document" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="CostCenterFlexRO" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" prompt="Cost Center Alternate" styleClass="OraFieldText"/>
                </ui:contents>
             </oa:defaultSingleColumn>
             <oa:tableLayout id="BarButtons" hAlign="center">
