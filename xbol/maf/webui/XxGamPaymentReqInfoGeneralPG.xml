@@ -20,16 +20,16 @@
                   </oa:messageLovInput>
                   <oa:messageTextInput id="PurposeInput" viewName="XxGamMaGeneralReqVO1" viewAttr="Purpose" required="yes" showRequired="true" prompt="Purpose" maximumLength="500" columns="50" rows="3" rendered="false" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="CostCenterR" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterDesc" prompt="Cost Center" styleClass="OraFieldText"/>
-                  <oa:messageLovInput id="CostCenterFlexLovBkp" prompt="Cost Center Alternate" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterFlexRN" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" maximumLength="25" selectiveSearchCriteria="true" lookAheadEnabled="false" shortDesc="Cost Center Alternate" rendered="false">
+                  <oa:messageLovInput id="CostCenterFlexLov" prompt="Cost Center Alternate" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterFlexRN" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" maximumLength="25" selectiveSearchCriteria="true" lookAheadEnabled="false" shortDesc="Cost Center Alternate" rendered="true">
                      <lovMappings>
                         <lovMap id="lovMap104" lovItem="CostCenterFlex" resultTo="CostCenterFlexLov" criteriaFrom="CostCenterFlexLov"/>
                         <lovMap id="lovMap107" lovItem="VcMeaning" resultTo="VirtualCard"/>
                         <lovMap id="lovMap142" lovItem="VcMeaningXX" resultTo="VirtualCardXX"/>
                      </lovMappings>
                   </oa:messageLovInput>
-                  <oa:messageLovInput id="CostCenterFlexLov" prompt="Cost Center Alternate" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterFlex2RN" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" maximumLength="25" selectiveSearchCriteria="true" lookAheadEnabled="false" shortDesc="Cost Center Alternate" rendered="true">
+                  <oa:messageLovInput id="CostCenterFlexLovAlt" prompt="Cost Center Alternate v" externalListOfValues="/xxgam/oracle/apps/xbol/maf/lov/webui/XxGamMaCostCenterFlex2RN" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" maximumLength="25" selectiveSearchCriteria="true" lookAheadEnabled="false" shortDesc="Cost Center Alternate x" rendered="false">
                      <lovMappings>
-                        <lovMap id="lovMap1041" lovItem="CostCenterFlex" resultTo="CostCenterFlexLov" criteriaFrom="CostCenterFlexLov"/>
+                        <lovMap id="lovMap1041" lovItem="CostCenterFlex" resultTo="CostCenterFlexLovAlt" criteriaFrom="CostCenterFlexLovAlt"/>
                         <lovMap id="lovMap1071" lovItem="VcMeaning" resultTo="VirtualCard"/>
                         <lovMap id="lovMap1421" lovItem="VcMeaningXX" resultTo="VirtualCardXX"/>
                      </lovMappings>

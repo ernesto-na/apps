@@ -10,87 +10,17 @@
    FetchMode="FETCH_AS_NEEDED"
    UseGlueCode="false" >
    <SQLQuery><![CDATA[
-SELECT b.flex_value||'-'||bu.flex_value cost_center_flex,
-       b.enabled_flag enabled_flag,
-       b.summary_flag summary_flag,
-       T.description description,
-       lt.meaning vc_meaning,
-       lt.lookup_type vc_lookup_type,
-       lt.lookup_code vc_lookup_code,
-       b.compiled_value_attributes,
-       substr(lt.meaning,1,length(lt.meaning)-2)||'XX' vc_meaningxx
-FROM fnd_flex_value_sets fvs,
-     fnd_flex_values_tl T, 
-     fnd_flex_values b,
-     /** ubi **/
-     fnd_flex_value_sets fvu,
-     fnd_flex_values_tl tu, 
-     fnd_flex_values bu,
-     /**lkp**/
-     fnd_lookup_values lt
-WHERE 1=1 
-  AND fvs.flex_value_set_id = b.flex_value_set_id
-  AND b.flex_value_id = T.flex_value_id 
-  AND T.LANGUAGE = userenv ('LANG')
-  AND b.enabled_flag = 'Y'
-  AND b.summary_flag = 'N'
-  AND  TRUNC(SYSDATE) BETWEEN nvl(b.start_date_active,trunc(sysdate)) AND NVL(b.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/
-  AND fvs.flex_value_set_name = 'GAM_GL_CENTRO_COSTOS'
-  /**ubi**/
-  AND fvu.flex_value_set_id = bu.flex_value_set_id
-  AND bu.flex_value_id = tu.flex_value_id 
-  AND tu.LANGUAGE = userenv ('LANG')
-  AND bu.end_date_active IS NULL
-  AND bu.enabled_flag = 'Y'
-  AND bu.summary_flag = 'N'
-  AND  TRUNC(SYSDATE) BETWEEN nvl(bu.start_date_active,trunc(sysdate)) AND NVL(bu.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/
-  AND fvu.flex_value_set_name = 'GAM_GL_UBICACION'
-  /**lkp**/
-  AND lt.LANGUAGE = userenv('LANG')
-  and lt.enabled_flag = 'Y'
-  AND lt.lookup_code  = b.flex_value||'-'||bu.flex_value
-  AND  TRUNC(SYSDATE) BETWEEN nvl(lt.start_date_active,trunc(sysdate)) AND NVL(lt.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/
-  UNION /** Agregado para considerar las unidades opera que no sean 02_AEROMEXICO **/
-  SELECT 
-       b.flex_value||'-'||bu.flex_value cost_center_flex,
-       b.enabled_flag enabled_flag,
-       b.summary_flag summary_flag,
-       T.description description,
-       lt.description vc_meaning,           /** Se remplazo  lt.meaning vc_meaning,    **/
-       lt.lookup_type vc_lookup_type,
-       lt.meaning vc_lookup_code,       /** Se remplazo  lt.lookup_code vc_lookup_code, **/
-       b.compiled_value_attributes,
-       substr(lt.description,1,length(lt.description)-2)||'XX' vc_meaningxx
-FROM fnd_flex_value_sets fvs,
-     fnd_flex_values_tl T, 
-     fnd_flex_values b,
-     /** ubi **/
-     fnd_flex_value_sets fvu,
-     fnd_flex_values_tl tu, 
-     fnd_flex_values bu,
-     fnd_lookup_values lt
-WHERE 1=1  
-  AND fvs.flex_value_set_id = b.flex_value_set_id
-  AND b.flex_value_id = T.flex_value_id 
-  AND T.LANGUAGE = userenv ('LANG')
-  AND b.enabled_flag = 'Y'
-  AND b.summary_flag = 'N'
-  AND  TRUNC(SYSDATE) BETWEEN nvl(b.start_date_active,trunc(sysdate)) AND NVL(b.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/
-  AND fvs.flex_value_set_name = 'GAM_GL_CENTRO_COSTOS'
-  /**ubi**/
-  AND fvu.flex_value_set_id = bu.flex_value_set_id
-  AND bu.flex_value_id = tu.flex_value_id 
-  AND tu.LANGUAGE = userenv ('LANG')
-  AND bu.end_date_active IS NULL
-  AND bu.enabled_flag = 'Y'
-  AND bu.summary_flag = 'N'
-  AND  TRUNC(SYSDATE) BETWEEN nvl(bu.start_date_active,trunc(sysdate)) AND NVL(bu.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/ 
-  AND fvu.flex_value_set_name = 'GAM_GL_UBICACION'
-  /**lkp**/
-  AND lt.LANGUAGE = userenv('LANG')
-  AND lt.enabled_flag = 'Y'
-  AND lt.meaning  = b.flex_value||'-'||bu.flex_value  /** AND lt.lookup_code  = b.flex_value||'-'||bu.flex_value **/
-  AND  TRUNC(SYSDATE) BETWEEN nvl(lt.start_date_active,trunc(sysdate)) AND NVL(lt.end_date_active, to_date('31/12/4712','DD/MM/RRRR')) /** 26/11/2015**/
+SELECT COST_CENTER_FLEX
+     , ENABLED_FLAG
+     , SUMMARY_FLAG
+     , DESCRIPTION
+     , VC_MEANING
+     , VC_LOOKUP_TYPE
+     , VC_LOOKUP_CODE
+     , COMPILED_VALUE_ATTRIBUTES
+     , VC_MEANINGXX
+  FROM XXGAM_IE_COST_CENTER_FLEX
+ WHERE 1 = 1
    ]]></SQLQuery>
    <DesignTime>
       <Attr Name="_isCodegen" Value="true" />
