@@ -1594,4 +1594,47 @@ public class XxGamMAnticiposUtil2
     
         return userCurrency;
     }
+    /**
+     * Metodo agregado para obtener descripción de la divisa
+     * divisas internacionales
+     * 22-05-2018 GNOSISHCM
+     */
+     public static String getDivisaDesc (OAPageContext pageContext, OAWebBean webBean){
+         
+        int userId=0;
+        userId=pageContext.getUserId();
+        String userCurrencyDesc=null;
+        XxGamModAntAMImpl amXxGamModAnt=null;
+        
+        amXxGamModAnt =  (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+        StringBuffer procedure= new StringBuffer(); 
+        procedure.append("BEGIN "); 
+        procedure.append("apps.XXGAM_AP_MOD_ANT_UTILS2_PKG.GET_CURRENCY_DESC("); 
+        procedure.append(" P_USER_ID              => :1"); 
+        procedure.append(",P_CURRENCY_DESC        => :2"); 
+        procedure.append(");");
+        procedure.append(" END; ");
+        
+        
+       OADBTransaction dbTransaction = (OADBTransaction)amXxGamModAnt.getTransaction();
+       OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure.toString(), 1);
+       
+         try
+         {
+           CallProcedure.setInt(1, userId);
+           CallProcedure.registerOutParameter(2,Types.VARCHAR);
+           CallProcedure.execute();
+         
+           userCurrencyDesc=CallProcedure.getString(2);
+           
+           }
+         catch (Exception excepcion)
+         {
+           throw OAException.wrapperException(excepcion);
+                
+         } 
+     
+         return userCurrencyDesc;
+     }
+     
 }

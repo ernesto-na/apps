@@ -14,10 +14,9 @@ public class XxGamMaCurrencyLovVOClient extends ViewUsageImpl implements XxGamMa
     public XxGamMaCurrencyLovVOClient() {
     }
 
-  public void searchCurrencyByCode(String currencyCode)
-  {
-    Object _ret = 
-      getApplicationModuleProxy().riInvokeExportedMethod(this,"searchCurrencyByCode",new String [] {"java.lang.String"},new Object[] {currencyCode});
-    return;
-  }
+    public void searchCurrencyByCode(String currencyCode) {
+        Object _ret = 
+            getApplicationModuleProxy().riInvokeExportedMethod(this,"searchCurrencyByCode",new String [] {"java.lang.String"},new Object[] {currencyCode});
+        return;
+    }
 }

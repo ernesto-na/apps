@@ -9,16 +9,15 @@ import oracle.jbo.server.AttributeDefImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaTemplatePaymentLovVORowImpl extends OAViewRowImpl
-{
-  public static final int TEMPLATEDESC = 0;
-  public static final int TEMPLATEID = 1;
-  public static final int CODECOMBINATIONID = 2;
-  public static final int ORGID = 3;
-  public static final int UNIDADOPERATIVA = 4;
+public class XxGamMaTemplatePaymentLovVORowImpl extends OAViewRowImpl {
+    public static final int TEMPLATEDESC = 0;
+    public static final int TEMPLATEID = 1;
+    public static final int CODECOMBINATIONID = 2;
+    public static final int ORGID = 3;
+    public static final int UNIDADOPERATIVA = 4;
 
-  /**This is the default constructor (do not remove)
-   */
+    /**This is the default constructor (do not remove)
+     */
     public XxGamMaTemplatePaymentLovVORowImpl() {
     }
 
@@ -27,49 +26,47 @@ public class XxGamMaTemplatePaymentLovVORowImpl extends OAViewRowImpl
      */
     protected Object getAttrInvokeAccessor(int index, 
                                            AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case TEMPLATEDESC:
-      return getTemplateDesc();
-    case TEMPLATEID:
-      return getTemplateId();
-    case CODECOMBINATIONID:
-      return getCodeCombinationId();
-    case ORGID:
-      return getOrgId();
-    case UNIDADOPERATIVA:
-      return getUnidadOperativa();
-    default:
-      return super.getAttrInvokeAccessor(index, attrDef);
+        switch (index) {
+        case TEMPLATEDESC:
+            return getTemplateDesc();
+        case TEMPLATEID:
+            return getTemplateId();
+        case CODECOMBINATIONID:
+            return getCodeCombinationId();
+        case ORGID:
+            return getOrgId();
+        case UNIDADOPERATIVA:
+            return getUnidadOperativa();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
     }
-  }
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
     protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case TEMPLATEDESC:
-      setTemplateDesc((String)value);
-      return;
-    case TEMPLATEID:
-      setTemplateId((Number)value);
-      return;
-    case CODECOMBINATIONID:
-      setCodeCombinationId((Number)value);
-      return;
-    case ORGID:
-      setOrgId((Number)value);
-      return;
-    case UNIDADOPERATIVA:
-      setUnidadOperativa((String)value);
-      return;
-    default:
-      super.setAttrInvokeAccessor(index, value, attrDef);
-      return;
+        switch (index) {
+        case TEMPLATEDESC:
+            setTemplateDesc((String)value);
+            return;
+        case TEMPLATEID:
+            setTemplateId((Number)value);
+            return;
+        case CODECOMBINATIONID:
+            setCodeCombinationId((Number)value);
+            return;
+        case ORGID:
+            setOrgId((Number)value);
+            return;
+        case UNIDADOPERATIVA:
+            setUnidadOperativa((String)value);
+            return;
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
     }
-  }
 
     /**Gets the attribute value for the calculated attribute TemplateDesc
      */

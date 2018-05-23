@@ -24,7 +24,7 @@ SELECT exr.report_type template_desc,
    AND combinations.segment3 =  substr(exr.description,1, instr(exr.description,'-')-1)
    AND exr.web_enabled_flag = 'Y'
    AND trunc(SYSDATE) BETWEEN trunc(SYSDATE) AND NVL(exr.inactive_date, to_date('31/12/4712','DD/MM/RRRR'))
-   AND combinations.segment3 =  substr(exr.description,1, instr(exr.description,'-')-1)
+   AND combinations.segment4 =  substr(exr.report_type,15,4)
    AND exr.report_type LIKE '98%'   
   /* AND EXISTS (select 'Y' 
                  from  HR_OPERATING_UNITS hou

@@ -5435,7 +5435,13 @@ sum.add(amountAux);
                                                     }
                                                     if (costCenterRow.getCurrencyName() != 
                                                         null) {
-                                                        generalReqRow.setCurrencyDesc(costCenterRow.getCurrencyName());
+                                                        // TODO 03 Modifica la divisa para la la pg: XxGamPaymentReqInfoGeneralPG
+                                                        //generalReqRow.setCurrencyDesc(costCenterRow.getCurrencyName());
+                                                         String userCurrency="test--";
+                                                        userCurrency=XxGamMAnticiposUtil2.getDivisaDesc(pageContext, webBean);
+                                                      System.out.println("-->test_currency_desc"+userCurrency);
+                                                        generalReqRow.setCurrencyDesc(userCurrency);
+                                                       System.out.println("C_N :"+costCenterRow.getCurrencyName().toString());
                                                     }
                                                     /// Agregado para llenar el campo de Unidad Operativa 08/06/2015
                                                     System.out.println("Agregado para llenar el campo de Unidad Operativa 08/06/2015");

@@ -11,8 +11,7 @@ import oracle.jbo.domain.Number;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaTemplatePaymentLovVOImpl extends OAViewObjectImpl
-{
+public class XxGamMaTemplatePaymentLovVOImpl extends OAViewObjectImpl {
 
     /**
      * Contiene el id de la plantilla de anticipo
