@@ -1127,7 +1127,7 @@ new oracle.jbo.domain.Date(new Timestamp(jdFecha.getTime()));
                                  msg,
                                  OAException.INFORMATION, params);
             }
-            
+            //TODO GNOSISHCM verificar msg
             //Verifica el evento para reservar fondos para la solicitud de anticipo
             if (XxGamConstantsUtil.RESERVE_FUNDS.equals(event)){
                 params.put(XxGamConstantsUtil.SEND_CONFIRMATION, XxGamConstantsUtil.RESERVE_FUNDS);
@@ -1524,6 +1524,7 @@ new oracle.jbo.domain.Date(new Timestamp(jdFecha.getTime()));
      * @param webBean
      * @return devuelve nullo cuando se guarda correctamente o una descripcion del error en caso contrario
      */
+     // TODO GNOSIS
     public static String savePaymentRequest(OAPageContext pageContext,
                                               OAWebBean webBean) {
         String errorMsg = null;

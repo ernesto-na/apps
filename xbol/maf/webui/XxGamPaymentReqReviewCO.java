@@ -776,6 +776,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                                                              pageContext.getParameter(EVENT_PARAM));
 
          //Muestra el detalle de la solicitud
+         //
          if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM))) {
              pageContext.putTransactionValue(XxGamConstantsUtil.CALLED_FROM, 
                                              XxGamConstantsUtil.VIEW_STEP_THREE);
@@ -1186,6 +1187,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                          lPaymentAmount = MaPaymentReqVORowImpl.getAmount();
                          lPaymentAmountToMXN = MaPaymentReqVORowImpl.getAmountMx();
                          System.out.println("Debug61: lPaymentAmount "+lPaymentAmount+", lPaymentCurrencyCode "+lPaymentCurrencyCode+", lPaymentAmountToMXN "+lPaymentAmountToMXN);  
+                         //TODO BUG01
                          if("MXN".equals(lPaymentAmountToMXN)){  /** Validacion de la moneda **/
                            lSumPaymentAmountFloat = lSumPaymentAmountFloat + Float.valueOf(lPaymentAmount.toString());
                            lSumPaymentAmountNumber = lSumPaymentAmountNumber.add(lPaymentAmount); 
@@ -1290,7 +1292,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
            // close secondary row set iterator      
          iterMaGeneralReqVO.closeRowSetIterator();
          } // END if(null!=GeneralReqVOImpl){
-         
+         //TODO GNOSIS2305 06 Aqui se hace la comprobacion del ctrl presupuestal con el anticipo
          if(lSumPaymentAmountFloat>llTotalFundsFloat){
            
            System.out.println("Debug65: lSumPaymentAmountFloat "+lSumPaymentAmountFloat);       

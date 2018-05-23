@@ -97,7 +97,7 @@ public class XxGamMaProcessingPageCO extends OAControllerImpl{
                         }
                     }else{
                         XxGamMAnticiposUtil.setRollback(pageContext, webBean);
-                        
+                        // TODO GNOSISHCM RB
                         String strNumberPayment = XxGamMAnticiposUtil.getNumberPayment(pageContext, webBean);
                         if(strNumberPayment == null){
                             strNumberPayment = "";

@@ -936,7 +936,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
     public boolean initApproverAltLov(Number jobNameId, Number versionId){
         boolean isSuccess = false;
         if(jobNameId != null && versionId != null){
-            //Configura la lista de valores para el centro de costos
+            //Configura la lista de valores para el centro de costos // TODO XX
             XxGamMaApproverHierarchyLovVOImpl approverAltImpl = getXxGamMaApproverHierarchyLovVO2();
             if(approverAltImpl != null){
                 approverAltImpl.clearCustomCriteriaDictionaries();

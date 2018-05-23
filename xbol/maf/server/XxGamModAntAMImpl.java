@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
+import java.text.DecimalFormat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -2091,6 +2093,12 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                 if (amountMx != null) {
 
                     if (amountMx.compareTo(new Number(0)) >= 0) {
+                    //TODO 11 agregar mascara para moneda
+                     DecimalFormat df = new DecimalFormat("$###,###,###,###,##0.00");
+                     String lSumPaymentAmountStrDf = null; 
+                       // float lSumPaymentAmountFloat = 0;
+                        lSumPaymentAmountStrDf =  df.format(amountMx.doubleValue());
+                        System.out.println("formateadoMoneda: "+lSumPaymentAmountStrDf);
                         payReqDetailRow.setAmountMx(new Number(amountMx.truncate(2)));
                         isSuccess = true;
                     } else {
@@ -2280,6 +2288,7 @@ sum.add(amountAux);
      */
     public Number currencyConversion(String fromCurrency, String toCurrency, 
                                      Number amount) {
+                                     //TODO GNOSIS
         XxGamModAntLovAMImpl amLov = null;
         amLov = (XxGamModAntLovAMImpl)getXxGamModAntLovAM1();
 
@@ -3353,6 +3362,7 @@ sum.add(amountAux);
      */
     public Number callFunctionCurrencyConversionToMXN(Number amount, 
                                                       String currencyFrom) {
+                                                      //Funciona bien
 
         Number amountMx = null;
         if (amount != null && currencyFrom != null) {
@@ -3372,6 +3382,7 @@ sum.add(amountAux);
             sqlExecute.append(" p_divisa => :3");
             sqlExecute.append(" );");
             sqlExecute.append(" END; ");
+            System.out.println(sqlExecute.toString());
 
             if (txn != null) {
                 cs = txn.createCallableStatement(sqlExecute.toString(), 1);
