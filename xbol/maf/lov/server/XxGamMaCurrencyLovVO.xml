@@ -11,44 +11,45 @@
    ClientProxyName="xxgam.oracle.apps.xbol.maf.lov.server.client.XxGamMaCurrencyLovVOClient"
    UseGlueCode="false" >
    <SQLQuery><![CDATA[
-SELECT * FROM ((SELECT  currenciestl.currency_code CURRENCY_CODE,
-        currenciestl.name CURRENCY_NAME,
-        currenciestl.description CURRENCY_DESC
-FROM fnd_currencies_tl currenciestl,
-     fnd_currencies currencies
-WHERE 1 = 1
-  AND currenciestl.language = USERENV('LANG')
-  AND currenciestl.CURRENCY_CODE = currencies.CURRENCY_CODE
-  AND currencies.enabled_flag = 'Y'
-  AND SYSDATE BETWEEN  NVL(start_date_active, sysdate) and nvl(end_date_active,sysdate+1) 
-  AND currenciestl.currency_code in ('MXN','EUR','USD')
-  AND xxgam_ap_mod_ant_utils2_pkg.GET_CURRENCY_INTERNAT <> '99'
-/**Agregado para Pruebas**/
-  --ORDER BY currenciestl.name ASC
-UNION
-SELECT DISTINCT fct.CURRENCY_CODE CURRENCY_CODE
+SELECT fct.CURRENCY_CODE CURRENCY_CODE 
            ,fct.NAME CURRENCY_NAME
-           ,fct.DESCRIPTION CURRENCY_DESC
-FROM PER_ALL_ASSIGNMENTS_F paaf
-         ,HR_ALL_ORGANIZATION_UNITS_TL ou
-         ,PER_PAY_BASES ppb
-         ,FND_CURRENCIES fc
-         ,FND_CURRENCIES_TL fct
-WHERE 1=1
-AND paaf.ORGANIZATION_ID = ou.ORGANIZATION_ID
-AND TRUNC(SYSDATE) BETWEEN paaf.effective_start_date AND paaf.effective_end_date
-AND SYSDATE BETWEEN  NVL(start_date_active, sysdate) and nvl(end_date_active,sysdate+1)
-AND paaf.PRIMARY_FLAG = 'Y'
-AND paaf.ASSIGNMENT_TYPE = 'E'
-AND paaf.PAY_BASIS_ID = ppb.PAY_BASIS_ID
-AND ou.NAME like '99%'
-AND ou.LANGUAGE = USERENV('LANG')
-AND fct.language = USERENV('LANG')
-AND fct.CURRENCY_CODE = fc.CURRENCY_CODE
-AND fc.enabled_flag = 'Y'
-AND fct.CURRENCY_CODE = TRIM (SUBSTR(ppb.NAME,length(ppb.NAME)-3,length(ppb.NAME)))
-AND xxgam_ap_mod_ant_utils2_pkg.GET_CURRENCY_INTERNAT = '99')
-ORDER BY 2)
+           ,fct.description CURRENCY_DESC
+  FROM PER_ALL_ASSIGNMENTS_F paaf,
+       HR_ALL_ORGANIZATION_UNITS_TL ou,
+       PER_PAY_BASES ppb,
+       FND_CURRENCIES fc,
+       FND_CURRENCIES_TL fct
+ WHERE 1 = 1 AND paaf.ORGANIZATION_ID = ou.ORGANIZATION_ID
+       AND TRUNC (SYSDATE) BETWEEN paaf.effective_start_date
+                               AND paaf.effective_end_date
+       AND SYSDATE BETWEEN NVL (start_date_active, SYSDATE)
+                       AND NVL (end_date_active, SYSDATE + 1)
+       AND paaf.PRIMARY_FLAG = 'Y'
+       AND paaf.ASSIGNMENT_TYPE = 'E'
+       AND paaf.PAY_BASIS_ID = ppb.PAY_BASIS_ID
+       AND ou.LANGUAGE = USERENV ('LANG')
+       AND fct.language = USERENV ('LANG')
+       AND fct.CURRENCY_CODE = fc.CURRENCY_CODE
+       AND fc.enabled_flag = 'Y'
+       AND fct.CURRENCY_CODE =
+              DECODE (
+                 SUBSTR (ou.name, 1, 2),
+                 '99', TRIM (
+                          SUBSTR (ppb.NAME,
+                                  LENGTH (ppb.NAME) - 3,
+                                  LENGTH (ppb.NAME))),
+                 'MXN')
+       AND paaf.person_id IN
+              (SELECT fu.employee_id
+                 FROM fnd_user fu
+                WHERE TRUNC (SYSDATE) BETWEEN NVL (fu.start_date,
+                                                   TRUNC (SYSDATE))
+                                          AND NVL (
+                                                 fu.end_date,
+                                                 TO_DATE ('31/12/4712',
+                                                          'DD/MM/YYYY'))
+                      AND fu.user_id = fnd_profile.VALUE ('USER_ID'))
+         ORDER BY 2
    ]]></SQLQuery>
    <DesignTime>
       <Attr Name="_isCodegen" Value="true" />

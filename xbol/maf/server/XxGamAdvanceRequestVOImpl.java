@@ -17,8 +17,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamAdvanceRequestVOImpl extends OAViewObjectImpl
-{
+public class XxGamAdvanceRequestVOImpl extends OAViewObjectImpl {
     /**This is the default constructor (do not remove)
      */
     public XxGamAdvanceRequestVOImpl() {

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.12_1330" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad"
+      file-version="$Header: GeneralInformationPG.xml 120.10.12010000.2 2013/09/16 10:35:47 preshukl ship $">
+   <content>
+      <oa:pageLayout id="GeneralInformationPG" title="" windowTitle="" amDefName="oracle.apps.ap.oie.server.WebExpensesAM" controllerClass="oracle.apps.ap.oie.entry.webui.EntryFlowPageCO" function="OIEENTRYFLOW">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="pbb" extends="/oracle/apps/ap/oie/webui/OIEBUTTONS"/>
+            <oa:stackLayout id="OIEGeneralInformation" controllerClass="oracle.apps.ap.oie.webui.HeaderCO" amDefName="oracle.apps.ap.oie.server.GeneralInfoAM" regionName="General Information Page" user:attribute1="OIEGI" user:attribute2="200"
+                            prompt="General Information Page">
+               <ui:contents>
+                  <oa:messageComponentLayout id="OIEGeneralInformationMsgCLayout" columns="2" rows="1" promptWidth="1%" controllerClass="oracle.apps.ap.oie.entry.header.webui.HeaderKffCO">
+                     <ui:contents>
+                        <oa:messageStyledText id="TxtName" prompt="Name" styleClass="OraDataText" shortDesc="Text Name Field" user:akAttributeCode="OIE_TXT_NAME" user:akAttributeApplicationId="200" rendered="false"/>
+                        <oa:messageChoice id="PopName" readOnly="false" required="no" prompt="Name" viewName="ExpenseReportHeadersVO" viewAttr="EmployeeId" pickListViewDef="oracle.apps.ap.oie.server.EmployeesVO" pickListDispAttr="NameAndId"
+                                          pickListValAttr="EmployeeId" shortDesc="Poplist Name Field" user:akAttributeCode="OIE_POP_NAME" user:akAttributeApplicationId="200" serverUnvalidated="true" rendered="false">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction id="firePartialAction1" event="OIEChangeEmp" unvalidated="true"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageTextInput id="Kff" viewName="ExpenseReportHeadersVO" viewAttr="FlexConcatenated" rendered="true" prompt="Expense Cost Center" adminCustomizable="false" shortDesc="Cost Center"/>
+                        <oa:messageTextInput id="CostCenterDebug" readOnly="false" required="yes" columns="10" prompt="Expense Cost Center" secret="false" viewName="ExpenseReportHeadersVO" viewAttr="FlexConcatenated" styleClass="OraFieldText"
+                                             maximumLength="80" shortDesc="Cost Center" user:akAttributeCode="FND_COST_CENTER" user:akAttributeApplicationId="0" adminCustomizable="false" rendered="false"
+                                             comment="Not used in UI. For debugging purposes only."/>
+                        <oa:messageChoice id="ReimbCurrency" readOnly="false" required="no" prompt="Reimbursement Currency" viewName="ExpenseReportHeadersVO" viewAttr="DefaultCurrencyCode" styleClass="OraFieldText"
+                                          pickListViewDef="oracle.apps.ap.oie.server.CurrenciesVO" pickListDispAttr="CurrencyCodeName" pickListValAttr="CurrencyCode" shortDesc="Reimbursement currency" user:akAttributeCode="OIE_POP_REIMBCURR"
+                                          user:akAttributeApplicationId="200" serverUnvalidated="true" rendered="false">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction id="firePartialAction2" unvalidated="true" event="OIEChangeReimbCurrency"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageChoice id="SupplierSite" pickListViewDef="oracle.apps.ap.oie.server.SupplierSitesLookupVO" pickListDispAttr="SupplierSite" pickListValAttr="SupplierSiteLookupCode" prompt="Site" shortDesc="Site"
+                                          viewName="ExpenseReportHeadersVO" viewAttr="PreferredSupplierSite" serverUnvalidated="true">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction id="firePartialAction4" event="OIEChangePreferredSite" unvalidated="true"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageStyledText id="TxtReimbCurrency" prompt="Reimbursement Currency" styleClass="OraDataText" shortDesc="Reimbursement currency" user:akAttributeCode="OIE_TXT_REIMBCURR" user:akAttributeApplicationId="200" rendered="false"/>
+                        <oa:messageChoice id="ExpTemplate" readOnly="false" required="no" prompt="Expense Template" viewName="ExpenseReportHeadersVO" viewAttr="ExpenseReportId" styleClass="OraFieldText"
+                                          pickListViewDef="oracle.apps.ap.oie.server.ExpenseTemplatesVO" pickListDispAttr="ReportType" pickListValAttr="ExpenseReportId" user:akAttributeCode="OIE_POP_TEMPLATE" user:akAttributeApplicationId="200"
+                                          serverUnvalidated="true" rendered="false">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction id="firePartialAction3" event="OIEChangeExpTemplate" unvalidated="true"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageStyledText id="TxtExpTemplate" prompt="Expense Template" styleClass="OraDataText" user:akAttributeCode="OIE_TEXT_TEMPLATE" user:akAttributeApplicationId="200" rendered="false"/>
+                        <oa:messageTextInput id="Purpose" readOnly="false" columns="30" prompt="Purpose" secret="false" viewName="ExpenseReportHeadersVO" viewAttr="Description" styleClass="OraFieldText" maximumLength="240"
+                                             user:akAttributeCode="FND_PURPOSE" user:akAttributeApplicationId="0"/>
+                        <oa:messageLovInput id="OverrideApprover" externalListOfValues="/oracle/apps/ap/oie/webui/OIEAPPROVERLOV" readOnly="false" columns="30" prompt="Approver" viewName="ExpenseReportHeadersVO" viewAttr="OverrideApproverName"
+                                            styleClass="OraFieldText" maximumLength="240" user:akAttributeCode="FND_APPROVER_NAME" user:akAttributeApplicationId="0" unvalidated="false">
+                           <lovMappings>
+                              <lovMap id="lovMap1" criteriaFrom="OverrideApprover" lovItem="FullName"/>
+                              <lovMap id="lovMap2" resultTo="OverrideApprover" lovItem="FullName"/>
+                              <lovMap id="lovMap3" resultTo="ApproverId" lovItem="ApproverId"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:formValue id="ApproverId" prompt="Approver Id" dataType="NUMBER" viewName="ExpenseReportHeadersVO" viewAttr="OverrideApproverId" user:akAttributeCode="FND_APPROVER_ID" user:akAttributeApplicationId="0"/>
+                  <oa:header id="AdditionalInformationHeader" text="Additional Information" regionName="Additional Information Header" controllerClass="oracle.apps.ap.oie.entry.header.webui.AdditionalInformationCO" rendered="false">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="AdditionalInformation" rows="1" columns="2" regionName="Additional Information" promptWidth="1%">
+                           <ui:contents>
+                              <oa:messageLayout id="AdditionalInformationMsgLayout" prompt="Additional Information">
+                                 <ui:contents>
+                                    <oa:flex id="HeaderDFF" viewName="ExpenseReportHeadersVO" flexFieldAppShortName="SQLAP" flexName="AP_EXPENSE_REPORT_HEADERS" rendered="true" styleClass="OraFieldText" displayContextField="false"
+                                             prompt="Additional Information"/>
+                                 </ui:contents>
+                              </oa:messageLayout>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:header>
+               </ui:contents>
+            </oa:stackLayout>
+         </ui:contents>
+         <ui:productBranding id="productBranding1">
+            <oa:image id="productBranding" source="/OA_MEDIA/OIEENTRYBRAND.gif" shortDesc="Internet Expenses"/>
+         </ui:productBranding>
+         <ui:copyright id="copyright1">
+            <oa:messageStyledText id="ICX_COPYRIGHT" extends="/oracle/apps/fnd/framework/webui/OAFooter.CopyRight"/>
+         </ui:copyright>
+         <ui:privacy id="privacy1">
+            <oa:link id="ICX_PRIVACY" extends="/oracle/apps/fnd/framework/webui/OAFooter.Privacy"/>
+         </ui:privacy>
+         <ui:location>
+            <oa:train id="OIETrain" extends="/oracle/apps/ap/oie/entry/webui/EntryTrainRN"/>
+         </ui:location>
+         <ui:pageStatus>
+            <oa:tableLayout id="RequiredIconText" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG"/>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -10,27 +10,25 @@ import oracle.jbo.server.AttributeDefImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl
-{
-  public static final int ID = 0;
-  public static final int NUMBERPAYMENT = 1;
-  public static final int REQUESTPAYMENTDATE = 2;
-  public static final int ESTATUSREQUEST = 3;
-  public static final int TOTALPAYMENT = 4;
-  public static final int PURPOSE = 5;
-  public static final int PURPOSEDESC = 6;
-  public static final int LOOKUPCODE = 7;
-  public static final int APPROVALDATE = 8;
-  public static final int ISUPGRADEABLE = 9;
-  public static final int COSTCENTER = 10;
-  public static final int STATUSFRANCHISE = 11;
-  public static final int TIPOSOLICITUD = 12;
-  public static final int STATUSNOTIFICATIONDESC = 13;
-  public static final int ORIGIN = 14;
-  public static final int DESCRIPTIONPURPOSE = 15;
+public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl {
+    public static final int ID = 0;
+    public static final int NUMBERPAYMENT = 1;
+    public static final int REQUESTPAYMENTDATE = 2;
+    public static final int ESTATUSREQUEST = 3;
+    public static final int TOTALPAYMENT = 4;
+    public static final int PURPOSE = 5;
+    public static final int PURPOSEDESC = 6;
+    public static final int LOOKUPCODE = 7;
+    public static final int APPROVALDATE = 8;
+    public static final int ISUPGRADEABLE = 9;
+    public static final int COSTCENTER = 10;
+    public static final int STATUSFRANCHISE = 11;
+    public static final int TIPOSOLICITUD = 12;
+    public static final int STATUSNOTIFICATIONDESC = 13;
+    public static final int ORIGIN = 14;
 
-  /**This is the default constructor (do not remove)
-   */
+    /**This is the default constructor (do not remove)
+     */
     public XxGamAdvanceRequestVORowImpl() {
     }
 
@@ -72,115 +70,100 @@ public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl
 
     /**Gets the attribute value for the calculated attribute TotalPayment
      */
-    public Number getTotalPayment() {
-        return (Number) getAttributeInternal(TOTALPAYMENT);
+    public String getTotalPayment() {
+        return (String) getAttributeInternal(TOTALPAYMENT);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute TotalPayment
      */
-    public void setTotalPayment(Number value) {
+    public void setTotalPayment(String value) {
         setAttributeInternal(TOTALPAYMENT, value);
     }
 
-    /**Gets the attribute value for the calculated attribute DescriptionPurpose
-     */
-    public String getDescriptionPurpose() {
-        return (String) getAttributeInternal(DESCRIPTIONPURPOSE);
-    }
-
-    /**Sets <code>value</code> as the attribute value for the calculated attribute DescriptionPurpose
-     */
-    public void setDescriptionPurpose(String value) {
-        setAttributeInternal(DESCRIPTIONPURPOSE, value);
-    }
 
     /**getAttrInvokeAccessor: generated method. Do not modify.
      */
     protected Object getAttrInvokeAccessor(int index,
                                            AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case ID:
-      return getId();
-    case NUMBERPAYMENT:
-      return getNumberPayment();
-    case REQUESTPAYMENTDATE:
-      return getRequestPaymentDate();
-    case ESTATUSREQUEST:
-      return getEstatusRequest();
-    case TOTALPAYMENT:
-      return getTotalPayment();
-    case PURPOSE:
-      return getPurpose();
-    case PURPOSEDESC:
-      return getPurposeDesc();
-    case LOOKUPCODE:
-      return getLookupCode();
-    case APPROVALDATE:
-      return getApprovalDate();
-    case ISUPGRADEABLE:
-      return getIsUpgradeable();
-    case COSTCENTER:
-      return getCostCenter();
-    case STATUSFRANCHISE:
-      return getStatusFranchise();
-    case TIPOSOLICITUD:
-      return getTipoSolicitud();
-    case STATUSNOTIFICATIONDESC:
-      return getStatusNotificationDesc();
-    case ORIGIN:
-      return getOrigin();
-    case DESCRIPTIONPURPOSE:
-      return getDescriptionPurpose();
-    default:
-      return super.getAttrInvokeAccessor(index, attrDef);
+        switch (index) {
+        case ID:
+            return getId();
+        case NUMBERPAYMENT:
+            return getNumberPayment();
+        case REQUESTPAYMENTDATE:
+            return getRequestPaymentDate();
+        case ESTATUSREQUEST:
+            return getEstatusRequest();
+        case TOTALPAYMENT:
+            return getTotalPayment();
+        case PURPOSE:
+            return getPurpose();
+        case PURPOSEDESC:
+            return getPurposeDesc();
+        case LOOKUPCODE:
+            return getLookupCode();
+        case APPROVALDATE:
+            return getApprovalDate();
+        case ISUPGRADEABLE:
+            return getIsUpgradeable();
+        case COSTCENTER:
+            return getCostCenter();
+        case STATUSFRANCHISE:
+            return getStatusFranchise();
+        case TIPOSOLICITUD:
+            return getTipoSolicitud();
+        case STATUSNOTIFICATIONDESC:
+            return getStatusNotificationDesc();
+        case ORIGIN:
+            return getOrigin();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
     }
-  }
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
     protected void setAttrInvokeAccessor(int index, Object value,
                                          AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case ID:
-      setId((Number)value);
-      return;
-    case PURPOSE:
-      setPurpose((String)value);
-      return;
-    case PURPOSEDESC:
-      setPurposeDesc((String)value);
-      return;
-    case LOOKUPCODE:
-      setLookupCode((String)value);
-      return;
-    case APPROVALDATE:
-      setApprovalDate((Date)value);
-      return;
-    case ISUPGRADEABLE:
-      setIsUpgradeable((String)value);
-      return;
-    case COSTCENTER:
-      setCostCenter((Number)value);
-      return;
-    case STATUSFRANCHISE:
-      setStatusFranchise((String)value);
-      return;
-    case TIPOSOLICITUD:
-      setTipoSolicitud((String)value);
-      return;
-    case STATUSNOTIFICATIONDESC:
-      setStatusNotificationDesc((String)value);
-      return;
-    case ORIGIN:
-      setOrigin((String)value);
-      return;
-    default:
-      super.setAttrInvokeAccessor(index, value, attrDef);
-      return;
+        switch (index) {
+        case ID:
+            setId((Number)value);
+            return;
+        case PURPOSE:
+            setPurpose((String)value);
+            return;
+        case PURPOSEDESC:
+            setPurposeDesc((String)value);
+            return;
+        case LOOKUPCODE:
+            setLookupCode((String)value);
+            return;
+        case APPROVALDATE:
+            setApprovalDate((Date)value);
+            return;
+        case ISUPGRADEABLE:
+            setIsUpgradeable((String)value);
+            return;
+        case COSTCENTER:
+            setCostCenter((Number)value);
+            return;
+        case STATUSFRANCHISE:
+            setStatusFranchise((String)value);
+            return;
+        case TIPOSOLICITUD:
+            setTipoSolicitud((String)value);
+            return;
+        case STATUSNOTIFICATIONDESC:
+            setStatusNotificationDesc((String)value);
+            return;
+        case ORIGIN:
+            setOrigin((String)value);
+            return;
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
     }
-  }
 
     /**Gets the attribute value for the calculated attribute Id
      */

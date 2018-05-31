@@ -26,7 +26,8 @@ SELECT
        GeneralSolicitud.NUMBER_PAYMENT,
        GeneralSolicitud.REQUEST_PAYMENT_DATE,
        EstatusSolicitud.MEANING ESTATUS_REQUEST,
-       GeneralSolicitud.TOTAL_PAYMENT,
+       /*GeneralSolicitud.TOTAL_PAYMENT,*/
+       TO_CHAR(GeneralSolicitud.TOTAL_PAYMENT , 'FM999G999D99') TOTAL_PAYMENT,
        GeneralSolicitud.PURPOSE,
        PropositoSolicitud.MEANING PURPOSE_DESC,
        DECODE(instr(number_payment,'PF'),0, EstatusSolicitud.LOOKUP_CODE,EstatusFranquicia.LOOKUP_CODE) LOOKUP_CODE,
@@ -144,12 +145,11 @@ ORDER BY GeneralSolicitud.REQUEST_PAYMENT_DATE DESC
       IsPersistent="false"
       IsNotNull="true"
       Precision="14"
-      Scale="2"
-      Type="oracle.jbo.domain.Number"
-      ColumnType="NUMBER"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
       AliasName="TOTAL_PAYMENT"
       Expression="TOTAL_PAYMENT"
-      SQLType="NUMERIC" >
+      SQLType="VARCHAR" >
       <DesignTime>
          <Attr Name="_DisplaySize" Value="22" />
       </DesignTime>
@@ -286,22 +286,6 @@ ORDER BY GeneralSolicitud.REQUEST_PAYMENT_DATE DESC
       SQLType="VARCHAR" >
       <DesignTime>
          <Attr Name="_DisplaySize" Value="2" />
-      </DesignTime>
-   </ViewAttribute>
-   <ViewAttribute
-      Name="DescriptionPurpose"
-      IsUpdateable="false"
-      IsSelected="false"
-      IsQueriable="false"
-      IsPersistent="false"
-      IsNotNull="true"
-      Precision="255"
-      Type="java.lang.String"
-      ColumnType="VARCHAR2"
-      AliasName="DESCRIPTION_PURPOSE"
-      SQLType="VARCHAR" >
-      <DesignTime>
-         <Attr Name="_DisplaySize" Value="80" />
       </DesignTime>
    </ViewAttribute>
    <AttrArray Name="KeyAttributes">
