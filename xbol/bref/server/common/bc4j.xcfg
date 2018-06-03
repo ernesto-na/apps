@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="BankReferenceAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>TAEMXI</JDBCName>
+         <jbo.project>BankReference</jbo.project>
+         <AppModuleJndiName>xxgam.oracle.apps.xbol.bref.server.BankReferenceAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>xxgam.oracle.apps.xbol.bref.server.BankReferenceAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <ConnectionDefinition name="TAEMXI">
+      <ENTRY name="JDBC_PORT" value="10510"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="vmohsaemx001.oracleoutsourcing.com"/>
+      <ENTRY name="user" value="apps"/>
+      <ENTRY name="ConnectionName" value="TAEMXI"/>
+      <ENTRY name="SID" value="TAEMXI"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">
+         <![CDATA[{904}0536544BC8C6A398C0D8AF7852D8CC0A55CB0FE1CF3012E6BE]]>
+      </ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
+</BC4JConfig>

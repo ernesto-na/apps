@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.xbol.bref.server.BankReferenceAM" windowTitle="Referencia de devolución" title="Referencia para deposito de devolución" controllerClass="xxgam.oracle.apps.xbol.bref.webui.BankReferenceCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProductBrendingImage" source="/OA_MEDIA/FNDSSCORP.gif" shortDesc="Ficha de depósito"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="BankReferenceRN">
+               <ui:contents>
+                  <oa:messageStyledText id="UnidadOperativa" dataType="VARCHAR2" prompt="Razón Social" viewName="BankReferenceVO1" viewAttr="UnidadOperativa" maximumLength="100" shortDesc="Razón Social" styleClass="OraFieldText" sortState="ascending"/>
+                  <oa:messageStyledText id="NombreCompleto" dataType="VARCHAR2" prompt="Nombre del Empleado" viewName="BankReferenceVO1" viewAttr="NombreCompleto" maximumLength="240" shortDesc="Nombre del Empleado" styleClass="OraFieldText" sortState="no"/>
+                  <oa:messageStyledText id="Nombrebanco" dataType="VARCHAR2" prompt="Banco" viewName="BankReferenceVO1" viewAttr="Nombrebanco" maximumLength="100" shortDesc="Banco" styleClass="OraFieldText" sortState="descending"/>
+                  <oa:header id="VentanillaRN" text="Datos para Deposito en Ventanilla">
+                     <ui:contents>
+                        <oa:messageStyledText id="Cuenta" dataType="VARCHAR2" prompt="Cuenta" viewName="BankReferenceVO1" viewAttr="Cuenta" maximumLength="100" shortDesc="Cuenta" styleClass="OraFieldText" sortState="no"/>
+                        <oa:messageStyledText id="Sucursal" dataType="VARCHAR2" prompt="Sucursal" viewName="BankReferenceVO1" viewAttr="Sucursal" maximumLength="100" shortDesc="Sucursal" styleClass="OraFieldText" sortState="no"/>
+                        <oa:messageStyledText id="Referencia" dataType="VARCHAR2" prompt="Referencia" viewName="BankReferenceVO1" viewAttr="Referencia" maximumLength="100" shortDesc="Referencia" styleClass="OraFieldText" sortState="no"/>
+                     </ui:contents>
+                  </oa:header>
+                  <oa:header id="TransferenciaRN" text="Datos para Depositos por Transferencia">
+                     <ui:contents>
+                        <oa:messageStyledText id="CuentaTransferencia" dataType="VARCHAR2" prompt="Cuenta" viewName="BankReferenceVO1" viewAttr="CuentaTransferencia" maximumLength="100" shortDesc="Cuenta" styleClass="OraFieldText" sortState="no"/>
+                        <oa:messageStyledText id="NumeroEmpleado" viewName="BankReferenceVO1" viewAttr="NumeroEmpleado" prompt="Referencia Numerica o Descripcion" shortDesc="Referencia Numerica o Descripcion" styleClass="OraFieldText" dataType="VARCHAR2" sortState="no"/>
+                        <oa:messageStyledText id="Clabe" dataType="VARCHAR2" prompt="Cuenta CLABE" viewName="BankReferenceVO1" viewAttr="Clabe" maximumLength="100" shortDesc="Cuenta CLABE" styleClass="OraFieldText" sortState="no"/>
+                     </ui:contents>
+                  </oa:header>
+                  <oa:header id="ImporteRN">
+                     <ui:contents>
+                        <oa:messageTextInput id="Importe" prompt="Importe" shortDesc="Importe" styleClass="OraFieldNumber" viewName="BankReferenceVO1" viewAttr="Importe" dataType="NUMBER" sortState="no"/>
+                     </ui:contents>
+                  </oa:header>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:pageButtonBar id="ButtonBarRN">
+               <ui:contents>
+                  <oa:submitButton id="download" use="/oracle/apps/fnd/attributesets/Buttons/Download"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

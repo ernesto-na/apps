@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="BankReferenceAM"
+   ComponentClass="xxgam.oracle.apps.xbol.bref.server.BankReferenceAMImpl" >
+   <Properties>
+      <Property Name ="RETENTION_LEVEL" Value ="MANAGE_STATE" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.41.57" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="BankReferenceVO1"
+      ViewObjectName="xxgam.oracle.apps.xbol.bref.server.BankReferenceVO" >
+   </ViewUsage>
+</AppModule>

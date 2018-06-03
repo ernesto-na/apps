@@ -729,6 +729,9 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
     public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
+        
+        
+        
      if(null!=pageContext&&null!=webBean){
      
        if (pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_THREE) == null) {
@@ -783,6 +786,10 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
              setForwardAirPlaneDetail(pageContext, webBean);
          } // END Show detail 
       } // END if(null!=pageContext&&null!=webBean){
+    
+      
+      
+      
     } // END public void processFormRequest
 
     /**

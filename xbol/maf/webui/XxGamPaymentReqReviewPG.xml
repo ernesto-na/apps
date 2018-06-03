@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
    <content>
       <oa:pageLayout id="PaymentReqReviewRN" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamPaymentReqReviewCO" windowTitle="Review and Payment Proposal" title="Review and Payment Proposal">
          <ui:corporateBranding>
@@ -8,7 +8,6 @@
          <ui:contents>
             <oa:labeledFieldLayout id="XxGamMaGeneralReqVO1" columns="2" viewLinkName="XxgamMaPaymentReqXxgaFk1Link1">
                <ui:contents>
-                  <oa:messageStyledText id="FullNameEmployee" dataType="VARCHAR2" prompt="Full name employee" viewName="XxGamMaGeneralReqVO1" viewAttr="EmployeName" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="CostCenterDesc" dataType="VARCHAR2" prompt="Cost center" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterDesc" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="CostCenterFlex" viewName="XxGamMaGeneralReqVO1" viewAttr="CostCenterFlex" prompt="Cost Center Alternate" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="CurrencyDesc" dataType="VARCHAR2" prompt="Reimbursement Currency" viewName="XxGamMaGeneralReqVO1" viewAttr="CurrencyDesc" styleClass="OraFieldText"/>
@@ -21,6 +20,7 @@
                   <oa:messageStyledText id="NumberPayment" viewName="XxGamMaGeneralReqVO1" viewAttr="NumberPayment" prompt="Number of Document" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="DepartTime" viewName="XxGamMaGeneralReqVO1" viewAttr="DepartTime" prompt="Depart Time" styleClass="OraFieldText"/>
                   <oa:messageStyledText id="ArrivalTime" viewName="XxGamMaGeneralReqVO1" viewAttr="ArrivalTime" prompt="Arrival Time" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="FullNameEmployee" dataType="VARCHAR2" prompt="Full name employee" viewName="XxGamMaGeneralReqVO1" viewAttr="EmployeName" styleClass="OraFieldText"/>
                </ui:contents>
             </oa:labeledFieldLayout>
             <oa:table id="XxGamMaPaymentReqVO2" text="Detail of Advance payment request">

@@ -8,6 +8,7 @@ package xxgam.oracle.apps.xbol.maf.webui;
 
 import com.sun.java.util.collections.HashMap;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import oracle.apps.fnd.common.VersionInfo;
@@ -20,6 +21,10 @@ import oracle.apps.fnd.framework.webui.OAPageContext;
 import oracle.apps.fnd.framework.webui.TransactionUnitHelper;
 import oracle.apps.fnd.framework.webui.beans.OAWebBean;
 
+
+import oracle.apps.fnd.framework.webui.beans.message.OAMessageChoiceBean;
+import oracle.apps.fnd.framework.webui.beans.message.OAMessageLovInputBean;
+import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
@@ -923,6 +928,79 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
         }
     }
 
+/**Recupera valores de las cajas de texto para comparar
+ * 
+ */
+ private static String validaCuenta(OAPageContext pageContext, OAWebBean webBean) throws SQLException {
+         System.out.println("Inicio del metodo valida cuenta");
+         String MyValue = "My Value";
+         OAMessageLovInputBean text = (OAMessageLovInputBean)webBean.findChildRecursive("PurposeLov");
+         OAMessageLovInputBean templateLov = (OAMessageLovInputBean)webBean.findChildRecursive("TemplatePaymentLov");
+       String auxPurpose=null;
+       String auxTemplateLov=null;
+       try {
+           auxPurpose=  text.getValue(pageContext).toString();
+           auxTemplateLov = templateLov.getValue(pageContext).toString();
+           System.out.println("Template: "+auxTemplateLov);
+           System.out.println("Proposito: "+auxPurpose);
+       }catch(Exception ex){
+           System.out.println(ex.getMessage());
+       }
+      
+        /* if(null!=pageContext&&null!=webBean){
+                         XxGamModAntAMImpl ValAntImpl=null;
+                        ValAntImpl = ( XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                         if(null != ValAntImpl){
+                            XxGamMaGeneralReqVOImpl  ValAntGeneralReqVOImpl=null; 
+                             XxGamMaGeneralReqVORowImpl ValAntGeneralReqVORowImpl =null;
+                             ValAntGeneralReqVOImpl = ValAntImpl.getXxGamMaGeneralReqVO1();
+                                 if(null!=ValAntGeneralReqVOImpl){
+                                         RowSetIterator iterMipSpendVO = ValAntGeneralReqVOImpl.createRowSetIterator(null);
+                                         iterMipSpendVO.reset();
+                                         while(iterMipSpendVO.hasNext()){
+                                                 Row rValMipAssetVO = iterMipSpendVO.next(); 
+                                                 ValAntGeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)rValMipAssetVO; 
+                                                 
+                                                    
+                                                 
+                                                 //String strStmt = " select ffvv.DESCRIPTION from FND_FLEX_VALUES_VL ffvv where 1=1 and exists( SELECT a.FLEX_VALUE_SET_ID FROM fnd_flex_value_sets a, fnd_flex_values b WHERE a.flex_value_set_id = b.flex_value_set_id and a.FLEX_VALUE_SET_NAME = 'GAM_GL_SUBCUENTA' and a.FLEX_VALUE_SET_ID = ffvv.FLEX_VALUE_SET_ID) and ffvv.HIERARCHY_LEVEL='1' and ffvv.FLEX_VALUE between '50000' and '70000' AND ffvv.FLEX_VALUE IN ( SELECT CHILD_FLEX_VALUE_LOW FROM FND_FLEX_VALUE_NORM_HIERARCHY WHERE (FLEX_VALUE_SET_ID = 1015132) and( (select segment6 from gl_code_combinations where code_combination_id = "+ValMipSpendVORowImpl.+") BETWEEN  CHILD_FLEX_VALUE_LOW AND CHILD_FLEX_VALUE_HIGH) ) order by ffvv.FLEX_VALUE asc ";
+                                                 //ValMipSpendVORowImpl.setAttribute1("valor");
+                                              try{  
+                                                 System.out.println(text.getValue((OAPageContext)webBean));
+                                             //OracleConnection conn = (OracleConnection)pageContext.getApplicationModule(webBean).getOADBTransaction().getJdbcConnection();
+                                             //String Query = "select ffvv.FLEX_VALUE b, ffvv.DESCRIPTION a from FND_FLEX_VALUES_VL ffvv where 1=1 and exists( SELECT a.FLEX_VALUE_SET_ID FROM fnd_flex_value_sets a, fnd_flex_values b WHERE a.flex_value_set_id = b.flex_value_set_id and a.FLEX_VALUE_SET_NAME = 'GAM_GL_SUBCUENTA' and a.FLEX_VALUE_SET_ID = ffvv.FLEX_VALUE_SET_ID) and ffvv.HIERARCHY_LEVEL='1' and ffvv.FLEX_VALUE between '50000' and '70000' AND ffvv.FLEX_VALUE IN ( SELECT CHILD_FLEX_VALUE_LOW FROM FND_FLEX_VALUE_NORM_HIERARCHY WHERE (FLEX_VALUE_SET_ID = 1015132) and( (select segment6 from gl_code_combinations where code_combination_id = "+ValMipSpendVORowImpl.getCodeCombinationId()+") BETWEEN  CHILD_FLEX_VALUE_LOW AND CHILD_FLEX_VALUE_HIGH) ) order by ffvv.FLEX_VALUE asc ";
+                                             
+                                             //PreparedStatement stmt = conn.prepareStatement(Query);  
+                                             /*for(ResultSet resultset = stmt.executeQuery(); resultset.next();)  
+                                             {  
+                             
+                                             String result = resultset.getString("a");
+                                                 ValMipSpendVORowImpl.setAttribute1((String)result);
+                                                 ValMipSpendVORowImpl.setSpend("b");
+                                            
+                                             }  */
+                                                return auxPurpose;
+                                             }    
+                                             /*catch(Exception exception)                                             
+                                             {   
+                                             exception.printStackTrace();  
+                                             }  
+                                             //String cuentaPadre = ValMipAMImpl.getCodigo(ValMipSpendVORowImpl.getCodeCombinationId());        
+                                             //ValMipSpendVORowImpl.setAttribute1((String)cuentaPadre);
+                                         }//fin de while
+                                 }//fin de if(null!=ValMipSpendVOImpl)
+                         }//fin de if if(null != ValMipAMImpl)
+              
+         System.out.println("Fin del metodo valida cuenta");
+     }*/
+     
+   
+     //fin de private void validaCuenta(OAPageContext pageContext, OAWebBean webBean)
+
+
+
+
+
     /**
      * Procedure to handle form submissions for form elements in
      * a region.
@@ -932,7 +1010,17 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
     public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
-
+        try{
+        
+        
+          String purpose= null;
+          purpose = validaCuenta(pageContext,webBean);
+          System.out.println("Purpose: "+purpose);
+        }catch(Exception ex){
+            System.out.println("00000000"+ex.getMessage().toString());
+        }
+        
+        
         if (pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_ONE) == 
             null) {
             pageContext.putTransactionValue(XxGamConstantsUtil.VIEW_STEP_ONE, 
