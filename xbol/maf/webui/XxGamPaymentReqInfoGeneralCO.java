@@ -1069,7 +1069,14 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                 OAMessageStyledTextBean ccMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterDescRO");
                 OAMessageStyledTextBean ccaMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterFlexRO");
                 OAMessageStyledTextBean temMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("TemplateDescRO");
-                
+                  OAMessageStyledTextBean ppMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("PurposeDescRO");
+                String paramPurpose = null;
+                  paramPurpose = ppMSTextBean.getValue(pageContext).toString().toUpperCase();
+                  if(paramPurpose!= null && paramPurpose !=""){
+                      paramPurpose = paramPurpose.substring(0,5);
+                  }
+                  
+                System.out.println("PP "+ ppMSTextBean.getValue(pageContext));
                 System.out.println("CC: " + ccMSTextBean.getValue(pageContext));
                 System.out.println("CCA: " + ccaMSTextBean.getValue(pageContext));
                 System.out.println("TEMPLATE: " + temMSTextBean.getValue(pageContext));
@@ -1098,25 +1105,41 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                    
                 pat = Pattern.compile(patValue);
                 mat = pat.matcher((CharSequence)temMSTextBean.getValue(pageContext));
-                
+                //Se valida tambien que el proposito y la plantilla hagan match
                 if (mat.find() && templatePurpose) 
                    {
                     System.out.println("template - cc validation: True");
                    }
                 else 
                    {
+                   //Se tratan dos tipos diferentes de error
+                   
                     System.out.println("template - cc validation: False");
                     
-                    MessageToken[] arrayOfMessageToken = { new MessageToken("PARAM1", (String)temMSTextBean.getValue(pageContext)), new MessageToken("PARAM2", patValue) };
-                    OAException localOAException = new OAException("SQLAP", "XXGAM_AP_OIE_VALIDA_CCTEMP", arrayOfMessageToken, OAException.ERROR, null);
-                     
-                    OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
+                    if (!templatePurpose){
+                        MessageToken[] arrayOfMessageToken = { new MessageToken("PARAM1", (String)temMSTextBean.getValue(pageContext)), new MessageToken("PARAM2", paramPurpose) };
+                        OAException localOAException = new OAException("SQLAP", "XXGAM_AP_OIE_VALIDA_CCPP", arrayOfMessageToken, OAException.ERROR, null);
+                        OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                        localOADialogPage.setOkButtonToPost(true);
+                        localOADialogPage.setOkButtonLabel("Ok");
+                        localOADialogPage.setPostToCallingPage(true);
+                        Hashtable localHashtable = new Hashtable(1);
+                        localOADialogPage.setFormParameters(localHashtable);
+                        pageContext.redirectToDialogPage(localOADialogPage);
+                    }
+                       if (!mat.find()){
+                           MessageToken[] arrayOfMessageToken = { new MessageToken("PARAM1", (String)temMSTextBean.getValue(pageContext)), new MessageToken("PARAM2", patValue) };
+                           OAException localOAException = new OAException("SQLAP", "XXGAM_AP_OIE_VALIDA_CCTEMP", arrayOfMessageToken, OAException.ERROR, null);
+                           OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                           localOADialogPage.setOkButtonToPost(true);
+                           localOADialogPage.setOkButtonLabel("Ok");
+                           localOADialogPage.setPostToCallingPage(true);
+                           Hashtable localHashtable = new Hashtable(1);
+                           localOADialogPage.setFormParameters(localHashtable);
+                           pageContext.redirectToDialogPage(localOADialogPage);
+                       }
+                    
+                  
                    }
                 }  
                   /* */
