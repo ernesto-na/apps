@@ -16,16 +16,19 @@ public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl {
     public static final int REQUESTPAYMENTDATE = 2;
     public static final int ESTATUSREQUEST = 3;
     public static final int TOTALPAYMENT = 4;
-    public static final int PURPOSE = 5;
-    public static final int PURPOSEDESC = 6;
-    public static final int LOOKUPCODE = 7;
-    public static final int APPROVALDATE = 8;
-    public static final int ISUPGRADEABLE = 9;
-    public static final int COSTCENTER = 10;
-    public static final int STATUSFRANCHISE = 11;
-    public static final int TIPOSOLICITUD = 12;
-    public static final int STATUSNOTIFICATIONDESC = 13;
-    public static final int ORIGIN = 14;
+    public static final int MXNCURRENCY = 5;
+    public static final int MONEDAINTER = 6;
+    public static final int CURRENCYCODE = 7;
+    public static final int PURPOSE = 8;
+    public static final int PURPOSEDESC = 9;
+    public static final int LOOKUPCODE = 10;
+    public static final int APPROVALDATE = 11;
+    public static final int ISUPGRADEABLE = 12;
+    public static final int COSTCENTER = 13;
+    public static final int STATUSFRANCHISE = 14;
+    public static final int TIPOSOLICITUD = 15;
+    public static final int STATUSNOTIFICATIONDESC = 16;
+    public static final int ORIGIN = 17;
 
     /**This is the default constructor (do not remove)
      */
@@ -96,6 +99,12 @@ public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl {
             return getEstatusRequest();
         case TOTALPAYMENT:
             return getTotalPayment();
+        case MXNCURRENCY:
+            return getMxnCurrency();
+        case MONEDAINTER:
+            return getMonedaInter();
+        case CURRENCYCODE:
+            return getCurrencyCode();
         case PURPOSE:
             return getPurpose();
         case PURPOSEDESC:
@@ -128,6 +137,15 @@ public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl {
         switch (index) {
         case ID:
             setId((Number)value);
+            return;
+        case MXNCURRENCY:
+            setMxnCurrency((String)value);
+            return;
+        case MONEDAINTER:
+            setMonedaInter((String)value);
+            return;
+        case CURRENCYCODE:
+            setCurrencyCode((String)value);
             return;
         case PURPOSE:
             setPurpose((String)value);
@@ -299,4 +317,40 @@ public class XxGamAdvanceRequestVORowImpl extends OAViewRowImpl {
   {
     setAttributeInternal(ORIGIN, value);
   }
+
+    /**Gets the attribute value for the calculated attribute MxnCurrency
+     */
+    public String getMxnCurrency() {
+        return (String) getAttributeInternal(MXNCURRENCY);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute MxnCurrency
+     */
+    public void setMxnCurrency(String value) {
+        setAttributeInternal(MXNCURRENCY, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute MonedaInter
+     */
+    public String getMonedaInter() {
+        return (String) getAttributeInternal(MONEDAINTER);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute MonedaInter
+     */
+    public void setMonedaInter(String value) {
+        setAttributeInternal(MONEDAINTER, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute CurrencyCode
+     */
+    public String getCurrencyCode() {
+        return (String) getAttributeInternal(CURRENCYCODE);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute CurrencyCode
+     */
+    public void setCurrencyCode(String value) {
+        setAttributeInternal(CURRENCYCODE, value);
+    }
 }
