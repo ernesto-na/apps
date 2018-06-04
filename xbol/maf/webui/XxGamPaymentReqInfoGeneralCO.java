@@ -929,9 +929,9 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
     }
 
 /**Recupera valores de las cajas de texto para comparar
- * 
+ * Valida el proposito y la plantilla
  */
- private static String validaCuenta(OAPageContext pageContext, OAWebBean webBean) throws SQLException {
+ private static Boolean validaCuenta(OAPageContext pageContext, OAWebBean webBean) throws SQLException {
          System.out.println("Inicio del metodo valida cuenta");
          String MyValue = "My Value";
          OAMessageLovInputBean text = (OAMessageLovInputBean)webBean.findChildRecursive("PurposeLov");
@@ -943,8 +943,27 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
            auxTemplateLov = templateLov.getValue(pageContext).toString();
            System.out.println("Template: "+auxTemplateLov);
            System.out.println("Proposito: "+auxPurpose);
+           int verificar=0;
+           if (null!=auxPurpose && null!=auxTemplateLov){
+               auxPurpose = auxPurpose.substring(0,5).toUpperCase();
+               verificar =  auxTemplateLov.indexOf(auxPurpose);
+               if(verificar!= -1){
+                   System.out.println("validacion correcta");
+                   return true;
+               }else{
+                   System.out.println("validacion incorrecta");
+                   return false;
+               }
+               
+           }
+           return false;
+           
+           
+           
+           
        }catch(Exception ex){
            System.out.println(ex.getMessage());
+           return false;
        }
       
         /* if(null!=pageContext&&null!=webBean){
@@ -979,7 +998,7 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                                                  ValMipSpendVORowImpl.setSpend("b");
                                             
                                              }  */
-                                                return auxPurpose;
+                                                
                                              }    
                                              /*catch(Exception exception)                                             
                                              {   
@@ -1010,17 +1029,9 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
     public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
-        try{
+      
         
-        
-          String purpose= null;
-          purpose = validaCuenta(pageContext,webBean);
-          System.out.println("Purpose: "+purpose);
-        }catch(Exception ex){
-            System.out.println("00000000"+ex.getMessage().toString());
-        }
-        
-        
+
         if (pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_ONE) == 
             null) {
             pageContext.putTransactionValue(XxGamConstantsUtil.VIEW_STEP_ONE, 
@@ -1039,6 +1050,22 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
       if(null!=strEvntContBttn){
         if ( strEvntContBttn.equals("goto"))
               {
+              //Added
+               Boolean templatePurpose =false;
+               try{
+                                 //Evento   NextFButton
+                               
+                                     System.out.println("-->Event: " + strEvntContBttn);
+                                   String purpose= null;
+                                   templatePurpose = validaCuenta(pageContext,webBean);
+                                   System.out.println("Purpose: "+purpose);
+                                   if(templatePurpose){
+                                       System.out.println("Mostrar la pag");
+                                   }
+                                 }catch(Exception ex){
+                                     System.out.println("00000000"+ex.getMessage().toString());
+                                 }
+              //Added
                 OAMessageStyledTextBean ccMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterDescRO");
                 OAMessageStyledTextBean ccaMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("CostCenterFlexRO");
                 OAMessageStyledTextBean temMSTextBean = (OAMessageStyledTextBean)webBean.findChildRecursive("TemplateDescRO");
@@ -1072,7 +1099,7 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                 pat = Pattern.compile(patValue);
                 mat = pat.matcher((CharSequence)temMSTextBean.getValue(pageContext));
                 
-                if (mat.find()) 
+                if (mat.find() && templatePurpose) 
                    {
                     System.out.println("template - cc validation: True");
                    }
@@ -1122,6 +1149,35 @@ public class XxGamPaymentReqInfoGeneralCO extends OAControllerImpl {
                       
                     }
                   /* */
+                  
+                  //Validacion de la plantilla y el centro de costos
+                 /*  try{
+                   //Evento   NextFButton
+                   Boolean templatePurpose =false;
+                       System.out.println("-->Event: " + strEvntContBttn);
+                     String purpose= null;
+                     templatePurpose = validaCuenta(pageContext,webBean);
+                     System.out.println("Purpose: "+purpose);
+                     if(templatePurpose){
+                         System.out.println("Mostrar la pag");
+                     }else{
+                         MessageToken[] arrayOfMessageToken = { new MessageToken("PARAM1", localOAMessageChoiceBean.getSelectionText(paramOAPageContext)), new MessageToken("PARAM2", flexCC) };
+                                 
+                                 OAException localOAException = new OAException("SQLAP", "XXGAM_AP_OIE_VALIDA_CCTEMP", arrayOfMessageToken, OAException.ERROR, null);
+                                 
+                                 OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                                 localOADialogPage.setOkButtonToPost(true);
+                                 localOADialogPage.setOkButtonLabel("Ok");
+                                 localOADialogPage.setPostToCallingPage(true);
+                                 Hashtable localHashtable = new Hashtable(1);
+                                 localOADialogPage.setFormParameters(localHashtable);
+                                 paramOAPageContext.redirectToDialogPage(localOADialogPage);
+                     }
+                     
+                   }catch(Exception ex){
+                       System.out.println("00000000"+ex.getMessage().toString());
+                   }*/
+                   
               }
         //Fin Ajuste validacion plantila-centro de costos by GnosisHCM/AHH 
       }
