@@ -41,13 +41,13 @@
                                           </oa:link>
                                           <oa:messageTextInput id="RequestPaymentDate" dataType="DATE" prompt="Execution date in advance" viewName="XxGamAdvanceRequestVO1" viewAttr="ApprovalDate" readOnly="true" queryable="true" sortState="ascending" vAlign="middle"/>
                                           <oa:messageTextInput id="EstatusRequest11" dataType="VARCHAR2" prompt="Status" viewName="XxGamAdvanceRequestVO1" viewAttr="EstatusRequest" maximumLength="80" readOnly="true" queryable="true" sortState="ascending" vAlign="middle"/>
-                                          <oa:messageTextInput id="TotalPayment" dataType="VARCHAR2" prompt="Total Amount" viewName="XxGamAdvanceRequestVO1" viewAttr="TotalPayment" maximumLength="14" readOnly="true" queryable="true" sortState="ascending" vAlign="middle"/>
+                                          <oa:messageTextInput id="moneda_inter" readOnly="true" viewName="XxGamAdvanceRequestVO1" viewAttr="MonedaInter" prompt="Amount" maximumLength="11"/>
+                                          <oa:messageTextInput id="currency_code" readOnly="true" maximumLength="5" prompt="Currency Code" viewName="XxGamAdvanceRequestVO1" viewAttr="CurrencyCode"/>
+                                          <oa:messageTextInput id="TotalPayment" dataType="VARCHAR2" prompt="Amount MXN" viewName="XxGamAdvanceRequestVO1" viewAttr="TotalPayment" maximumLength="14" readOnly="true" queryable="true" sortState="ascending" vAlign="middle"/>
                                           <oa:messageTextInput id="mxn_currency" prompt="Currency MXN" viewName="XxGamAdvanceRequestVO1" viewAttr="MxnCurrency" maximumLength="5" readOnly="true"/>
-                                          <oa:messageTextInput id="moneda_inter" readOnly="true" viewName="XxGamAdvanceRequestVO1" viewAttr="MonedaInter" prompt="Original Currency" maximumLength="11"/>
-                                          <oa:messageTextInput id="currency_code" readOnly="true" maximumLength="5" prompt="Foreign currency" viewName="XxGamAdvanceRequestVO1" viewAttr="CurrencyCode"/>
                                           <oa:messageTextInput id="DescriptionPurpose" dataType="VARCHAR2" prompt="Purpose" viewName="XxGamAdvanceRequestVO1" viewAttr="PurposeDesc" maximumLength="80" readOnly="true" queryable="false" sortState="no" vAlign="middle"/>
                                           <oa:messageTextInput id="statusFranchise" viewName="XxGamAdvanceRequestVO1" viewAttr="StatusFranchise" maximumLength="80" readOnly="true" prompt="Status"/>
-                                          <oa:messageTextInput id="Notifications" prompt="Notifications" readOnly="true" viewName="XxGamAdvanceRequestVO1" viewAttr="StatusNotificationDesc" maximumLength="80"/>
+                                          <oa:messageTextInput id="Notifications" prompt="Ticket Status" readOnly="true" viewName="XxGamAdvanceRequestVO1" viewAttr="StatusNotificationDesc" maximumLength="80"/>
                                           <oa:image id="duplicate" destination="" prompt="Duplicate" source="/OA_MEDIA/applysignature_enabled.gif">
                                              <ui:primaryClientAction>
                                                 <ui:fireAction event="duplicate" id="fireAction1">
