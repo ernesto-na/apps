@@ -7,6 +7,7 @@
    CustomQuery="true"
    RowClass="xxgam.oracle.apps.xbol.bref.server.BankReferenceVORowImpl"
    ComponentClass="xxgam.oracle.apps.xbol.bref.server.BankReferenceVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
    UseGlueCode="false" >
    <SQLQuery><![CDATA[
 select XAFDT.NOMBREBANCO
@@ -24,6 +25,14 @@ select XAFDT.NOMBREBANCO
      , XAFDT.CREATION_DATE
      , XAFDT.CREATED_BY
      , PAPF.EMPLOYEE_NUMBER
+     , XAFDT.BANK
+     , XAFDT.BANKCODE
+     , XAFDT.BRANCHCODE
+     , XAFDT.ACCOUNT
+     , XAFDT.IBAN
+     , XAFDT.SWIFT
+     , XAFDT.ABA
+     , XAFDT.CURRENCY
   from XXGAM_AP_FICHA_DEP_TMP XAFDT
       ,PER_ALL_PEOPLE_F PAPF
 where XAFDT.CREATED_BY = fnd_profile.value('USER_ID')
@@ -242,6 +251,118 @@ where XAFDT.CREATED_BY = fnd_profile.value('USER_ID')
       AliasName="EMPLOYEE_NUMBER"
       Expression="EMPLOYEE_NUMBER"
       SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Bank"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BANK"
+      Expression="BANK"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Bankcode"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BANKCODE"
+      Expression="BANKCODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Branchcode"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BRANCHCODE"
+      Expression="BRANCHCODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Account"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ACCOUNT"
+      Expression="ACCOUNT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Iban"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="IBAN"
+      Expression="IBAN"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Swift"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SWIFT"
+      Expression="SWIFT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Aba"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ABA"
+      Expression="ABA"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Currency"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="100"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY"
+      Expression="CURRENCY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
    </ViewAttribute>
    <ViewAttribute
       Name="Importe"

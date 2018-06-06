@@ -19,25 +19,53 @@
 /*     */ 
 /*     */ 
 /*     */ public class BankReferenceVORowImpl
-/*     */   extends OAViewRowImpl
-/*     */ {
-/*     */   public static final int NOMBREBANCO = 0;
-/*     */   public static final int SUCURSAL = 1;
-/*     */   public static final int REFERENCIA = 2;
-/*     */   public static final int CUENTA = 3;
-/*     */   public static final int UNIDADOPERATIVA = 4;
-/*     */   public static final int NOMBRECOMPLETO = 5;
-/*     */   public static final int CUENTATRANSFERENCIA = 6;
-/*     */   public static final int OBSERVACIONES = 7;
-/*     */   public static final int CLABE = 8;
-/*     */   public static final int LASTUPDATEDATE = 9;
-/*     */   public static final int LASTUPDATEDBY = 10;
-/*     */   public static final int LASTUPDATELOGIN = 11;
-/*     */   public static final int CREATIONDATE = 12;
-/*     */   public static final int CREATEDBY = 13;
-/*     */   public static final int NUMEROEMPLEADO = 14;
-/*     */   public static final int IMPORTE = 15;
-/*     */   
+/*     */   extends OAViewRowImpl {
+/*     */
+    public static final int NOMBREBANCO = 0;
+    public static final int SUCURSAL = 1;
+    public static final int REFERENCIA = 2;
+    public static final int CUENTA = 3;
+    public static final int UNIDADOPERATIVA = 4;
+    public static final int NOMBRECOMPLETO = 5;
+    public static final int CUENTATRANSFERENCIA = 6;
+    public static final int OBSERVACIONES = 7;
+    public static final int CLABE = 8;
+    public static final int LASTUPDATEDATE = 9;
+    public static final int LASTUPDATEDBY = 10;
+    public static final int LASTUPDATELOGIN = 11;
+    public static final int CREATIONDATE = 12;
+    public static final int CREATEDBY = 13;
+    public static final int NUMEROEMPLEADO = 14;
+    public static final int BANK = 15;
+    public static final int BANKCODE = 16;
+    public static final int BRANCHCODE = 17;
+    public static final int ACCOUNT = 18;
+    public static final int IBAN = 19;
+    public static final int SWIFT = 20;
+    public static final int ABA = 21;
+    public static final int CURRENCY = 22;
+    public static final int IMPORTE = 23;
+
+    /**This is the default constructor (do not remove)
+     */
+    public BankReferenceVORowImpl() {
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */   
 /*     */   public String getNombrebanco()
 /*     */   {
 /*  43 */     return (String)getAttributeInternal(0);
@@ -202,70 +230,114 @@
 /*     */   {
 /* 203 */     setAttributeInternal(13, value);
 /*     */   }
+/*     */  
+/*     */   public Number getBankCode()
+/*     */   {
+/* 197 */     return (Number)getAttributeInternal(16);
+/*     */   }
+/*     */   
+/*     */ 
+/*     */   public void setBankCode(Number value)
+/*     */   {
+/* 203 */     setAttributeInternal(16, value);
+/*     */   }
 /*     */   
 /*     */ 
 /*     */ 
+/*     */ 
+/*     */   public Number getBranchCode()
+/*     */   {
+/* 197 */     return (Number)getAttributeInternal(17);
+/*     */   }
+/*     */   
+/*     */ 
+/*     */   public void setBranchCode(Number value)
+/*     */   {
+/* 203 */     setAttributeInternal(17, value);
+/*     */   }
+/*     */   
+/*     */ 
+/*     */   
 /*     */   protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef)
 /*     */     throws Exception
 /*     */   {
-/* 211 */     switch (index)
-/*     */     {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */     case 0: 
-/* 248 */       return getNombrebanco(); case 1:  return getSucursal(); case 2:  return getReferencia(); case 3:  return getCuenta(); case 4:  return getUnidadOperativa(); case 5:  return getNombreCompleto(); case 6:  return getCuentaTransferencia(); case 7:  return getObservaciones(); case 8:  return getClabe(); case 9:  return getLastUpdateDate(); case 10:  return getLastUpdatedBy(); case 11:  return getLastUpdateLogin(); case 12:  return getCreationDate(); case 13:  return getCreatedBy(); case 14:  return getNumeroEmpleado(); case 15:  return getImporte(); } return super.getAttrInvokeAccessor(index, attrDef);
-/*     */   }
+/* 236 */
+        /*     */switch (index) {
+        case NOMBREBANCO:
+            return getNombrebanco();
+        case SUCURSAL:
+            return getSucursal();
+        case REFERENCIA:
+            return getReferencia();
+        case CUENTA:
+            return getCuenta();
+        case UNIDADOPERATIVA:
+            return getUnidadOperativa();
+        case NOMBRECOMPLETO:
+            return getNombreCompleto();
+        case CUENTATRANSFERENCIA:
+            return getCuentaTransferencia();
+        case OBSERVACIONES:
+            return getObservaciones();
+        case CLABE:
+            return getClabe();
+        case LASTUPDATEDATE:
+            return getLastUpdateDate();
+        case LASTUPDATEDBY:
+            return getLastUpdatedBy();
+        case LASTUPDATELOGIN:
+            return getLastUpdateLogin();
+        case CREATIONDATE:
+            return getCreationDate();
+        case CREATEDBY:
+            return getCreatedBy();
+        case NUMEROEMPLEADO:
+            return getNumeroEmpleado();
+        case BANK:
+            return getBank();
+        case BANKCODE:
+            return getBankcode();
+        case BRANCHCODE:
+            return getBranchcode();
+        case ACCOUNT:
+            return getAccount();
+        case IBAN:
+            return getIban();
+        case SWIFT:
+            return getSwift();
+        case ABA:
+            return getAba();
+        case CURRENCY:
+            return getCurrency();
+        case IMPORTE:
+            return getImporte();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
+    }
 /*     */   
 /*     */ 
 /*     */   protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef)
 /*     */     throws Exception
 /*     */   {
-/* 255 */     switch (index)
-/*     */     {
-/*     */     case 6: 
-/* 258 */       setCuentaTransferencia((String)value); return;
-/*     */     
-/*     */     case 8: 
-/* 261 */       setClabe((String)value); return;
-/*     */     
-/*     */     case 15: 
-/* 264 */       setImporte((Number)value); return;
-/*     */     }
-/*     */     
-/* 267 */     super.setAttrInvokeAccessor(index, value, attrDef);
-/*     */   }
+/* 255 */
+        /*     */     
+/* 267 */
+        /*     */switch (index) {
+        case CUENTATRANSFERENCIA:
+            setCuentaTransferencia((String)value);
+            return;
+        case CLABE:
+            setClabe((String)value);
+            return;
+        case IMPORTE:
+            setImporte((Number)value);
+            return;
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
+    }
 /*     */   
 /*     */ 
 /*     */ 
@@ -288,13 +360,13 @@
 /*     */ 
 /*     */   public Number getImporte()
 /*     */   {
-/* 291 */     return (Number)getAttributeInternal(15);
+/* 291 */     return (Number)getAttributeInternal(23);
 /*     */   }
 /*     */   
 /*     */ 
 /*     */   public void setImporte(Number value)
 /*     */   {
-/* 297 */     setAttributeInternal(15, value);
+/* 297 */     setAttributeInternal(23, value);
 /*     */   }
 /*     */   
 /*     */ 
@@ -325,7 +397,104 @@
 /*     */   {
 /* 326 */     setAttributeInternal(6, value);
 /*     */   }
-/*     */ }
+/*     */
+
+    /**Gets the attribute value for the calculated attribute Bank
+     */
+    public String getBank() {
+        return (String) getAttributeInternal(BANK);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Bank
+     */
+    public void setBank(String value) {
+        setAttributeInternal(BANK, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Bankcode
+     */
+    public String getBankcode() {
+        return (String) getAttributeInternal(BANKCODE);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Bankcode
+     */
+    public void setBankcode(String value) {
+        setAttributeInternal(BANKCODE, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Branchcode
+     */
+    public String getBranchcode() {
+        return (String) getAttributeInternal(BRANCHCODE);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Branchcode
+     */
+    public void setBranchcode(String value) {
+        setAttributeInternal(BRANCHCODE, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Account
+     */
+    public String getAccount() {
+        return (String) getAttributeInternal(ACCOUNT);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Account
+     */
+    public void setAccount(String value) {
+        setAttributeInternal(ACCOUNT, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Iban
+     */
+    public String getIban() {
+        return (String) getAttributeInternal(IBAN);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Iban
+     */
+    public void setIban(String value) {
+        setAttributeInternal(IBAN, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Swift
+     */
+    public String getSwift() {
+        return (String) getAttributeInternal(SWIFT);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Swift
+     */
+    public void setSwift(String value) {
+        setAttributeInternal(SWIFT, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Aba
+     */
+    public String getAba() {
+        return (String) getAttributeInternal(ABA);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Aba
+     */
+    public void setAba(String value) {
+        setAttributeInternal(ABA, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Currency
+     */
+    public String getCurrency() {
+        return (String) getAttributeInternal(CURRENCY);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Currency
+     */
+    public void setCurrency(String value) {
+        setAttributeInternal(CURRENCY, value);
+    }
+}
 
 
 /* Location:              C:\Users\GHCM-T430-06_2\Documents\Aeromexico\iExpenses\Fuentes\Link_referencia\bref_01_06_18.zip!\bref\server\BankReferenceVORowImpl.class

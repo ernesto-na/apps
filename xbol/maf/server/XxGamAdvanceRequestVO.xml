@@ -27,9 +27,9 @@ SELECT
        GeneralSolicitud.REQUEST_PAYMENT_DATE,
        EstatusSolicitud.MEANING ESTATUS_REQUEST,
        /*GeneralSolicitud.TOTAL_PAYMENT,*/
-       TO_CHAR(GeneralSolicitud.TOTAL_PAYMENT , '99999D99') TOTAL_PAYMENT,
+       TO_CHAR(GeneralSolicitud.TOTAL_PAYMENT , '999,999,999,999.99') TOTAL_PAYMENT,
        GeneralSolicitud.CURRENCY_CODE MXN_CURRENCY,
-       TO_CHAR((select sum(AMOUNT) from xxgam_ma_payment_req where GENERAL_REQ_ID = GeneralSolicitud.Id) , '99999D99')  MONEDA_INTER,
+       TO_CHAR((select sum(AMOUNT) from xxgam_ma_payment_req where GENERAL_REQ_ID = GeneralSolicitud.Id) , '999,999,999,999.99')  MONEDA_INTER,
        (select CURRENCY_CODE  moneda_extranjera from  xxgam_ma_payment_req where GENERAL_REQ_ID = GeneralSolicitud.id and rownum<2) CURRENCY_CODE,
        GeneralSolicitud.PURPOSE,
        PropositoSolicitud.MEANING PURPOSE_DESC,
