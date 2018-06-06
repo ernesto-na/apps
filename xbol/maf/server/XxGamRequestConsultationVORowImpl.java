@@ -17,44 +17,45 @@ public class XxGamRequestConsultationVORowImpl extends OAViewRowImpl {
     public static final int REQUESTPAYMENTDATE = 3;
     public static final int STATUSREQUEST = 4;
     public static final int TOTALPAYMENT = 5;
-    public static final int PURPOSE = 6;
-    public static final int APPROVALDATE = 7;
-    public static final int APPROVERID = 8;
-    public static final int COSTCENTER = 9;
-    public static final int COSTCENTERFLEX = 10;
-    public static final int GROUPPAYMENT = 11;
-    public static final int TEMPLATEPAYMENT = 12;
-    public static final int CURRENCYCODE = 13;
-    public static final int VIRTUALCARD = 14;
-    public static final int VIRTUALCARDMASK = 15;
-    public static final int STATUSNOTIFICATION = 16;
-    public static final int CREATIONDATE = 17;
-    public static final int CREATEDBY = 18;
-    public static final int LASTUPDATELOGIN = 19;
-    public static final int LASTUPDATEDBY = 20;
-    public static final int LASTUPDATEDATE = 21;
-    public static final int ISVIEW = 22;
-    public static final int PURPOSEDESCRIPTION = 23;
-    public static final int STATUSREQUESTDSC = 24;
-    public static final int STATUSDESCRIPTION = 25;
-    public static final int CURRENCYNAME = 26;
-    public static final int EMPLOYENAME = 27;
-    public static final int APPROVERNAME = 28;
-    public static final int APPROVERNAMEALT = 29;
-    public static final int STATUSTICKET = 30;
-    public static final int REPORTTYPE = 31;
-    public static final int STATUSFRANCHISE = 32;
-    public static final int STATUSFRANCHISEDSC = 33;
-    public static final int SEGMENT3 = 34;
-    public static final int TICKETID = 35;
-    public static final int BENEFICIARY = 36;
-    public static final int COMPANY = 37;
-    public static final int BENEFITSDSC = 38;
-    public static final int RELATIONSHIPDSC = 39;
-    public static final int ISFRANCHISE = 40;
-    public static final int OPERATINGUNIT = 41;
-    public static final int BLNISFRANCHISE = 42;
-    public static final int ISDISCLOSURE = 43;
+    public static final int TIPO = 6;
+    public static final int PURPOSE = 7;
+    public static final int APPROVALDATE = 8;
+    public static final int APPROVERID = 9;
+    public static final int COSTCENTER = 10;
+    public static final int COSTCENTERFLEX = 11;
+    public static final int GROUPPAYMENT = 12;
+    public static final int TEMPLATEPAYMENT = 13;
+    public static final int CURRENCYCODE = 14;
+    public static final int VIRTUALCARD = 15;
+    public static final int VIRTUALCARDMASK = 16;
+    public static final int STATUSNOTIFICATION = 17;
+    public static final int CREATIONDATE = 18;
+    public static final int CREATEDBY = 19;
+    public static final int LASTUPDATELOGIN = 20;
+    public static final int LASTUPDATEDBY = 21;
+    public static final int LASTUPDATEDATE = 22;
+    public static final int ISVIEW = 23;
+    public static final int PURPOSEDESCRIPTION = 24;
+    public static final int STATUSREQUESTDSC = 25;
+    public static final int STATUSDESCRIPTION = 26;
+    public static final int CURRENCYNAME = 27;
+    public static final int EMPLOYENAME = 28;
+    public static final int APPROVERNAME = 29;
+    public static final int APPROVERNAMEALT = 30;
+    public static final int STATUSTICKET = 31;
+    public static final int REPORTTYPE = 32;
+    public static final int STATUSFRANCHISE = 33;
+    public static final int STATUSFRANCHISEDSC = 34;
+    public static final int SEGMENT3 = 35;
+    public static final int TICKETID = 36;
+    public static final int BENEFICIARY = 37;
+    public static final int COMPANY = 38;
+    public static final int BENEFITSDSC = 39;
+    public static final int RELATIONSHIPDSC = 40;
+    public static final int ISFRANCHISE = 41;
+    public static final int OPERATINGUNIT = 42;
+    public static final int BLNISFRANCHISE = 43;
+    public static final int ISDISCLOSURE = 44;
 
     /**This is the default constructor (do not remove)
      */
@@ -123,13 +124,13 @@ public class XxGamRequestConsultationVORowImpl extends OAViewRowImpl {
 
     /**Gets the attribute value for the calculated attribute TotalPayment
      */
-    public Number getTotalPayment() {
-        return (Number) getAttributeInternal(TOTALPAYMENT);
+    public String getTotalPayment() {
+        return (String) getAttributeInternal(TOTALPAYMENT);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute TotalPayment
      */
-    public void setTotalPayment(Number value) {
+    public void setTotalPayment(String value) {
         setAttributeInternal(TOTALPAYMENT, value);
     }
 
@@ -462,6 +463,8 @@ public class XxGamRequestConsultationVORowImpl extends OAViewRowImpl {
             return getStatusRequest();
         case TOTALPAYMENT:
             return getTotalPayment();
+        case TIPO:
+            return getTipo();
         case PURPOSE:
             return getPurpose();
         case APPROVALDATE:
@@ -548,6 +551,9 @@ public class XxGamRequestConsultationVORowImpl extends OAViewRowImpl {
     protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
         switch (index) {
+        case TIPO:
+            setTipo((String)value);
+            return;
         case VIRTUALCARDMASK:
             setVirtualCardMask((String)value);
             return;
@@ -745,5 +751,17 @@ public class XxGamRequestConsultationVORowImpl extends OAViewRowImpl {
      */
     public void setVirtualCardMask(String value) {
         setAttributeInternal(VIRTUALCARDMASK, value);
+    }
+
+    /**Gets the attribute value for the calculated attribute Tipo
+     */
+    public String getTipo() {
+        return (String) getAttributeInternal(TIPO);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Tipo
+     */
+    public void setTipo(String value) {
+        setAttributeInternal(TIPO, value);
     }
 }

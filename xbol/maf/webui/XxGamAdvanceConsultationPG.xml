@@ -87,10 +87,11 @@
                            </ui:primaryClientAction>
                         </oa:link>
                         <oa:messageTextInput id="EmployeName" dataType="VARCHAR2" prompt="Employe name" viewName="XxGamRequestConsultationVO1" viewAttr="EmployeName" maximumLength="301" readOnly="true"/>
+                        <oa:messageTextInput id="Tipo" readOnly="true" viewName="XxGamRequestConsultationVO1" viewAttr="Tipo" maximumLength="13" prompt="Tipo"/>
                         <oa:messageTextInput id="VirtualCard" dataType="VARCHAR2" prompt="Virtual card" viewName="XxGamRequestConsultationVO1" viewAttr="VirtualCard" maximumLength="100" readOnly="true" rendered="false"/>
                         <oa:messageTextInput id="VirtualCardMask" dataType="VARCHAR2" prompt="Virtual card" viewName="XxGamRequestConsultationVO1" viewAttr="VirtualCardMask" maximumLength="102" readOnly="true"/>
                         <oa:messageTextInput id="RequestPaymentDate" dataType="DATE" prompt="Request date" viewName="XxGamRequestConsultationVO1" viewAttr="RequestPaymentDate" readOnly="true"/>
-                        <oa:messageTextInput id="TotalPayment" dataType="NUMBER" prompt="Total" viewName="XxGamRequestConsultationVO1" viewAttr="TotalPayment" maximumLength="14" readOnly="true"/>
+                        <oa:messageTextInput id="TotalPayment" dataType="VARCHAR2" prompt="Total" viewName="XxGamRequestConsultationVO1" viewAttr="TotalPayment" maximumLength="14" readOnly="true"/>
                         <oa:messageTextInput id="CurrencyName" dataType="VARCHAR2" prompt="Currency name" viewName="XxGamRequestConsultationVO1" viewAttr="CurrencyName" maximumLength="80" readOnly="true"/>
                         <oa:messageTextInput id="StatusDescription" dataType="VARCHAR2" prompt="Status request" viewName="XxGamRequestConsultationVO1" viewAttr="StatusDescription" maximumLength="80" readOnly="true"/>
                         <oa:messageTextInput id="CostCenterDesc" dataType="VARCHAR2" prompt="Cost center" viewName="XxGamRequestConsultationVO1" viewAttr="Segment3" readOnly="true" maximumLength="25"/>
