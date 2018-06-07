@@ -29,11 +29,18 @@
                         <oa:messageStyledText id="Currency" viewName="BankReferenceVO1" viewAttr="Currency" styleClass="OraFieldText" maximumLength="100" prompt="Currency"/>
                      </ui:contents>
                   </oa:header>
-                  <oa:header id="TransferenciaRN" text="Datos para Depositos por Transferencia" rendered="false">
+                  <oa:header id="TransferenciaRN" text="Datos para Depositos por Transferencia" rendered="true">
                      <ui:contents>
-                        <oa:messageStyledText id="CuentaTransferencia" dataType="VARCHAR2" prompt="Cuenta" viewName="BankReferenceVO1" viewAttr="CuentaTransferencia" maximumLength="100" shortDesc="Cuenta" styleClass="OraFieldText" sortState="no" rendered="false"/>
-                        <oa:messageStyledText id="NumeroEmpleado" viewName="BankReferenceVO1" viewAttr="NumeroEmpleado" prompt="Referencia Numerica o Descripcion" shortDesc="Referencia Numerica o Descripcion" styleClass="OraFieldText" dataType="VARCHAR2" sortState="no" rendered="false"/>
+                        <oa:messageStyledText id="CuentaTransferencia" dataType="VARCHAR2" prompt="Cuenta" viewName="BankReferenceVO1" viewAttr="CuentaTransferencia" maximumLength="100" shortDesc="Cuenta" styleClass="OraFieldText" sortState="no" rendered="true"/>
+                        <oa:messageStyledText id="NumeroEmpleado" viewName="BankReferenceVO1" viewAttr="NumeroEmpleado" prompt="Referencia Numerica o Descripcion" shortDesc="Referencia Numerica o Descripcion" styleClass="OraFieldText" dataType="VARCHAR2" sortState="no" rendered="true" maximumLength="10"/>
                         <oa:messageStyledText id="Clabe" dataType="VARCHAR2" prompt="Cuenta CLABE" viewName="BankReferenceVO1" viewAttr="Clabe" maximumLength="100" shortDesc="Cuenta CLABE" styleClass="OraFieldText" sortState="no"/>
+                        <oa:messageStyledText id="Account1" prompt="Account" shortDesc="Account" styleClass="OraFieldText" maximumLength="100" viewName="BankReferenceVO1" viewAttr="Account"/>
+                        <oa:messageStyledText id="Bankcode1" viewName="BankReferenceVO1" viewAttr="Bankcode" styleClass="OraFieldText" prompt="Bank Code" shortDesc="Bank Code" maximumLength="100"/>
+                        <oa:messageStyledText id="Branchcode1" viewName="BankReferenceVO1" viewAttr="Branchcode" prompt="Branch Code" shortDesc="Branch Code" styleClass="OraFieldText" maximumLength="100"/>
+                        <oa:messageStyledText id="Iban1" viewName="BankReferenceVO1" viewAttr="Iban" prompt="IBAN" shortDesc="IBAN" maximumLength="100" styleClass="OraFieldText"/>
+                        <oa:messageStyledText id="Aba1" viewName="BankReferenceVO1" viewAttr="Aba" styleClass="OraFieldText" maximumLength="100" prompt="ABA" shortDesc="ABA"/>
+                        <oa:messageStyledText id="Swift1" viewName="BankReferenceVO1" viewAttr="Swift" prompt="SWIFT" shortDesc="SWIFT" styleClass="OraFieldText" maximumLength="100"/>
+                        <oa:messageStyledText id="Currency1" viewName="BankReferenceVO1" viewAttr="Currency" styleClass="OraFieldText" maximumLength="100" prompt="Currency"/>
                      </ui:contents>
                   </oa:header>
                   <oa:header id="ImporteRN">

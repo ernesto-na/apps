@@ -1637,4 +1637,47 @@ public class XxGamMAnticiposUtil2
          return userCurrencyDesc;
      }
      
+    /**
+      * METODO PARA OBTENER PAIS DE LA ORGANIZACIÓN A LA CUAL
+      * ESTA ASIGNADO EL EMPLEADO INTERNACIONAL CON LA INTENCION DE CONCATENARLO
+      * EN EL PREFIJO PARA LOS ANITICIPOS
+       **/
+      
+     public static String get_kind_Employee (OAPageContext pageContext, OAWebBean webBean){
+         
+        int userId=0;
+        userId=pageContext.getUserId();
+        String orgCountry=null;
+        XxGamModAntAMImpl amXxGamModAnt=null;
+        
+        amXxGamModAnt =  (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+        StringBuffer procedure= new StringBuffer(); 
+        procedure.append("BEGIN "); 
+        procedure.append("apps.XXGAM_AP_MOD_ANT_UTILS2_PKG.get_kind_Employee("); 
+        procedure.append(" pni_user_id              => :1"); 
+        procedure.append(",pso_orgCountry              => :2"); 
+        procedure.append(");");
+        procedure.append(" END; ");
+
+       OADBTransaction dbTransaction = (OADBTransaction)amXxGamModAnt.getTransaction();
+       OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure.toString(), 1);
+       
+         try
+         {
+           CallProcedure.setInt(1, userId);
+           CallProcedure.registerOutParameter(2,Types.VARCHAR);
+           CallProcedure.execute();
+         
+           orgCountry=CallProcedure.getString(2);                   
+           
+           }
+         catch (Exception excepcion)
+         {
+           throw OAException.wrapperException(excepcion);
+                
+         } 
+     
+         return orgCountry;
+     }
+     
 }

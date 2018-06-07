@@ -1617,8 +1617,10 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                             String prefix = null;
                             String sequenceName = null;
                             if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)) {
+                               /* prefix = 
+                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;*/
                                 prefix = 
-                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;
+                           XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + "-" + "MX" + "-";
                                 sequenceName = 
                                         XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
                             } else {
@@ -6146,11 +6148,16 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
                         if (generalReqRow.getNumberPayment() == null) {
                             String prefix = null;
                             String sequenceName = null;
+                            String orgCountry = null;
+                            orgCountry = XxGamMAnticiposUtil2.get_kind_Employee(pageContext, webBean);
                             if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)) {
-                                prefix = 
-                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;
+                                /*prefix = 
+                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;*/
+                                 prefix = 
+                                XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + "-" + orgCountry + "-";           
                                 sequenceName = 
                                         XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
+                                        
                             } else {
                                 if (XxGamConstantsUtil.RESPONSABILITY_FRANCHISE.equals(responsibility) || 
                                     XxGamConstantsUtil.RESPONSABILITY_FRANCHISE.equals(pageContext.getParameter("pRequest"))) {

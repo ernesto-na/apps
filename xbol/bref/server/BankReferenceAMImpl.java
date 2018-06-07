@@ -2,33 +2,16 @@
 /*     */ 
 /*     */ import com.sun.java.util.collections.Hashtable;
 /*     */ import java.io.PrintStream;
-/*     */
-import java.math.BigDecimal;
-
-import java.sql.SQLException;
-/*     */
-import java.sql.Types;
-
-import oracle.apps.fnd.framework.OAException;
-/*     */
-import oracle.apps.fnd.framework.OAFwkConstants;
-import oracle.apps.fnd.framework.OAViewObject;
+/*     */ import java.sql.SQLException;
+/*     */ import oracle.apps.fnd.framework.OAException;
+/*     */ import oracle.apps.fnd.framework.OAViewObject;
 /*     */ import oracle.apps.fnd.framework.server.OAApplicationModuleImpl;
 /*     */ import oracle.apps.fnd.framework.server.OADBTransaction;
 /*     */ import oracle.apps.fnd.framework.server.OADBTransactionImpl;
-/*     */
-import oracle.apps.fnd.framework.webui.OAPageContext;
-import oracle.apps.xdo.XDOException;
+/*     */ import oracle.apps.xdo.XDOException;
 /*     */ import oracle.apps.xdo.oa.util.DataTemplate;
 /*     */ import oracle.jbo.domain.BlobDomain;
-/*     */
-import oracle.jbo.domain.Number;
-import oracle.jbo.server.DBTransaction;
-
-import oracle.jdbc.OracleCallableStatement;
-//import oracle.jdbc.internal.OracleCallableStatement;
-
-import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil2;
+/*     */ import oracle.jdbc.internal.OracleCallableStatement;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -103,67 +86,6 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil2;
 /*     */   
 /*     */ 
 /*     */ 
- public static String get_kind_Employee( Integer personID, 
-                                           OAPageContext pageContext, 
-                                           OADBTransaction oadbTransaction)
- {
-    String retval = null;
-   
-   String errmsgOUT = null; 
-   String errcodOUT = null;
-   String orgName = null; 
-              
-   StringBuffer stmt= new StringBuffer(); 
-   stmt.append("BEGIN "); 
-   stmt.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_kind_Employee("); 
-   stmt.append(" pni_person_id          => :1"); 
-   stmt.append(",pso_orgName            => :2"); 
-   stmt.append(",pso_errmsg              => :3");
-   stmt.append(",pso_errcod              => :4");
-   stmt.append(");");
-   stmt.append(" END; ");
-   
-   OracleCallableStatement cs = (OracleCallableStatement)oadbTransaction.createCallableStatement(stmt.toString(),DBTransaction.DEFAULT);
-   
-   try{
-         cs.setInt(1,personID.intValue());
-         cs.registerOutParameter(2,Types.VARCHAR);
-         cs.registerOutParameter(3,Types.VARCHAR);
-         cs.registerOutParameter(4,Types.VARCHAR);
-         cs.execute();
-         
-              String strAttribute = null;
-              BigDecimal bigAttribute = null;
-               
-              orgName = cs.getString(2);
-            errmsgOUT = cs.getString(3); 
-            errcodOUT = cs.getString(4); 
-      
-    } catch (Exception exception2)
-   {
-      System.out.println("EXCEPTION FROM JAVA AL -->"+exception2.getMessage());    
-       pageContext.writeDiagnostics(XxGamMAnticiposUtil2.class,"EXCEPTION FROM JAVA AL -->"+exception2.getMessage(),OAFwkConstants.PROCEDURE) ;
-       throw OAException.wrapperException(exception2);
-    }    
-    
-   if (errcodOUT.equals("0")){ 
-        String getData = "Completed Transaction Susess"; 
-          retval = orgName; 
-          }
-      else{
-         String getData = errmsgOUT;
-          throw new OAException(getData,OAException.ERROR);
-        }
-        
-    return retval;
-    
- }
-
-
-
-
-
-
 /*     */ 
 /*     */ 
 /*     */ 
@@ -175,9 +97,6 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil2;
 /*     */   
 /*     */   public BlobDomain getGVSData(String strPersonId)
 /*     */   {
-            //Agregamos llamada a metodo para validar el tipo de empleado nacional/internacional
-            String auxTipoEmpleado = null;
-            
 /* 100 */     System.out.println("bug3");
 /* 101 */     BlobDomain blobDomain = new BlobDomain();
 /*     */     try

@@ -14,8 +14,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamConstantsUtil;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl
-{
+public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
     /**This is the default constructor (do not remove)
      */
     public XxGamMaGeneralPaymentTicketPVOImpl() {
@@ -35,7 +34,9 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl
      * @param statusNotiCode contiene codigo del estatus de notificacion
      */
     public void searchTicket(String nameRequester,
-                             String numberPayment, String typeEm, String statusReq,
+                             String numberPayment, String typeEm, 
+                             //String type, //ADD type AGC 24-05-18
+                             String statusReq, 
                              Date fromDate, Date toDate, String officeUser, String statusNotiCode) {
 
         //Verifica si existe el aprovador
@@ -63,6 +64,11 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl
         if (numberPayment != null && !numberPayment.equals(""))
             vcSolicitudesRow.setAttribute("NumberPayment",
                                           XxGamConstantsUtil.LIKE_OPEN + numberPayment + XxGamConstantsUtil.LIKE_CLOSE);
+        
+        //Inicializa el valor del tipo de empleado (nacional o internacional)
+        //if (typeEm != null && !typeEm.equals(""))
+           // vcSolicitudesRow.setAttribute("Type",
+             //                             XxGamConstantsUtil.LIKE_OPEN+ type + XxGamConstantsUtil.TYPE);
 
         //Inicializa el valor del tipo de emisión
         if (typeEm != null && !typeEm.equals(""))

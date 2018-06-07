@@ -10,37 +10,37 @@ import oracle.jbo.server.AttributeDefImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaGeneralPaymentTicketPVORowImpl extends OAViewRowImpl
-{
-  public static final int GI = 0;
-  public static final int PI = 1;
-  public static final int TI = 2;
-  public static final int REQUESTERNAME = 3;
-  public static final int FOLIO = 4;
-  public static final int STATUSREQUEST = 5;
-  public static final int STATUSDESC = 6;
-  public static final int REQUESTPAYMENTDATE = 7;
-  public static final int ID = 8;
-  public static final int TYPEEMISSION = 9;
-  public static final int TYPEEMISSIONDSC = 10;
-  public static final int APPROVERID = 11;
-  public static final int BENEFICIARY = 12;
-  public static final int RELATIONSHIP = 13;
-  public static final int BENEFITS = 14;
-  public static final int COMPANY = 15;
-  public static final int GENERALREQID = 16;
-  public static final int PAYMENTREQID = 17;
-  public static final int TIPOSOLICITUD = 18;
-  public static final int STATUSNOTIFICATION = 19;
-  public static final int STATUSNOTIFICATIONDESC = 20;
-  public static final int TICKETOFFICE = 21;
-  public static final int TICKETOFFICECODE = 22;
-  public static final int NUMBERPAYMENT = 23;
-  public static final int OPERATINGUNIT = 24;
-  public static final int ORIGIN = 25;
+public class XxGamMaGeneralPaymentTicketPVORowImpl extends OAViewRowImpl {
+    public static final int GI = 0;
+    public static final int PI = 1;
+    public static final int TI = 2;
+    public static final int REQUESTERNAME = 3;
+    public static final int TIPO = 4;
+    public static final int FOLIO = 5;
+    public static final int STATUSREQUEST = 6;
+    public static final int STATUSDESC = 7;
+    public static final int REQUESTPAYMENTDATE = 8;
+    public static final int ID = 9;
+    public static final int TYPEEMISSION = 10;
+    public static final int TYPEEMISSIONDSC = 11;
+    public static final int APPROVERID = 12;
+    public static final int BENEFICIARY = 13;
+    public static final int RELATIONSHIP = 14;
+    public static final int BENEFITS = 15;
+    public static final int COMPANY = 16;
+    public static final int GENERALREQID = 17;
+    public static final int PAYMENTREQID = 18;
+    public static final int TIPOSOLICITUD = 19;
+    public static final int STATUSNOTIFICATION = 20;
+    public static final int STATUSNOTIFICATIONDESC = 21;
+    public static final int TICKETOFFICE = 22;
+    public static final int TICKETOFFICECODE = 23;
+    public static final int NUMBERPAYMENT = 24;
+    public static final int OPERATINGUNIT = 25;
+    public static final int ORIGIN = 26;
 
-  /**This is the default constructor (do not remove)
-   */
+    /**This is the default constructor (do not remove)
+     */
     public XxGamMaGeneralPaymentTicketPVORowImpl() {
     }
 
@@ -336,109 +336,109 @@ public class XxGamMaGeneralPaymentTicketPVORowImpl extends OAViewRowImpl
      */
     protected Object getAttrInvokeAccessor(int index, 
                                            AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case GI:
-      return getGi();
-    case PI:
-      return getPi();
-    case TI:
-      return getTi();
-    case REQUESTERNAME:
-      return getRequesterName();
-    case FOLIO:
-      return getFolio();
-    case STATUSREQUEST:
-      return getStatusRequest();
-    case STATUSDESC:
-      return getStatusDesc();
-    case REQUESTPAYMENTDATE:
-      return getRequestPaymentDate();
-    case ID:
-      return getId();
-    case TYPEEMISSION:
-      return getTypeEmission();
-    case TYPEEMISSIONDSC:
-      return getTypeEmissionDsc();
-    case APPROVERID:
-      return getApproverId();
-    case BENEFICIARY:
-      return getBeneficiary();
-    case RELATIONSHIP:
-      return getRelationship();
-    case BENEFITS:
-      return getBenefits();
-    case COMPANY:
-      return getCompany();
-    case GENERALREQID:
-      return getGeneralReqId();
-    case PAYMENTREQID:
-      return getPaymentReqId();
-    case TIPOSOLICITUD:
-      return getTipoSolicitud();
-    case STATUSNOTIFICATION:
-      return getStatusNotification();
-    case STATUSNOTIFICATIONDESC:
-      return getStatusNotificationDesc();
-    case TICKETOFFICE:
-      return getTicketOffice();
-    case TICKETOFFICECODE:
-      return getTicketOfficeCode();
-    case NUMBERPAYMENT:
-      return getNumberPayment();
-    case OPERATINGUNIT:
-      return getOperatingUnit();
-    case ORIGIN:
-      return getOrigin();
-    default:
-      return super.getAttrInvokeAccessor(index, attrDef);
+        switch (index) {
+        case GI:
+            return getGi();
+        case PI:
+            return getPi();
+        case TI:
+            return getTi();
+        case REQUESTERNAME:
+            return getRequesterName();
+        case TIPO:
+            return getTipo();
+        case FOLIO:
+            return getFolio();
+        case STATUSREQUEST:
+            return getStatusRequest();
+        case STATUSDESC:
+            return getStatusDesc();
+        case REQUESTPAYMENTDATE:
+            return getRequestPaymentDate();
+        case ID:
+            return getId();
+        case TYPEEMISSION:
+            return getTypeEmission();
+        case TYPEEMISSIONDSC:
+            return getTypeEmissionDsc();
+        case APPROVERID:
+            return getApproverId();
+        case BENEFICIARY:
+            return getBeneficiary();
+        case RELATIONSHIP:
+            return getRelationship();
+        case BENEFITS:
+            return getBenefits();
+        case COMPANY:
+            return getCompany();
+        case GENERALREQID:
+            return getGeneralReqId();
+        case PAYMENTREQID:
+            return getPaymentReqId();
+        case TIPOSOLICITUD:
+            return getTipoSolicitud();
+        case STATUSNOTIFICATION:
+            return getStatusNotification();
+        case STATUSNOTIFICATIONDESC:
+            return getStatusNotificationDesc();
+        case TICKETOFFICE:
+            return getTicketOffice();
+        case TICKETOFFICECODE:
+            return getTicketOfficeCode();
+        case NUMBERPAYMENT:
+            return getNumberPayment();
+        case OPERATINGUNIT:
+            return getOperatingUnit();
+        case ORIGIN:
+            return getOrigin();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
     }
-  }
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
     protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case GI:
-      setGi((Number)value);
-      return;
-    case PI:
-      setPi((Number)value);
-      return;
-    case TI:
-      setTi((Number)value);
-      return;
-    case TIPOSOLICITUD:
-      setTipoSolicitud((String)value);
-      return;
-    case STATUSNOTIFICATION:
-      setStatusNotification((String)value);
-      return;
-    case STATUSNOTIFICATIONDESC:
-      setStatusNotificationDesc((String)value);
-      return;
-    case TICKETOFFICE:
-      setTicketOffice((String)value);
-      return;
-    case TICKETOFFICECODE:
-      setTicketOfficeCode((String)value);
-      return;
-    case NUMBERPAYMENT:
-      setNumberPayment((String)value);
-      return;
-    case OPERATINGUNIT:
-      setOperatingUnit((String)value);
-      return;
-    case ORIGIN:
-      setOrigin((String)value);
-      return;
-    default:
-      super.setAttrInvokeAccessor(index, value, attrDef);
-      return;
+        switch (index) {
+        case GI:
+            setGi((Number)value);
+            return;
+        case PI:
+            setPi((Number)value);
+            return;
+        case TI:
+            setTi((Number)value);
+            return;
+        case TIPOSOLICITUD:
+            setTipoSolicitud((String)value);
+            return;
+        case STATUSNOTIFICATION:
+            setStatusNotification((String)value);
+            return;
+        case STATUSNOTIFICATIONDESC:
+            setStatusNotificationDesc((String)value);
+            return;
+        case TICKETOFFICE:
+            setTicketOffice((String)value);
+            return;
+        case TICKETOFFICECODE:
+            setTicketOfficeCode((String)value);
+            return;
+        case NUMBERPAYMENT:
+            setNumberPayment((String)value);
+            return;
+        case OPERATINGUNIT:
+            setOperatingUnit((String)value);
+            return;
+        case ORIGIN:
+            setOrigin((String)value);
+            return;
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
     }
-  }
 
   /**Gets the attribute value for the calculated attribute OperatingUnit
    */
@@ -467,4 +467,16 @@ public class XxGamMaGeneralPaymentTicketPVORowImpl extends OAViewRowImpl
   {
     setAttributeInternal(ORIGIN, value);
   }
+
+    /**Gets the attribute value for the calculated attribute Tipo
+     */
+    public String getTipo() {
+        return (String) getAttributeInternal(TIPO);
+    }
+
+    /**Sets <code>value</code> as the attribute value for the calculated attribute Tipo
+     */
+    public void setTipo(String value) {
+        setAttributeInternal(TIPO, value);
+    }
 }

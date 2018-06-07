@@ -18,6 +18,18 @@ XxGamMaTicketPEO.id ti,
         WHERE 1 = 1 
           AND person_id =GeneralSolicitud.EMPLOYEE_ID
           AND trunc(GeneralSolicitud.REQUEST_PAYMENT_DATE) BETWEEN effective_start_date AND effective_end_date) REQUESTER_NAME,
+(SELECT DECODE (SUBSTR(hrao.name,1,2),'99','INTERNACIONAL','NACIONAL')
+    FROM  hr_all_organization_units   hrao
+              ,per_all_assignments_f       paaf
+              ,per_assignment_status_types past
+              ,gl_code_combinations gcc
+    WHERE  paaf.PERSON_ID = GeneralSolicitud.EMPLOYEE_ID   --u.EMPLOYEE_ID
+    AND hrao.organization_id = paaf.organization_id
+    AND  TRUNC(SYSDATE) BETWEEN paaf.effective_start_date AND paaf.effective_end_date
+    AND  paaf.assignment_type IN ('E', 'C')                            
+    AND  paaf.default_code_comb_id = gcc.code_combination_id
+    AND  paaf.assignment_status_type_id = past.assignment_status_type_id                            
+    AND  past.user_status IN ('Active Assignment', 'Suspensi'||chr(50099)||'n Con IMSS y PyD')) TIPO,
         XxGamMaTicketPEO.FOLIO,
         GeneralSolicitud.STATUS_REQUEST,
         EstatusSolicitud.MEANING STATUS_DESC,
@@ -143,6 +155,20 @@ ORDER BY GeneralSolicitud.REQUEST_PAYMENT_DATE DESC
       SQLType="VARCHAR" >
       <DesignTime>
          <Attr Name="_DisplaySize" Value="301" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Tipo"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="13"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TIPO"
+      Expression="TIPO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="13" />
       </DesignTime>
    </ViewAttribute>
    <ViewAttribute

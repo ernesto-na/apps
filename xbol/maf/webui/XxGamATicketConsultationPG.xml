@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1312" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
    <content>
       <oa:pageLayout id="TicketConsultationRN" amDefName="xxgam.oracle.apps.xbol.maf.server.XxGamModAntAM" windowTitle="Consultation Plane Ticket" title="Consultation Plane Ticket" controllerClass="xxgam.oracle.apps.xbol.maf.webui.XxGamATicketConsultationCO">
          <ui:corporateBranding>
@@ -74,6 +74,7 @@
                         <oa:messageTextInput id="NumberPaymentPC" dataType="VARCHAR2" prompt="Number of Document" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="NumberPayment" maximumLength="100" readOnly="true"/>
                         <oa:messageTextInput id="TypeEmission1" dataType="VARCHAR2" prompt="Type emission" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="TypeEmissionDsc" maximumLength="80" readOnly="true"/>
                         <oa:messageTextInput id="RequesterName1" dataType="VARCHAR2" prompt="Requester name" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="RequesterName" maximumLength="301" readOnly="true"/>
+                        <oa:messageTextInput id="Tipo" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="Tipo" prompt="Tipo" readOnly="true" maximumLength="13"/>
                         <oa:messageTextInput id="RequestPaymentDate1" dataType="DATE" prompt="Request payment date" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="RequestPaymentDate" readOnly="true"/>
                         <oa:messageTextInput id="StatusDesc1" dataType="VARCHAR2" prompt="Status" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="StatusDesc" maximumLength="80" readOnly="true" rendered="false"/>
                         <oa:messageTextInput id="StatusNotificationDesc1" viewName="XxGamMaGeneralPaymentTicketPVO1" viewAttr="StatusNotificationDesc" readOnly="true" prompt="Status" maximumLength="80"/>
