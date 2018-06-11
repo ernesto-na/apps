@@ -75,7 +75,8 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
         }
         
         //deshabilita la cache de la lista para tipos de anticipos
-        OAMessageChoiceBean statusNotificationLov = 
+ 
+         OAMessageChoiceBean statusNotificationLov = 
             (OAMessageChoiceBean)webBean.findChildRecursive("StatusNotificationLov");
         if (statusNotificationLov != null) {
             statusNotificationLov.setPickListCacheEnabled(false);
@@ -101,10 +102,17 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
         searchButton = pageContext.getParameter(XxGamConstantsUtil.SEARCH);
         if (searchButton != null)
             searchTicketRequest(pageContext, webBean);
-
+            
+                //showDetailReq
         //Redirecciona a la siguiente pagina enviando el detalle.
-        if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM)))
+        if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM))) {
+            System.out.println("miEventoShow"+XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString()+ " EVENT_PARAM ");
+                setForwardWhitParameters(pageContext, webBean);
+        }else
+        {
+        System.out.println("miEventoShow"+XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString()+ " EVENT_PARAM ");
             setForwardWhitParameters(pageContext, webBean);
+        }
 
     }
 
@@ -237,6 +245,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
             System.out.println("***statusNotiC: "+statusNotiCode+" ***");
             
             sURL = XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
+            System.out.println("URL: "+sURL);
             
             hParameters.put(XxGamConstantsUtil.TICKET_ID, sParam);
             hParameters.put(XxGamConstantsUtil.PAYMENT_ID, paymentId);
@@ -283,6 +292,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
                                                          hParameters, sURL);
 
         } catch (Exception exception) {
+        System.out.println("--- "+exception.getMessage());
             throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                               XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR,
                                               null, OAException.WARNING, null);

@@ -288,6 +288,8 @@ public class XxGamMAnticiposUtil {
                                                 OAWebBean webBean,
                                                 com.sun.java.util.collections.HashMap hParameters,
                                                 String sURL) {
+                                                
+        System.out.println("sURL: "+ sURL);                                                
 
         //Verifica nulidad
         if (pageContext == null || webBean == null)

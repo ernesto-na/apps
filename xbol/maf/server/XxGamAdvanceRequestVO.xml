@@ -52,9 +52,11 @@ FROM XXGAM_MA_GENERAL_REQ GeneralSolicitud,
      FND_LOOKUP_VALUES EstatusSolicitud,
      FND_LOOKUP_VALUES PropositoSolicitud,
      FND_LOOKUP_VALUES EstatusFranquicia,
-     FND_LOOKUP_VALUES StatusNotification
+     FND_LOOKUP_VALUES StatusNotification,
+     FND_USER fu
 WHERE 1 = 1 
-  AND GeneralSolicitud.EMPLOYEE_ID = :pUserId
+AND fu.user_id = FND_PROFILE.VALUE('USER_ID')
+  AND GeneralSolicitud.EMPLOYEE_ID = fu.employee_id
      /**LOOKUPS **/
   AND PropositoSolicitud.LOOKUP_TYPE ='XXGAM_PROPOSITOS_SOLICITUD'
   AND PropositoSolicitud.LOOKUP_CODE =GeneralSolicitud.PURPOSE
