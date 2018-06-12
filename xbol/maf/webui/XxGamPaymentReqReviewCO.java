@@ -949,10 +949,10 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                                                                                                               ,lInitialDate
                                                                                                               ,lFinalDate
                                                                                                               ,lCurrencyCode); 
-                         System.out.println("Debug49:"+validateExpenseCategoryVsXxgamMcpArr[0]);
-                         System.out.println("Debug50:"+validateExpenseCategoryVsXxgamMcpArr[1]);
-                         System.out.println("Debug50:"+validateExpenseCategoryVsXxgamMcpArr[2]);
-                         System.out.println("Debug50:"+validateExpenseCategoryVsXxgamMcpArr[3]);
+                         System.out.println("Debug49::"+validateExpenseCategoryVsXxgamMcpArr[0]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[1]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[2]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[3]);
                         
                          OAMessageStyledTextBean flexConcatenatedBean = (OAMessageStyledTextBean)webBean.findChildRecursive("flexConcatenated");
                          if(null!=flexConcatenatedBean){
