@@ -18,6 +18,7 @@ import java.text.NumberFormat;
 import java.util.Hashtable;
 
 import oracle.apps.fnd.common.VersionInfo;
+import oracle.apps.fnd.framework.OAApplicationModule;
 import oracle.apps.fnd.framework.OAException;
 import oracle.apps.fnd.framework.server.OADBTransaction;
 import oracle.apps.fnd.framework.webui.OAControllerImpl;
@@ -38,6 +39,8 @@ import oracle.jbo.domain.Number;
 
 import oracle.jbo.server.DBTransaction;
 import oracle.jdbc.OracleCallableStatement;
+
+import sunw.io.Serializable;
 
 import xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaCurrencyLovVORowImpl;
 import xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVORowImpl;
@@ -67,6 +70,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
     public static final String RCS_ID = "$Header$";
     public static final boolean RCS_ID_RECORDED = 
         VersionInfo.recordClassVersion(RCS_ID, "%packagename%");
+    public static String segment = null;
 
     /**
      * Resumen de los boletos de avión
@@ -106,6 +110,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                 System.out.println("Debug67: !pageContext.isFormSubmission()");
                 createButtonToConectXxgamMcpModule(pageContext,webBean);
                 fillXxgamMcpFundsInfo(pageContext,webBean);
+                System.out.println("MySegment: "+segment);
               }else{
                 System.out.println("Debug67: pageContext.isFormSubmission()");
                  /** Se agrega Metodo para validaciones de control presupuestal 23/09/2015**/
@@ -943,6 +948,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                      if(null!=lExpenseReportID
                        &&null!=lParameterID
                        &&null!=lCurrencyCode){
+                       //TODO XX1
                          String validateExpenseCategoryVsXxgamMcpArr[] = new String [5];
                          validateExpenseCategoryVsXxgamMcpArr = ModAntAMImpl.validateExpenseCategoryVsXxgamMcp(lExpenseReportID
                                                                                                               ,lParameterID
@@ -953,6 +959,10 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                          System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[1]);
                          System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[2]);
                          System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[3]);
+                         
+                           segment = validateExpenseCategoryVsXxgamMcpArr[3];
+                           //segment =segment.substring(23,5);
+                           System.out.println(segment);
                         
                          OAMessageStyledTextBean flexConcatenatedBean = (OAMessageStyledTextBean)webBean.findChildRecursive("flexConcatenated");
                          if(null!=flexConcatenatedBean){
@@ -1301,25 +1311,86 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
          } // END if(null!=GeneralReqVOImpl){
          //TODO GNOSIS2305 06 Aqui se hace la comprobacion del ctrl presupuestal con el anticipo
          if(lSumPaymentAmountFloat>llTotalFundsFloat){
-           
+         System.out.println("Validacion: CP "+ segment.substring(23, 28));
            System.out.println("Debug65: lSumPaymentAmountFloat "+lSumPaymentAmountFloat);       
            System.out.println("Debug66: llTotalFundsFloat "+llTotalFundsFloat);  
            System.out.println("Debug65.1: lSumPaymentAmountStrDf "+lSumPaymentAmountStrDf);       
            System.out.println("Debug66.1: lTotalFundsStrDf "+lTotalFundsStrDf);  
            
            retval ="El monto total del anticipo:"+lSumPaymentAmountStrDf+" MXN sobrepasa los fondos disponibles:"+lTotalFundsStrDf+" MXN ";
+           String auxSegment = null;
+             auxSegment=segment;
+             segment =  segment.substring(segment.length()-13, (segment.length()-13)+5);
+             String ctrlBudget = null;
+           
+           try{
+                
+                XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                System.out.println("Llamando al AM_");
+               ctrlBudget =   XxGamModAntAMImpl1.getCtrlBudget(segment);
+               System.out.println("Obtencion PKG nuevo procedure: "+ctrlBudget);
+      
+                System.out.println("Termina llamada al AM");
+            }catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+           
+           
+           
+           
+           System.out.println("antes---A "+segment);
+          System.out.println(segment);
+             System.out.println("DESPUES---A "+segment);
+             
+        
+           
+           
+           
+          // segment = segment.substring(23, 28);
+           
            
            pageContext.putParameter("pRequestFundsOver","valueRequestFundsOver");
            pageContext.putSessionValue("sRequestFundsOver","valueRequestFundsOver");
            
-            OAException localOAException = new OAException( retval, OAException.ERROR);
+           System.out.println("Evaluacion del IF CP: "+ctrlBudget);
+             ctrlBudget = ctrlBudget.toUpperCase();
+           //validacion ctrl presupuestal
+           System.out.println("ctrlBudget"+ctrlBudget);
+            if ( (ctrlBudget.equals("ADVISORY")) || (ctrlBudget.equals("INFORMATIVA")))
+                       {
+                          // retval ="El perfil de la cuenta: "+ auxSegment+" es "+ctrlBudget+" ¿desea continuar?:";
+                       System.out.println("Advisory");
+                       System.out.println("retval: "+ctrlBudget);
+                        
+                           OAException localOAException = new OAException(retval, OAException.WARNING);
+                           OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
+                           localOADialogPage.setOkButtonToPost(true);
+                           localOADialogPage.setOkButtonLabel("Ok");
+                           localOADialogPage.setPostToCallingPage(true);
+                           Hashtable localHashtable = new Hashtable(1);
+                           localOADialogPage.setFormParameters(localHashtable);
+                           pageContext.redirectToDialogPage(localOADialogPage);
+                       }else if(ctrlBudget.equals("ABSOLUTE") || ctrlBudget.equals("ABSOLUTO") ){
+                       System.out.println("Absolute");
+                           OAException localOAException = new OAException(retval, OAException.ERROR);
+                           OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                           localOADialogPage.setOkButtonToPost(true);
+                           localOADialogPage.setOkButtonLabel("Ok");
+                           localOADialogPage.setPostToCallingPage(true);
+                           Hashtable localHashtable = new Hashtable(1);
+                           localOADialogPage.setFormParameters(localHashtable);
+                           pageContext.redirectToDialogPage(localOADialogPage);
+                       }
+           
+           
+            /*OAException localOAException = new OAException( retval, OAException.ERROR);
             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
             localOADialogPage.setOkButtonToPost(true);
             localOADialogPage.setOkButtonLabel("Ok");
             localOADialogPage.setPostToCallingPage(true);
             Hashtable localHashtable = new Hashtable(1);
             localOADialogPage.setFormParameters(localHashtable);
-            pageContext.redirectToDialogPage(localOADialogPage);
+            pageContext.redirectToDialogPage(localOADialogPage);*/
                                   
           /** throw new OAException(retval, OAException.ERROR); **/
          

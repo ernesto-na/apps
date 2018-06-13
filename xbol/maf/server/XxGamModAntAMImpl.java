@@ -6454,4 +6454,56 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
         }
         return vReturn;
     }
+    
+    /**
+     * Metodo que verifica el perfil de
+     * ctrl presupuestal
+     * GNOSISHCM 12/06/18
+     * Recibe el Segment6
+     * Regresa tipo de control Advisory/Absolute
+     */
+     public String getCtrlBudget(String segment){
+     System.out.println("-----AM--> "+ segment);
+     //String fakesegment = "64001";
+         String auxCtl = null;
+         XxGamModAntAMImpl amXxGamModAnt =null;
+         StringBuffer procedure1 = new StringBuffer();
+        procedure1.append("BEGIN "); 
+        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_budget_control_subcnt("); 
+        procedure1.append(" PNI_SEGMENT              => :1"); 
+        procedure1.append(",PSO_CTRL_BUDGET          => :2"); 
+        procedure1.append(");");
+        procedure1.append(" END; ");
+        
+        System.out.println(procedure1);
+  
+        
+                  try
+                  {
+                        
+                OADBTransaction dbTransaction = (OADBTransaction)this.getTransaction();  
+                oracle.jdbc.OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 1);
+                
+                        
+                    CallProcedure.setString(1,segment);
+                    CallProcedure.registerOutParameter(2,Types.VARCHAR);
+                    CallProcedure.execute();
+                    auxCtl=CallProcedure.getString(2); 
+                        System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
+                    System.out.println("auxCtl: "+auxCtl);
+                        //auxCtl.toLowerCase();
+                        
+                    }
+                  catch (Exception ex)
+                  {
+                   System.out.println("Falla getCtrlBudget: "+ex);
+                  }
+                  finally{
+                      System.out.println("----> "+auxCtl);
+                      return auxCtl.trim();   
+                  }
+                  
+     }
+    
+    
 }
