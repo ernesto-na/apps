@@ -1,5 +1,4 @@
 /*    */ package xxgam.oracle.apps.xbol.bref.webui;
-/*    */ //*Hola Julian **/
 /*    */ import java.io.PrintStream;
 /*    */ import oracle.apps.fnd.common.VersionInfo;
 /*    */ import oracle.apps.fnd.framework.webui.OAControllerImpl;
