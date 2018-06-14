@@ -58,7 +58,7 @@ import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 /*    */     String NumeroempS = null;
 /*    */     OAHeaderBean Region = null; 
 /*    */     OASubmitButtonBean Button = null;
-/*    */     
+/*    */     /*super git*/
 /* 56 */     if (!pageContext.isFormSubmission()) {
 /* 57 */       BankRefAM = (BankReferenceAMImpl)pageContext.getApplicationModule(webBean);
 /* 58 */       Region = (OAHeaderBean) webBean.findChildRecursive("VentanillaRN");
