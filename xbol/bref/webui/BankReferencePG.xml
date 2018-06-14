@@ -43,11 +43,7 @@
                         <oa:messageStyledText id="Currency1" viewName="BankReferenceVO1" viewAttr="Currency" styleClass="OraFieldText" maximumLength="100" prompt="Currency"/>
                      </ui:contents>
                   </oa:header>
-                  <oa:header id="ImporteRN">
-                     <ui:contents>
-                        <oa:messageTextInput id="Importe" prompt="Importe" shortDesc="Importe" styleClass="OraFieldNumber" viewName="BankReferenceVO1" viewAttr="Importe" dataType="NUMBER" sortState="no" disabled="true" rendered="false"/>
-                     </ui:contents>
-                  </oa:header>
+                  <oa:header id="ImporteRN"/>
                </ui:contents>
             </oa:defaultSingleColumn>
             <oa:pageButtonBar id="ButtonBarRN">

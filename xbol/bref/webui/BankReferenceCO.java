@@ -5,7 +5,9 @@
 /*    */ import oracle.apps.fnd.framework.webui.OAControllerImpl;
 /*    */ import oracle.apps.fnd.framework.webui.OAPageContext;
 /*    */ import oracle.apps.fnd.framework.webui.beans.OAWebBean;
-/*    */ import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
+/*    */
+import oracle.apps.fnd.framework.webui.beans.form.OASubmitButtonBean;
+import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 /*    */ import oracle.jbo.Row;
 /* 10 */ import xxgam.oracle.apps.xbol.bref.server.BankReferenceAMImpl;
 /*    */ import xxgam.oracle.apps.xbol.bref.server.BankReferenceVOImpl;
@@ -55,11 +57,13 @@
 /*    */     String CuentatransS = null;
 /*    */     String NumeroempS = null;
 /*    */     OAHeaderBean Region = null; 
+/*    */     OASubmitButtonBean Button = null;
 /*    */     
 /* 56 */     if (!pageContext.isFormSubmission()) {
 /* 57 */       BankRefAM = (BankReferenceAMImpl)pageContext.getApplicationModule(webBean);
 /* 58 */       Region = (OAHeaderBean) webBean.findChildRecursive("VentanillaRN");
-/*    */       
+/*    */       Button = (OASubmitButtonBean) webBean.findChildRecursive("download");
+/*    */
 /* 60 */       if (BankRefAM != null) {
 /* 61 */         BankRefAM.ClearInfo();
 /* 62 */         BankRefAM.FindInfo();
@@ -136,6 +140,8 @@
                  System.out.println("ocultando campo Referencia ");
 /*    */         oaWebBean1 = webBean.findChildRecursive("Transfer_Reference");
 /* 68 */         oaWebBean1.setRendered(false);
+                 Button.setRendered(false);
+                 System.out.println("ocultando boton Download para internacionales");
 /*    */       }
                if (CuentaS == null){
  /*    */            System.out.println("ocultando campo Cuenta ");
