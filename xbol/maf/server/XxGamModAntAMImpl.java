@@ -6504,6 +6504,57 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
                   }
                   
      }
-    
+     
+     /**
+      * Metodo que verifica el perfil de control
+      * presupuestal para la organización
+      * Recibe cuenta String regresa
+      * tipo de control Advisory/Absolute
+      */
+    public String getCtrlBudgetCuenta(String cuenta)
+    {
+        String auxCtlCta =null;
+        String[] parts = cuenta.split("-");
+        for (int i = 0; i < parts.length; i++) 
+           {
+              System.out.println("-->["+i+"] "+parts[i]);
+           }
+        XxGamModAntAMImpl amXxGamModAnt =null;
+        StringBuffer procedure1 = new StringBuffer();
+        procedure1.append("BEGIN ");
+        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.PENDIENTE(");
+        procedure1.append(" PNI_SEGMENT              => :1");
+        procedure1.append(",PSO_CTRL_BUDGET          => :2");
+        procedure1.append(");");
+        procedure1.append(" END; ");
+        System.out.println(procedure1);
+        //Llamada a la base de datos
+         try
+         {
+               
+         OADBTransaction dbTransaction = (OADBTransaction)this.getTransaction();
+         oracle.jdbc.OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 1);
+         
+               
+           CallProcedure.setString(1,parts[0]);
+           CallProcedure.registerOutParameter(2,Types.VARCHAR);
+           //CallProcedure.execute();               DESCOMENTAR CUANDO ESTE LISTO EL PKG.PROCEDURE
+           auxCtlCta=CallProcedure.getString(2); 
+           System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
+           System.out.println("auxCtl: "+auxCtlCta);
+               //auxCtl.toLowerCase();
+               
+           }
+         catch (Exception ex)
+         {
+          System.out.println("Falla getCtrlBudget: "+ex);
+         }
+         finally{
+             System.out.println("Cuenta completa: "+auxCtlCta);
+             auxCtlCta="Informativa";
+             return auxCtlCta.trim();   
+         }
+       
+    }
     
 }

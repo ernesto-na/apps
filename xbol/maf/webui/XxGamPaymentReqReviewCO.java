@@ -1320,9 +1320,32 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
            retval ="El monto total del anticipo:"+lSumPaymentAmountStrDf+" MXN sobrepasa los fondos disponibles:"+lTotalFundsStrDf+" MXN ";
            String auxSegment = null;
              auxSegment=segment;
+           System.out.println("Cuenta: "+ auxSegment);
+           
+           
+           
+        
              segment =  segment.substring(segment.length()-13, (segment.length()-13)+5);
              String ctrlBudget = null;
-           
+             String ctrlBudgetCta = null;
+             //Llamada para Ctrl presupuesta Cuenta
+              try{
+                   
+                   XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                   System.out.println("Llamando al AM1");
+                  ctrlBudgetCta =   XxGamModAntAMImpl1.getCtrlBudgetCuenta(auxSegment);
+                  System.out.println("Obtencion PKG nuevo procedure Cuenta: "+ctrlBudgetCta);
+              
+                   System.out.println("Termina llamada al AM1");
+               }catch(Exception e) {
+                   System.out.println(e.getMessage());
+               }
+             
+             
+             
+             
+             
+           //Llamada para Ctrl Presupuestal
            try{
                 
                 XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
