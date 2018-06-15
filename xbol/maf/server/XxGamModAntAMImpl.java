@@ -6496,7 +6496,7 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
                     }
                   catch (Exception ex)
                   {
-                   System.out.println("Falla getCtrlBudget: "+ex);
+                   System.out.println("Falla getCtrlBudgetResumen: "+ex);
                   }
                   finally{
                       System.out.println("----> "+auxCtl);
@@ -6515,6 +6515,7 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
     {
         String auxCtlCta =null;
         String[] parts = cuenta.split("-");
+        String errMess = null;
         for (int i = 0; i < parts.length; i++) 
            {
               System.out.println("-->["+i+"] "+parts[i]);
@@ -6522,9 +6523,17 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
         XxGamModAntAMImpl amXxGamModAnt =null;
         StringBuffer procedure1 = new StringBuffer();
         procedure1.append("BEGIN ");
-        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.PENDIENTE(");
-        procedure1.append(" PNI_SEGMENT              => :1");
-        procedure1.append(",PSO_CTRL_BUDGET          => :2");
+        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_budget_control_org(");
+        procedure1.append(" PSI_SEGMENT1              => :1");
+        procedure1.append(" ,PSI_SEGMENT2              => :2");
+        procedure1.append(" ,PSI_SEGMENT3              => :3");
+        procedure1.append(" ,PSI_SEGMENT4              => :4");
+        procedure1.append(" ,PSI_SEGMENT5              => :5");
+        procedure1.append(" ,PSI_SEGMENT6              => :6");
+        procedure1.append(" ,PSI_SEGMENT7              => :7");
+        procedure1.append(" ,PSI_SEGMENT8              => :8");
+        procedure1.append(",pso_ctrl_org          => :9");
+        procedure1.append(",pso_errmsg          => :10");
         procedure1.append(");");
         procedure1.append(" END; ");
         System.out.println(procedure1);
@@ -6537,22 +6546,32 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
          
                
            CallProcedure.setString(1,parts[0]);
-           CallProcedure.registerOutParameter(2,Types.VARCHAR);
-           //CallProcedure.execute();               DESCOMENTAR CUANDO ESTE LISTO EL PKG.PROCEDURE
-           auxCtlCta=CallProcedure.getString(2); 
-           System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
-           System.out.println("auxCtl: "+auxCtlCta);
+           CallProcedure.setString(2,parts[1]);
+           CallProcedure.setString(3,parts[2]);
+           CallProcedure.setString(4,parts[3]);
+           CallProcedure.setString(5,parts[4]);
+           CallProcedure.setString(6,parts[5]);
+           CallProcedure.setString(7,parts[6]);
+           CallProcedure.setString(8,parts[7]);
+           CallProcedure.registerOutParameter(9,Types.VARCHAR);
+           CallProcedure.registerOutParameter(10,Types.VARCHAR);
+           CallProcedure.execute();               
+           auxCtlCta=CallProcedure.getString(9); 
+           
+               errMess=CallProcedure.getString(10);
+           //System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
+           System.out.println("auxCtlCta: "+auxCtlCta);
                //auxCtl.toLowerCase();
                
            }
          catch (Exception ex)
          {
-          System.out.println("Falla getCtrlBudget: "+ex);
+          System.out.println("Falla getCtrlBudgetOrganizacion: "+ex);
          }
          finally{
-             System.out.println("Cuenta completa: "+auxCtlCta);
-             auxCtlCta="Informativa";
-             return auxCtlCta.trim();   
+             System.out.println("Ctrl Budget Organization: "+auxCtlCta);
+             //auxCtlCta="Informativa";
+             return auxCtlCta.toUpperCase();   
          }
        
     }

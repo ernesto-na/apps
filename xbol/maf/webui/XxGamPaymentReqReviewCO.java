@@ -1326,15 +1326,15 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
            
         
              segment =  segment.substring(segment.length()-13, (segment.length()-13)+5);
-             String ctrlBudget = null;
-             String ctrlBudgetCta = null;
+             String summary = null;
+             String organization = null;
              //Llamada para Ctrl presupuesta Cuenta
               try{
                    
                    XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
                    System.out.println("Llamando al AM1");
-                  ctrlBudgetCta =   XxGamModAntAMImpl1.getCtrlBudgetCuenta(auxSegment);
-                  System.out.println("Obtencion PKG nuevo procedure Cuenta: "+ctrlBudgetCta);
+                  organization =   XxGamModAntAMImpl1.getCtrlBudgetCuenta(auxSegment);
+                  System.out.println("Obtencion PKG nuevo procedure Cuenta: "+organization);
               
                    System.out.println("Termina llamada al AM1");
                }catch(Exception e) {
@@ -1350,8 +1350,8 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                 
                 XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
                 System.out.println("Llamando al AM_");
-               ctrlBudget =   XxGamModAntAMImpl1.getCtrlBudget(segment);
-               System.out.println("Obtencion PKG nuevo procedure: "+ctrlBudget);
+               summary =   XxGamModAntAMImpl1.getCtrlBudget(segment);
+               System.out.println("Obtencion PKG nuevo procedure: "+summary);
       
                 System.out.println("Termina llamada al AM");
             }catch(Exception e) {
@@ -1375,15 +1375,16 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
            pageContext.putParameter("pRequestFundsOver","valueRequestFundsOver");
            pageContext.putSessionValue("sRequestFundsOver","valueRequestFundsOver");
            
-           System.out.println("Evaluacion del IF CP: "+ctrlBudget);
-             ctrlBudget = ctrlBudget.toUpperCase();
+           System.out.println("Evaluacion del IF CP: "+summary);
+             summary = summary.toUpperCase();
            //validacion ctrl presupuestal
-           System.out.println("ctrlBudget"+ctrlBudget);
-            if ( (ctrlBudget.equals("ADVISORY")) || (ctrlBudget.equals("INFORMATIVA")))
+           System.out.println("ctrlBudget"+summary);
+            if ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")))  )
                        {
-                          // retval ="El perfil de la cuenta: "+ auxSegment+" es "+ctrlBudget+" ¿desea continuar?:";
+                    // Caso 1
+                    System.out.println("Organizacion: ADISORY  y   Resumen: ADVISORY");
                        System.out.println("Advisory");
-                       System.out.println("retval: "+ctrlBudget);
+                       System.out.println("retval: "+summary);
                         
                            OAException localOAException = new OAException(retval, OAException.WARNING);
                            OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
@@ -1393,18 +1394,133 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                            Hashtable localHashtable = new Hashtable(1);
                            localOADialogPage.setFormParameters(localHashtable);
                            pageContext.redirectToDialogPage(localOADialogPage);
-                       }else if(ctrlBudget.equals("ABSOLUTE") || ctrlBudget.equals("ABSOLUTO") ){
-                       System.out.println("Absolute");
-                           OAException localOAException = new OAException(retval, OAException.ERROR);
-                           OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
-                           localOADialogPage.setOkButtonToPost(true);
-                           localOADialogPage.setOkButtonLabel("Ok");
-                           localOADialogPage.setPostToCallingPage(true);
-                           Hashtable localHashtable = new Hashtable(1);
-                           localOADialogPage.setFormParameters(localHashtable);
-                           pageContext.redirectToDialogPage(localOADialogPage);
                        }
-           
+          else if  (  ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE"))) ) && ((summary.equals("ABSOLUTO")) || (summary.equals("ABSOLUTE"))) )
+           {
+               // Caso 2
+                System.out.println("Organizacion: ABSOLUTE      y   Resumen: ABSOLUTE       ");
+                
+                       System.out.println("Absolute");
+                       OAException localOAException = new OAException(retval, OAException.ERROR);
+                       OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                       localOADialogPage.setOkButtonToPost(true);
+                       localOADialogPage.setOkButtonLabel("Ok");
+                       localOADialogPage.setPostToCallingPage(true);
+                       Hashtable localHashtable = new Hashtable(1);
+                       localOADialogPage.setFormParameters(localHashtable);
+                       pageContext.redirectToDialogPage(localOADialogPage);
+           }
+             else if  ( ( (organization.equals("ABSOLUTE")||(organization.equals("ABSOLUTO"))) ) && ((summary.equals("INFORMATIVA")) || (summary.equals("ADVISORY")))  )
+              {
+                  // Caso 3
+                   System.out.println("Organizacion:  ABSOLUTE     y   Resumen: ADVISORY       ");
+                   
+                  System.out.println("Organizacion ABSOLUTA y summary INFORMATIVA");
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+              }
+             else if  ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ABSOLUTE")) || (summary.equals("ABSOLUTO")))  )
+              {
+                  // Caso 4
+                          System.out.println("Organizacion: ADVISORY      y   Resumen:  ABSOLUTO      ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+              }
+              
+              ///Validacion contra nada
+               if (  ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals(""))   ))
+                          {
+                              // Caso 5
+                               System.out.println("Organizacion: ADVISORY      y   Resumen:   NULL     ");
+                               
+                          System.out.println("Advisory");
+                          System.out.println("retval: "+summary);
+                           
+                              OAException localOAException = new OAException(retval, OAException.WARNING);
+                              OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
+                              localOADialogPage.setOkButtonToPost(true);
+                              localOADialogPage.setOkButtonLabel("Ok");
+                              localOADialogPage.setPostToCallingPage(true);
+                              Hashtable localHashtable = new Hashtable(1);
+                              localOADialogPage.setFormParameters(localHashtable);
+                              pageContext.redirectToDialogPage(localOADialogPage);
+                          }
+               else if  ( ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE"))) )&& ((summary.equals(""))  ))
+               {
+                   // Caso 6
+                          System.out.println("Organizacion: ABSOLUTE       y   Resumen:   NULL     ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+               }
+                else if  ( ( (organization.equals("") ) && ((summary.equals("ABSOLUTO")) ) || (summary.equals("ABSOLUTE")))  )
+                 {
+                 
+                     // Caso 7
+                             System.out.println("Organizacion:  NULL     y   Resumen:  ABSOLUTE      ");
+                             
+                             System.out.println("Absolute");
+                             OAException localOAException = new OAException(retval, OAException.ERROR);
+                             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                             localOADialogPage.setOkButtonToPost(true);
+                             localOADialogPage.setOkButtonLabel("Ok");
+                             localOADialogPage.setPostToCallingPage(true);
+                             Hashtable localHashtable = new Hashtable(1);
+                             localOADialogPage.setFormParameters(localHashtable);
+                             pageContext.redirectToDialogPage(localOADialogPage);
+                 }
+                else if  ( ( (organization.equals("") )) && ((summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")))  )
+                 {
+                     // Caso 8
+                             System.out.println("Organizacion:  NULL     y   Resumen:  ADVISORY      ");
+                             
+                             System.out.println("Absolute");
+                             OAException localOAException = new OAException(retval, OAException.ERROR);
+                             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                             localOADialogPage.setOkButtonToPost(true);
+                             localOADialogPage.setOkButtonLabel("Ok");
+                             localOADialogPage.setPostToCallingPage(true);
+                             Hashtable localHashtable = new Hashtable(1);
+                             localOADialogPage.setFormParameters(localHashtable);
+                             pageContext.redirectToDialogPage(localOADialogPage);
+                 }
+             else if  ( ( (organization.equals("") )) && ((summary.equals(""))  ) )
+              {
+                //Caso 9
+                          System.out.println("Organizacion:  NULL     y   Resumen:  NULL      ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+              }
            
             /*OAException localOAException = new OAException( retval, OAException.ERROR);
             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
