@@ -14,12 +14,12 @@
       <ENTRY name="JDBC_PORT" value="10710"/>
       <ENTRY name="ConnectionType" value="JDBC"/>
       <ENTRY name="HOSTNAME" value="vmohsaemx001.oracleoutsourcing.com"/>
-      <ENTRY name="user" value="apps"/>
+      <ENTRY name="user" value="APPS"/>
       <ENTRY name="ConnectionName" value="DAEMXI"/>
       <ENTRY name="SID" value="DAEMXI"/>
       <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
       <ENTRY name="password">
-         <![CDATA[{904}0565AE729E3C39AD979DC2EEB6A4DDB4E4F9471C1522C7785D]]>
+         <![CDATA[{904}05E4BCBF326AE467BDE4396CC8D3D5D0649EF1CF9BA4B1AE6F]]>
       </ENTRY>
       <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
       <ENTRY name="DeployPassword" value="true"/>

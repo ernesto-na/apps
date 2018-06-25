@@ -24,4 +24,18 @@
       <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
       <ENTRY name="DeployPassword" value="true"/>
    </ConnectionDefinition>
+   <ConnectionDefinition name="TAEM2I">
+      <ENTRY name="JDBC_PORT" value="12510"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="vmohsaemx005.oracleoutsourcing.com"/>
+      <ENTRY name="user" value="apps"/>
+      <ENTRY name="ConnectionName" value="TAEM2I"/>
+      <ENTRY name="SID" value="TAEM2I"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">
+         <![CDATA[{904}056E837AA993326348FBF4CDC4A0B0F3759AF1FDEF7A78BF8D]]>
+      </ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
 </BC4JConfig>
