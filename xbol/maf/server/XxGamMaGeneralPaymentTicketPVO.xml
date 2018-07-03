@@ -13,17 +13,31 @@
 SELECT  GeneralSolicitud.ID gi,
 XxGamMaPaymentEO.id pi,
 XxGamMaTicketPEO.id ti,
-(SELECT FIRST_NAME||' '||LAST_NAME 
-        FROM per_all_people_f 
-        WHERE 1 = 1 
-          AND person_id =GeneralSolicitud.EMPLOYEE_ID
-          AND trunc(GeneralSolicitud.REQUEST_PAYMENT_DATE) BETWEEN effective_start_date AND effective_end_date) REQUESTER_NAME,
+(SELECT NVL ((SELECT papf1.full_name                                             FROM PER_CONTACT_RELATIONSHIPS PCR
+                  ,PER_ALL_PEOPLE_F papf
+                  ,per_all_people_f papf1
+                  ,HR_LOOKUPS C
+              WHERE PAPF.PERSON_ID = papf2.person_id  
+              AND TRUNC (SYSDATE) BETWEEN papf.effective_start_date AND papf.effective_end_date
+              AND PCR.PERSON_ID = PAPF.PERSON_ID
+              and papf1.person_id = PCR.contact_person_id
+              AND TRUNC (SYSDATE) BETWEEN papf1.effective_start_date AND papf1.effective_end_date
+              AND C.LOOKUP_TYPE = 'CONTACT'
+              AND C.LOOKUP_CODE = PCR.CONTACT_TYPE
+              AND c.MEANING IN ('EMPLEADO', 'Empleado')
+	      AND papf.person_id not in ('22485')), (select papf.full_name
+              from per_all_people_f papf
+              where papf.person_id = papf2.person_id
+              AND TRUNC (SYSDATE) BETWEEN papf.effective_start_date AND papf.effective_end_date)) Contact_name
+FROM per_all_people_f papf2
+where papf2.person_id = GeneralSolicitud.EMPLOYEE_ID
+AND TRUNC (SYSDATE) BETWEEN papf2.effective_start_date AND papf2.effective_end_date) REQUESTER_NAME,
 (SELECT DECODE (SUBSTR(hrao.name,1,2),'99','INTERNACIONAL','NACIONAL')
     FROM  hr_all_organization_units   hrao
               ,per_all_assignments_f       paaf
               ,per_assignment_status_types past
               ,gl_code_combinations gcc
-    WHERE  paaf.PERSON_ID = GeneralSolicitud.EMPLOYEE_ID   --u.EMPLOYEE_ID
+    WHERE  paaf.PERSON_ID = GeneralSolicitud.EMPLOYEE_ID 
     AND hrao.organization_id = paaf.organization_id
     AND  TRUNC(SYSDATE) BETWEEN paaf.effective_start_date AND paaf.effective_end_date
     AND  paaf.assignment_type IN ('E', 'C')                            
