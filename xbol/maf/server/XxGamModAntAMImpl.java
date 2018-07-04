@@ -253,8 +253,8 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
         OAViewObject vo = getXxGamMaGeneralReqVO1();
         System.out.println("Obtiene vo");
         if (vo != null) {
-        System.out.println("vo no es null");
-        
+            System.out.println("vo no es null");
+
             try {
                 if (!vo.isPreparedForExecution()) {
                     System.out.println("Vo esta lista para executar.");
@@ -276,8 +276,8 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                 isSuccess = false;
                 System.out.println("Retorna false.");
             }
-            
-        
+
+
         }
         return isSuccess;
     }
@@ -612,7 +612,7 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
 
                                     Map mapMaCostCenterByPersonId = 
                                         new HashMap(); //Porque me encuentro en la capa AM
-                                        mapMaCostCenterByPersonId = 
+                                    mapMaCostCenterByPersonId = 
                                             XxGamMAnticiposUtil2.getMapMaCostCenterByPersonId(responsibility, 
                                                                                               userDataFound.getPersonId(), 
                                                                                               pageContext, 
@@ -1617,10 +1617,11 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                             String prefix = null;
                             String sequenceName = null;
                             if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)) {
-                               /* prefix = 
+                                /* prefix =
                                         XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;*/
                                 prefix = 
-                           XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + "-" + "MX" + "-";
+                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + 
+                                        "-" + "MX" + "-";
                                 sequenceName = 
                                         XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
                             } else {
@@ -2095,12 +2096,15 @@ public class XxGamModAntAMImpl extends OAApplicationModuleImpl implements XxGamM
                 if (amountMx != null) {
 
                     if (amountMx.compareTo(new Number(0)) >= 0) {
-                    //TODO 11 agregar mascara para moneda
-                     DecimalFormat df = new DecimalFormat("$###,###,###,###,##0.00");
-                     String lSumPaymentAmountStrDf = null; 
-                       // float lSumPaymentAmountFloat = 0;
-                        lSumPaymentAmountStrDf =  df.format(amountMx.doubleValue());
-                        System.out.println("formateadoMoneda: "+lSumPaymentAmountStrDf);
+                        //TODO 11 agregar mascara para moneda
+                        DecimalFormat df = 
+                            new DecimalFormat("$###,###,###,###,##0.00");
+                        String lSumPaymentAmountStrDf = null;
+                        // float lSumPaymentAmountFloat = 0;
+                        lSumPaymentAmountStrDf = 
+                                df.format(amountMx.doubleValue());
+                        System.out.println("formateadoMoneda: " + 
+                                           lSumPaymentAmountStrDf);
                         payReqDetailRow.setAmountMx(new Number(amountMx.truncate(2)));
                         isSuccess = true;
                     } else {
@@ -2290,7 +2294,7 @@ sum.add(amountAux);
      */
     public Number currencyConversion(String fromCurrency, String toCurrency, 
                                      Number amount) {
-                                     //TODO GNOSIS
+        //TODO GNOSIS
         XxGamModAntLovAMImpl amLov = null;
         amLov = (XxGamModAntLovAMImpl)getXxGamModAntLovAM1();
 
@@ -3364,7 +3368,7 @@ sum.add(amountAux);
      */
     public Number callFunctionCurrencyConversionToMXN(Number amount, 
                                                       String currencyFrom) {
-                                                      //Funciona bien
+        //Funciona bien
 
         Number amountMx = null;
         if (amount != null && currencyFrom != null) {
@@ -5450,11 +5454,16 @@ sum.add(amountAux);
                                                         null) {
                                                         // TODO 03 Modifica la divisa para la la pg: XxGamPaymentReqInfoGeneralPG
                                                         //generalReqRow.setCurrencyDesc(costCenterRow.getCurrencyName());
-                                                         String userCurrency="test--";
-                                                        userCurrency=XxGamMAnticiposUtil2.getDivisaDesc(pageContext, webBean);
-                                                      System.out.println("-->test_currency_desc"+userCurrency);
+                                                        String userCurrency = 
+                                                            "test--";
+                                                        userCurrency = 
+                                                                XxGamMAnticiposUtil2.getDivisaDesc(pageContext, 
+                                                                                                   webBean);
+                                                        System.out.println("-->test_currency_desc" + 
+                                                                           userCurrency);
                                                         generalReqRow.setCurrencyDesc(userCurrency);
-                                                       System.out.println("C_N :"+costCenterRow.getCurrencyName().toString());
+                                                        System.out.println("C_N :" + 
+                                                                           costCenterRow.getCurrencyName().toString());
                                                     }
                                                     /// Agregado para llenar el campo de Unidad Operativa 08/06/2015
                                                     System.out.println("Agregado para llenar el campo de Unidad Operativa 08/06/2015");
@@ -5469,7 +5478,7 @@ sum.add(amountAux);
 
                                                 }
                                             } else { // Error en el Centro de Costos BY DIHU   13 Octubre 2014
-                                            System.out.println("Error en el Centro de Costos BY DIHU   13 Octubre 2014");
+                                                System.out.println("Error en el Centro de Costos BY DIHU   13 Octubre 2014");
                                                 if (!isInitSuccess)
                                                     pageContext.putParameter("ErrorEspecifico", 
                                                                              " CosC #3 "); //Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos                        
@@ -5485,23 +5494,23 @@ sum.add(amountAux);
                                                                                              webBean);
 
                                             if (!isInitSuccess) // Error en la plantilla by DIHU 13 Octubre 2014
-                                            System.out.println("Error en la plantilla by DIHU 13 Octubre 2014");
-                                                pageContext.putParameter("ErrorEspecifico", 
-                                                                         " TemPay #1");
+                                                System.out.println("Error en la plantilla by DIHU 13 Octubre 2014");
+                                            pageContext.putParameter("ErrorEspecifico", 
+                                                                     " TemPay #1");
 
 
                                         } else { // Error en el Centro de Costos BY DIHU 13 Octubre 2014   
-                                        System.out.println("Error en el Centro de Costos BY DIHU 13 Octubre 2014   ");
+                                            System.out.println("Error en el Centro de Costos BY DIHU 13 Octubre 2014   ");
                                             System.out.println("Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos");
                                             if (!isInitSuccess)
-                                                
+
                                                 pageContext.putParameter("ErrorEspecifico", 
                                                                          " CosC #1 "); //Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos
-                                        
+
                                             else if (costCenterImpl != null)
                                                 pageContext.putParameter("ErrorEspecifico", 
                                                                          " CosC #2 "); //Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos
-                                                                         System.out.println("Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos");
+                                            System.out.println("Add by dihu 16 Octubre 2014 Error al configurar la lista de Valores para el Centro de Costos");
                                             //pageContext.putParameter("ErrorEspecifico","Error No se encontro centro de Costos");
                                         }
                                     }
@@ -5593,7 +5602,7 @@ sum.add(amountAux);
 
                                     Map mapMaCostCenterByPersonId = 
                                         new HashMap(); //Porque me encuentro en la capa AM
-                                        mapMaCostCenterByPersonId = 
+                                    mapMaCostCenterByPersonId = 
                                             XxGamMAnticiposUtil2.getMapMaCostCenterByPersonId(responsibility, 
                                                                                               userDataFound.getPersonId(), 
                                                                                               pageContext, 
@@ -6149,15 +6158,18 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
                             String prefix = null;
                             String sequenceName = null;
                             String orgCountry = null;
-                            orgCountry = XxGamMAnticiposUtil2.get_kind_Employee(pageContext, webBean);
+                            orgCountry = 
+                                    XxGamMAnticiposUtil2.get_kind_Employee(pageContext, 
+                                                                           webBean);
                             if (XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE.equals(responsibility)) {
-                                /*prefix = 
+                                /*prefix =
                                         XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;*/
-                                 prefix = 
-                                XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + "-" + orgCountry + "-";           
+                                prefix = 
+                                        XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE + 
+                                        "-" + orgCountry + "-";
                                 sequenceName = 
                                         XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
-                                        
+
                             } else {
                                 if (XxGamConstantsUtil.RESPONSABILITY_FRANCHISE.equals(responsibility) || 
                                     XxGamConstantsUtil.RESPONSABILITY_FRANCHISE.equals(pageContext.getParameter("pRequest"))) {
@@ -6385,8 +6397,8 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
     public XxGamMaVsMcpBudgetControlVOImpl getXxGamMaVsMcpBudgetControlVO1() {
         return (XxGamMaVsMcpBudgetControlVOImpl)findViewObject("XxGamMaVsMcpBudgetControlVO1");
     }
-    
-    
+
+
     /**
      * Llama a la funcion para verificar que la filial sea valida
      * AGAA
@@ -6431,30 +6443,32 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
     public XxgamValidaTipoPersonaVOImpl getXxgamValidaTipoPersonaVO1() {
         return (XxgamValidaTipoPersonaVOImpl)findViewObject("XxgamValidaTipoPersonaVO1");
     }
-    
+
     public boolean obtieneTipoPerson(int userId) {
-       String tipoPersona = "0";
-       String tipoValido = "EMPLEADO PLANTA";
-       int intIndex;
-       boolean vReturn = false;
-       
-       XxgamValidaTipoPersonaVOImpl tipoPersonaVO = getXxgamValidaTipoPersonaVO1();
-       tipoPersonaVO.clearCache();
-       
-       Number idUser = new Number(userId);
-       tipoPersonaVO.obtieneTipoPersona(idUser);
-       
-       if(tipoPersonaVO != null) {
-          XxgamValidaTipoPersonaVORowImpl row = (XxgamValidaTipoPersonaVORowImpl)tipoPersonaVO.first();
-          if(row != null) {
-           vReturn = true;
-          }
-       
-       
+        String tipoPersona = "0";
+        String tipoValido = "EMPLEADO PLANTA";
+        int intIndex;
+        boolean vReturn = false;
+
+        XxgamValidaTipoPersonaVOImpl tipoPersonaVO = 
+            getXxgamValidaTipoPersonaVO1();
+        tipoPersonaVO.clearCache();
+
+        Number idUser = new Number(userId);
+        tipoPersonaVO.obtieneTipoPersona(idUser);
+
+        if (tipoPersonaVO != null) {
+            XxgamValidaTipoPersonaVORowImpl row = 
+                (XxgamValidaTipoPersonaVORowImpl)tipoPersonaVO.first();
+            if (row != null) {
+                vReturn = true;
+            }
+
+
         }
         return vReturn;
     }
-    
+
     /**
      * Metodo que verifica el perfil de
      * ctrl presupuestal
@@ -6462,65 +6476,63 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
      * Recibe el Segment6
      * Regresa tipo de control Advisory/Absolute
      */
-     public String getCtrlBudget(String segment){
-     System.out.println("-----AM--> "+ segment);
-     //String fakesegment = "64001";
-         String auxCtl = null;
-         XxGamModAntAMImpl amXxGamModAnt =null;
-         StringBuffer procedure1 = new StringBuffer();
-        procedure1.append("BEGIN "); 
-        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_budget_control_subcnt("); 
-        procedure1.append(" PNI_SEGMENT              => :1"); 
-        procedure1.append(",PSO_CTRL_BUDGET          => :2"); 
+    public String getCtrlBudget(String segment) {
+        System.out.println("-----AM--> " + segment);
+        //String fakesegment = "64001";
+        String auxCtl = null;
+        XxGamModAntAMImpl amXxGamModAnt = null;
+        StringBuffer procedure1 = new StringBuffer();
+        procedure1.append("BEGIN ");
+        procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_budget_control_subcnt(");
+        procedure1.append(" PNI_SEGMENT              => :1");
+        procedure1.append(",PSO_CTRL_BUDGET          => :2");
         procedure1.append(");");
         procedure1.append(" END; ");
-        
+
         System.out.println(procedure1);
-  
-        
-                  try
-                  {
-                        
-                OADBTransaction dbTransaction = (OADBTransaction)this.getTransaction();  
-                oracle.jdbc.OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 1);
-                
-                        
-                    CallProcedure.setString(1,segment);
-                    CallProcedure.registerOutParameter(2,Types.VARCHAR);
-                    CallProcedure.execute();
-                    auxCtl=CallProcedure.getString(2); 
-                        System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
-                    System.out.println("auxCtl: "+auxCtl);
-                        //auxCtl.toLowerCase();
-                        
-                    }
-                  catch (Exception ex)
-                  {
-                   System.out.println("Falla getCtrlBudgetResumen: "+ex);
-                  }
-                  finally{
-                      System.out.println("----> "+auxCtl);
-                      return auxCtl.trim();   
-                  }
-                  
-     }
-     
-     /**
-      * Metodo que verifica el perfil de control
-      * presupuestal para la organización
-      * Recibe cuenta String regresa
-      * tipo de control Advisory/Absolute
-      */
-    public String getCtrlBudgetCuenta(String cuenta)
-    {
-        String auxCtlCta =null;
+
+
+        try {
+
+            OADBTransaction dbTransaction = 
+                (OADBTransaction)this.getTransaction();
+            oracle.jdbc.OracleCallableStatement CallProcedure = 
+                (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 
+                                                                               1);
+
+
+            CallProcedure.setString(1, segment);
+            CallProcedure.registerOutParameter(2, Types.VARCHAR);
+            CallProcedure.execute();
+            auxCtl = CallProcedure.getString(2);
+            System.out.println("CallProcedure.getString(2) " + 
+                               CallProcedure.getString(2));
+            System.out.println("auxCtl: " + auxCtl);
+            //auxCtl.toLowerCase();
+
+        } catch (Exception ex) {
+            System.out.println("Falla getCtrlBudgetResumen: " + ex);
+        } finally {
+            System.out.println("----> " + auxCtl);
+            return auxCtl.trim();
+        }
+
+    }
+
+    /**
+     * Metodo que verifica el perfil de control
+     * presupuestal para la organización
+     * Recibe cuenta String regresa
+     * tipo de control Advisory/Absolute
+     */
+    public String getCtrlBudgetCuenta(String cuenta) {
+        String auxCtlCta = null;
         String[] parts = cuenta.split("-");
         String errMess = null;
-        for (int i = 0; i < parts.length; i++) 
-           {
-              System.out.println("-->["+i+"] "+parts[i]);
-           }
-        XxGamModAntAMImpl amXxGamModAnt =null;
+        for (int i = 0; i < parts.length; i++) {
+            System.out.println("-->[" + i + "] " + parts[i]);
+        }
+        XxGamModAntAMImpl amXxGamModAnt = null;
         StringBuffer procedure1 = new StringBuffer();
         procedure1.append("BEGIN ");
         procedure1.append("apps.xxgam_ap_mod_ant_utils2_pkg.get_budget_control_org(");
@@ -6538,42 +6550,41 @@ pat.matcher(typePaymentRow.getTypePaymentDesc());
         procedure1.append(" END; ");
         System.out.println(procedure1);
         //Llamada a la base de datos
-         try
-         {
-               
-         OADBTransaction dbTransaction = (OADBTransaction)this.getTransaction();
-         oracle.jdbc.OracleCallableStatement CallProcedure = (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 1);
-         
-               
-           CallProcedure.setString(1,parts[0]);
-           CallProcedure.setString(2,parts[1]);
-           CallProcedure.setString(3,parts[2]);
-           CallProcedure.setString(4,parts[3]);
-           CallProcedure.setString(5,parts[4]);
-           CallProcedure.setString(6,parts[5]);
-           CallProcedure.setString(7,parts[6]);
-           CallProcedure.setString(8,parts[7]);
-           CallProcedure.registerOutParameter(9,Types.VARCHAR);
-           CallProcedure.registerOutParameter(10,Types.VARCHAR);
-           CallProcedure.execute();               
-           auxCtlCta=CallProcedure.getString(9); 
-           
-               errMess=CallProcedure.getString(10);
-           //System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
-           System.out.println("auxCtlCta: "+auxCtlCta);
-               //auxCtl.toLowerCase();
-               
-           }
-         catch (Exception ex)
-         {
-          System.out.println("Falla getCtrlBudgetOrganizacion: "+ex);
-         }
-         finally{
-             System.out.println("Ctrl Budget Organization: "+auxCtlCta);
-             //auxCtlCta="Informativa";
-             return auxCtlCta.toUpperCase();   
-         }
-       
+        try {
+
+            OADBTransaction dbTransaction = 
+                (OADBTransaction)this.getTransaction();
+            oracle.jdbc.OracleCallableStatement CallProcedure = 
+                (OracleCallableStatement)dbTransaction.createCallableStatement(procedure1.toString(), 
+                                                                               1);
+
+
+            CallProcedure.setString(1, parts[0]);
+            CallProcedure.setString(2, parts[1]);
+            CallProcedure.setString(3, parts[2]);
+            CallProcedure.setString(4, parts[3]);
+            CallProcedure.setString(5, parts[4]);
+            CallProcedure.setString(6, parts[5]);
+            CallProcedure.setString(7, parts[6]);
+            CallProcedure.setString(8, parts[7]);
+            CallProcedure.registerOutParameter(9, Types.VARCHAR);
+            CallProcedure.registerOutParameter(10, Types.VARCHAR);
+            CallProcedure.execute();
+            auxCtlCta = CallProcedure.getString(9);
+
+            errMess = CallProcedure.getString(10);
+            //System.out.println("CallProcedure.getString(2) "+CallProcedure.getString(2));
+            System.out.println("auxCtlCta: " + auxCtlCta);
+            //auxCtl.toLowerCase();
+
+        } catch (Exception ex) {
+            System.out.println("Falla getCtrlBudgetOrganizacion: " + ex);
+        } finally {
+            System.out.println("Ctrl Budget Organization: " + auxCtlCta);
+            //auxCtlCta="Informativa";
+            return auxCtlCta.toUpperCase();
+        }
+
     }
-    
+
 }

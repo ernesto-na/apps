@@ -25,19 +25,19 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
  */
 public class XxGamApprovalRequestDetailCO extends OAControllerImpl {
     public static final String RCS_ID = "$Header$";
-    public static final boolean RCS_ID_RECORDED =
+    public static final boolean RCS_ID_RECORDED = 
         VersionInfo.recordClassVersion(RCS_ID, "%packagename%");
 
     /**
      * Resumen de la pagina de pago de la solicitud de anticipo.
      */
-    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG =
+    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG = 
         "XxGamApprovalRequestPG";
-        
+
     /**
      * Resumen de los boletos de avión
      */
-    public static final String PAGE_DETAIL_AIRPLANE =
+    public static final String PAGE_DETAIL_AIRPLANE = 
         "XxGamPaymentReqTicketPlanePG";
 
     /**
@@ -56,7 +56,7 @@ public class XxGamApprovalRequestDetailCO extends OAControllerImpl {
      * @param pageContext the current OA page context
      * @param webBean the web bean corresponding to the region
      */
-    public void processFormRequest(OAPageContext pageContext,
+    public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
 
@@ -68,28 +68,29 @@ public class XxGamApprovalRequestDetailCO extends OAControllerImpl {
             String sURL = null;
             //Aplica rollback
             XxGamMAnticiposUtil.setRollback(pageContext, webBean);
-            sURL =XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
+            sURL = 
+XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
 
             //Redirecciona a la pagina principal
-            XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean,
+            XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean, 
                                                          null, sURL);
         }
-        
+
         control = pageContext.getParameter(XxGamConstantsUtil.APPROVE);
-        
+
         //Muestra el detalle de la solicitud
         if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM)))
-            setForwardWhitParameters(pageContext,webBean);
-        
+            setForwardWhitParameters(pageContext, webBean);
+
     }
-    
+
     /**
      * Inicializan los parametros que se van a enviar al detalle.
      *
      * @param pageContext Contexto de la pagina
      * @param webBean Web bean.
      */
-    private void setForwardWhitParameters(OAPageContext pageContext,
+    private void setForwardWhitParameters(OAPageContext pageContext, 
                                           OAWebBean webBean) {
 
         //VErifica nulidad
@@ -102,40 +103,46 @@ public class XxGamApprovalRequestDetailCO extends OAControllerImpl {
         Number nPaymentId = null;
 
         //Obtiene los parametros y los inicializa
-        
-        
+
+
         sURL = XxGamConstantsUtil.URL_PAGE_OAF + PAGE_DETAIL_AIRPLANE;
         String requestType = null;
-        requestType = 
-                XxGamMAnticiposUtil.getRequestType(pageContext, webBean);
-        if (requestType != null && requestType.equals("Solicitud de anticipos")) {
-        
-            sParam = pageContext.getParameter(XxGamConstantsUtil.PAYMENT_ID);
-            nPaymentId = XxGamMAnticiposUtil.converteNumber(sParam);
-                XxGamMAnticiposUtil.searchPayment(pageContext,webBean,nPaymentId);
-                
-        }
-        //Inicializa los parametros
-        XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean,null, sURL);
-    }
-    
-    
-    
-    
-    private void setRenderedElements(OAPageContext pageContext,
-                                          OAWebBean webBean){
-        String requestType = null;
-        requestType = 
-                XxGamMAnticiposUtil.getRequestType(pageContext, webBean);
+        requestType = XxGamMAnticiposUtil.getRequestType(pageContext, webBean);
         if (requestType != null && 
             requestType.equals("Solicitud de anticipos")) {
-            XxGamMAnticiposUtil.setRenderedComponent(webBean,"XxGamMaPaymentReqVO2",true);
-            XxGamMAnticiposUtil.setRenderedComponent(webBean,"XxGamMaGeneralReqVO1",false);
-        } else if (requestType != null && 
-                   requestType.equals("Franquicias")){
-             
-                       XxGamMAnticiposUtil.setRenderedComponent(webBean,"XxGamMaGeneralReqVO1",true);
-                       XxGamMAnticiposUtil.setRenderedComponent(webBean,"XxGamMaPaymentReqVO2",false);      
+
+            sParam = pageContext.getParameter(XxGamConstantsUtil.PAYMENT_ID);
+            nPaymentId = XxGamMAnticiposUtil.converteNumber(sParam);
+            XxGamMAnticiposUtil.searchPayment(pageContext, webBean, 
+                                              nPaymentId);
+
+        }
+        //Inicializa los parametros
+        XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean, 
+                                                     null, sURL);
+    }
+
+
+    private void setRenderedElements(OAPageContext pageContext, 
+                                     OAWebBean webBean) {
+        String requestType = null;
+        requestType = XxGamMAnticiposUtil.getRequestType(pageContext, webBean);
+        if (requestType != null && 
+            requestType.equals("Solicitud de anticipos")) {
+            XxGamMAnticiposUtil.setRenderedComponent(webBean, 
+                                                     "XxGamMaPaymentReqVO2", 
+                                                     true);
+            XxGamMAnticiposUtil.setRenderedComponent(webBean, 
+                                                     "XxGamMaGeneralReqVO1", 
+                                                     false);
+        } else if (requestType != null && requestType.equals("Franquicias")) {
+
+            XxGamMAnticiposUtil.setRenderedComponent(webBean, 
+                                                     "XxGamMaGeneralReqVO1", 
+                                                     true);
+            XxGamMAnticiposUtil.setRenderedComponent(webBean, 
+                                                     "XxGamMaPaymentReqVO2", 
+                                                     false);
         }
     }
 }

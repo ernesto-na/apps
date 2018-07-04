@@ -21,6 +21,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamAOLMessages;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamConstantsUtil;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 
+
 /**
  * Controlador de la pagina de aprobacion de la solicitud de anticipo.
  * Definida por XML XxGamApprovalRequestPG
@@ -29,13 +30,13 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
  */
 public class XxGamApprovalRequestCO extends OAControllerImpl {
     public static final String RCS_ID = "$Header$";
-    public static final boolean RCS_ID_RECORDED =
+    public static final boolean RCS_ID_RECORDED = 
         VersionInfo.recordClassVersion(RCS_ID, "%packagename%");
 
     /**
      * Resumen de la pagina de pago de la solicitud de anticipo.
      */
-    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG =
+    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG = 
         "XxGamApprovalRequestDetailPG";
 
     /**
@@ -47,7 +48,7 @@ public class XxGamApprovalRequestCO extends OAControllerImpl {
         super.processRequest(pageContext, webBean);
 
         //Reinicia la tabla
-        XxGamMAnticiposUtil.resetQueryRN(pageContext, webBean,
+        XxGamMAnticiposUtil.resetQueryRN(pageContext, webBean, 
                                          "searchReuqestRN");
     }
 
@@ -57,15 +58,15 @@ public class XxGamApprovalRequestCO extends OAControllerImpl {
      * @param pageContext the current OA page context
      * @param webBean the web bean corresponding to the region
      */
-    public void processFormRequest(OAPageContext pageContext,
+    public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
         //Busca los registros
         String sSearch = null;
         sSearch = pageContext.getParameter(XxGamConstantsUtil.SEARCH);
         if (sSearch != null) {
-                            searchRequest(pageContext, webBean);
-           
+            searchRequest(pageContext, webBean);
+
         }
 
 
@@ -100,29 +101,29 @@ public class XxGamApprovalRequestCO extends OAControllerImpl {
             sParam = pageContext.getParameter(XxGamConstantsUtil.REQUEST_ID);
             nRequestId = XxGamMAnticiposUtil.converteNumber(sParam);
             boolean isRows = false;
-            isRows =
+            isRows = 
                     XxGamMAnticiposUtil.searchRequest(pageContext, webBean, nRequestId);
 
-            sURL =
+            sURL = 
 XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
             hParameters.put(XxGamConstantsUtil.REQUEST_ID, sParam);
 
             //Inicializa los parametros
             if (isRows)
-                XxGamMAnticiposUtil.setForwardWhitParameters(pageContext,
-                                                             webBean,
-                                                             hParameters,
+                XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, 
+                                                             webBean, 
+                                                             hParameters, 
                                                              sURL);
             else
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                          XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR,
-                                          null, OAException.WARNING, null);
+                throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                      XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR, 
+                                      null, OAException.WARNING, null);
 
         } catch (Exception exception) {
 
-             throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                           XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR,
-                                           null, OAException.WARNING, null);
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR, 
+                                  null, OAException.WARNING, null);
         }
 
     }
@@ -153,46 +154,47 @@ XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
         try {
 
             //Clave de la solicitud
-            idSolicitud =
+            idSolicitud = 
                     pageContext.getParameter(XxGamConstantsUtil.NUM_REQ_MI);
 
             //Nombre del solicitante
-            sName =
-pageContext.getParameter(XxGamConstantsUtil.NAME_EMPLOY_MI);
+            sName = 
+                    pageContext.getParameter(XxGamConstantsUtil.NAME_EMPLOY_MI);
 
             //Centro de costos
-            nCostCenter =
+            nCostCenter = 
                     pageContext.getParameter(XxGamConstantsUtil.COST_CENTER_MI);
 
             //Plantilla de solicitud
-            nAdvanceTemplate =
+            nAdvanceTemplate = 
                     pageContext.getParameter(XxGamConstantsUtil.ADVANCE_TEMP_MI);
 
             //Proposito
             purpose = pageContext.getParameter(XxGamConstantsUtil.PURPOSE_MI);
 
             //Fecha Inicio
-            dStartDate =
+            dStartDate = 
                     XxGamMAnticiposUtil.converteDate(pageContext, pageContext.getParameter(XxGamConstantsUtil.START_DATE_MI));
 
             //Fecha fin
-            dEndDate =
+            dEndDate = 
                     XxGamMAnticiposUtil.converteDate(pageContext, pageContext.getParameter(XxGamConstantsUtil.END_DATE_MI));
 
-            sTypeReuqest =
+            sTypeReuqest = 
                     pageContext.getParameter(XxGamConstantsUtil.TYPE_REQUEST);
 
 
             //Inicia el proceso de busqueda
-             XxGamMAnticiposUtil.searchRequest(pageContext, webBean,
-                                              idSolicitud, sName, nCostCenter,
-                                              nAdvanceTemplate, purpose,
-                                              dStartDate, dEndDate,sTypeReuqest);
+            XxGamMAnticiposUtil.searchRequest(pageContext, webBean, 
+                                              idSolicitud, sName, nCostCenter, 
+                                              nAdvanceTemplate, purpose, 
+                                              dStartDate, dEndDate, 
+                                              sTypeReuqest);
 
         } catch (Exception exception) {
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                          XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR,
-                                          null, OAException.WARNING, null);
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR, 
+                                  null, OAException.WARNING, null);
         }
     }
 

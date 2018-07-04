@@ -1,195 +1,161 @@
 package xxgam.oracle.apps.xbol.maf.server;
 
 import oracle.apps.fnd.framework.server.OAViewRowImpl;
+
 import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.AttributeDefImpl;
+
 import xxgam.oracle.apps.xbol.maf.lov.server.XxGamMaTypePaymentLovVORowImpl;
 import xxgam.oracle.apps.xbol.maf.lov.server.XxGamModAntLovAMImpl;
+
 
 // Referenced classes of package xxgam.oracle.apps.xbol.maf.server:
 //            XxGamModAntAMImpl, XxGamMaGeneralReqVOImpl, XxGamMaGeneralReqVORowImpl, XxGamMaPaymentReqEOImpl
 
-public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl
-{
+public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl {
 
-    public XxGamMaPaymentReqVORowImpl()
-    {
+    public XxGamMaPaymentReqVORowImpl() {
     }
 
-    public XxGamMaPaymentReqEOImpl getXxGamMaPaymentReqEO()
-    {
+    public XxGamMaPaymentReqEOImpl getXxGamMaPaymentReqEO() {
         return (XxGamMaPaymentReqEOImpl)getEntity(0);
     }
 
-    public Number getId()
-    {
+    public Number getId() {
         return (Number)getAttributeInternal(0);
     }
 
-    public void setId(Number value)
-    {
+    public void setId(Number value) {
         setAttributeInternal(0, value);
     }
 
-    public Number getGeneralReqId()
-    {
+    public Number getGeneralReqId() {
         return (Number)getAttributeInternal(1);
     }
 
-    public void setGeneralReqId(Number value)
-    {
+    public void setGeneralReqId(Number value) {
         setAttributeInternal(1, value);
     }
 
-    public Date getInitialDate()
-    {
+    public Date getInitialDate() {
         return (Date)getAttributeInternal(2);
     }
 
-    public void setInitialDate(Date value)
-    {
+    public void setInitialDate(Date value) {
         setAttributeInternal(2, value);
     }
 
-    public Date getFinalDate()
-    {
+    public Date getFinalDate() {
         return (Date)getAttributeInternal(12);
     }
 
-    public void setFinalDate(Date value)
-    {
+    public void setFinalDate(Date value) {
         setAttributeInternal(12, value);
     }
 
-    public Number getTypePayment()
-    {
+    public Number getTypePayment() {
         return (Number)getAttributeInternal(3);
     }
 
-    public void setTypePayment(Number value)
-    {
-        if(value != null)
+    public void setTypePayment(Number value) {
+        if (value != null)
             setAttributeInternal(3, value);
     }
 
-    public Number getAmount()
-    {
+    public Number getAmount() {
         return (Number)getAttributeInternal(4);
     }
 
-    public void setAmount(Number value)
-    {
+    public void setAmount(Number value) {
         setAttributeInternal(4, value);
     }
 
-    public Number getAmountMx()
-    {
+    public Number getAmountMx() {
         return (Number)getAttributeInternal(5);
     }
 
-    public void setAmountMx(Number value)
-    {
+    public void setAmountMx(Number value) {
         setAttributeInternal(5, value);
     }
 
-    public String getJustification()
-    {
+    public String getJustification() {
         return (String)getAttributeInternal(6);
     }
 
-    public void setJustification(String value)
-    {
+    public void setJustification(String value) {
         setAttributeInternal(6, value);
     }
 
-    public Number getCodeCombinationId()
-    {
+    public Number getCodeCombinationId() {
         return (Number)getAttributeInternal(7);
     }
 
-    public void setCodeCombinationId(Number value)
-    {
+    public void setCodeCombinationId(Number value) {
         setAttributeInternal(7, value);
     }
 
-    public String getCurrencyCode()
-    {
+    public String getCurrencyCode() {
         return (String)getAttributeInternal(8);
     }
 
-    public void setCurrencyCode(String value)
-    {
+    public void setCurrencyCode(String value) {
         setAttributeInternal(8, value);
     }
 
-    public Date getCreationDate()
-    {
+    public Date getCreationDate() {
         return (Date)getAttributeInternal(9);
     }
 
-    public void setCreationDate(Date value)
-    {
+    public void setCreationDate(Date value) {
         setAttributeInternal(9, value);
     }
 
-    public Number getCreatedBy()
-    {
+    public Number getCreatedBy() {
         return (Number)getAttributeInternal(10);
     }
 
-    public void setCreatedBy(Number value)
-    {
+    public void setCreatedBy(Number value) {
         setAttributeInternal(10, value);
     }
 
-    public Date getLastUpdateDate()
-    {
+    public Date getLastUpdateDate() {
         return (Date)getAttributeInternal(11);
     }
 
-    public void setLastUpdateDate(Date value)
-    {
+    public void setLastUpdateDate(Date value) {
         setAttributeInternal(11, value);
     }
 
-    public Number getLastUpdateLogin()
-    {
+    public Number getLastUpdateLogin() {
         return (Number)getAttributeInternal(13);
     }
 
-    public void setLastUpdateLogin(Number value)
-    {
+    public void setLastUpdateLogin(Number value) {
         setAttributeInternal(13, value);
     }
 
-    public String getCurrencyDesc()
-    {
+    public String getCurrencyDesc() {
         return (String)getAttributeInternal(14);
     }
 
-    public void setCurrencyDesc(String value)
-    {
+    public void setCurrencyDesc(String value) {
         setAttributeInternal(14, value);
     }
 
-    public String getTypePymentDesc()
-    {
+    public String getTypePymentDesc() {
         return (String)getAttributeInternal(15);
     }
 
-    public void setTypePymentDesc(String value)
-    {
+    public void setTypePymentDesc(String value) {
         setAttributeInternal(15, value);
     }
 
-    protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef)
-        throws Exception
-    {
-        switch(index)
-        {
+    protected Object getAttrInvokeAccessor(int index, 
+                                           AttributeDefImpl attrDef) throws Exception {
+        switch (index) {
         case 0: // '\0'
             return getId();
 
@@ -274,11 +240,9 @@ public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl
         return super.getAttrInvokeAccessor(index, attrDef);
     }
 
-    protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef)
-        throws Exception
-    {
-        switch(index)
-        {
+    protected void setAttrInvokeAccessor(int index, Object value, 
+                                         AttributeDefImpl attrDef) throws Exception {
+        switch (index) {
         case 0: // '\0'
             setId((Number)value);
             return;
@@ -376,71 +340,70 @@ public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl
         }
     }
 
-    public String getCurrencyCodeDesc()
-    {
+    public String getCurrencyCodeDesc() {
         return (String)getAttributeInternal(16);
     }
 
-    public void setCurrencyCodeDesc(String value)
-    {
+    public void setCurrencyCodeDesc(String value) {
         setAttributeInternal(16, value);
     }
 
-    public String getIsView()
-    {
+    public String getIsView() {
         return (String)getAttributeInternal(17);
     }
 
-    public void setIsView(String value)
-    {
+    public void setIsView(String value) {
         setAttributeInternal(17, value);
     }
 
-    public Row getXxGamMaGeneralReqVO1()
-    {
+    public Row getXxGamMaGeneralReqVO1() {
         return (Row)getAttributeInternal(25);
     }
 
-    public String getIsDetail()
-    {
+    public String getIsDetail() {
         return (String)getAttributeInternal(13);
     }
 
-    public void setIsDetail(String value)
-    {
+    public void setIsDetail(String value) {
         setAttributeInternal(13, value);
     }
 
-    public Boolean getisCalculated()
-    {
+    public Boolean getisCalculated() {
         Number typePaymentId = null;
         typePaymentId = getTypePayment();
         boolean isCalculated = true;
-        if(typePaymentId != null)
-        {
+        if (typePaymentId != null) {
             XxGamModAntAMImpl am = (XxGamModAntAMImpl)getApplicationModule();
-            if(am != null)
-            {
+            if (am != null) {
                 Number templateId = null;
-                XxGamModAntLovAMImpl amLov = (XxGamModAntLovAMImpl)am.getXxGamModAntLovAM1();
-                XxGamMaGeneralReqVOImpl generalImpl = am.getXxGamMaGeneralReqVO1();
+                XxGamModAntLovAMImpl amLov = 
+                    (XxGamModAntLovAMImpl)am.getXxGamModAntLovAM1();
+                XxGamMaGeneralReqVOImpl generalImpl = 
+                    am.getXxGamMaGeneralReqVO1();
                 XxGamMaGeneralReqVORowImpl generalRow = null;
-                if(generalImpl != null)
-                    generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
-                if(generalRow != null)
+                if (generalImpl != null)
+                    generalRow = 
+                            (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                if (generalRow != null)
                     templateId = generalRow.getTemplatePayment();
-                if(amLov != null && templateId != null)
-                {
-                    XxGamMaTypePaymentLovVORowImpl typePaymentRow = amLov.getTypePaymentById(typePaymentId, templateId);
-                    if(typePaymentRow != null)
-                    {
+                if (amLov != null && templateId != null) {
+                    XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
+                        amLov.getTypePaymentById(typePaymentId, templateId);
+                    if (typePaymentRow != null) {
                         String typePaymentDesc = null;
                         typePaymentDesc = typePaymentRow.getTypePaymentDesc();
-                        if(typePaymentDesc != null)
-                        {
-                            if(typePaymentDesc.toUpperCase().trim().toUpperCase().indexOf("Boleto Avi\363n otra compa\361".toUpperCase()) != -1 || typePaymentDesc.toUpperCase().trim().toUpperCase().indexOf("Ant. Hospedaje".toUpperCase()) != -1 || typePaymentDesc.toUpperCase().trim().indexOf("Transporte".toUpperCase()) != -1)
+                        if (typePaymentDesc != null) {
+                            if (typePaymentDesc.toUpperCase().trim().toUpperCase().indexOf("Boleto Avi\363n otra compa\361".toUpperCase()) != 
+                                -1 || 
+                                typePaymentDesc.toUpperCase().trim().toUpperCase().indexOf("Ant. Hospedaje".toUpperCase()) != 
+                                -1 || 
+                                typePaymentDesc.toUpperCase().trim().indexOf("Transporte".toUpperCase()) != 
+                                -1)
                                 isCalculated = false;
-                            if(typePaymentDesc.toUpperCase().trim().indexOf("TRANSPORTACION".toUpperCase()) != -1 || typePaymentDesc.toUpperCase().trim().indexOf("OTROS GASTOS DE VIAJE".toUpperCase()) != -1)
+                            if (typePaymentDesc.toUpperCase().trim().indexOf("TRANSPORTACION".toUpperCase()) != 
+                                -1 || 
+                                typePaymentDesc.toUpperCase().trim().indexOf("OTROS GASTOS DE VIAJE".toUpperCase()) != 
+                                -1)
                                 isCalculated = false;
                         }
                     }
@@ -451,66 +414,61 @@ public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl
         return (Boolean)getAttributeInternal(18);
     }
 
-    public void setisCalculated(Boolean value)
-    {
+    public void setisCalculated(Boolean value) {
         populateAttribute(18, value);
     }
 
-    public Boolean getisNotCalculated()
-    {
-        setisNotCalculated(Boolean.valueOf(getisCalculated().booleanValue() ^ true));
+    public Boolean getisNotCalculated() {
+        setisNotCalculated(Boolean.valueOf(getisCalculated().booleanValue() ^ 
+                                           true));
         return (Boolean)getAttributeInternal(19);
     }
 
-    public void setisNotCalculated(Boolean value)
-    {
+    public void setisNotCalculated(Boolean value) {
         populateAttribute(19, value);
     }
 
-    public Boolean getIsPaymentValid()
-    {
+    public Boolean getIsPaymentValid() {
         return (Boolean)getAttributeInternal(20);
     }
 
-    public void setIsPaymentValid(Boolean value)
-    {
+    public void setIsPaymentValid(Boolean value) {
         populateAttribute(20, value);
     }
 
-    public Boolean getIsPaymentNotValid()
-    {
+    public Boolean getIsPaymentNotValid() {
         return (Boolean)getAttributeInternal(21);
     }
 
-    public void setIsPaymentNotValid(Boolean value)
-    {
+    public void setIsPaymentNotValid(Boolean value) {
         populateAttribute(21, value);
     }
 
-    public Boolean getIsTicketPlane()
-    {
+    public Boolean getIsTicketPlane() {
         boolean isTicketPlane = false;
         XxGamModAntAMImpl am = (XxGamModAntAMImpl)getApplicationModule();
-        if(am != null)
-        {
-            XxGamModAntLovAMImpl amLov = (XxGamModAntLovAMImpl)am.getXxGamModAntLovAM1();
+        if (am != null) {
+            XxGamModAntLovAMImpl amLov = 
+                (XxGamModAntLovAMImpl)am.getXxGamModAntLovAM1();
             XxGamMaGeneralReqVOImpl generalImpl = am.getXxGamMaGeneralReqVO1();
             XxGamMaGeneralReqVORowImpl generalRow = null;
-            if(generalImpl != null)
-                generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+            if (generalImpl != null)
+                generalRow = 
+                        (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
             Number templateId = null;
-            if(generalRow != null)
+            if (generalRow != null)
                 templateId = generalRow.getTemplatePayment();
             Number typePaymentId = null;
             typePaymentId = getTypePayment();
-            if(amLov != null && templateId != null && typePaymentId != null)
-            {
-                XxGamMaTypePaymentLovVORowImpl typePaymentRow = amLov.getTypePaymentById(typePaymentId, templateId);
-                if(typePaymentRow != null)
-                {
+            if (amLov != null && templateId != null && typePaymentId != null) {
+                XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
+                    amLov.getTypePaymentById(typePaymentId, templateId);
+                if (typePaymentRow != null) {
                     String typePaymentDesc = null;
                     typePaymentDesc = typePaymentRow.getTypePaymentDesc();
-                    if(typePaymentDesc != null && typePaymentRow.getTypePaymentDesc().toUpperCase().trim().indexOf("Boleto Avi\363n AM".toUpperCase()) != -1)
+                    if (typePaymentDesc != null && 
+                        typePaymentRow.getTypePaymentDesc().toUpperCase().trim().indexOf("Boleto Avi\363n AM".toUpperCase()) != 
+                        -1)
                         isTicketPlane = true;
                 }
             }
@@ -519,37 +477,32 @@ public class XxGamMaPaymentReqVORowImpl extends OAViewRowImpl
         return (Boolean)getAttributeInternal(22);
     }
 
-    public void setIsTicketPlane(Boolean value)
-    {
+    public void setIsTicketPlane(Boolean value) {
         populateAttribute(22, value);
     }
 
-    public Boolean getisDisableSelectTypePayment()
-    {
-        if(getInitialDate() != null && getFinalDate() != null && getTypePayment() != null)
+    public Boolean getisDisableSelectTypePayment() {
+        if (getInitialDate() != null && getFinalDate() != null && 
+            getTypePayment() != null)
             setisDisableSelectTypePayment(Boolean.valueOf(true));
         else
             setisDisableSelectTypePayment(Boolean.valueOf(false));
         return (Boolean)getAttributeInternal(23);
     }
 
-    public void setisDisableSelectTypePayment(Boolean value)
-    {
+    public void setisDisableSelectTypePayment(Boolean value) {
         populateAttribute(23, value);
     }
 
-    public RowIterator getXxGamMaTicketPVO()
-    {
+    public RowIterator getXxGamMaTicketPVO() {
         return (RowIterator)getAttributeInternal(26);
     }
 
-    public String getObservations()
-    {
+    public String getObservations() {
         return (String)getAttributeInternal(24);
     }
 
-    public void setObservations(String value)
-    {
+    public void setObservations(String value) {
         setAttributeInternal(24, value);
     }
 

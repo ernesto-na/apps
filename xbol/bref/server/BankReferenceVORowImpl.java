@@ -1,26 +1,32 @@
-/*     */ package xxgam.oracle.apps.xbol.bref.server;
-/*     */ 
-/*     */ import oracle.apps.fnd.framework.server.OAViewRowImpl;
-/*     */ import oracle.jbo.domain.Date;
-/*     */ import oracle.jbo.domain.Number;
-/*     */ import oracle.jbo.server.AttributeDefImpl;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ public class BankReferenceVORowImpl
-/*     */   extends OAViewRowImpl {
+/*     */package xxgam.oracle.apps.xbol.bref.server;
+
+import oracle.apps.fnd.framework.server.OAViewRowImpl;
+
+import oracle.jbo.domain.Date;
+import oracle.jbo.domain.Number;
+import oracle.jbo.server.AttributeDefImpl;
 /*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */public class BankReferenceVORowImpl
+    /*     */ extends OAViewRowImpl {
+    /*     */
     public static final int NOMBREBANCO = 0;
     public static final int SUCURSAL = 1;
     public static final int REFERENCIA = 2;
@@ -65,203 +71,261 @@
     /*     */
     /*     */
     /*     */
-    /*     */   
-/*     */   public String getNombrebanco()
-/*     */   {
-/*  43 */     return (String)getAttributeInternal(0);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setNombrebanco(String value)
-/*     */   {
-/*  49 */     setAttributeInternal(0, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getSucursal()
-/*     */   {
-/*  57 */     return (String)getAttributeInternal(1);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setSucursal(String value)
-/*     */   {
-/*  63 */     setAttributeInternal(1, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getReferencia()
-/*     */   {
-/*  71 */     return (String)getAttributeInternal(2);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setReferencia(String value)
-/*     */   {
-/*  77 */     setAttributeInternal(2, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getCuenta()
-/*     */   {
-/*  85 */     return (String)getAttributeInternal(3);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setCuenta(String value)
-/*     */   {
-/*  91 */     setAttributeInternal(3, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getUnidadOperativa()
-/*     */   {
-/*  99 */     return (String)getAttributeInternal(4);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setUnidadOperativa(String value)
-/*     */   {
-/* 105 */     setAttributeInternal(4, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getNombreCompleto()
-/*     */   {
-/* 113 */     return (String)getAttributeInternal(5);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setNombreCompleto(String value)
-/*     */   {
-/* 119 */     setAttributeInternal(5, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getObservaciones()
-/*     */   {
-/* 127 */     return (String)getAttributeInternal(7);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setObservaciones(String value)
-/*     */   {
-/* 133 */     setAttributeInternal(7, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Date getLastUpdateDate()
-/*     */   {
-/* 141 */     return (Date)getAttributeInternal(9);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setLastUpdateDate(Date value)
-/*     */   {
-/* 147 */     setAttributeInternal(9, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Number getLastUpdatedBy()
-/*     */   {
-/* 155 */     return (Number)getAttributeInternal(10);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setLastUpdatedBy(Number value)
-/*     */   {
-/* 161 */     setAttributeInternal(10, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Number getLastUpdateLogin()
-/*     */   {
-/* 169 */     return (Number)getAttributeInternal(11);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setLastUpdateLogin(Number value)
-/*     */   {
-/* 175 */     setAttributeInternal(11, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Date getCreationDate()
-/*     */   {
-/* 183 */     return (Date)getAttributeInternal(12);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setCreationDate(Date value)
-/*     */   {
-/* 189 */     setAttributeInternal(12, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Number getCreatedBy()
-/*     */   {
-/* 197 */     return (Number)getAttributeInternal(13);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setCreatedBy(Number value)
-/*     */   {
-/* 203 */     setAttributeInternal(13, value);
-/*     */   }
-/*     */  
-/*     */   public Number getBankCode()
-/*     */   {
-/* 197 */     return (Number)getAttributeInternal(16);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setBankCode(Number value)
-/*     */   {
-/* 203 */     setAttributeInternal(16, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Number getBranchCode()
-/*     */   {
-/* 197 */     return (Number)getAttributeInternal(17);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setBranchCode(Number value)
-/*     */   {
-/* 203 */     setAttributeInternal(17, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   
-/*     */   protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef)
-/*     */     throws Exception
-/*     */   {
-/* 236 */
+    /*     */
+    /*     */
+
+    public String getNombrebanco() {
+        /*  43 */return (String)getAttributeInternal(0);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setNombrebanco(String value) {
+        /*  49 */setAttributeInternal(0, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getSucursal() {
+        /*  57 */return (String)getAttributeInternal(1);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setSucursal(String value) {
+        /*  63 */setAttributeInternal(1, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getReferencia() {
+        /*  71 */return (String)getAttributeInternal(2);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setReferencia(String value) {
+        /*  77 */setAttributeInternal(2, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getCuenta() {
+        /*  85 */return (String)getAttributeInternal(3);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setCuenta(String value) {
+        /*  91 */setAttributeInternal(3, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getUnidadOperativa() {
+        /*  99 */return (String)getAttributeInternal(4);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setUnidadOperativa(String value) {
+        /* 105 */setAttributeInternal(4, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getNombreCompleto() {
+        /* 113 */return (String)getAttributeInternal(5);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setNombreCompleto(String value) {
+        /* 119 */setAttributeInternal(5, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getObservaciones() {
+        /* 127 */return (String)getAttributeInternal(7);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setObservaciones(String value) {
+        /* 133 */setAttributeInternal(7, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Date getLastUpdateDate() {
+        /* 141 */return (Date)getAttributeInternal(9);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setLastUpdateDate(Date value) {
+        /* 147 */setAttributeInternal(9, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Number getLastUpdatedBy() {
+        /* 155 */return (Number)getAttributeInternal(10);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setLastUpdatedBy(Number value) {
+        /* 161 */setAttributeInternal(10, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Number getLastUpdateLogin() {
+        /* 169 */return (Number)getAttributeInternal(11);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setLastUpdateLogin(Number value) {
+        /* 175 */setAttributeInternal(11, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Date getCreationDate() {
+        /* 183 */return (Date)getAttributeInternal(12);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setCreationDate(Date value) {
+        /* 189 */setAttributeInternal(12, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Number getCreatedBy() {
+        /* 197 */return (Number)getAttributeInternal(13);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setCreatedBy(Number value) {
+        /* 203 */setAttributeInternal(13, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+
+    public Number getBankCode() {
+        /* 197 */return (Number)getAttributeInternal(16);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setBankCode(Number value) {
+        /* 203 */setAttributeInternal(16, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Number getBranchCode() {
+        /* 197 */return (Number)getAttributeInternal(17);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setBranchCode(Number value) {
+        /* 203 */setAttributeInternal(17, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef)
+        /*     */ throws Exception
+    /*     */ {
+        /* 236 */
         /*     */switch (index) {
         case NOMBREBANCO:
             return getNombrebanco();
@@ -315,14 +379,17 @@
             return super.getAttrInvokeAccessor(index, attrDef);
         }
     }
-/*     */   
-/*     */ 
-/*     */   protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef)
-/*     */     throws Exception
-/*     */   {
-/* 255 */
-        /*     */     
-/* 267 */
+    /*     */
+    /*     */
+    /*     */
+
+    protected void setAttrInvokeAccessor(int index, Object value, 
+                                         AttributeDefImpl attrDef)
+        /*     */ throws Exception
+    /*     */ {
+        /* 255 */
+        /*     */
+        /* 267 */
         /*     */switch (index) {
         case CUENTATRANSFERENCIA:
             setCuentaTransferencia((String)value);
@@ -338,71 +405,87 @@
             return;
         }
     }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getClabe()
-/*     */   {
-/* 277 */     return (String)getAttributeInternal(8);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setClabe(String value)
-/*     */   {
-/* 283 */     setAttributeInternal(8, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public Number getImporte()
-/*     */   {
-/* 291 */     return (Number)getAttributeInternal(23);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setImporte(Number value)
-/*     */   {
-/* 297 */     setAttributeInternal(23, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getNumeroEmpleado()
-/*     */   {
-/* 306 */     return (String)getAttributeInternal(14);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setNumeroEmpleado(String value)
-/*     */   {
-/* 312 */     setAttributeInternal(14, value);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public String getCuentaTransferencia()
-/*     */   {
-/* 320 */     return (String)getAttributeInternal(6);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */   public void setCuentaTransferencia(String value)
-/*     */   {
-/* 326 */     setAttributeInternal(6, value);
-/*     */   }
-/*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getClabe() {
+        /* 277 */return (String)getAttributeInternal(8);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setClabe(String value) {
+        /* 283 */setAttributeInternal(8, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public Number getImporte() {
+        /* 291 */return (Number)getAttributeInternal(23);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setImporte(Number value) {
+        /* 297 */setAttributeInternal(23, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getNumeroEmpleado() {
+        /* 306 */return (String)getAttributeInternal(14);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setNumeroEmpleado(String value) {
+        /* 312 */setAttributeInternal(14, value);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+
+    public String getCuentaTransferencia() {
+        /* 320 */return (String)getAttributeInternal(6);
+        /*     */
+    }
+    /*     */
+    /*     */
+    /*     */
+
+    public void setCuentaTransferencia(String value) {
+        /* 326 */setAttributeInternal(6, value);
+        /*     */
+    }
+    /*     */
 
     /**Gets the attribute value for the calculated attribute Bank
      */
     public String getBank() {
-        return (String) getAttributeInternal(BANK);
+        return (String)getAttributeInternal(BANK);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Bank
@@ -414,7 +497,7 @@
     /**Gets the attribute value for the calculated attribute Bankcode
      */
     public String getBankcode() {
-        return (String) getAttributeInternal(BANKCODE);
+        return (String)getAttributeInternal(BANKCODE);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Bankcode
@@ -426,7 +509,7 @@
     /**Gets the attribute value for the calculated attribute Branchcode
      */
     public String getBranchcode() {
-        return (String) getAttributeInternal(BRANCHCODE);
+        return (String)getAttributeInternal(BRANCHCODE);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Branchcode
@@ -438,7 +521,7 @@
     /**Gets the attribute value for the calculated attribute Account
      */
     public String getAccount() {
-        return (String) getAttributeInternal(ACCOUNT);
+        return (String)getAttributeInternal(ACCOUNT);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Account
@@ -450,7 +533,7 @@
     /**Gets the attribute value for the calculated attribute Iban
      */
     public String getIban() {
-        return (String) getAttributeInternal(IBAN);
+        return (String)getAttributeInternal(IBAN);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Iban
@@ -462,7 +545,7 @@
     /**Gets the attribute value for the calculated attribute Swift
      */
     public String getSwift() {
-        return (String) getAttributeInternal(SWIFT);
+        return (String)getAttributeInternal(SWIFT);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Swift
@@ -474,7 +557,7 @@
     /**Gets the attribute value for the calculated attribute Aba
      */
     public String getAba() {
-        return (String) getAttributeInternal(ABA);
+        return (String)getAttributeInternal(ABA);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Aba
@@ -486,7 +569,7 @@
     /**Gets the attribute value for the calculated attribute Currency
      */
     public String getCurrency() {
-        return (String) getAttributeInternal(CURRENCY);
+        return (String)getAttributeInternal(CURRENCY);
     }
 
     /**Sets <code>value</code> as the attribute value for the calculated attribute Currency

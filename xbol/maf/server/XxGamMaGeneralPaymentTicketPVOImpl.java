@@ -19,8 +19,8 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
      */
     public XxGamMaGeneralPaymentTicketPVOImpl() {
     }
-    
-    
+
+
     /**
      * Busca las solicitudes de boletos de avión.
      * 
@@ -33,16 +33,16 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
      * @param officeUser contiene nombre de usuario de la oficina de boleto
      * @param statusNotiCode contiene codigo del estatus de notificacion
      */
-    public void searchTicket(String nameRequester,
-                             String numberPayment, String typeEm, 
-                             //String type, //ADD type AGC 24-05-18
-                             String statusReq, 
-                             Date fromDate, Date toDate, String officeUser, String statusNotiCode) {
+    public void searchTicket(String nameRequester, String numberPayment, 
+                             String typeEm,
+        //String type, //ADD type AGC 24-05-18
+        String statusReq, Date fromDate, Date toDate, String officeUser, 
+        String statusNotiCode) {
 
         //Verifica si existe el aprovador
         if (officeUser == null)
             return;
-            
+
         //setpOfficeUser(officeUser);
 
         //Declaración de los recursos
@@ -56,51 +56,61 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
 
         //Inicializa el valor del nombre del solicitante
         if (nameRequester != null && !nameRequester.equals(""))
-            vcSolicitudesRow.setAttribute("RequesterName",
-                                          XxGamConstantsUtil.LIKE_OPEN +nameRequester+XxGamConstantsUtil.LIKE_CLOSE);
+            vcSolicitudesRow.setAttribute("RequesterName", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          nameRequester + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
 
         //Inicializa el valor del folio
         if (numberPayment != null && !numberPayment.equals(""))
-            vcSolicitudesRow.setAttribute("NumberPayment",
-                                          XxGamConstantsUtil.LIKE_OPEN + numberPayment + XxGamConstantsUtil.LIKE_CLOSE);
-        
+            vcSolicitudesRow.setAttribute("NumberPayment", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          numberPayment + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
+
         //Inicializa el valor del tipo de empleado (nacional o internacional)
         //if (typeEm != null && !typeEm.equals(""))
-           // vcSolicitudesRow.setAttribute("Type",
-             //                             XxGamConstantsUtil.LIKE_OPEN+ type + XxGamConstantsUtil.TYPE);
+        // vcSolicitudesRow.setAttribute("Type",
+        //                             XxGamConstantsUtil.LIKE_OPEN+ type + XxGamConstantsUtil.TYPE);
 
         //Inicializa el valor del tipo de emisión
         if (typeEm != null && !typeEm.equals(""))
-            vcSolicitudesRow.setAttribute("TypeEmission",
-                                          XxGamConstantsUtil.LIKE_OPEN+typeEm+XxGamConstantsUtil.LIKE_CLOSE);
+            vcSolicitudesRow.setAttribute("TypeEmission", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          typeEm + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
         //Inicializa el valor del status
         if (statusReq != null && !statusReq.equals(""))
-            vcSolicitudesRow.setAttribute("StatusRequest",
-                                          XxGamConstantsUtil.LIKE_OPEN+statusReq+XxGamConstantsUtil.LIKE_CLOSE);
+            vcSolicitudesRow.setAttribute("StatusRequest", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          statusReq + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
         //Inicializa las fechas
         if (fromDate != null && toDate != null)
-            vcSolicitudesRow.setAttribute("RequestPaymentDate",
-                                          "BETWEEN " + getClausuleWhereDate(fromDate) +
-                                          " AND " +
+            vcSolicitudesRow.setAttribute("RequestPaymentDate", 
+                                          "BETWEEN " + getClausuleWhereDate(fromDate) + 
+                                          " AND " + 
                                           getClausuleWhereDate(toDate));
-        
-        if(statusNotiCode != null && !"".equals(statusNotiCode)){
-            vcSolicitudesRow.setAttribute("StatusNotification",
-                                          XxGamConstantsUtil.LIKE_OPEN + statusNotiCode + XxGamConstantsUtil.LIKE_CLOSE);
-        }                                  
-        
+
+        if (statusNotiCode != null && !"".equals(statusNotiCode)) {
+            vcSolicitudesRow.setAttribute("StatusNotification", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          statusNotiCode + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
+        }
+
         //Aplica el criteria y ejecuta los criterios
         vcSolicitudes.addElement(vcSolicitudesRow);
         applyViewCriteria(vcSolicitudes);
-        
+
         executeQuery();
         clearViewCriterias();
     }
-    
-    
+
+
     /**
      * Construye la clausula where.
      *
@@ -136,13 +146,13 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
     public void setP_APPROVER(Number value) {
         setNamedWhereClauseParam("P_APPROVER1", value);
     }
-    
-    public void cancelFlightEmployee (Number FlightId) {
+
+    public void cancelFlightEmployee(Number FlightId) {
         Row[] cancelRows = null;
         cancelRows = getFilteredRows("Id", FlightId);
-        if(cancelRows != null){
+        if (cancelRows != null) {
             if (cancelRows.length > 0) {
-                cancelRows[0].setAttribute("StatusNotification","CAN");
+                cancelRows[0].setAttribute("StatusNotification", "CAN");
             }
         }
     }
@@ -153,96 +163,109 @@ public class XxGamMaGeneralPaymentTicketPVOImpl extends OAViewObjectImpl {
             (XxGamMaGeneralPaymentTicketPVORowImpl)getCurrentRow();
 
         if (voXxGamMaGeneralPaymentTicketP != null)
-            GeneralReqId = voXxGamMaGeneralPaymentTicketP.getGeneralReqId().toString();
-            
+            GeneralReqId = 
+                    voXxGamMaGeneralPaymentTicketP.getGeneralReqId().toString();
+
         return GeneralReqId;
     }
 
-  
-  /**
-   * Metodo sobrecargado para agregar el criterio de busqueda Unidad Opertaiva y nuevos tipos de franquicia 
-   * @param nameRequester
-   * @param numberPayment
-   * @param typeEm
-   * @param statusReq
-   * @param fromDate
-   * @param toDate
-   * @param officeUser
-   * @param statusNotiCode
-   * @param operatingUnit
-   */
-  void searchTicket(String nameRequester, String numberPayment, String typeEm, 
-                    String statusReq, Date fromDate, Date toDate, 
-                    String officeUser, String statusNotiCode, 
-                    String operatingUnit
-                    , String franchiseType
-                    , String requestType)
-  {
-  
-    //Verifica si existe el aprovador
-    if (officeUser == null)
-        return;
-        
-    //setpOfficeUser(officeUser);
 
-    //Declaración de los recursos
-    ViewCriteria vcSolicitudes = null;
-    ViewCriteriaRow vcSolicitudesRow = null;
+    /**
+     * Metodo sobrecargado para agregar el criterio de busqueda Unidad Opertaiva y nuevos tipos de franquicia 
+     * @param nameRequester
+     * @param numberPayment
+     * @param typeEm
+     * @param statusReq
+     * @param fromDate
+     * @param toDate
+     * @param officeUser
+     * @param statusNotiCode
+     * @param operatingUnit
+     */
+    void searchTicket(String nameRequester, String numberPayment, 
+                      String typeEm, String statusReq, Date fromDate, 
+                      Date toDate, String officeUser, String statusNotiCode, 
+                      String operatingUnit, String franchiseType, 
+                      String requestType) {
 
-    //Crea el view criteria
-    vcSolicitudes = createViewCriteria();
-    vcSolicitudesRow = vcSolicitudes.createViewCriteriaRow();
+        //Verifica si existe el aprovador
+        if (officeUser == null)
+            return;
+
+        //setpOfficeUser(officeUser);
+
+        //Declaración de los recursos
+        ViewCriteria vcSolicitudes = null;
+        ViewCriteriaRow vcSolicitudesRow = null;
+
+        //Crea el view criteria
+        vcSolicitudes = createViewCriteria();
+        vcSolicitudesRow = vcSolicitudes.createViewCriteriaRow();
 
 
-    //Inicializa el valor del nombre del solicitante
-    if (nameRequester != null && !nameRequester.equals(""))
-        vcSolicitudesRow.setAttribute("RequesterName",
-                                      XxGamConstantsUtil.LIKE_OPEN +nameRequester+XxGamConstantsUtil.LIKE_CLOSE);
+        //Inicializa el valor del nombre del solicitante
+        if (nameRequester != null && !nameRequester.equals(""))
+            vcSolicitudesRow.setAttribute("RequesterName", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          nameRequester + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
 
-    //Inicializa el valor del folio
-    if (numberPayment != null && !numberPayment.equals(""))
-        vcSolicitudesRow.setAttribute("NumberPayment",
-                                      XxGamConstantsUtil.LIKE_OPEN + numberPayment + XxGamConstantsUtil.LIKE_CLOSE);
+        //Inicializa el valor del folio
+        if (numberPayment != null && !numberPayment.equals(""))
+            vcSolicitudesRow.setAttribute("NumberPayment", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          numberPayment + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
-    //Inicializa el valor del tipo de emisión
-    if (typeEm != null && !typeEm.equals(""))
-        vcSolicitudesRow.setAttribute("TypeEmission",
-                                      XxGamConstantsUtil.LIKE_OPEN+typeEm+XxGamConstantsUtil.LIKE_CLOSE);
+        //Inicializa el valor del tipo de emisión
+        if (typeEm != null && !typeEm.equals(""))
+            vcSolicitudesRow.setAttribute("TypeEmission", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          typeEm + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
-    //Inicializa el valor del status
-    if (statusReq != null && !statusReq.equals(""))
-        vcSolicitudesRow.setAttribute("StatusRequest",
-                                      XxGamConstantsUtil.LIKE_OPEN+statusReq+XxGamConstantsUtil.LIKE_CLOSE);
+        //Inicializa el valor del status
+        if (statusReq != null && !statusReq.equals(""))
+            vcSolicitudesRow.setAttribute("StatusRequest", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          statusReq + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
 
-    //Inicializa las fechas
-    if (fromDate != null && toDate != null)
-        vcSolicitudesRow.setAttribute("RequestPaymentDate",
-                                      "BETWEEN " + getClausuleWhereDate(fromDate) +
-                                      " AND " +
-                                      getClausuleWhereDate(toDate));
-    
-    if(statusNotiCode != null && !"".equals(statusNotiCode)){
-        vcSolicitudesRow.setAttribute("StatusNotification",
-                                      XxGamConstantsUtil.LIKE_OPEN + statusNotiCode + XxGamConstantsUtil.LIKE_CLOSE);
-    }     
-    
-    if(operatingUnit != null && !"".equals(operatingUnit)){
-        vcSolicitudesRow.setAttribute("OperatingUnit",
-                                      XxGamConstantsUtil.LIKE_OPEN + operatingUnit + XxGamConstantsUtil.LIKE_CLOSE);
-    }     
-    
-    if(franchiseType != null && !"".equals(franchiseType)){
-        vcSolicitudesRow.setAttribute("Origin",
-                                      XxGamConstantsUtil.LIKE_OPEN + franchiseType + XxGamConstantsUtil.LIKE_CLOSE);
-    }    
-    
-    //Aplica el criteria y ejecuta los criterios
-    vcSolicitudes.addElement(vcSolicitudesRow);
-    applyViewCriteria(vcSolicitudes);
-    
-    executeQuery();
-    clearViewCriterias();
-  
-  }
+        //Inicializa las fechas
+        if (fromDate != null && toDate != null)
+            vcSolicitudesRow.setAttribute("RequestPaymentDate", 
+                                          "BETWEEN " + getClausuleWhereDate(fromDate) + 
+                                          " AND " + 
+                                          getClausuleWhereDate(toDate));
+
+        if (statusNotiCode != null && !"".equals(statusNotiCode)) {
+            vcSolicitudesRow.setAttribute("StatusNotification", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          statusNotiCode + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
+        }
+
+        if (operatingUnit != null && !"".equals(operatingUnit)) {
+            vcSolicitudesRow.setAttribute("OperatingUnit", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          operatingUnit + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
+        }
+
+        if (franchiseType != null && !"".equals(franchiseType)) {
+            vcSolicitudesRow.setAttribute("Origin", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          franchiseType + 
+                                          XxGamConstantsUtil.LIKE_CLOSE);
+        }
+
+        //Aplica el criteria y ejecuta los criterios
+        vcSolicitudes.addElement(vcSolicitudesRow);
+        applyViewCriteria(vcSolicitudes);
+
+        executeQuery();
+        clearViewCriterias();
+
+    }
 }

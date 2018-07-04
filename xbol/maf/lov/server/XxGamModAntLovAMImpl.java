@@ -2,7 +2,6 @@ package xxgam.oracle.apps.xbol.maf.lov.server;
 
 import oracle.apps.fnd.framework.OAException;
 import oracle.apps.fnd.framework.server.OAApplicationModuleImpl;
-
 import oracle.apps.fnd.framework.server.OAViewObjectImpl;
 import oracle.apps.fnd.framework.webui.OAPageContext;
 import oracle.apps.fnd.framework.webui.beans.OAWebBean;
@@ -35,7 +34,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
     /**Sample main for debugging Business Components code using the tester.
      */
     public static void main(String[] args) { /* package name */
-        /* Configuration Name */launchTester("xxgam.oracle.apps.xbol.maf.lov.server",
+        /* Configuration Name */launchTester("xxgam.oracle.apps.xbol.maf.lov.server", 
                                              "XxGamModAntLovAMLocal");
     }
 
@@ -92,13 +91,13 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
         //Valida VO de LOV para datos de usuario
         if (userDataVo != null) {
             //Configura consulta de datos de usuario con username y tipo de proveedor
-            userDataVo.searchUser(userName,
+            userDataVo.searchUser(userName, 
                                   XxGamConstantsUtil.VENDOR_TYPE_EMPLOYEE);
-            
+
             RowSetIterator rowSetIter = userDataVo.getRowSetIterator();
-            if(rowSetIter != null){
+            if (rowSetIter != null) {
                 rowSetIter.reset();
-                while(rowSetIter.hasNext()){
+                while (rowSetIter.hasNext()) {
                     Row currentRow = rowSetIter.next();
                     XxGamMaUserDataLovVORowImpl userDataRow = null;
                     userDataRow = (XxGamMaUserDataLovVORowImpl)currentRow;
@@ -117,7 +116,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
         return userDataFound;
     }
-    
+
     /**
      * Obtiene los datos de usuario y persona por medio del nombre de id persona del empleado
      * @param personId contiene el id persona del empleado
@@ -134,13 +133,13 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
         //Valida VO de LOV para datos de usuario
         if (userDataVo != null) {
             //Configura consulta de datos de usuario con username y tipo de proveedor
-            userDataVo.searchUserByPersonId(personId,
-                                  XxGamConstantsUtil.VENDOR_TYPE_EMPLOYEE);
-            
+            userDataVo.searchUserByPersonId(personId, 
+                                            XxGamConstantsUtil.VENDOR_TYPE_EMPLOYEE);
+
             RowSetIterator rowSetIter = userDataVo.getRowSetIterator();
-            if(rowSetIter != null){
+            if (rowSetIter != null) {
                 rowSetIter.reset();
-                while(rowSetIter.hasNext()){
+                while (rowSetIter.hasNext()) {
                     Row currentRow = rowSetIter.next();
                     XxGamMaUserDataLovVORowImpl userDataRow = null;
                     userDataRow = (XxGamMaUserDataLovVORowImpl)currentRow;
@@ -151,7 +150,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                                 break;
                             }
                         }
-                    } 
+                    }
                 }
                 rowSetIter.reset();
             }
@@ -174,13 +173,13 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             if (voPersonData != null) {
                 voPersonData.searchPersonDataById(personId);
-                
+
                 RowSetIterator rowSetIter = voPersonData.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaPersonDataLovVORowImpl currentRow =
+                        XxGamMaPersonDataLovVORowImpl currentRow = 
                             (XxGamMaPersonDataLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getPersonId() != null) {
@@ -189,7 +188,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                                     break;
                                 }
                             }
-                        }    
+                        }
                     }
                     rowSetIter.reset();
                 }
@@ -227,8 +226,8 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param approverId contiene el id del aprobador
      * @return devuelve los datos del aprobador
      */
-    public XxGamMaApproverByEmployeeIdLovVORowImpl getApproverDataById(Number employeeId,
-                                                                       Number codeCombinationId,
+    public XxGamMaApproverByEmployeeIdLovVORowImpl getApproverDataById(Number employeeId, 
+                                                                       Number codeCombinationId, 
                                                                        Number approverId) {
         XxGamMaApproverByEmployeeIdLovVORowImpl approverRow = null;
         if (employeeId != null && codeCombinationId != null) {
@@ -236,15 +235,15 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
             voApproverLov = getXxGamMaApproverByEmployeeIdLovVO1();
 
             if (voApproverLov != null) {
-                voApproverLov.searchApproverByCombinationEmployee(employeeId,
+                voApproverLov.searchApproverByCombinationEmployee(employeeId, 
                                                                   codeCombinationId);
-                                                                  
+
                 RowSetIterator rowSetIter = voApproverLov.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaApproverByEmployeeIdLovVORowImpl currentRow =
+                        XxGamMaApproverByEmployeeIdLovVORowImpl currentRow = 
                             (XxGamMaApproverByEmployeeIdLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getPersonId() != null) {
@@ -275,13 +274,13 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             if (voCurrency != null) {
                 voCurrency.searchCurrencyByCode(currencyCode);
-                
+
                 RowSetIterator rowSetIter = voCurrency.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaCurrencyLovVORowImpl currentRow =
+                        XxGamMaCurrencyLovVORowImpl currentRow = 
                             (XxGamMaCurrencyLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getCurrencyCode() != null) {
@@ -305,7 +304,8 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param costCenterId contiene el id de combinacion contable
      * @return devuelve los datos de la plantilla de anticipo
      */
-    public XxGamMaTemplatePaymentLovVORowImpl getTemplatePaymentById(Number idTemplate, Number costCenterId) {
+    public XxGamMaTemplatePaymentLovVORowImpl getTemplatePaymentById(Number idTemplate, 
+                                                                     Number costCenterId) {
         XxGamMaTemplatePaymentLovVORowImpl templatePayment = null;
 
         if (idTemplate != null && costCenterId != null) {
@@ -314,30 +314,30 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             if (voTemplate != null) {
                 voTemplate.searchTemplatePaymentById(null, costCenterId);
-                
+
                 RowSetIterator rowSetIter = voTemplate.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaTemplatePaymentLovVORowImpl currentRow =
+                        XxGamMaTemplatePaymentLovVORowImpl currentRow = 
                             (XxGamMaTemplatePaymentLovVORowImpl)row;
                         if (currentRow != null) {
-                            if (costCenterId != null && idTemplate != null ) {
-                                if (idTemplate.equals(currentRow.getTemplateId()) &&
+                            if (costCenterId != null && idTemplate != null) {
+                                if (idTemplate.equals(currentRow.getTemplateId()) && 
                                     costCenterId.equals(currentRow.getCodeCombinationId())) {
                                     templatePayment = currentRow;
                                     break;
                                 }
-                            }else{
-                                if(costCenterId != null){
-                                    if(costCenterId.equals(currentRow.getCodeCombinationId())){
+                            } else {
+                                if (costCenterId != null) {
+                                    if (costCenterId.equals(currentRow.getCodeCombinationId())) {
                                         templatePayment = currentRow;
-                                        break;        
+                                        break;
                                     }
-                                }else{
-                                    if(idTemplate != null){
-                                        if(idTemplate.equals(currentRow.getTemplateId())){
+                                } else {
+                                    if (idTemplate != null) {
+                                        if (idTemplate.equals(currentRow.getTemplateId())) {
                                             templatePayment = currentRow;
                                             break;
                                         }
@@ -353,14 +353,15 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
         return templatePayment;
     }
-    
+
     /**
      * Busca y obtiene los datos de la plantilla de anticipo por centro de costo alterno
      * @param idTemplate contiene el id de la plantilla de anticipo
      * @param costCenterFlex contiene el valor del centro de costo alterno
      * @return devuelve los datos de la plantilla de anticipo
      */
-    public XxGamMaTemplatePaymentFlexLovVORowImpl getTemplatePaymentByFlex(Number idTemplate, String costCenterFlex) {
+    public XxGamMaTemplatePaymentFlexLovVORowImpl getTemplatePaymentByFlex(Number idTemplate, 
+                                                                           String costCenterFlex) {
         XxGamMaTemplatePaymentFlexLovVORowImpl templatePayment = null;
 
         if (idTemplate != null && costCenterFlex != null) {
@@ -369,30 +370,30 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             if (voTemplate != null) {
                 voTemplate.searchTemplatePaymentByFlex(null, costCenterFlex);
-                
+
                 RowSetIterator rowSetIter = voTemplate.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaTemplatePaymentFlexLovVORowImpl currentRow =
+                        XxGamMaTemplatePaymentFlexLovVORowImpl currentRow = 
                             (XxGamMaTemplatePaymentFlexLovVORowImpl)row;
                         if (currentRow != null) {
-                            if (costCenterFlex != null && idTemplate != null ) {
-                                if (idTemplate.equals(currentRow.getTemplateId()) &&
+                            if (costCenterFlex != null && idTemplate != null) {
+                                if (idTemplate.equals(currentRow.getTemplateId()) && 
                                     costCenterFlex.equals(currentRow.getCostCenterFlex())) {
                                     templatePayment = currentRow;
                                     break;
                                 }
-                            }else{
-                                if(costCenterFlex != null){
-                                    if(costCenterFlex.equals(currentRow.getCostCenterFlex())){
+                            } else {
+                                if (costCenterFlex != null) {
+                                    if (costCenterFlex.equals(currentRow.getCostCenterFlex())) {
                                         templatePayment = currentRow;
-                                        break;        
+                                        break;
                                     }
-                                }else{
-                                    if(idTemplate != null){
-                                        if(idTemplate.equals(currentRow.getTemplateId())){
+                                } else {
+                                    if (idTemplate != null) {
+                                        if (idTemplate.equals(currentRow.getTemplateId())) {
                                             templatePayment = currentRow;
                                             break;
                                         }
@@ -420,15 +421,16 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
             XxGamMaLookupGenericLovVOImpl lookupPurposeImpl = null;
             lookupPurposeImpl = getXxGamMaPurposeLovVO1();
             if (lookupPurposeImpl != null) {
-                lookupPurposeImpl.searchLookup(XxGamConstantsUtil.LOOKUP_TYPE_PURPOSE_PAYMENT_ADVANCE,
+                lookupPurposeImpl.searchLookup(XxGamConstantsUtil.LOOKUP_TYPE_PURPOSE_PAYMENT_ADVANCE, 
                                                XxGamConstantsUtil.ID_APPLICATION_INTERNET_EXPENSES);
-                
-                RowSetIterator rowSetIter = lookupPurposeImpl.getRowSetIterator();
-                if(rowSetIter != null){
+
+                RowSetIterator rowSetIter = 
+                    lookupPurposeImpl.getRowSetIterator();
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaLookupGenericLovVORowImpl currentRow =
+                        XxGamMaLookupGenericLovVORowImpl currentRow = 
                             (XxGamMaLookupGenericLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getLookupCode() != null) {
@@ -451,26 +453,26 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param templateId contiene el id de la plantilla de anticipo
      * @return devuelve los datos del tipo de anticipo
      */
-    public XxGamMaTypePaymentLovVORowImpl getTypePaymentById(Number typePaymentId,
+    public XxGamMaTypePaymentLovVORowImpl getTypePaymentById(Number typePaymentId, 
                                                              Number templateId) {
         XxGamMaTypePaymentLovVORowImpl typeTemplate = null;
         if (typePaymentId != null) {
             XxGamMaTypePaymentLovVOImpl voTypePayment = null;
             voTypePayment = getXxGamMaTypePaymentLovVO1();
             if (voTypePayment != null) {
-                
-                if(templateId != null){
-                    voTypePayment.searchTypePaymentByTemplateId(templateId);    
+
+                if (templateId != null) {
+                    voTypePayment.searchTypePaymentByTemplateId(templateId);
                 }
                 voTypePayment.reset();
                 RowSetIterator rowSetIter = voTypePayment.getRowSetIterator();
                 Row row = null;
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         row = rowSetIter.next();
                         rowSetIter.getCurrentRow();
-                        XxGamMaTypePaymentLovVORowImpl currentRow =
+                        XxGamMaTypePaymentLovVORowImpl currentRow = 
                             (XxGamMaTypePaymentLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getTypePaymentId() != null) {
@@ -493,31 +495,31 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param positionId contiene el id de posicion del empleado
      * @return devuelve registro del jefe inmediato
      */
-    public XxGamMaChiefByPositionIdLovVORowImpl getChiefDataByEmployeePositionId(Number positionId){
+    public XxGamMaChiefByPositionIdLovVORowImpl getChiefDataByEmployeePositionId(Number positionId) {
         XxGamMaChiefByPositionIdLovVORowImpl rowChief = null;
-        if(positionId != null){
-            
+        if (positionId != null) {
+
             XxGamMaChiefByPositionIdLovVOImpl chiefImpl = null;
             chiefImpl = getXxGamMaChiefByPositionIdLovVO1();
-            
-            if(chiefImpl != null){
-                
+
+            if (chiefImpl != null) {
+
                 chiefImpl.setSearchChiefByPositionId(positionId);
-                
+
                 RowSetIterator rowSetIter = chiefImpl.getRowSetIterator();
                 Row row = null;
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
-                        
+                    while (rowSetIter.hasNext()) {
+
                         row = rowSetIter.next();
                         rowChief = (XxGamMaChiefByPositionIdLovVORowImpl)row;
-                        
-                        if(rowChief != null){
-                            
-                            if(!positionId.equals(rowChief.getSubPositionId())){
+
+                        if (rowChief != null) {
+
+                            if (!positionId.equals(rowChief.getSubPositionId())) {
                                 rowChief = null;
-                            }else{
+                            } else {
                                 break;
                             }
                         }
@@ -538,56 +540,63 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param vcLookupType contiene el valor de lookup type para tarjeta virtual
      * @return devuelve los datos del centro de costos
      */
-    public XxGamMaCostCenterByPersonIdLovVORowImpl getCostCenterById(Number personId,
-                                                                     Number codeCombinationId,
-                                                                     String currencyCode,
-                                                                     String virtualCard,
+    public XxGamMaCostCenterByPersonIdLovVORowImpl getCostCenterById(Number personId, 
+                                                                     Number codeCombinationId, 
+                                                                     String currencyCode, 
+                                                                     String virtualCard, 
                                                                      String vcLookupType) {
         XxGamMaCostCenterByPersonIdLovVORowImpl costCenter = null;
-        if (personId != null && codeCombinationId != null && vcLookupType != null) {
+        if (personId != null && codeCombinationId != null && 
+            vcLookupType != null) {
             XxGamMaCostCenterByPersonIdLovVOImpl voCostCenter = null;
             voCostCenter = getXxGamMaCostCenterByPersonIdLovVO1();
 
             if (voCostCenter != null) {
-                voCostCenter.searchCostCenterByPersonId(personId, vcLookupType);
-                
+                voCostCenter.searchCostCenterByPersonId(personId, 
+                                                        vcLookupType);
+
                 RowSetIterator rowSetIter = voCostCenter.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
-                        XxGamMaCostCenterByPersonIdLovVORowImpl currentRow =
+                        XxGamMaCostCenterByPersonIdLovVORowImpl currentRow = 
                             (XxGamMaCostCenterByPersonIdLovVORowImpl)row;
                         if (currentRow != null) {
                             if (currentRow.getCodeCombinationId() != null) {
-                                String currentCurrencyCode = currentRow.getCurrencyCode();
-                                String currentVirtualCard = currentRow.getVcMeaning();
-                                if(currentCurrencyCode != null && currencyCode != null &&
-                                   currentVirtualCard != null && virtualCard != null){
-                                    
-                                    if (currentRow.getCodeCombinationId().equals(codeCombinationId) &&
-                                        currentRow.getCurrencyCode().equals(currencyCode) &&
+                                String currentCurrencyCode = 
+                                    currentRow.getCurrencyCode();
+                                String currentVirtualCard = 
+                                    currentRow.getVcMeaning();
+                                if (currentCurrencyCode != null && 
+                                    currencyCode != null && 
+                                    currentVirtualCard != null && 
+                                    virtualCard != null) {
+
+                                    if (currentRow.getCodeCombinationId().equals(codeCombinationId) && 
+                                        currentRow.getCurrencyCode().equals(currencyCode) && 
                                         currentVirtualCard.equals(virtualCard)) {
                                         costCenter = currentRow;
                                         break;
                                     }
-                                }else{
+                                } else {
                                     if (currentRow.getCodeCombinationId().equals(codeCombinationId)) {
-                                        if(currencyCode != null){
-                                            if(currencyCode.equals(currentCurrencyCode)){
-                                                if(virtualCard != null){
-                                                    if(virtualCard.equals(currentVirtualCard)){
-                                                        costCenter = currentRow;
-                                                        break; 
+                                        if (currencyCode != null) {
+                                            if (currencyCode.equals(currentCurrencyCode)) {
+                                                if (virtualCard != null) {
+                                                    if (virtualCard.equals(currentVirtualCard)) {
+                                                        costCenter = 
+                                                                currentRow;
+                                                        break;
                                                     }
-                                                }else{
+                                                } else {
                                                     costCenter = currentRow;
                                                     break;
                                                 }
                                             }
-                                        }else{
+                                        } else {
                                             costCenter = currentRow;
-                                            break; 
+                                            break;
                                         }
                                     }
                                 }
@@ -642,12 +651,12 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             //Obtiene la clave de la persona
             voXxGamMaUserDataLov = getXxGamMaUserDataLovVO1();
-            nPersonId =
+            nPersonId = 
                     voXxGamMaUserDataLov.getPersonId(strUserName, strVendorType);
         } catch (Exception exception) {
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                              XxGamAOLMessages.GenericType.XXGAM_MAF_IDPER_NF_ERROR,
-                                              null, OAException.ERROR, null);
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_IDPER_NF_ERROR, 
+                                  null, OAException.ERROR, null);
         }
 
         return nPersonId;
@@ -672,9 +681,9 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
     public void initPurposeLov() {
 
         //Configura la lista de valores para los propositos de la solicitud de anticipo
-        XxGamMaLookupGenericLovVOImpl lookupPurposeImpl =
+        XxGamMaLookupGenericLovVOImpl lookupPurposeImpl = 
             getXxGamMaPurposeLovVO1();
-        lookupPurposeImpl.searchLookup(XxGamConstantsUtil.LOOKUP_TYPE_PURPOSE_PAYMENT_ADVANCE,
+        lookupPurposeImpl.searchLookup(XxGamConstantsUtil.LOOKUP_TYPE_PURPOSE_PAYMENT_ADVANCE, 
                                        XxGamConstantsUtil.ID_APPLICATION_INTERNET_EXPENSES);
     }
 
@@ -683,59 +692,64 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param employeePersonId contiene el id persona del empleado
      * @param vcLookupType contiene el lookup type de tarjeta virtual
      */
-    public boolean initCostCenter(Number employeePersonId, String vcLookupType){
-        
+    public boolean initCostCenter(Number employeePersonId, 
+                                  String vcLookupType) {
+
         boolean isSuccess = false;
-        if(employeePersonId != null && vcLookupType != null){
+        if (employeePersonId != null && vcLookupType != null) {
             //Configura la lista de valores para el centro de costos
-            XxGamMaCostCenterByPersonIdLovVOImpl costCenterImpl = getXxGamMaCostCenterByPersonIdLovVO1();
-            if(costCenterImpl != null){
-                costCenterImpl.searchCostCenterByPersonId(employeePersonId, vcLookupType);// change by dihu only for test.
+            XxGamMaCostCenterByPersonIdLovVOImpl costCenterImpl = 
+                getXxGamMaCostCenterByPersonIdLovVO1();
+            if (costCenterImpl != null) {
+                costCenterImpl.searchCostCenterByPersonId(employeePersonId, 
+                                                          vcLookupType); // change by dihu only for test.
                 /*
                 if(costCenterImpl.getRowCount() > 0 ){
                     isSuccess = true;
                 }
                 */
                 RowSetIterator rowSetIter = costCenterImpl.getRowSetIterator();
-                if(rowSetIter != null){
-                   rowSetIter.reset();
-                   while(rowSetIter.hasNext()){
-                       Row row = rowSetIter.next();
-                       XxGamMaCostCenterByPersonIdLovVORowImpl currentRow = null;
-                       currentRow = (XxGamMaCostCenterByPersonIdLovVORowImpl)row;
-                       
-                       if(currentRow != null)
-                       {
-                           isSuccess = true;
-                           break;
-                       }
-                   }
-                   rowSetIter.reset();
-                   rowSetIter.closeRowSetIterator();
+                if (rowSetIter != null) {
+                    rowSetIter.reset();
+                    while (rowSetIter.hasNext()) {
+                        Row row = rowSetIter.next();
+                        XxGamMaCostCenterByPersonIdLovVORowImpl currentRow = 
+                            null;
+                        currentRow = 
+                                (XxGamMaCostCenterByPersonIdLovVORowImpl)row;
+
+                        if (currentRow != null) {
+                            isSuccess = true;
+                            break;
+                        }
+                    }
+                    rowSetIter.reset();
+                    rowSetIter.closeRowSetIterator();
                 }
-                
+
             }
         }
         return isSuccess;
     }
-    
+
     /**
      * Inicializa la lista de valores para el centro de costos alterno
      */
-    public boolean initCostCenterFlex(){
-        
+    public boolean initCostCenterFlex() {
+
         boolean isSuccess = false;
-        
+
         //Configura la lista de valores para el centro de costos
-        XxGamMaCostCenterFlexLovVOImpl costCenterImpl = getXxGamMaCostCenterFlexLovVO1();
-        if(costCenterImpl != null){
+        XxGamMaCostCenterFlexLovVOImpl costCenterImpl = 
+            getXxGamMaCostCenterFlexLovVO1();
+        if (costCenterImpl != null) {
             costCenterImpl.executeQuery();
-            
-            if(costCenterImpl.hasNext()){
+
+            if (costCenterImpl.hasNext()) {
                 isSuccess = true;
             }
             /**
-             * @Author EAB 
+             * @Author EAB
              * Se comento el código, debido a que la parte de arriba en el hasNext() ya valida que traiga o no registros
              */
             /*
@@ -746,7 +760,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                    Row row = rowSetIter.next();
                    XxGamMaCostCenterFlexLovVORowImpl currentRow = null;
                    currentRow = (XxGamMaCostCenterFlexLovVORowImpl )row;
-                   
+
                    if(currentRow != null)
                    {
                        isSuccess = true;
@@ -756,37 +770,39 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                rowSetIter.reset();
                rowSetIter.closeRowSetIterator();
             }
-            
+
             */
         }
-       
+
         return isSuccess;
     }
-    
+
     /**
      * Inicializa la lista de valores para el centro de costos alterno
      * @param vcLookupType contiene el lookup type de tarjeta virtual
      */
-    public boolean initCostCenterFlex(String vcLookupType){
-        
+    public boolean initCostCenterFlex(String vcLookupType) {
+
         boolean isSuccess = false;
-        if(vcLookupType != null){
+        if (vcLookupType != null) {
             //Configura la lista de valores para el centro de costos
-            XxGamMaCostCenterFlexLovVOImpl costCenterImpl = getXxGamMaCostCenterFlexLovVO1();
-            
-            if(costCenterImpl != null){
-                costCenterImpl.searchCostCenterFlex(null,  vcLookupType);// "No Existe" );//
-                if (costCenterImpl.hasNext())  {
+            XxGamMaCostCenterFlexLovVOImpl costCenterImpl = 
+                getXxGamMaCostCenterFlexLovVO1();
+
+            if (costCenterImpl != null) {
+                costCenterImpl.searchCostCenterFlex(null, 
+                                                    vcLookupType); // "No Existe" );//
+                if (costCenterImpl.hasNext()) {
                     isSuccess = true;
                 }
                 /**
-                 * @Author EAB 
+                 * @Author EAB
                  * Se comento el código, debido a que la parte de arriba en el hasNext() ya valida que traiga o no registros
                  */
-               /* 
+                /*
                  //costCenterImpl.getRowSetIterators();
                  //costCenterImpl.getrow
-                 
+
                 //
                  RowSetIterator rowSetIter = costCenterImpl.getRowSetIterator();
                 if(rowSetIter != null){
@@ -795,7 +811,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                         Row row = rowSetIter.next();
                         XxGamMaCostCenterFlexLovVORowImpl currentRow = null;
                         currentRow = (XxGamMaCostCenterFlexLovVORowImpl)row;
-                        
+
                         if(currentRow != null)
                         {
                             String cc = currentRow.getCostCenterFlex();
@@ -821,19 +837,20 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * Inicializa la lista de valores para la plantilla de anticipos con centro de costo por defecto del usuario
      * @param costCenterId contiene el id de combinacion contable
      */
-    public boolean initTemplatePaymentLov(Number costCenterId){
-      System.out.println("Comienza initTemplatePaymentLov Capa LovAM "); 
+    public boolean initTemplatePaymentLov(Number costCenterId) {
+        System.out.println("Comienza initTemplatePaymentLov Capa LovAM ");
         boolean isSuccess = false;
-        if(costCenterId != null){
-            
-            XxGamMaTemplatePaymentLovVOImpl templateImpl = getXxGamMaTemplatePaymentLovVO1();
-            if(templateImpl != null){
+        if (costCenterId != null) {
+
+            XxGamMaTemplatePaymentLovVOImpl templateImpl = 
+                getXxGamMaTemplatePaymentLovVO1();
+            if (templateImpl != null) {
                 templateImpl.searchTemplatePaymentById(null, costCenterId);
-                if(templateImpl.hasNext()){
+                if (templateImpl.hasNext()) {
                     isSuccess = true;
                 }
                 /**
-                 * @Author EAB 
+                 * @Author EAB
                  * Se comento el código, debido a que la parte de arriba en el hasNext() ya valida que traiga o no registros
                  * seria inecesario validar uno por uno.
                  */
@@ -845,7 +862,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                         Row row = rowSetIter.next();
                         XxGamMaTemplatePaymentLovVORowImpl currentRow = null;
                         currentRow = (XxGamMaTemplatePaymentLovVORowImpl )row;
-                        
+
                         if(currentRow != null)
                         {
                             isSuccess = true;
@@ -856,10 +873,10 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                     rowSetIter.closeRowSetIterator();
                  }
                 */
-                
+
             }
         }
-                 System.out.println("Finaliza initTemplatePaymentLov Capa LovAM "); 
+        System.out.println("Finaliza initTemplatePaymentLov Capa LovAM ");
         return isSuccess = true;
     }
 
@@ -867,14 +884,16 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * Inicializa la lista de valores para la plantilla de anticipos con centro de costo alterno
      * @param costCenterFlex contiene el valor del centro de costo alterno
      */
-    public boolean initTemplatePaymentFlexLov(String costCenterFlex){
+    public boolean initTemplatePaymentFlexLov(String costCenterFlex) {
         boolean isSuccess = false;
-        if(costCenterFlex != null){
-            XxGamMaTemplatePaymentFlexLovVOImpl templateFlexImpl = getXxGamMaTemplatePaymentFlexLovVO1();
-            if(templateFlexImpl != null){
-                templateFlexImpl.searchTemplatePaymentByFlex(null, costCenterFlex);
-                
-                if(templateFlexImpl.getRowCount() > 0 ){
+        if (costCenterFlex != null) {
+            XxGamMaTemplatePaymentFlexLovVOImpl templateFlexImpl = 
+                getXxGamMaTemplatePaymentFlexLovVO1();
+            if (templateFlexImpl != null) {
+                templateFlexImpl.searchTemplatePaymentByFlex(null, 
+                                                             costCenterFlex);
+
+                if (templateFlexImpl.getRowCount() > 0) {
                     isSuccess = true;
                 }
             }
@@ -888,21 +907,23 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param versionId contiene el id de la version de jerarquia
      * @return devuelve true si la inicializaciÃ³n es correcta y false en caso contrario
      */
-    public boolean initApproverHierarchyLov(Number jobNameId, Number versionId){
+    public boolean initApproverHierarchyLov(Number jobNameId, 
+                                            Number versionId) {
         boolean isSuccess = false;
-        if(jobNameId != null && versionId != null){
+        if (jobNameId != null && versionId != null) {
             //Configura la lista de valores para el centro de costos
-            XxGamMaApproverHierarchyLovVOImpl approverImpl = getXxGamMaApproverHierarchyLovVO1();
-            if(approverImpl != null){
+            XxGamMaApproverHierarchyLovVOImpl approverImpl = 
+                getXxGamMaApproverHierarchyLovVO1();
+            if (approverImpl != null) {
                 approverImpl.clearCustomCriteriaDictionaries();
                 approverImpl.reset();
 
                 approverImpl.setSearchApproverHierarchy(jobNameId, versionId);
-                
-                if(approverImpl.hasNext()){
-                    isSuccess = true;        
+
+                if (approverImpl.hasNext()) {
+                    isSuccess = true;
                 }
-                
+
                 /*
                 RowSetIterator rowSetIter = approverImpl.getRowSetIterator();
                 if(rowSetIter != null){
@@ -911,7 +932,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                        Row row = rowSetIter.next();
                        XxGamMaApproverHierarchyLovVORowImpl currentRow = null;
                        currentRow = (XxGamMaApproverHierarchyLovVORowImpl )row;
-                       
+
                        if(currentRow != null)
                        {
                            isSuccess = true;
@@ -926,29 +947,31 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
         }
         return isSuccess;
     }
-    
+
     /**
      * Inicializa la lista de valores para aprobadores alternos de jerarquia RH
      * @param jobNameId contiene el id del puesto de trabajo del empleado
      * @param versionId contiene el id de la version de jerarquia
      * @return devuelve true si la inicializaciÃ³n es correcta y false en caso contrario
      */
-    public boolean initApproverAltLov(Number jobNameId, Number versionId){
+    public boolean initApproverAltLov(Number jobNameId, Number versionId) {
         boolean isSuccess = false;
-        if(jobNameId != null && versionId != null){
+        if (jobNameId != null && versionId != null) {
             //Configura la lista de valores para el centro de costos // TODO XX
-            XxGamMaApproverHierarchyLovVOImpl approverAltImpl = getXxGamMaApproverHierarchyLovVO2();
-            if(approverAltImpl != null){
+            XxGamMaApproverHierarchyLovVOImpl approverAltImpl = 
+                getXxGamMaApproverHierarchyLovVO2();
+            if (approverAltImpl != null) {
                 approverAltImpl.clearCustomCriteriaDictionaries();
                 approverAltImpl.reset();
 
-                approverAltImpl.setSearchApproverHierarchy(jobNameId, versionId);
-                
-                
-                if(approverAltImpl.hasNext()){
-                    isSuccess = true;        
+                approverAltImpl.setSearchApproverHierarchy(jobNameId, 
+                                                           versionId);
+
+
+                if (approverAltImpl.hasNext()) {
+                    isSuccess = true;
                 }
-                
+
                 /*
                 RowSetIterator rowSetIter = approverAltImpl.getRowSetIterator();
                 if(rowSetIter != null){
@@ -957,7 +980,7 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                        Row row = rowSetIter.next();
                        XxGamMaApproverHierarchyLovVORowImpl currentRow = null;
                        currentRow = (XxGamMaApproverHierarchyLovVORowImpl )row;
-                       
+
                        if(currentRow != null)
                        {
                            isSuccess = true;
@@ -987,7 +1010,6 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
     }
 
 
-
     /**
      * Inicializa el tipod de lookup.
      *
@@ -1004,12 +1026,12 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
 
             //Inicializa los valores.
             XxGamMaLookupGenericLovVOImpl voXxGamMaLookupGenericLov = null;
-            voXxGamMaLookupGenericLov =getXxGamMaLookupGenericLovVO1();
+            voXxGamMaLookupGenericLov = getXxGamMaLookupGenericLovVO1();
             voXxGamMaLookupGenericLov.setLookupType(lookupType, applicationId);
         } catch (Exception exception) {
 
             //Propaga la excepcion
-            throw new OAException("No es posible obtener los valores solicitados",
+            throw new OAException("No es posible obtener los valores solicitados", 
                                   OAException.WARNING);
         }
     }
@@ -1046,16 +1068,18 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param applicationId contiene el id de aplicacion
      * @return Devuelve los datos de la Tarjeta Virtual
      */
-    public XxGamMaLookupGenericLovVORowImpl getVirtualCardLookup(String lookupType, Number applicationId){
-        
+    public XxGamMaLookupGenericLovVORowImpl getVirtualCardLookup(String lookupType, 
+                                                                 Number applicationId) {
+
         XxGamMaLookupGenericLovVORowImpl vcLookup = null;
-        if(lookupType != null && applicationId != null){
-            
-            XxGamMaLookupGenericLovVOImpl lookups = getXxGamMaVirtualCardLovVO1();
+        if (lookupType != null && applicationId != null) {
+
+            XxGamMaLookupGenericLovVOImpl lookups = 
+                getXxGamMaVirtualCardLovVO1();
             lookups.searchLookup(lookupType, applicationId);
-            
+
             Row row = lookups.first();
-            if(row != null){
+            if (row != null) {
                 vcLookup = (XxGamMaLookupGenericLovVORowImpl)row;
             }
         }
@@ -1067,17 +1091,18 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param supervisorId contiene el id del supervisor
      * @return devuelve registro del supervisor
      */
-    public XxGamMaSupervisorLovVORowImpl getSupervisorById(Number supervisorId){
-        
+    public XxGamMaSupervisorLovVORowImpl getSupervisorById(Number supervisorId) {
+
         XxGamMaSupervisorLovVORowImpl supervisorRow = null;
-        if(supervisorId != null){
-            
-            XxGamMaSupervisorLovVOImpl supervisorImpl = getXxGamMaSupervisorLovVO1();
-            if(supervisorImpl != null){
+        if (supervisorId != null) {
+
+            XxGamMaSupervisorLovVOImpl supervisorImpl = 
+                getXxGamMaSupervisorLovVO1();
+            if (supervisorImpl != null) {
                 supervisorImpl.searchSupervisorById(supervisorId);
-                
+
                 Row row = supervisorImpl.first();
-                if(row != null){
+                if (row != null) {
                     supervisorRow = (XxGamMaSupervisorLovVORowImpl)row;
                 }
             }
@@ -1093,28 +1118,32 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param versionId contiene el id de la version de la jerarquia
      * @return devuelve registro del aprobador encontrado
      */
-    public XxGamMaApproverHierarchyLovVORowImpl getApproverHierarchyById(Number approverId, Number jobNameId, Number versionId){
-        
+    public XxGamMaApproverHierarchyLovVORowImpl getApproverHierarchyById(Number approverId, 
+                                                                         Number jobNameId, 
+                                                                         Number versionId) {
+
         XxGamMaApproverHierarchyLovVORowImpl approverRow = null;
-        if(approverId != null){
-            
-            XxGamMaApproverHierarchyLovVOImpl approverImpl = getXxGamMaApproverHierarchyLovVO1();
-            if(approverImpl != null){
-                
-                if(jobNameId != null && versionId != null){
-                    approverImpl.setSearchApproverHierarchy(jobNameId, versionId);
+        if (approverId != null) {
+
+            XxGamMaApproverHierarchyLovVOImpl approverImpl = 
+                getXxGamMaApproverHierarchyLovVO1();
+            if (approverImpl != null) {
+
+                if (jobNameId != null && versionId != null) {
+                    approverImpl.setSearchApproverHierarchy(jobNameId, 
+                                                            versionId);
                 }
-                
+
                 RowSetIterator rowSetIter = approverImpl.getRowSetIterator();
-                if(rowSetIter != null){
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
                         XxGamMaApproverHierarchyLovVORowImpl currentRow = null;
                         currentRow = (XxGamMaApproverHierarchyLovVORowImpl)row;
-                        
-                        if(currentRow != null){
-                            if(approverId.equals(currentRow.getApproverId())){
+
+                        if (currentRow != null) {
+                            if (approverId.equals(currentRow.getApproverId())) {
                                 approverRow = currentRow;
                                 break;
                             }
@@ -1122,12 +1151,12 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
                     }
                     rowSetIter.reset();
                 }
-                
+
             }
         }
         return approverRow;
     }
-    
+
     /**
      * Obtiene el registro del aprobador alternativo correspondiente a su id en la jerarquia
      * RH.
@@ -1136,28 +1165,33 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param versionId contiene el id de la version de la jerarquia
      * @return devuelve registro del aprobador encontrado
      */
-    public XxGamMaApproverHierarchyLovVORowImpl getApproverAltById(Number approverId, Number jobNameId, Number versionId){
-        
+    public XxGamMaApproverHierarchyLovVORowImpl getApproverAltById(Number approverId, 
+                                                                   Number jobNameId, 
+                                                                   Number versionId) {
+
         XxGamMaApproverHierarchyLovVORowImpl approverAltRow = null;
-        if(approverId != null){
-            
-            XxGamMaApproverHierarchyLovVOImpl approverAltImpl = getXxGamMaApproverHierarchyLovVO2();
-            if(approverAltImpl != null){
-                
-                if(jobNameId != null && versionId != null){
-                    approverAltImpl.setSearchApproverHierarchy(jobNameId, versionId);
+        if (approverId != null) {
+
+            XxGamMaApproverHierarchyLovVOImpl approverAltImpl = 
+                getXxGamMaApproverHierarchyLovVO2();
+            if (approverAltImpl != null) {
+
+                if (jobNameId != null && versionId != null) {
+                    approverAltImpl.setSearchApproverHierarchy(jobNameId, 
+                                                               versionId);
                 }
-                
-                RowSetIterator rowSetIter = approverAltImpl.getRowSetIterator();
-                if(rowSetIter != null){
+
+                RowSetIterator rowSetIter = 
+                    approverAltImpl.getRowSetIterator();
+                if (rowSetIter != null) {
                     rowSetIter.reset();
-                    while(rowSetIter.hasNext()){
+                    while (rowSetIter.hasNext()) {
                         Row row = rowSetIter.next();
                         XxGamMaApproverHierarchyLovVORowImpl currentRow = null;
                         currentRow = (XxGamMaApproverHierarchyLovVORowImpl)row;
-                        
-                        if(currentRow != null){
-                            if(approverId.equals(currentRow.getApproverId())){
+
+                        if (currentRow != null) {
+                            if (approverId.equals(currentRow.getApproverId())) {
                                 approverAltRow = currentRow;
                                 break;
                             }
@@ -1205,19 +1239,20 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param responsibilityId contiene el id de la responsabilidad
      * @return devuelve el registro con datos de la responsabilidad
      */
-    public XxGamMaResponsibilityAppLovVORowImpl getResponsibilityAppById(Number responsibilityId){
-        
+    public XxGamMaResponsibilityAppLovVORowImpl getResponsibilityAppById(Number responsibilityId) {
+
         XxGamMaResponsibilityAppLovVORowImpl respRow = null;
-        if(responsibilityId != null){
-            
-            XxGamMaResponsibilityAppLovVOImpl respImpl = getXxGamMaResponsibilityAppLovVO1();
-            if(respImpl != null){
+        if (responsibilityId != null) {
+
+            XxGamMaResponsibilityAppLovVOImpl respImpl = 
+                getXxGamMaResponsibilityAppLovVO1();
+            if (respImpl != null) {
                 respImpl.setSearchResponsibilityApp(responsibilityId);
-                
+
                 Row row = respImpl.first();
-                if(row != null){
+                if (row != null) {
                     respRow = (XxGamMaResponsibilityAppLovVORowImpl)row;
-                    
+
                 }
             }
         }
@@ -1241,35 +1276,40 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
      * @param lookupCode contiene el valor de lookup code
      * @return devuelve el registro de la ruta
      */
-    public XxGamMaFlightRouteLovVORowImpl getFlightRouteLovRow(String lookupCode){
-    System.out.println("Comienza Capa Lov App Mod getFlightRouteLovRow");
-      System.out.println("Parametros Capa Lov App Mod lookupCode-->"+lookupCode);
+    public XxGamMaFlightRouteLovVORowImpl getFlightRouteLovRow(String lookupCode) {
+        System.out.println("Comienza Capa Lov App Mod getFlightRouteLovRow");
+        System.out.println("Parametros Capa Lov App Mod lookupCode-->" + 
+                           lookupCode);
         XxGamMaFlightRouteLovVORowImpl currentRow = null;
-        
-        if(lookupCode != null){
-            
-            XxGamMaFlightRouteLovVOImpl routeLovImpl = getXxGamMaInfoRouteLovVO1();
-            if(routeLovImpl != null){
+
+        if (lookupCode != null) {
+
+            XxGamMaFlightRouteLovVOImpl routeLovImpl = 
+                getXxGamMaInfoRouteLovVO1();
+            if (routeLovImpl != null) {
                 routeLovImpl.setWhereClause(null);
-                routeLovImpl.setWhereClause("lookup_code = :1"); 
+                routeLovImpl.setWhereClause("lookup_code = :1");
                 routeLovImpl.setWhereClauseParams(null);
                 routeLovImpl.setWhereClauseParam(0, lookupCode);
                 routeLovImpl.executeQuery();
-                
-                RowSetIterator iterLov = routeLovImpl.createRowSetIterator(null);
+
+                RowSetIterator iterLov = 
+                    routeLovImpl.createRowSetIterator(null);
                 iterLov.setRangeStart(0);
-                
-                Row[] filteredRows = iterLov.getFilteredRows("LookupCode",lookupCode);
-                if ( filteredRows != null ){
-                    if ( filteredRows.length > 0 ){
-                        currentRow = (XxGamMaFlightRouteLovVORowImpl)filteredRows[0];
+
+                Row[] filteredRows = 
+                    iterLov.getFilteredRows("LookupCode", lookupCode);
+                if (filteredRows != null) {
+                    if (filteredRows.length > 0) {
+                        currentRow = 
+                                (XxGamMaFlightRouteLovVORowImpl)filteredRows[0];
                     }
                 }
-                
+
                 iterLov.closeRowSetIterator();
             }
         }
-      System.out.println("Finaliza Capa Lov App Mod getFlightRouteLovRow");
+        System.out.println("Finaliza Capa Lov App Mod getFlightRouteLovRow");
         return currentRow;
     }
 
@@ -1303,151 +1343,161 @@ public class XxGamModAntLovAMImpl extends OAApplicationModuleImpl {
         return (XxGamMaChiefByPositionIdLovVOImpl)findViewObject("XxGamMaChiefByPositionIdLovVO1");
     }
 
-  /**Container's getter for XxGamMaLimitScheduleOptionVO1
-   */
-  public XxGamMaLimitScheduleOptionVOImpl getXxGamMaLimitScheduleOptionVO1()
-  {
-    return (XxGamMaLimitScheduleOptionVOImpl)findViewObject("XxGamMaLimitScheduleOptionVO1");
-  }
-
-  public XxGamMaLimitScheduleOptionVORowImpl getLimitScheduleOption(OAPageContext pageContext, 
-                                                                    OAWebBean webBean, 
-                                                                    Number templateId, 
-                                                                    Number typePayment, 
-                                                                    String typePaymentDesc,
-                                                                    String currencyCode)
-  {
-    XxGamMaLimitScheduleOptionVORowImpl retval = null; 
-    XxGamMaLimitScheduleOptionVOImpl limitScheduleOptionVO = null;
-    
-    limitScheduleOptionVO = getXxGamMaLimitScheduleOptionVO1();
-    if(null!=limitScheduleOptionVO){
-      limitScheduleOptionVO.searchLimitSchedule(templateId
-                                              ,typePayment
-                                              ,null /**typePaymentDesc**/
-                                              ,currencyCode);
-      RowSetIterator rowSetIter = limitScheduleOptionVO.getRowSetIterator();
-         if (rowSetIter != null) {
-             rowSetIter.reset();
-             while (rowSetIter.hasNext()) {
-               Row currentRow = rowSetIter.next();
-               XxGamMaLimitScheduleOptionVORowImpl limitScheduleOptionRow = null;
-               limitScheduleOptionRow = (XxGamMaLimitScheduleOptionVORowImpl)currentRow;
-               if ((limitScheduleOptionRow != null) && 
-                 (limitScheduleOptionRow.getExpenseReportId() != null) && 
-                 (limitScheduleOptionRow.getCurrencyCode().equals(currencyCode))) {
-                 retval = limitScheduleOptionRow;
-                 break;
-               }
-
-             }
-
-             rowSetIter.reset();
-           }
-           
+    /**Container's getter for XxGamMaLimitScheduleOptionVO1
+     */
+    public XxGamMaLimitScheduleOptionVOImpl getXxGamMaLimitScheduleOptionVO1() {
+        return (XxGamMaLimitScheduleOptionVOImpl)findViewObject("XxGamMaLimitScheduleOptionVO1");
     }
-    
-    return retval; 
-  }
 
-  /**Container's getter for XxGamMaOperatingUnitLovVO1
-   */
-  public OAViewObjectImpl getXxGamMaOperatingUnitLovVO1()
-  {
-    return (OAViewObjectImpl)findViewObject("XxGamMaOperatingUnitLovVO1");
-  }
+    public XxGamMaLimitScheduleOptionVORowImpl getLimitScheduleOption(OAPageContext pageContext, 
+                                                                      OAWebBean webBean, 
+                                                                      Number templateId, 
+                                                                      Number typePayment, 
+                                                                      String typePaymentDesc, 
+                                                                      String currencyCode) {
+        XxGamMaLimitScheduleOptionVORowImpl retval = null;
+        XxGamMaLimitScheduleOptionVOImpl limitScheduleOptionVO = null;
 
-  /**Container's getter for XxGamMaTicketClassLovVO1
-   */
-  public OAViewObjectImpl getXxGamMaTicketClassLovVO1()
-  {
-    return (OAViewObjectImpl)findViewObject("XxGamMaTicketClassLovVO1");
-  }
+        limitScheduleOptionVO = getXxGamMaLimitScheduleOptionVO1();
+        if (null != limitScheduleOptionVO) { /**typePaymentDesc**/
+                limitScheduleOptionVO.searchLimitSchedule(templateId, 
+                                                          typePayment, null, 
+                                                          currencyCode);
+            RowSetIterator rowSetIter = 
+                limitScheduleOptionVO.getRowSetIterator();
+            if (rowSetIter != null) {
+                rowSetIter.reset();
+                while (rowSetIter.hasNext()) {
+                    Row currentRow = rowSetIter.next();
+                    XxGamMaLimitScheduleOptionVORowImpl limitScheduleOptionRow = 
+                        null;
+                    limitScheduleOptionRow = 
+                            (XxGamMaLimitScheduleOptionVORowImpl)currentRow;
+                    if ((limitScheduleOptionRow != null) && 
+                        (limitScheduleOptionRow.getExpenseReportId() != 
+                         null) && 
+                        (limitScheduleOptionRow.getCurrencyCode().equals(currencyCode))) {
+                        retval = limitScheduleOptionRow;
+                        break;
+                    }
 
-  /**Container's getter for XxGamMaTicketRateLovVO1
-   */
-  public OAViewObjectImpl getXxGamMaTicketRateLovVO1()
-  {
-    return (OAViewObjectImpl)findViewObject("XxGamMaTicketRateLovVO1");
-  }
+                }
 
-  /**Container's getter for XxGamMaCategoriaGastoLovVO1
-   */
-  public XxGamMaCategoriaGastoLovVOImpl getXxGamMaCategoriaGastoLovVO1()
-  {
-    return (XxGamMaCategoriaGastoLovVOImpl)findViewObject("XxGamMaCategoriaGastoLovVO1");
-  }
+                rowSetIter.reset();
+            }
 
-  /**
-   * Metodo para inicializar la lista de valores TicketClassLov
-   * @param pageContext
-   * @param webBean
-   */
-  public void initTicketClassLov(OAPageContext pageContext, OAWebBean webBean)
-  {
-    String strFranchiseType = null; 
-    String strRequestType = null; 
-    String nvlFranchiseType = null; 
-    String nvlRequestType = null; 
-                
-           
-    if(null!=pageContext.getParameter("pfranchiseType")&&!"".equals(pageContext.getParameter("pfranchiseType"))){
-    strFranchiseType = pageContext.getParameter("pfranchiseType"); 
+        }
+
+        return retval;
     }
-                 
-    if(null!=pageContext.getParameter("pRequest")&&!"".equals(pageContext.getParameter("pRequest"))){
-    strRequestType = pageContext.getParameter("pRequest"); 
-    } 
-               
-    nvlFranchiseType = (null==strFranchiseType)?(String)pageContext.getSessionValue("sfranchiseType"):strFranchiseType; 
-    nvlRequestType = (null==strRequestType)?(String)pageContext.getSessionValue("sRequest"):strRequestType;
-    
-    XxGamMaTicketClassLovVOImpl TicketClassLovVOImpl = null; 
-    TicketClassLovVOImpl = (XxGamMaTicketClassLovVOImpl)getXxGamMaTicketClassLovVO1();
-    if(null!=TicketClassLovVOImpl){
-      TicketClassLovVOImpl.initTicketClass(nvlFranchiseType);
-    }
-    
-  }
 
-  /**
-   * Metodo para inicializar la lista de valores TicketRateLov
-   * @param pageContext
-   * @param webBean
-   */
-  public void initTicketRateLov(OAPageContext pageContext, OAWebBean webBean)
-  {
-    String strFranchiseType = null; 
-    String strRequestType = null; 
-    String nvlFranchiseType = null; 
-    String nvlRequestType = null; 
-                
-    if(null!=pageContext.getParameter("pfranchiseType")&&!"".equals(pageContext.getParameter("pfranchiseType"))){
-    strFranchiseType = pageContext.getParameter("pfranchiseType"); 
+    /**Container's getter for XxGamMaOperatingUnitLovVO1
+     */
+    public OAViewObjectImpl getXxGamMaOperatingUnitLovVO1() {
+        return (OAViewObjectImpl)findViewObject("XxGamMaOperatingUnitLovVO1");
     }
-                 
-    if(null!=pageContext.getParameter("pRequest")&&!"".equals(pageContext.getParameter("pRequest"))){
-    strRequestType = pageContext.getParameter("pRequest"); 
-    } 
-               
-    nvlFranchiseType = (null==strFranchiseType)?(String)pageContext.getSessionValue("sfranchiseType"):strFranchiseType; 
-    nvlRequestType = (null==strRequestType)?(String)pageContext.getSessionValue("sRequest"):strRequestType;
-    
-    XxGamMaTicketRateLovVOImpl TicketRateLovVOImpl = null; 
-    TicketRateLovVOImpl =(XxGamMaTicketRateLovVOImpl)getXxGamMaTicketRateLovVO1();
-    
-    if(null!=TicketRateLovVOImpl){
-      TicketRateLovVOImpl.initTicketRate( nvlFranchiseType);
-    }
-    
-  }
 
-  /**Container's getter for XxGamMaPaymentTimesLovVO1
-   */
-  public XxGamMaPaymentTimesLovVOImpl getXxGamMaPaymentTimesLovVO1()
-  {
-    return (XxGamMaPaymentTimesLovVOImpl)findViewObject("XxGamMaPaymentTimesLovVO1");
-  }
+    /**Container's getter for XxGamMaTicketClassLovVO1
+     */
+    public OAViewObjectImpl getXxGamMaTicketClassLovVO1() {
+        return (OAViewObjectImpl)findViewObject("XxGamMaTicketClassLovVO1");
+    }
+
+    /**Container's getter for XxGamMaTicketRateLovVO1
+     */
+    public OAViewObjectImpl getXxGamMaTicketRateLovVO1() {
+        return (OAViewObjectImpl)findViewObject("XxGamMaTicketRateLovVO1");
+    }
+
+    /**Container's getter for XxGamMaCategoriaGastoLovVO1
+     */
+    public XxGamMaCategoriaGastoLovVOImpl getXxGamMaCategoriaGastoLovVO1() {
+        return (XxGamMaCategoriaGastoLovVOImpl)findViewObject("XxGamMaCategoriaGastoLovVO1");
+    }
+
+    /**
+     * Metodo para inicializar la lista de valores TicketClassLov
+     * @param pageContext
+     * @param webBean
+     */
+    public void initTicketClassLov(OAPageContext pageContext, 
+                                   OAWebBean webBean) {
+        String strFranchiseType = null;
+        String strRequestType = null;
+        String nvlFranchiseType = null;
+        String nvlRequestType = null;
+
+
+        if (null != pageContext.getParameter("pfranchiseType") && 
+            !"".equals(pageContext.getParameter("pfranchiseType"))) {
+            strFranchiseType = pageContext.getParameter("pfranchiseType");
+        }
+
+        if (null != pageContext.getParameter("pRequest") && 
+            !"".equals(pageContext.getParameter("pRequest"))) {
+            strRequestType = pageContext.getParameter("pRequest");
+        }
+
+        nvlFranchiseType = 
+                (null == strFranchiseType) ? (String)pageContext.getSessionValue("sfranchiseType") : 
+                strFranchiseType;
+        nvlRequestType = 
+                (null == strRequestType) ? (String)pageContext.getSessionValue("sRequest") : 
+                strRequestType;
+
+        XxGamMaTicketClassLovVOImpl TicketClassLovVOImpl = null;
+        TicketClassLovVOImpl = 
+                (XxGamMaTicketClassLovVOImpl)getXxGamMaTicketClassLovVO1();
+        if (null != TicketClassLovVOImpl) {
+            TicketClassLovVOImpl.initTicketClass(nvlFranchiseType);
+        }
+
+    }
+
+    /**
+     * Metodo para inicializar la lista de valores TicketRateLov
+     * @param pageContext
+     * @param webBean
+     */
+    public void initTicketRateLov(OAPageContext pageContext, 
+                                  OAWebBean webBean) {
+        String strFranchiseType = null;
+        String strRequestType = null;
+        String nvlFranchiseType = null;
+        String nvlRequestType = null;
+
+        if (null != pageContext.getParameter("pfranchiseType") && 
+            !"".equals(pageContext.getParameter("pfranchiseType"))) {
+            strFranchiseType = pageContext.getParameter("pfranchiseType");
+        }
+
+        if (null != pageContext.getParameter("pRequest") && 
+            !"".equals(pageContext.getParameter("pRequest"))) {
+            strRequestType = pageContext.getParameter("pRequest");
+        }
+
+        nvlFranchiseType = 
+                (null == strFranchiseType) ? (String)pageContext.getSessionValue("sfranchiseType") : 
+                strFranchiseType;
+        nvlRequestType = 
+                (null == strRequestType) ? (String)pageContext.getSessionValue("sRequest") : 
+                strRequestType;
+
+        XxGamMaTicketRateLovVOImpl TicketRateLovVOImpl = null;
+        TicketRateLovVOImpl = 
+                (XxGamMaTicketRateLovVOImpl)getXxGamMaTicketRateLovVO1();
+
+        if (null != TicketRateLovVOImpl) {
+            TicketRateLovVOImpl.initTicketRate(nvlFranchiseType);
+        }
+
+    }
+
+    /**Container's getter for XxGamMaPaymentTimesLovVO1
+     */
+    public XxGamMaPaymentTimesLovVOImpl getXxGamMaPaymentTimesLovVO1() {
+        return (XxGamMaPaymentTimesLovVOImpl)findViewObject("XxGamMaPaymentTimesLovVO1");
+    }
 
     /**Container's getter for XxgamMaVCMeanig1
      */

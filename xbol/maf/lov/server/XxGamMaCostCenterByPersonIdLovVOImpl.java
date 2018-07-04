@@ -25,7 +25,7 @@ public class XxGamMaCostCenterByPersonIdLovVOImpl extends OAViewObjectImpl imple
      * Contiene el lookup type de tarjeta virtual
      */
     private String vcLookupType;
-    
+
     /**This is the default constructor (do not remove)
      */
     public XxGamMaCostCenterByPersonIdLovVOImpl() {
@@ -36,9 +36,10 @@ public class XxGamMaCostCenterByPersonIdLovVOImpl extends OAViewObjectImpl imple
      * @param numPersonId contiene el id de persona
      * @param vcLookupType contiene el lookup type para tarjeta virtual
      */
-    public void searchCostCenterByPersonId(Number numPersonId, String vcLookupType){
-    
-        if(numPersonId != null && vcLookupType != null){
+    public void searchCostCenterByPersonId(Number numPersonId, 
+                                           String vcLookupType) {
+
+        if (numPersonId != null && vcLookupType != null) {
             setEmployeePersonId(numPersonId);
             setVcLookupType(vcLookupType);
             executeQuery();
@@ -46,11 +47,12 @@ public class XxGamMaCostCenterByPersonIdLovVOImpl extends OAViewObjectImpl imple
     }
 
     public void executeQuery() {
-        
+
         setWhereClause(null);
-        if(getEmployeePersonId() != null && getVcLookupType() != null){
-             //Crea view criteria
-             setCostCenterByPersonIdVC(getEmployeePersonId(), getVcLookupType(), null);
+        if (getEmployeePersonId() != null && getVcLookupType() != null) {
+            //Crea view criteria
+            setCostCenterByPersonIdVC(getEmployeePersonId(), getVcLookupType(), 
+                                      null);
             super.executeQuery();
             clearViewCriterias();
         }
@@ -61,10 +63,11 @@ public class XxGamMaCostCenterByPersonIdLovVOImpl extends OAViewObjectImpl imple
      * @param personId contiene el id persona del empleado
      * @param vcLookupType contiene el lookup type de tarjeta virtual
      */
-    public void setCostCenterByPersonIdVC(Number personId, String vcLookupType,Number costCenter){
-        
-        if(personId != null && vcLookupType != null){
-            
+    public void setCostCenterByPersonIdVC(Number personId, String vcLookupType, 
+                                          Number costCenter) {
+
+        if (personId != null && vcLookupType != null) {
+
             //Declaración de los recursos
             ViewCriteria vcLookup = null;
             ViewCriteriaRow vcLookupRow = null;
@@ -72,15 +75,15 @@ public class XxGamMaCostCenterByPersonIdLovVOImpl extends OAViewObjectImpl imple
             //Crea el view criteria
             vcLookup = createViewCriteria();
             vcLookupRow = vcLookup.createViewCriteriaRow();
-            
+
             //Inicializa el tipo de lookup
             vcLookupRow.setAttribute("EmployeePersonId", personId);
             vcLookupRow.setAttribute("VcLookupType", vcLookupType);
-            
+
             //Inicializa el cost center
-            if (costCenter != null )
+            if (costCenter != null)
                 vcLookupRow.setAttribute("CodeCombinationId", costCenter);
-            
+
             try {
                 //Inicializa el criteria y lo aplica
                 vcLookup.addElement(vcLookupRow);

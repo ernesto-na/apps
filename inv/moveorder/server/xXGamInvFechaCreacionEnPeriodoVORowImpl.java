@@ -1,9 +1,11 @@
 package xxgam.oracle.apps.inv.moveorder.server;
 
 import oracle.apps.fnd.framework.server.OAViewRowImpl;
+
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.AttributeDefImpl;
+
 
 public class xXGamInvFechaCreacionEnPeriodoVORowImpl extends OAViewRowImpl {
 
@@ -22,62 +24,63 @@ public class xXGamInvFechaCreacionEnPeriodoVORowImpl extends OAViewRowImpl {
 
 
     public Number getSoliId() {
-      return (Number)this.getAttributeInternal(0);
-   }
+        return (Number)this.getAttributeInternal(0);
+    }
 
-   public void setSoliId(Number value) {
-      this.setAttributeInternal(0, value);
-   }
+    public void setSoliId(Number value) {
+        this.setAttributeInternal(0, value);
+    }
 
-   public String getNroSolicitud() {
-      return (String)this.getAttributeInternal(1);
-   }
+    public String getNroSolicitud() {
+        return (String)this.getAttributeInternal(1);
+    }
 
-   public void setNroSolicitud(String value) {
-      this.setAttributeInternal(1, value);
-   }
+    public void setNroSolicitud(String value) {
+        this.setAttributeInternal(1, value);
+    }
 
-   public Number getPersonId() {
-      return (Number)this.getAttributeInternal(2);
-   }
+    public Number getPersonId() {
+        return (Number)this.getAttributeInternal(2);
+    }
 
-   public void setPersonId(Number value) {
-      this.setAttributeInternal(2, value);
-   }
+    public void setPersonId(Number value) {
+        this.setAttributeInternal(2, value);
+    }
 
-   public Date getFechaCreacion() {
-      return (Date)this.getAttributeInternal(3);
-   }
+    public Date getFechaCreacion() {
+        return (Date)this.getAttributeInternal(3);
+    }
 
-   public void setFechaCreacion(Date value) {
-      this.setAttributeInternal(3, value);
-   }
+    public void setFechaCreacion(Date value) {
+        this.setAttributeInternal(3, value);
+    }
 
-   public Date getFechaInicio() {
-      return (Date)this.getAttributeInternal(4);
-   }
+    public Date getFechaInicio() {
+        return (Date)this.getAttributeInternal(4);
+    }
 
-   public void setFechaInicio(Date value) {
-      this.setAttributeInternal(4, value);
-   }
+    public void setFechaInicio(Date value) {
+        this.setAttributeInternal(4, value);
+    }
 
-   public Date getFechaFin() {
-      return (Date)this.getAttributeInternal(5);
-   }
+    public Date getFechaFin() {
+        return (Date)this.getAttributeInternal(5);
+    }
 
-   public void setFechaFin(Date value) {
-      this.setAttributeInternal(5, value);
-   }
+    public void setFechaFin(Date value) {
+        this.setAttributeInternal(5, value);
+    }
 
-   public String getEsValido() {
-      return (String)this.getAttributeInternal(6);
-   }
+    public String getEsValido() {
+        return (String)this.getAttributeInternal(6);
+    }
 
-   public void setEsValido(String value) {
-      this.setAttributeInternal(6, value);
-   }
+    public void setEsValido(String value) {
+        this.setAttributeInternal(6, value);
+    }
 
-   protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef) throws Exception {
+    protected Object getAttrInvokeAccessor(int index, 
+                                           AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case SOLIID:
             return getSoliId();
@@ -98,7 +101,8 @@ public class xXGamInvFechaCreacionEnPeriodoVORowImpl extends OAViewRowImpl {
         }
     }
 
-   protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef) throws Exception {
+    protected void setAttrInvokeAccessor(int index, Object value, 
+                                         AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case SOLIID:
             setSoliId((Number)value);

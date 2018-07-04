@@ -1,6 +1,5 @@
 package xxgam.oracle.apps.xbol.maf.lov.server;
 
-
 import oracle.apps.fnd.framework.server.OAViewObjectImpl;
 
 import oracle.jbo.domain.Number;
@@ -25,15 +24,16 @@ public class XxGamMaApproverHierarchyLovVOImpl extends OAViewObjectImpl implemen
      * @param jobNameId contiene el id del puesto de trabajo del empleado
      * @param versionId contiene el id de la version de jerarquia del empleado
      */
-    public void setSearchApproverHierarchy(Number jobNameId, Number versionId){
-        
-        if(jobNameId != null && versionId != null){
+    public void setSearchApproverHierarchy(Number jobNameId, 
+                                           Number versionId) {
+
+        if (jobNameId != null && versionId != null) {
             setWhereClause(null);
             setWhereClauseParams(null);
-            
-            setpJobNameId(jobNameId); 
-            setpVersion(versionId); 
-            
+
+            setpJobNameId(jobNameId);
+            setpVersion(versionId);
+
             executeQuery();
         }
     }

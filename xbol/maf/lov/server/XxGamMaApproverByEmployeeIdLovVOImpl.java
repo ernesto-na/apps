@@ -24,9 +24,10 @@ public class XxGamMaApproverByEmployeeIdLovVOImpl extends OAViewObjectImpl imple
      * @param numEmployeeId contiene id de empleado
      * @param codeCombinationId contiene el id del codigo de combinacion contable
      */
-    public void searchApproverByCombinationEmployee(Number numEmployeeId, Number codeCombinationId){
-        
-        if(numEmployeeId != null && codeCombinationId != null){
+    public void searchApproverByCombinationEmployee(Number numEmployeeId, 
+                                                    Number codeCombinationId) {
+
+        if (numEmployeeId != null && codeCombinationId != null) {
             setWhereClause("employee_person_id = :1 and code_combination_id = :2");
             setWhereClauseParams(null);
             setWhereClauseParam(0, numEmployeeId);
