@@ -9,7 +9,6 @@ package xxgam.oracle.apps.xbol.maf.webui;
 import com.sun.java.util.collections.HashMap;
 
 import java.math.BigDecimal;
-
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -39,7 +38,6 @@ import oracle.jbo.RowSetIterator;
 import oracle.jbo.domain.Number;
 
 import oracle.jbo.server.DBTransaction;
-
 import oracle.jdbc.OracleCallableStatement;
 
 import sunw.io.Serializable;
@@ -60,6 +58,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamAOLMessages;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamConstantsUtil;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil2;
+import oracle.apps.fnd.framework.webui.OAPageContext; 
 
 
 /**
@@ -87,92 +86,76 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
      */
     public void processRequest(OAPageContext pageContext, OAWebBean webBean) {
         super.processRequest(pageContext, webBean);
-
+        OAPageContext oAPageContext = (OAPageContext)pageContext;
+        String lang = oAPageContext.getBaseLanguage();
         String msgError = null;
         String urlBase = XxGamConstantsUtil.URL_PAGE_OAF;
         HashMap hmap = new HashMap();
         String bandera = pageContext.getParameter("returnDialogPage");
-
+        
         //TODO Borrar si no funciona
+        
+        if(null != pageContext.getParameter("Ok")){
+        System.out.println("Entro en el Ok");
+        System.out.println("Evento que mando: "+pageContext.getParameter(EVENT_PARAM));
+                 XxGamMAnticiposUtil.exePaymentReqProcessFromRequest(pageContext, 
+                                                                     webBean, 
+                                                                     "reserveFunds");
+              }
 
-        if (null != pageContext.getParameter("Ok")) {
-            System.out.println("Entro en el Ok");
-            System.out.println("Evento que mando: " + 
-                               pageContext.getParameter(EVENT_PARAM));
-            XxGamMAnticiposUtil.exePaymentReqProcessFromRequest(pageContext, 
-                                                                webBean, 
-                                                                "reserveFunds");
-        }
-
-        if (pageContext != null && webBean != null && 
-            (bandera == null || "".equals(bandera))) {
-
-            /** Inicia segmento de codigo para validar los montos de los anticipos
+        if (pageContext != null && webBean != null && (bandera == null || "".equals(bandera))) {
+            
+          /** Inicia segmento de codigo para validar los montos de los anticipos
            * contra los fondos disponibles Modulo Control Presupuestal 07/12/2015 **/
-
-            String strMcpAplicaValVsMaf = null;
-            strMcpAplicaValVsMaf = 
-                    pageContext.getProfile("XXGAM_MCP_VAL_FONDOS_DISPONIBLES");
-            System.out.println("Perfil XXGAM_MCP_VAL_FONDOS_DISPONIBLES strMcpAplicaValVsMaf:" + 
-                               strMcpAplicaValVsMaf);
-            if (null != strMcpAplicaValVsMaf || 
-                !"".equals(strMcpAplicaValVsMaf)) {
-                if ("Y".equals(strMcpAplicaValVsMaf)) {
-
-                    if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
-                                                                    webBean, 
-                                                                    new Number(pageContext.getResponsibilityId()), 
-                                                                    XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE)) {
-                        if (!pageContext.isFormSubmission()) {
-                            System.out.println("Debug67: !pageContext.isFormSubmission()");
-                            createButtonToConectXxgamMcpModule(pageContext, 
-                                                               webBean);
-                            fillXxgamMcpFundsInfo(pageContext, webBean);
-                            System.out.println("MySegment: " + segment);
-                        } else {
-                            System.out.println("Debug67: pageContext.isFormSubmission()");
-                            /** Se agrega Metodo para validaciones de control presupuestal 23/09/2015**/
-                            fillXxgamMcpFundsInfo(pageContext, webBean);
-
-                            String lRequestFundsOver = null;
-                            lRequestFundsOver = 
-                                    null != (String)pageContext.getSessionValue("sRequestFundsOver") ? 
-                                    (String)pageContext.getSessionValue("sRequestFundsOver") : 
-                                    (String)pageContext.getParameter("pRequestFundsOver");
-                            System.out.println("Debug68: lRequestFundsOver " + 
-                                               lRequestFundsOver);
-                            if (null != lRequestFundsOver && 
-                                "valueRequestFundsOver".equals(lRequestFundsOver)) {
-                                createButtonToConectXxgamMcpModule(pageContext, 
-                                                                   webBean);
-                                RenderCreateButtonToConectXxgamMcpModule(pageContext, 
-                                                                         webBean, 
-                                                                         true);
-                            }
-
-                        } // End if(!pageContext.isFormSubmission()){                                                       
-                    } // END Valida Responsabilidad
-
-                } // END if("Y".equals(strMcpAplicaValVsMaf)){
-            } //END if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){
-            /** Finaliza segmento de codigo para validar los montos de los anticipos
+           
+          String strMcpAplicaValVsMaf = null; 
+          strMcpAplicaValVsMaf = pageContext.getProfile("XXGAM_MCP_VAL_FONDOS_DISPONIBLES");
+          System.out.println("Perfil XXGAM_MCP_VAL_FONDOS_DISPONIBLES strMcpAplicaValVsMaf:"+strMcpAplicaValVsMaf);
+          if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){ 
+          if("Y".equals(strMcpAplicaValVsMaf)){
+          
+            if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
+                                                                      webBean, 
+                                                                      new Number(pageContext.getResponsibilityId()), 
+                                                                      XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE)) {
+              if(!pageContext.isFormSubmission()){
+                System.out.println("Debug67: !pageContext.isFormSubmission()");
+                createButtonToConectXxgamMcpModule(pageContext,webBean);
+                fillXxgamMcpFundsInfo(pageContext,webBean);
+                System.out.println("MySegment: "+segment);
+              }else{
+                System.out.println("Debug67: pageContext.isFormSubmission()");
+                 /** Se agrega Metodo para validaciones de control presupuestal 23/09/2015**/
+                 fillXxgamMcpFundsInfo(pageContext,webBean);
+                 
+                 String lRequestFundsOver = null; 
+                 lRequestFundsOver = null!=(String)pageContext.getSessionValue("sRequestFundsOver")?(String)pageContext.getSessionValue("sRequestFundsOver"):(String)pageContext.getParameter("pRequestFundsOver");
+                 System.out.println("Debug68: lRequestFundsOver "+lRequestFundsOver);
+                 if(null!=lRequestFundsOver&&"valueRequestFundsOver".equals(lRequestFundsOver)){
+                   createButtonToConectXxgamMcpModule(pageContext,webBean); 
+                   RenderCreateButtonToConectXxgamMcpModule(pageContext,webBean,true);
+                 }
+                             
+              } // End if(!pageContext.isFormSubmission()){                                                       
+            } // END Valida Responsabilidad
+          
+          } // END if("Y".equals(strMcpAplicaValVsMaf)){
+          } //END if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){
+          /** Finaliza segmento de codigo para validar los montos de los anticipos
            * contra los fondos disponibles Modulo Control Presupuestal 07/12/2015 **/
-
+          
             String statusPage = 
                 pageContext.getParameter(XxGamConstantsUtil.STATUS);
-
-            System.out.println("Comienza XxGamPaymentReqReviewCO processRequest ");
-            System.out.println("Comienza Informacion XxGamPaymentReqReviewCO processRequest statusPage-->" + 
-                               statusPage);
+                
+                System.out.println("Comienza XxGamPaymentReqReviewCO processRequest "); 
+                System.out.println("Comienza Informacion XxGamPaymentReqReviewCO processRequest statusPage-->"+statusPage); 
             if (statusPage != null) {
                 pageContext.putTransactionValue(XxGamConstantsUtil.STATUS, 
                                                 statusPage);
             }
-
-            pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityFlight", 
-                                                                                             "true");
-            pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityDetail", 
-                                                                                             "true");
+            
+            pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityFlight", "true");
+            pageContext.getApplicationModule(webBean).getOADBTransaction().putTransientValue("IsValidateEntityDetail", "true");
 
             //Obtiene los componentes de pantalla para la responsabilidad de empleado y aprobador
             OAWebBean trainBean = webBean.findChildRecursive("TrainNavRN");
@@ -197,45 +180,36 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
 
                 //Valida bandera para ejecutar el procedimiento de creacion de un nuevo registro de solicitud de anticipo
                 if (XxGamConstantsUtil.CREATE.equals(pageContext.getTransactionValue(XxGamConstantsUtil.STATUS))) {
-
-                    Boolean isSuccess = false;
-
+                
+                  Boolean isSuccess = false;
+                  
                     if (step2Flag != null) {
-
-
+                        
+                        
                         boolean isConv = false;
-                        isSuccess = 
-                                XxGamMAnticiposUtil.refreshAllValidationRepeat(pageContext, 
-                                                                               webBean);
-
-                        /**************************************Agregado para cuando precionen Next valide Categorias Modo Create*****************/
-                        if (isSuccess) {
-                            isSuccess = 
-                                    XxGamMAnticiposUtil.refreshAllValidationByLineCategory(pageContext, 
-                                                                                           webBean);
-                        }
-
-                        if (isSuccess) {
+                        isSuccess = XxGamMAnticiposUtil.refreshAllValidationRepeat(pageContext, webBean);
+                        
+                         /**************************************Agregado para cuando precionen Next valide Categorias Modo Create*****************/
+                         if(isSuccess) {
+                            isSuccess = XxGamMAnticiposUtil.refreshAllValidationByLineCategory(pageContext, webBean);
+                                       } 
+                        
+                        if(isSuccess){
                             isSuccess = 
                                     XxGamMAnticiposUtil.refreshAllValidationByLine(pageContext, 
                                                                                    webBean);
                             if (isSuccess == null) {
                                 isSuccess = false;
                             }
-
-                            isConv = 
-                                    XxGamMAnticiposUtil.calculateAmountMxAllPaymentDetail(pageContext, 
-                                                                                          webBean);
+                            
+                            isConv = XxGamMAnticiposUtil.calculateAmountMxAllPaymentDetail(pageContext, 
+                                                                                          webBean);    
                         }
-
+                        
                         if (!isSuccess || !isConv) {
                             String msg = null;
-                            msg = 
-pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                       XxGamAOLMessages.Validation.XXGAM_MAF_REQ_GORPP_LINEVAL, 
-                       null);
-                            hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
-                                     msg);
+                            msg = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_GORPP_LINEVAL, null);
+                            hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, msg);
                             //Redirige la navegacion a la pagina inicial del empleado
                             XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, 
                                                                          webBean, 
@@ -246,87 +220,82 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                     }
 
                     //Ejecuta la configuracion de valores descriptivos
-
+                    
                     /** Se comenta para que no vuelva a reconstruir el formulario a acambio se añaden una lineas mas la Informacion por GnosisHCM
-                    XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext,
+                    XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, 
                                                                           webBean);
                     **/
+                    
+                     XxGamModAntAMImpl ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean); 
+                     XxGamMaGeneralReqVOImpl generalImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+                     XxGamMaGeneralReqVORowImpl generalRow = null;
+                     generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                  
+                     if (generalRow.getTypeTemplateDesc()==null||generalRow.getTypeTemplateDesc().equals("")){
+                       if(generalRow.getReportType()!=null||!(generalRow.getReportType().equals(""))){
+                         generalRow.setTypeTemplateDesc(generalRow.getReportType()); 
+                       }
+                     }
+                     
+                    
+                  //Configura el detalle de la solicitud de anticipo
+                   Boolean isInitSuccess = false;
+                  isInitSuccess = isSuccess; 
+                  
+                   if (isInitSuccess) {
+                      XxGamMaPaymentReqVOImpl voPaymentRequest = null;
+                      voPaymentRequest = ModAntAMImpl.getXxGamMaPaymentReqVO2();
+                      XxGamModAntLovAMImpl amLov = null;
+                     amLov = (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
 
-                    XxGamModAntAMImpl ModAntAMImpl = 
-                        (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                    XxGamMaGeneralReqVOImpl generalImpl = 
-                        ModAntAMImpl.getXxGamMaGeneralReqVO1();
-                    XxGamMaGeneralReqVORowImpl generalRow = null;
-                    generalRow = 
-                            (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                  if (voPaymentRequest != null && amLov != null) {
 
-                    if (generalRow.getTypeTemplateDesc() == null || 
-                        generalRow.getTypeTemplateDesc().equals("")) {
-                        if (generalRow.getReportType() != null || 
-                            !(generalRow.getReportType().equals(""))) {
-                            generalRow.setTypeTemplateDesc(generalRow.getReportType());
-                        }
-                    }
+                      RowSetIterator rowSetIter =
+                          voPaymentRequest.getRowSetIterator();
+                      if (rowSetIter != null) {
+                          rowSetIter.reset();
+                          while (rowSetIter.hasNext()) {
+                              Row rowDetail = rowSetIter.next();
+                              XxGamMaPaymentReqVORowImpl rowPaymentRDetail =
+                                  (XxGamMaPaymentReqVORowImpl)rowDetail;
+                              if (rowPaymentRDetail != null) {
 
+                                  String typePaymentDesc = null;
+                                  XxGamMaTypePaymentLovVORowImpl typePaymentRow =
+                                      amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(),
+                                                               generalRow.getTemplatePayment());
+                                  if (typePaymentRow != null) {
+                                      if (typePaymentRow.getTypePaymentDesc() !=
+                                          null) {
+                                          typePaymentDesc =
+                                                  typePaymentRow.getTypePaymentDesc();
+                                      }
+                                  }
+                                  rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
 
-                    //Configura el detalle de la solicitud de anticipo
-                    Boolean isInitSuccess = false;
-                    isInitSuccess = isSuccess;
-
-                    if (isInitSuccess) {
-                        XxGamMaPaymentReqVOImpl voPaymentRequest = null;
-                        voPaymentRequest = 
-                                ModAntAMImpl.getXxGamMaPaymentReqVO2();
-                        XxGamModAntLovAMImpl amLov = null;
-                        amLov = 
-                                (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
-
-                        if (voPaymentRequest != null && amLov != null) {
-
-                            RowSetIterator rowSetIter = 
-                                voPaymentRequest.getRowSetIterator();
-                            if (rowSetIter != null) {
-                                rowSetIter.reset();
-                                while (rowSetIter.hasNext()) {
-                                    Row rowDetail = rowSetIter.next();
-                                    XxGamMaPaymentReqVORowImpl rowPaymentRDetail = 
-                                        (XxGamMaPaymentReqVORowImpl)rowDetail;
-                                    if (rowPaymentRDetail != null) {
-
-                                        String typePaymentDesc = null;
-                                        XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
-                                            amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(), 
-                                                                     generalRow.getTemplatePayment());
-                                        if (typePaymentRow != null) {
-                                            if (typePaymentRow.getTypePaymentDesc() != 
-                                                null) {
-                                                typePaymentDesc = 
-                                                        typePaymentRow.getTypePaymentDesc();
-                                            }
-                                        }
-                                        rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
-
-                                        String currencyDetail = null;
-                                        XxGamMaCurrencyLovVORowImpl currencyDetailRow = 
-                                            amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
-                                        if (currencyDetailRow != null) {
-                                            if (currencyDetailRow.getCurrencyName() != 
-                                                null) {
-                                                currencyDetail = 
-                                                        currencyDetailRow.getCurrencyName();
-                                            }
-                                        }
-                                        rowPaymentRDetail.setCurrencyDesc(currencyDetail);
-                                        rowPaymentRDetail.setIsPaymentValid(false);
-                                        rowPaymentRDetail.setIsPaymentNotValid(false);
-                                    }
-                                }
-                            }
-                        }
-
-                    } //  END if (isInitSuccess) {
-
-
+                                  String currencyDetail = null;
+                                  XxGamMaCurrencyLovVORowImpl currencyDetailRow =
+                                      amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
+                                  if (currencyDetailRow != null) {
+                                      if (currencyDetailRow.getCurrencyName() !=
+                                          null) {
+                                          currencyDetail =
+                                                  currencyDetailRow.getCurrencyName();
+                                      }
+                                  }
+                                  rowPaymentRDetail.setCurrencyDesc(currencyDetail);
+                                  rowPaymentRDetail.setIsPaymentValid(false);
+                                  rowPaymentRDetail.setIsPaymentNotValid(false);
+                              }
+                          }
+                      }
+                  } 
+                          
+                  }  //  END if (isInitSuccess) {
+                  
+                    
+                     
+                    
                     //Habilita train y botones de navegacion
                     if (trainBean != null) {
                         trainBean.setRendered(true);
@@ -355,79 +324,72 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                     if (XxGamConstantsUtil.READ_ONLY.equals(pageContext.getTransactionValue(XxGamConstantsUtil.STATUS))) {
 
                         //Ejecuta la configuracion de valores descriptivos
+                      
+                      System.out.println("Se comenta para un mejor trato a la informacion " +"\n    boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");      
+                      boolean isInitSuccess =  XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext
+                                                                                         ,webBean);
+                      
+                         XxGamModAntAMImpl ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean); 
+                         XxGamMaGeneralReqVOImpl generalImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+                         XxGamMaGeneralReqVORowImpl generalRow = null;
+                         generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+     
+                      //Configura el detalle de la solicitud de anticipo
+                       if (isInitSuccess) {
+                          XxGamMaPaymentReqVOImpl voPaymentRequest = null;
+                          voPaymentRequest = ModAntAMImpl.getXxGamMaPaymentReqVO2();
+                          XxGamModAntLovAMImpl amLov = null;
+                         amLov = (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
 
-                        System.out.println("Se comenta para un mejor trato a la informacion " + 
-                                           "\n    boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
-                        boolean isInitSuccess = 
-                            XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext, 
-                                                                                   webBean);
+                      if (voPaymentRequest != null && amLov != null) {
 
-                        XxGamModAntAMImpl ModAntAMImpl = 
-                            (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                        XxGamMaGeneralReqVOImpl generalImpl = 
-                            ModAntAMImpl.getXxGamMaGeneralReqVO1();
-                        XxGamMaGeneralReqVORowImpl generalRow = null;
-                        generalRow = 
-                                (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                          RowSetIterator rowSetIter =
+                              voPaymentRequest.getRowSetIterator();
+                          if (rowSetIter != null) {
+                              rowSetIter.reset();
+                              while (rowSetIter.hasNext()) {
+                                  Row rowDetail = rowSetIter.next();
+                                  XxGamMaPaymentReqVORowImpl rowPaymentRDetail =
+                                      (XxGamMaPaymentReqVORowImpl)rowDetail;
+                                  if (rowPaymentRDetail != null) {
 
-                        //Configura el detalle de la solicitud de anticipo
-                        if (isInitSuccess) {
-                            XxGamMaPaymentReqVOImpl voPaymentRequest = null;
-                            voPaymentRequest = 
-                                    ModAntAMImpl.getXxGamMaPaymentReqVO2();
-                            XxGamModAntLovAMImpl amLov = null;
-                            amLov = 
-                                    (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
+                                      String typePaymentDesc = null;
+                                      XxGamMaTypePaymentLovVORowImpl typePaymentRow =
+                                          amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(),
+                                                                   generalRow.getTemplatePayment());
+                                      if (typePaymentRow != null) {
+                                          if (typePaymentRow.getTypePaymentDesc() !=
+                                              null) {
+                                              typePaymentDesc =
+                                                      typePaymentRow.getTypePaymentDesc();
+                                          }
+                                      }
+                                      rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
 
-                            if (voPaymentRequest != null && amLov != null) {
-
-                                RowSetIterator rowSetIter = 
-                                    voPaymentRequest.getRowSetIterator();
-                                if (rowSetIter != null) {
-                                    rowSetIter.reset();
-                                    while (rowSetIter.hasNext()) {
-                                        Row rowDetail = rowSetIter.next();
-                                        XxGamMaPaymentReqVORowImpl rowPaymentRDetail = 
-                                            (XxGamMaPaymentReqVORowImpl)rowDetail;
-                                        if (rowPaymentRDetail != null) {
-
-                                            String typePaymentDesc = null;
-                                            XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
-                                                amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(), 
-                                                                         generalRow.getTemplatePayment());
-                                            if (typePaymentRow != null) {
-                                                if (typePaymentRow.getTypePaymentDesc() != 
-                                                    null) {
-                                                    typePaymentDesc = 
-                                                            typePaymentRow.getTypePaymentDesc();
-                                                }
-                                            }
-                                            rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
-
-                                            String currencyDetail = null;
-                                            XxGamMaCurrencyLovVORowImpl currencyDetailRow = 
-                                                amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
-                                            if (currencyDetailRow != null) {
-                                                if (currencyDetailRow.getCurrencyName() != 
-                                                    null) {
-                                                    currencyDetail = 
-                                                            currencyDetailRow.getCurrencyName();
-                                                }
-                                            }
-                                            rowPaymentRDetail.setCurrencyDesc(currencyDetail);
-                                            rowPaymentRDetail.setIsPaymentValid(false);
-                                            rowPaymentRDetail.setIsPaymentNotValid(false);
-                                        }
-                                    }
-                                }
-                            }
-
-                        } //  END if (isInitSuccess) {
-
-                        System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro " + 
-                                           "\n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
-
-
+                                      String currencyDetail = null;
+                                      XxGamMaCurrencyLovVORowImpl currencyDetailRow =
+                                          amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
+                                      if (currencyDetailRow != null) {
+                                          if (currencyDetailRow.getCurrencyName() !=
+                                              null) {
+                                              currencyDetail =
+                                                      currencyDetailRow.getCurrencyName();
+                                          }
+                                      }
+                                      rowPaymentRDetail.setCurrencyDesc(currencyDetail);
+                                      rowPaymentRDetail.setIsPaymentValid(false);
+                                      rowPaymentRDetail.setIsPaymentNotValid(false);
+                                  }
+                              }
+                          }
+                      } 
+                              
+                   }  //  END if (isInitSuccess) {
+                    
+                    System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro " +
+                    "\n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);"); 
+    
+                          
                         if (isInitSuccess) {
                             //Deshabilita train
                             if (trainBean != null) {
@@ -450,10 +412,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                             XxGamMAnticiposUtil.setRollback(pageContext, 
                                                             webBean);
                             //Muestra mensaje de error al inicializar valores
-                            msgError = 
-                                    pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                           XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, 
-                                                           null);
+                            msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, null);
                             hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                      msgError);
                             //Redirige la navegacion a la pagina inicial del empleado
@@ -468,41 +427,32 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                         if (XxGamConstantsUtil.UPDATE.equals(pageContext.getTransactionValue(XxGamConstantsUtil.STATUS))) {
 
                             if (step2Flag != null) {
-
+                                
                                 Boolean isSuccess = false;
                                 boolean isConv = false;
-                                isSuccess = 
-                                        XxGamMAnticiposUtil.refreshAllValidationRepeat(pageContext, 
-                                                                                       webBean);
-
-                                /****************************Agregado para validar categorias Modo Update*********************/
-                                if (isSuccess) {
-                                    isSuccess = 
-                                            XxGamMAnticiposUtil.refreshAllValidationByLineCategory(pageContext, 
-                                                                                                   webBean);
-                                }
-
-                                if (isSuccess) {
+                                isSuccess = XxGamMAnticiposUtil.refreshAllValidationRepeat(pageContext, webBean);
+                               
+                               /****************************Agregado para validar categorias Modo Update*********************/
+                               if(isSuccess) {
+                                  isSuccess = XxGamMAnticiposUtil.refreshAllValidationByLineCategory(pageContext, webBean);
+                                  } 
+                                                            
+                                if(isSuccess){
                                     isSuccess = 
                                             XxGamMAnticiposUtil.refreshAllValidationByLine(pageContext, 
                                                                                            webBean);
                                     if (isSuccess == null) {
                                         isSuccess = false;
                                     }
-
-                                    isConv = 
-                                            XxGamMAnticiposUtil.calculateAmountMxAllPaymentDetail(pageContext, 
-                                                                                                  webBean);
+                                    
+                                    isConv = XxGamMAnticiposUtil.calculateAmountMxAllPaymentDetail(pageContext, 
+                                                                                                  webBean);    
                                 }
-
+                                
                                 if (!isSuccess || !isConv) {
                                     String msg = null;
-                                    msg = 
-pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                       XxGamAOLMessages.Validation.XXGAM_MAF_REQ_GORPP_LINEVAL, 
-                       null);
-                                    hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
-                                             msg);
+                                    msg = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_GORPP_LINEVAL, null);
+                                    hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, msg);
                                     //Redirige la navegacion a la pagina inicial del empleado
                                     XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, 
                                                                                  webBean, 
@@ -519,85 +469,70 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                                                              webBean);
                             if (isEditable) {
                                 //Ejecuta la configuracion de valores descriptivos
-                                System.out.println("Comienza Se comenta para un mejor trato a la informacion " + 
-                                                   "\n    boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
-                                boolean isInitSuccess = 
-                                    XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext, 
-                                                                                           webBean);
+                                 System.out.println("Comienza Se comenta para un mejor trato a la informacion " +"\n    boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");      
+                                 boolean isInitSuccess =  XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext
+                                                                                                    ,webBean);
+                                                                                                    
+                              XxGamModAntAMImpl ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean); 
+                              XxGamMaGeneralReqVOImpl generalImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+                              XxGamMaGeneralReqVORowImpl generalRow = null;
+                              generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                              
+                              //Configura el detalle de la solicitud de anticipo
+                              if (isInitSuccess) {
+                               XxGamMaPaymentReqVOImpl voPaymentRequest = null;
+                               voPaymentRequest = ModAntAMImpl.getXxGamMaPaymentReqVO2();
+                               XxGamModAntLovAMImpl amLov = null;
+                              amLov = (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
 
-                                XxGamModAntAMImpl ModAntAMImpl = 
-                                    (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                                XxGamMaGeneralReqVOImpl generalImpl = 
-                                    ModAntAMImpl.getXxGamMaGeneralReqVO1();
-                                XxGamMaGeneralReqVORowImpl generalRow = null;
-                                generalRow = 
-                                        (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                              if (voPaymentRequest != null && amLov != null) {
 
-                                //Configura el detalle de la solicitud de anticipo
-                                if (isInitSuccess) {
-                                    XxGamMaPaymentReqVOImpl voPaymentRequest = 
-                                        null;
-                                    voPaymentRequest = 
-                                            ModAntAMImpl.getXxGamMaPaymentReqVO2();
-                                    XxGamModAntLovAMImpl amLov = null;
-                                    amLov = 
-                                            (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
+                               RowSetIterator rowSetIter =
+                                   voPaymentRequest.getRowSetIterator();
+                               if (rowSetIter != null) {
+                                   rowSetIter.reset();
+                                   while (rowSetIter.hasNext()) {
+                                       Row rowDetail = rowSetIter.next();
+                                       XxGamMaPaymentReqVORowImpl rowPaymentRDetail =
+                                           (XxGamMaPaymentReqVORowImpl)rowDetail;
+                                       if (rowPaymentRDetail != null) {
 
-                                    if (voPaymentRequest != null && 
-                                        amLov != null) {
+                                           String typePaymentDesc = null;
+                                           XxGamMaTypePaymentLovVORowImpl typePaymentRow =
+                                               amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(),
+                                                                        generalRow.getTemplatePayment());
+                                           if (typePaymentRow != null) {
+                                               if (typePaymentRow.getTypePaymentDesc() !=
+                                                   null) {
+                                                   typePaymentDesc =
+                                                           typePaymentRow.getTypePaymentDesc();
+                                               }
+                                           }
+                                           rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
 
-                                        RowSetIterator rowSetIter = 
-                                            voPaymentRequest.getRowSetIterator();
-                                        if (rowSetIter != null) {
-                                            rowSetIter.reset();
-                                            while (rowSetIter.hasNext()) {
-                                                Row rowDetail = 
-                                                    rowSetIter.next();
-                                                XxGamMaPaymentReqVORowImpl rowPaymentRDetail = 
-                                                    (XxGamMaPaymentReqVORowImpl)rowDetail;
-                                                if (rowPaymentRDetail != 
-                                                    null) {
-
-                                                    String typePaymentDesc = 
-                                                        null;
-                                                    XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
-                                                        amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(), 
-                                                                                 generalRow.getTemplatePayment());
-                                                    if (typePaymentRow != 
-                                                        null) {
-                                                        if (typePaymentRow.getTypePaymentDesc() != 
-                                                            null) {
-                                                            typePaymentDesc = 
-                                                                    typePaymentRow.getTypePaymentDesc();
-                                                        }
-                                                    }
-                                                    rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
-
-                                                    String currencyDetail = 
-                                                        null;
-                                                    XxGamMaCurrencyLovVORowImpl currencyDetailRow = 
-                                                        amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
-                                                    if (currencyDetailRow != 
-                                                        null) {
-                                                        if (currencyDetailRow.getCurrencyName() != 
-                                                            null) {
-                                                            currencyDetail = 
-                                                                    currencyDetailRow.getCurrencyName();
-                                                        }
-                                                    }
-                                                    rowPaymentRDetail.setCurrencyDesc(currencyDetail);
-                                                    rowPaymentRDetail.setIsPaymentValid(false);
-                                                    rowPaymentRDetail.setIsPaymentNotValid(false);
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                } //  END if (isInitSuccess) {
-
-                                System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro " + 
-                                                   "\n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
-
+                                           String currencyDetail = null;
+                                           XxGamMaCurrencyLovVORowImpl currencyDetailRow =
+                                               amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
+                                           if (currencyDetailRow != null) {
+                                               if (currencyDetailRow.getCurrencyName() !=
+                                                   null) {
+                                                   currencyDetail =
+                                                           currencyDetailRow.getCurrencyName();
+                                               }
+                                           }
+                                           rowPaymentRDetail.setCurrencyDesc(currencyDetail);
+                                           rowPaymentRDetail.setIsPaymentValid(false);
+                                           rowPaymentRDetail.setIsPaymentNotValid(false);
+                                       }
+                                   }
+                               }
+                              }
+                                   
+                              }  //  END if (isInitSuccess) {
+                              
+                              System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro " +
+                              "\n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
+                                                                  
 
                                 if (isInitSuccess) {
                                     //Habilita train y botones de navegacion
@@ -629,10 +564,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                     XxGamMAnticiposUtil.setRollback(pageContext, 
                                                                     webBean);
                                     //Muestra mensaje de error al inicializar valores
-                                    msgError = 
-                                            pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                                   XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, 
-                                                                   null);
+                                    msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, null);
                                     hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                              msgError);
                                     //Redirige la navegacion a la pagina inicial del empleado
@@ -648,10 +580,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                 XxGamMAnticiposUtil.setRollback(pageContext, 
                                                                 webBean);
                                 //Muestra mensaje de error al inicializar valores
-                                msgError = 
-                                        pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                               XxGamAOLMessages.Validation.XXGAM_MAF_REQ_NOT_EDIT_WARN, 
-                                                               null);
+                                msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_NOT_EDIT_WARN, null);
                                 hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                          msgError);
                                 //Redirige la navegacion a la pagina inicial del empleado
@@ -663,10 +592,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                             }
                         } else {
                             //Redirige la navegacion a la pagina inicial del empleado
-                            msgError = 
-                                    pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                           XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NA_ERROR, 
-                                                           null);
+                            msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NA_ERROR, null);
                             hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                      msgError);
                             //Redirige a la pagina correspondiente a la responsabilidad 
@@ -681,88 +607,76 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
             } else {
 
                 if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
-                                                                webBean, 
-                                                                new Number(pageContext.getResponsibilityId()), 
-                                                                XxGamConstantsUtil.RESPONSABILITY_AUDITOR)) {
-
+                                                            webBean, 
+                                                            new Number(pageContext.getResponsibilityId()), 
+                                                            XxGamConstantsUtil.RESPONSABILITY_AUDITOR)) {
+                                                            
                     //Valida bandera para ejecutar el procedimiento de solo lectura de una solicitud de anticipo
                     if (XxGamConstantsUtil.READ_ONLY.equals(pageContext.getTransactionValue(XxGamConstantsUtil.STATUS))) {
 
                         //Ejecuta la configuracion de valores descriptivos
-                        System.out.println("Comienza Se comenta para un mejor trato a la informacion" + 
-                                           "boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean); ");
+                         System.out.println("Comienza Se comenta para un mejor trato a la informacion"
+                                             +"boolean isInitSuccess  = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean); ");
+                                             
+                         boolean isInitSuccess =  XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext
+                                                                                         ,webBean);
+                          
+                               XxGamModAntAMImpl ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                               XxGamMaGeneralReqVOImpl generalImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+                               XxGamMaGeneralReqVORowImpl generalRow = null;
+                               generalRow = (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
 
-                        boolean isInitSuccess = 
-                            XxGamMAnticiposUtil2.setPaymentReqDescriptionsReadOnly(pageContext, 
-                                                                                   webBean);
+                               if (isInitSuccess) {
+                                 XxGamMaPaymentReqVOImpl voPaymentRequest = null;
+                                 voPaymentRequest = ModAntAMImpl.getXxGamMaPaymentReqVO2();
+                                 XxGamModAntLovAMImpl amLov = null;
+                                 amLov = (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
 
-                        XxGamModAntAMImpl ModAntAMImpl = 
-                            (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                        XxGamMaGeneralReqVOImpl generalImpl = 
-                            ModAntAMImpl.getXxGamMaGeneralReqVO1();
-                        XxGamMaGeneralReqVORowImpl generalRow = null;
-                        generalRow = 
-                                (XxGamMaGeneralReqVORowImpl)generalImpl.getCurrentRow();
+                                 if ((voPaymentRequest != null) && (amLov != null))
+                                 {
+                                   RowSetIterator rowSetIter = voPaymentRequest.getRowSetIterator();
 
-                        if (isInitSuccess) {
-                            XxGamMaPaymentReqVOImpl voPaymentRequest = null;
-                            voPaymentRequest = 
-                                    ModAntAMImpl.getXxGamMaPaymentReqVO2();
-                            XxGamModAntLovAMImpl amLov = null;
-                            amLov = 
-                                    (XxGamModAntLovAMImpl)ModAntAMImpl.getXxGamModAntLovAM1();
+                                   if (rowSetIter != null) {
+                                     rowSetIter.reset();
+                                     while (rowSetIter.hasNext()) {
+                                       Row rowDetail = rowSetIter.next();
+                                       XxGamMaPaymentReqVORowImpl rowPaymentRDetail = (XxGamMaPaymentReqVORowImpl)rowDetail;
 
-                            if ((voPaymentRequest != null) && 
-                                (amLov != null)) {
-                                RowSetIterator rowSetIter = 
-                                    voPaymentRequest.getRowSetIterator();
+                                       if (rowPaymentRDetail != null)
+                                       {
+                                         String typePaymentDesc = null;
+                                         XxGamMaTypePaymentLovVORowImpl typePaymentRow = amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(), generalRow.getTemplatePayment());
 
-                                if (rowSetIter != null) {
-                                    rowSetIter.reset();
-                                    while (rowSetIter.hasNext()) {
-                                        Row rowDetail = rowSetIter.next();
-                                        XxGamMaPaymentReqVORowImpl rowPaymentRDetail = 
-                                            (XxGamMaPaymentReqVORowImpl)rowDetail;
+                                         if ((typePaymentRow != null) && 
+                                           (typePaymentRow.getTypePaymentDesc() != null))
+                                         {
+                                           typePaymentDesc = typePaymentRow.getTypePaymentDesc();
+                                         }
 
-                                        if (rowPaymentRDetail != null) {
-                                            String typePaymentDesc = null;
-                                            XxGamMaTypePaymentLovVORowImpl typePaymentRow = 
-                                                amLov.getTypePaymentById(rowPaymentRDetail.getTypePayment(), 
-                                                                         generalRow.getTemplatePayment());
+                                         rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
 
-                                            if ((typePaymentRow != null) && 
-                                                (typePaymentRow.getTypePaymentDesc() != 
-                                                 null)) {
-                                                typePaymentDesc = 
-                                                        typePaymentRow.getTypePaymentDesc();
-                                            }
+                                         String currencyDetail = null;
+                                         XxGamMaCurrencyLovVORowImpl currencyDetailRow = amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
 
-                                            rowPaymentRDetail.setTypePymentDesc(typePaymentDesc);
+                                         if ((currencyDetailRow != null) && 
+                                           (currencyDetailRow.getCurrencyName() != null))
+                                         {
+                                           currencyDetail = currencyDetailRow.getCurrencyName();
+                                         }
 
-                                            String currencyDetail = null;
-                                            XxGamMaCurrencyLovVORowImpl currencyDetailRow = 
-                                                amLov.getCurrencyByCode(rowPaymentRDetail.getCurrencyCode());
+                                         rowPaymentRDetail.setCurrencyDesc(currencyDetail);
+                                         rowPaymentRDetail.setIsPaymentValid(Boolean.valueOf(false));
+                                         rowPaymentRDetail.setIsPaymentNotValid(Boolean.valueOf(false));
+                                       }
+                                     }
+                                   }
+                                 }
 
-                                            if ((currencyDetailRow != null) && 
-                                                (currencyDetailRow.getCurrencyName() != 
-                                                 null)) {
-                                                currencyDetail = 
-                                                        currencyDetailRow.getCurrencyName();
-                                            }
+                               }
 
-                                            rowPaymentRDetail.setCurrencyDesc(currencyDetail);
-                                            rowPaymentRDetail.setIsPaymentValid(Boolean.valueOf(false));
-                                            rowPaymentRDetail.setIsPaymentNotValid(Boolean.valueOf(false));
-                                        }
-                                    }
-                                }
-                            }
+                               System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro \n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
 
-                        }
-
-                        System.out.println("Finaliza Se comenta para que la informacion que se muetre se la que en su momento se registro \n isInitSuccess = XxGamMAnticiposUtil.setPaymentReqDescriptionsReadOnly(pageContext, webBean);");
-
-
+                                                               
                         if (isInitSuccess) {
                             //Deshabilita train
                             if (trainBean != null) {
@@ -785,10 +699,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                             XxGamMAnticiposUtil.setRollback(pageContext, 
                                                             webBean);
                             //Muestra mensaje de error al inicializar valores
-                            msgError = 
-                                    pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                           XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, 
-                                                           null);
+                            msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_REQ_INIT_ERROR, null);
                             hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                      msgError);
                             //Redirige la navegacion a la pagina inicial del empleado
@@ -800,10 +711,7 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                         }
                     } else {
                         //Configura mensaje de error para cuando el usuario no tiene responsabilidad para acceder a la pagina
-                        msgError = 
-                                pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                       XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NA_ERROR, 
-                                                       null);
+                        msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NA_ERROR, null);
                         hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
                                  msgError);
                         //Redirige a la pagina correspondiente a la responsabilidad 
@@ -813,18 +721,17 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                                                      hmap, 
                                                                      urlBase);
                     }
-                } else {
-                    //Configura mensaje de error para cuando el usuario no tiene responsabilidad para acceder a la pagina
-                    msgError = 
-                            pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                                   XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NR_ERROR, 
-                                                   null);
-                    hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, msgError);
-                    //Redirige a la pagina correspondiente a la responsabilidad 
-                    urlBase += "XxGamMaBlankPagePG";
-                    XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, 
-                                                                 webBean, hmap, 
-                                                                 urlBase);
+                }else {
+                        //Configura mensaje de error para cuando el usuario no tiene responsabilidad para acceder a la pagina
+                        msgError = pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, XxGamAOLMessages.Validation.XXGAM_MAF_ACCESS_DEN_NR_ERROR, null);
+                        hmap.put(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR, 
+                                 msgError);
+                        //Redirige a la pagina correspondiente a la responsabilidad 
+                        urlBase += "XxGamMaBlankPagePG";
+                        XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, 
+                                                                     webBean, 
+                                                                     hmap, 
+                                                                     urlBase);
                 }
             }
         }
@@ -839,75 +746,68 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
     public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
-
-
-        if (null != pageContext && null != webBean) {
-
-            if (pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_THREE) == 
-                null) {
-                pageContext.putTransactionValue(XxGamConstantsUtil.VIEW_STEP_THREE, 
-                                                "true");
-            } // END Transaction value VIEW_STEP_THREE
-
-            /** Inicia segmento de codigo para validar los montos de los anticipos
+        
+        
+        
+     if(null!=pageContext&&null!=webBean){
+     
+       if (pageContext.getTransactionValue(XxGamConstantsUtil.VIEW_STEP_THREE) == null) {
+           pageContext.putTransactionValue(XxGamConstantsUtil.VIEW_STEP_THREE, 
+                                           "true");
+       } // END Transaction value VIEW_STEP_THREE
+       
+       /** Inicia segmento de codigo para validar los montos de los anticipos
         * contra los fondos disponibles Modulo Control Presupuestal 07/12/2015 **/
-
-            String strMcpAplicaValVsMaf = null;
-            strMcpAplicaValVsMaf = 
-                    pageContext.getProfile("XXGAM_MCP_VAL_FONDOS_DISPONIBLES");
-            System.out.println("strMcpAplicaValVsMaf:" + strMcpAplicaValVsMaf);
-            if (null != strMcpAplicaValVsMaf || 
-                !"".equals(strMcpAplicaValVsMaf)) {
-                if ("Y".equals(strMcpAplicaValVsMaf)) {
-                    if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
-                                                                    webBean, 
-                                                                    new Number(pageContext.getResponsibilityId()), 
-                                                                    XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE)) {
-                        System.out.println("Debug41:" + 
-                                           pageContext.getParameter(EVENT_PARAM));
-                        if ("mcpToGeneralPGSubmitButton".equals(pageContext.getParameter(EVENT_PARAM))) {
-                            setForwardXxgamMcpGeneralPG(pageContext, webBean);
-
-                        } else if (XxGamConstantsUtil.RESERVE_FUNDS.equals(pageContext.getParameter(EVENT_PARAM))) {
-                            String lMcpBudgetSummaryControlType = null;
-
-                            lMcpBudgetSummaryControlType = 
-                                    getMcpBudgetSummaryControlType(pageContext, 
-                                                                   webBean);
-
-                            if (null == lMcpBudgetSummaryControlType) {
-                                throw new OAException("Excepcion al recuperar el tipo de control presupuestal, Modulo XxgamMcp", 
-                                                      OAException.ERROR);
-                            } else {
-                                System.out.println("Debug63: lMcpBudgetSummaryControlType " + 
-                                                   lMcpBudgetSummaryControlType);
-                                valXxgamMaTotalAmountVsXxgamMcpAvailableFunds(pageContext, 
-                                                                              webBean, 
-                                                                              lMcpBudgetSummaryControlType);
-
-                            }
-                        }
-
-                    } // END Validate Responsability
-                } // END Valida perfil de seguridad
-            } // END if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){ 
-            /** Finaliza segmento de codigo para validar los montos de los anticipos
+        
+       String strMcpAplicaValVsMaf = null; 
+       strMcpAplicaValVsMaf = pageContext.getProfile("XXGAM_MCP_VAL_FONDOS_DISPONIBLES");
+       System.out.println("strMcpAplicaValVsMaf:"+strMcpAplicaValVsMaf);
+       if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){ 
+       if("Y".equals(strMcpAplicaValVsMaf)){
+          if (XxGamMAnticiposUtil.validatesResponsability(pageContext, 
+                                                                 webBean, 
+                                                                 new Number(pageContext.getResponsibilityId()), 
+                                                                 XxGamConstantsUtil.RESPONSABILITY_EMPLOYEE)) {
+           System.out.println("Debug41:"+pageContext.getParameter(EVENT_PARAM));
+           if("mcpToGeneralPGSubmitButton".equals(pageContext.getParameter(EVENT_PARAM))){
+                      setForwardXxgamMcpGeneralPG(pageContext,webBean);
+          
+           }else if(XxGamConstantsUtil.RESERVE_FUNDS.equals(pageContext.getParameter(EVENT_PARAM))){
+                String lMcpBudgetSummaryControlType = null; 
+          
+                lMcpBudgetSummaryControlType = getMcpBudgetSummaryControlType(pageContext,webBean);
+               
+                if(null==lMcpBudgetSummaryControlType){
+                    throw new OAException("Excepcion al recuperar el tipo de control presupuestal, Modulo XxgamMcp", OAException.ERROR);
+                }else{
+                    System.out.println("Debug63: lMcpBudgetSummaryControlType "+lMcpBudgetSummaryControlType);
+                    valXxgamMaTotalAmountVsXxgamMcpAvailableFunds(pageContext,webBean,lMcpBudgetSummaryControlType);
+                    
+                }
+          }
+          
+         } // END Validate Responsability
+        } // END Valida perfil de seguridad
+       } // END if(null!=strMcpAplicaValVsMaf||!"".equals(strMcpAplicaValVsMaf)){ 
+        /** Finaliza segmento de codigo para validar los montos de los anticipos
          * contra los fondos disponibles Modulo Control Presupuestal 07/12/2015 **/
+      
+         XxGamMAnticiposUtil.exePaymentReqProcessFromRequest(pageContext, 
+                                                             webBean, 
+                                                             pageContext.getParameter(EVENT_PARAM));
 
-            XxGamMAnticiposUtil.exePaymentReqProcessFromRequest(pageContext, 
-                                                                webBean, 
-                                                                pageContext.getParameter(EVENT_PARAM));
-
-            //Muestra el detalle de la solicitud
-            //
-            if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM))) {
-                pageContext.putTransactionValue(XxGamConstantsUtil.CALLED_FROM, 
-                                                XxGamConstantsUtil.VIEW_STEP_THREE);
-                setForwardAirPlaneDetail(pageContext, webBean);
-            } // END Show detail 
-        } // END if(null!=pageContext&&null!=webBean){
-
-
+         //Muestra el detalle de la solicitud
+         //
+         if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM))) {
+             pageContext.putTransactionValue(XxGamConstantsUtil.CALLED_FROM, 
+                                             XxGamConstantsUtil.VIEW_STEP_THREE);
+             setForwardAirPlaneDetail(pageContext, webBean);
+         } // END Show detail 
+      } // END if(null!=pageContext&&null!=webBean){
+    
+      
+      
+      
     } // END public void processFormRequest
 
     /**
@@ -948,97 +848,87 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                                                              webBean, hmap, 
                                                              sURL);
             } else {
-                throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                      XxGamAOLMessages.GenericType.XXGAM_MAF_DETAIL_IDTOTICKET_ER, 
-                                      null, OAException.ERROR, null);
+                throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
+                                                  XxGamAOLMessages.GenericType.XXGAM_MAF_DETAIL_IDTOTICKET_ER,
+                                                  null, OAException.ERROR, null);
             }
         } else {
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
-                                  XxGamAOLMessages.GenericType.XXGAM_MAF_DETAIL_ID_NF_ERROR, 
-                                  null, OAException.ERROR, null);
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
+                                              XxGamAOLMessages.GenericType.XXGAM_MAF_DETAIL_ID_NF_ERROR,
+                                              null, OAException.ERROR, null);
         }
     }
 
-    /**
+  /**
      * Metodo que crea el boton que sirve para conectar al modulo de 
      * Solicitud y Compensacion de Fondos - Control Presupuestal
      * @param pageContext
      * @param webBean
      */
-    private void createButtonToConectXxgamMcpModule(OAPageContext pageContext, 
-                                                    OAWebBean webBean) {
-
-        String strText = null;
-        strText = 
-                pageContext.getMessage("XBOL", "XXGAM_MCP_CONNECTION_IT_BTN", null);
-
-        System.out.println("Debug41:Mcp Comienza creacion boton en anticipos");
-        OATableLayoutBean lTableLayout = 
-            (OATableLayoutBean)webBean.findChildRecursive("BarButtons");
-        if (null != lTableLayout) {
-            System.out.println("Debug42: se encontro el itemStyle lTableLayout");
-            OACellFormatBean lCellFormat = 
-                (OACellFormatBean)lTableLayout.findChildRecursive("CellBarButton");
-            if (null != lCellFormat) {
-                System.out.println("Debug43: se encontro el itemStyle lCellFormat");
-                OASubmitButtonBean mcpOasb = 
-                    (OASubmitButtonBean)pageContext.getWebBeanFactory().createWebBean(pageContext, 
-                                                                                      OAWebBeanConstants.BUTTON_SUBMIT_BEAN, 
-                                                                                      null, 
-                                                                                      "mcpToGeneralPGSubmitButton");
-                mcpOasb.setID("mcpToGeneralPGSubmitButton");
-                mcpOasb.setUINodeName("mcpToGeneralPGSubmitButton"); /*"Solicitar o compensar fondos"*/
-                    mcpOasb.setText(strText);
-                mcpOasb.setEvent("mcpToGeneralPGSubmitButton");
-                mcpOasb.setRendered(false);
-                lCellFormat.addIndexedChild(mcpOasb);
-            }
-        }
+  private void createButtonToConectXxgamMcpModule(OAPageContext pageContext, 
+                                                  OAWebBean webBean)
+  {
+  
+  String strText = null; 
+  strText = pageContext.getMessage("XBOL","XXGAM_MCP_CONNECTION_IT_BTN",null);
+  
+  System.out.println("Debug41:Mcp Comienza creacion boton en anticipos");
+       OATableLayoutBean lTableLayout = (OATableLayoutBean)webBean.findChildRecursive("BarButtons");
+       if(null!=lTableLayout){
+         System.out.println("Debug42: se encontro el itemStyle lTableLayout");
+         OACellFormatBean lCellFormat = (OACellFormatBean)lTableLayout.findChildRecursive("CellBarButton");
+         if(null!=lCellFormat){
+           System.out.println("Debug43: se encontro el itemStyle lCellFormat");
+           OASubmitButtonBean mcpOasb= (OASubmitButtonBean)pageContext.getWebBeanFactory().createWebBean(pageContext,OAWebBeanConstants.BUTTON_SUBMIT_BEAN,null,"mcpToGeneralPGSubmitButton");
+           mcpOasb.setID("mcpToGeneralPGSubmitButton");
+           mcpOasb.setUINodeName("mcpToGeneralPGSubmitButton");
+           mcpOasb.setText(strText/*"Solicitar o compensar fondos"*/);
+           mcpOasb.setEvent("mcpToGeneralPGSubmitButton");
+           mcpOasb.setRendered(false);
+           lCellFormat.addIndexedChild(mcpOasb);
+         }
+       }
     } // END createButtonToConectXxgamMcpModule
 
-    /**
-     * Metodo que llena informacion para realizar validaciones de control presupuestal
-     * @param pageContext
-     * @param webBean
-     */
-    private void fillXxgamMcpFundsInfo(OAPageContext pageContext, 
-                                       OAWebBean webBean) {
-        String retval = null;
-        if (null != pageContext && null != webBean) {
-            XxGamModAntAMImpl ModAntAMImpl = null;
-            Number lExpenseReportID = null;
-            Number lParameterID = null;
-            oracle.jbo.domain.Date lInitialDate = null;
-            oracle.jbo.domain.Date lFinalDate = null;
-            String lCurrencyCode = null;
-
-            ModAntAMImpl = 
-                    (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-            if (null != ModAntAMImpl) {
-                XxGamMaGeneralReqVOImpl GeneralReqVOImpl = null;
-                XxGamMaGeneralReqVORowImpl GeneralReqVORowImpl = null;
-                GeneralReqVOImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
-
-                RowSetIterator iter = 
-                    GeneralReqVOImpl.createRowSetIterator(null);
-                iter.reset();
-                if (iter.hasNext()) {
-                    Row r = iter.next();
-                    GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)r;
-                    if (null != GeneralReqVORowImpl.getTemplatePayment() && 
-                        !"".equals(GeneralReqVORowImpl.getTemplatePayment())) {
-                        lExpenseReportID = 
-                                GeneralReqVORowImpl.getTemplatePayment();
-                    }
-                } else {
-                    retval = 
-                            "NO_DATA_FOUND GeneralReqVO" + ", Modulo XxgamMcp.";
-                    throw new OAException(retval, OAException.ERROR);
-                }
-                // close secondary row set iterator
-                iter.closeRowSetIterator();
-
-                /***** Comentado por ser codigo deficiente 07/12/2015 ***
+  /**
+   * Metodo que llena informacion para realizar validaciones de control presupuestal
+   * @param pageContext
+   * @param webBean
+   */
+  private void fillXxgamMcpFundsInfo(OAPageContext pageContext, 
+                                     OAWebBean webBean)
+  {
+    String retval = null; 
+         if(null!=pageContext&&null!=webBean){
+           XxGamModAntAMImpl ModAntAMImpl = null; 
+           Number lExpenseReportID = null;
+           Number lParameterID = null;
+           oracle.jbo.domain.Date  lInitialDate = null;
+           oracle.jbo.domain.Date  lFinalDate = null;
+           String lCurrencyCode = null; 
+           
+           ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+           if(null!=ModAntAMImpl){
+             XxGamMaGeneralReqVOImpl GeneralReqVOImpl = null; 
+             XxGamMaGeneralReqVORowImpl GeneralReqVORowImpl = null;
+             GeneralReqVOImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+             
+             RowSetIterator iter = GeneralReqVOImpl.createRowSetIterator(null);
+             iter.reset();
+             if (iter.hasNext()) {
+               Row r = iter.next();
+               GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)r;
+               if(null!=GeneralReqVORowImpl.getTemplatePayment()&&!"".equals(GeneralReqVORowImpl.getTemplatePayment())){
+                lExpenseReportID = GeneralReqVORowImpl.getTemplatePayment();
+               }
+             }else{
+               retval = "NO_DATA_FOUND GeneralReqVO"+ ", Modulo XxgamMcp.";
+               throw new OAException(retval, OAException.ERROR);
+             }
+             // close secondary row set iterator
+             iter.closeRowSetIterator();
+             
+             /***** Comentado por ser codigo deficiente 07/12/2015 ***
              if(GeneralReqVOImpl.getRowCount()>0){
                GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)GeneralReqVOImpl.getCurrentRow();
                lExpenseReportID = GeneralReqVORowImpl.getTemplatePayment();
@@ -1047,139 +937,100 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
                throw new OAException(retval, OAException.ERROR);
              }
              *********************************************************/
-
-                System.out.println("Debug44: lExpenseReportID " + 
-                                   lExpenseReportID);
-                XxGamMaPaymentReqVOImpl PaymentReqVOImpl = null;
-                XxGamMaPaymentReqVORowImpl PaymentReqVORowImpl = null;
-                PaymentReqVOImpl = ModAntAMImpl.getXxGamMaPaymentReqVO2();
-                if (null == retval && PaymentReqVOImpl.getRowCount() > 0) {
-                    RowSetIterator rowSetIter = 
-                        PaymentReqVOImpl.getRowSetIterator();
-                    if (rowSetIter != null) {
-                        rowSetIter.reset();
-                        while (rowSetIter.hasNext()) {
-                            Row row = rowSetIter.next();
-                            PaymentReqVORowImpl = 
-                                    (XxGamMaPaymentReqVORowImpl)row;
-                            if (null != PaymentReqVORowImpl) {
-                                lParameterID = 
-                                        PaymentReqVORowImpl.getTypePayment();
-                                lInitialDate = 
-                                        PaymentReqVORowImpl.getInitialDate();
-                                lFinalDate = 
-                                        PaymentReqVORowImpl.getFinalDate();
-                                lCurrencyCode = 
-                                        PaymentReqVORowImpl.getCurrencyCode();
-                                System.out.println("Debug45: lParameterID " + 
-                                                   lParameterID);
-                                System.out.println("Debug46: lInitialDate " + 
-                                                   lInitialDate);
-                                System.out.println("Debug47: lFinalDate " + 
-                                                   lFinalDate);
-                                System.out.println("Debug48: currencyCode " + 
-                                                   lCurrencyCode);
-                                if (null != lExpenseReportID && 
-                                    null != lParameterID && 
-                                    null != lCurrencyCode) {
-                                    //TODO XX1
-                                    String validateExpenseCategoryVsXxgamMcpArr[] = 
-                                        new String[5];
-                                    validateExpenseCategoryVsXxgamMcpArr = 
-                                            ModAntAMImpl.validateExpenseCategoryVsXxgamMcp(lExpenseReportID, 
-                                                                                           lParameterID, 
-                                                                                           lInitialDate, 
-                                                                                           lFinalDate, 
-                                                                                           lCurrencyCode);
-                                    System.out.println("Debug49::" + 
-                                                       validateExpenseCategoryVsXxgamMcpArr[0]);
-                                    System.out.println("Debug50::" + 
-                                                       validateExpenseCategoryVsXxgamMcpArr[1]);
-                                    System.out.println("Debug50::" + 
-                                                       validateExpenseCategoryVsXxgamMcpArr[2]);
-                                    System.out.println("Debug50::" + 
-                                                       validateExpenseCategoryVsXxgamMcpArr[3]);
-
-                                    segment = 
-                                            validateExpenseCategoryVsXxgamMcpArr[3];
-                                    //segment =segment.substring(23,5);
-                                    System.out.println(segment);
-
-                                    OAMessageStyledTextBean flexConcatenatedBean = 
-                                        (OAMessageStyledTextBean)webBean.findChildRecursive("flexConcatenated");
-                                    if (null != flexConcatenatedBean) {
-                                        /** flexConcatenatedBean.setReadOnly(true); **/
-                                        flexConcatenatedBean.setText(pageContext, 
-                                                                     "");
-                                        if (null != 
-                                            validateExpenseCategoryVsXxgamMcpArr[3]) {
-                                            flexConcatenatedBean.setText(pageContext, 
-                                                                         validateExpenseCategoryVsXxgamMcpArr[3]);
-                                        }
-                                    }
-
-                                    XxGamMaVsMcpPeriodsAmountVOImpl MaVsMcpPeriodsAmountVOImpl = 
-                                        null;
-                                    MaVsMcpPeriodsAmountVOImpl = 
-                                            ModAntAMImpl.getXxGamMaVsMcpPeriodsAmountVO1();
-
-                                    if ("100".equals(validateExpenseCategoryVsXxgamMcpArr[1])) {
-                                        System.out.println("Omitir ya que no se tiene un flex concatenated para esta categoria");
-                                        MaVsMcpPeriodsAmountVOImpl.executeQuery(); /** Ejecutar para que no se quede el view object lleno por si primero se elige una categoria que si genere lineas en GL**/
-                                    } else {
-                                        if (null == 
-                                            validateExpenseCategoryVsXxgamMcpArr[0] && 
-                                            "0".equals(validateExpenseCategoryVsXxgamMcpArr[1])) {
-                                            if (null != 
-                                                MaVsMcpPeriodsAmountVOImpl) {
-                                                MaVsMcpPeriodsAmountVOImpl.executeQuery();
-                                                pageContext.putSessionValue("sCodeCombID", 
-                                                                            validateExpenseCategoryVsXxgamMcpArr[2]);
-                                                pageContext.putParameter("pCodeCombID", 
-                                                                         validateExpenseCategoryVsXxgamMcpArr[2]);
-                                                break;
-                                            }
-                                        } else {
-                                            System.out.println("Ocurrio un error");
-                                            retval = 
-                                                    validateExpenseCategoryVsXxgamMcpArr[1] + 
-                                                    "->" + 
-                                                    validateExpenseCategoryVsXxgamMcpArr[0] + 
-                                                    ", Modulo XxgamMcp.";
-                                            throw new OAException(retval, 
-                                                                  OAException.ERROR);
-                                        }
-                                    } // END if("100".equals(validateExpenseCategoryVsXxgamMcpArr[1])){
-
-                                } else {
-                                    retval = 
-                                            "No se encontraron los valores para llamar el procedimiento pl/sql que valida informacion de presupuesto " + 
-                                            ", Modulo XxgamMcp.";
-                                    throw new OAException(retval, 
-                                                          OAException.ERROR);
-                                }
+             
+             System.out.println("Debug44: lExpenseReportID "+lExpenseReportID); 
+             XxGamMaPaymentReqVOImpl PaymentReqVOImpl = null; 
+             XxGamMaPaymentReqVORowImpl PaymentReqVORowImpl = null; 
+             PaymentReqVOImpl= ModAntAMImpl.getXxGamMaPaymentReqVO2();
+             if(null==retval&&PaymentReqVOImpl.getRowCount()>0){
+               RowSetIterator rowSetIter = PaymentReqVOImpl.getRowSetIterator();
+               if (rowSetIter != null) {
+                 rowSetIter.reset();
+                 while (rowSetIter.hasNext()) {
+                   Row row = rowSetIter.next();
+                   PaymentReqVORowImpl = (XxGamMaPaymentReqVORowImpl)row;
+                   if(null!=PaymentReqVORowImpl){
+                     lParameterID = PaymentReqVORowImpl.getTypePayment();
+                     lInitialDate = PaymentReqVORowImpl.getInitialDate();
+                     lFinalDate   = PaymentReqVORowImpl.getFinalDate();
+                     lCurrencyCode = PaymentReqVORowImpl.getCurrencyCode();
+                     System.out.println("Debug45: lParameterID "+lParameterID); 
+                     System.out.println("Debug46: lInitialDate "+lInitialDate); 
+                     System.out.println("Debug47: lFinalDate "+lFinalDate); 
+                     System.out.println("Debug48: currencyCode "+lCurrencyCode); 
+                     if(null!=lExpenseReportID
+                       &&null!=lParameterID
+                       &&null!=lCurrencyCode){
+                       //TODO XX1
+                         String validateExpenseCategoryVsXxgamMcpArr[] = new String [5];
+                         validateExpenseCategoryVsXxgamMcpArr = ModAntAMImpl.validateExpenseCategoryVsXxgamMcp(lExpenseReportID
+                                                                                                              ,lParameterID
+                                                                                                              ,lInitialDate
+                                                                                                              ,lFinalDate
+                                                                                                              ,lCurrencyCode); 
+                         System.out.println("Debug49::"+validateExpenseCategoryVsXxgamMcpArr[0]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[1]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[2]);
+                         System.out.println("Debug50::"+validateExpenseCategoryVsXxgamMcpArr[3]);
+                         
+                           segment = validateExpenseCategoryVsXxgamMcpArr[3];
+                           //segment =segment.substring(23,5);
+                           System.out.println(segment);
+                        
+                         OAMessageStyledTextBean flexConcatenatedBean = (OAMessageStyledTextBean)webBean.findChildRecursive("flexConcatenated");
+                         if(null!=flexConcatenatedBean){
+                          /** flexConcatenatedBean.setReadOnly(true); **/
+                           flexConcatenatedBean.setText(pageContext,"");
+                           if(null!=validateExpenseCategoryVsXxgamMcpArr[3]){
+                             flexConcatenatedBean.setText(pageContext,validateExpenseCategoryVsXxgamMcpArr[3]);
                             }
+                         }
+                        
+                         XxGamMaVsMcpPeriodsAmountVOImpl MaVsMcpPeriodsAmountVOImpl = null;
+                         MaVsMcpPeriodsAmountVOImpl = ModAntAMImpl.getXxGamMaVsMcpPeriodsAmountVO1();
+                         
+                        if("100".equals(validateExpenseCategoryVsXxgamMcpArr[1])){
+                          System.out.println("Omitir ya que no se tiene un flex concatenated para esta categoria");
+                          MaVsMcpPeriodsAmountVOImpl.executeQuery(); /** Ejecutar para que no se quede el view object lleno por si primero se elige una categoria que si genere lineas en GL**/
+                        }else{
+                          if(null==validateExpenseCategoryVsXxgamMcpArr[0]&&"0".equals(validateExpenseCategoryVsXxgamMcpArr[1])){
+                            if(null!=MaVsMcpPeriodsAmountVOImpl){
+                              MaVsMcpPeriodsAmountVOImpl.executeQuery();
+                              pageContext.putSessionValue("sCodeCombID",validateExpenseCategoryVsXxgamMcpArr[2]);
+                              pageContext.putParameter("pCodeCombID",validateExpenseCategoryVsXxgamMcpArr[2]);
+                              break;  
+                            } 
+                          }else{
+                            System.out.println("Ocurrio un error");
+                           retval = validateExpenseCategoryVsXxgamMcpArr[1]+"->"+validateExpenseCategoryVsXxgamMcpArr[0]+ ", Modulo XxgamMcp.";
+                            throw new OAException(retval,OAException.ERROR);
+                         }
+                        } // END if("100".equals(validateExpenseCategoryVsXxgamMcpArr[1])){
+                         
+                       }else{
+                         retval = "No se encontraron los valores para llamar el procedimiento pl/sql que valida informacion de presupuesto "+ ", Modulo XxgamMcp.";
+                         throw new OAException(retval, OAException.ERROR);
+                       }
+                   }
+                    
+                 } //End While
+               }
+             }else{
+               retval = "NO_DATA_FOUND PaymentReqVO "+ ", Modulo XxgamMcp.";
+               throw new OAException(retval, OAException.ERROR);
+             }
+             
+           }else{
+             retval =" Excepcion al buscar el modelo de aplicaciones"+ ", Modulo XxgamMcp.";
+             throw new OAException(retval, OAException.ERROR);
+           }   
+           
+         }// END if(null!=pageContext&&null!=webBean){
+       retval = retval+ ", Modulo XxgamMcp.";
+  }
 
-                        } //End While
-                    }
-                } else {
-                    retval = 
-                            "NO_DATA_FOUND PaymentReqVO " + ", Modulo XxgamMcp.";
-                    throw new OAException(retval, OAException.ERROR);
-                }
-
-            } else {
-                retval = 
-                        " Excepcion al buscar el modelo de aplicaciones" + ", Modulo XxgamMcp.";
-                throw new OAException(retval, OAException.ERROR);
-            }
-
-        } // END if(null!=pageContext&&null!=webBean){
-        retval = retval + ", Modulo XxgamMcp.";
-    }
-
-
-    /**
+  
+  /**
      * Metodo para mostrar el boton que conecta la pantalla
      * de solicitud de anticipos con la pantalla de solicitud y compensacion 
      * de fondos 
@@ -1187,617 +1038,492 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
      * @param webBean
      * @param isRender
      */
-    private void RenderCreateButtonToConectXxgamMcpModule(OAPageContext pageContext, 
-                                                          OAWebBean webBean, 
-                                                          boolean isRender) {
-        OATableLayoutBean lTableLayout = 
-            (OATableLayoutBean)webBean.findChildRecursive("BarButtons");
-        if (null != lTableLayout) {
-            OACellFormatBean lCellFormat = 
-                (OACellFormatBean)lTableLayout.findChildRecursive("CellBarButton");
-            if (null != lCellFormat) {
-                OASubmitButtonBean mcpOasb = 
-                    (OASubmitButtonBean)lCellFormat.findChildRecursive("mcpToGeneralPGSubmitButton");
-                if (null != mcpOasb) {
-                    mcpOasb.setRendered(isRender);
-                }
-            }
-        }
+     private void RenderCreateButtonToConectXxgamMcpModule(OAPageContext pageContext, 
+                                                           OAWebBean webBean,
+                                                           boolean isRender)
+     {
+       OATableLayoutBean lTableLayout = (OATableLayoutBean)webBean.findChildRecursive("BarButtons");
+       if(null!=lTableLayout){
+         OACellFormatBean lCellFormat = (OACellFormatBean)lTableLayout.findChildRecursive("CellBarButton");
+         if(null!=lCellFormat){
+           OASubmitButtonBean mcpOasb = (OASubmitButtonBean)lCellFormat.findChildRecursive("mcpToGeneralPGSubmitButton");
+           if(null!=mcpOasb){
+             mcpOasb.setRendered(isRender);
+           }
+         }
+       }
+       
+     } // END private void RenderCreateButtonToConectXxgamMcpModule(
 
-    } // END private void RenderCreateButtonToConectXxgamMcpModule(
+      /**
+         * metodo para Inicializar parametros que se enviaran a la pagina
+         * de solicitud y compensacion de fondos
+         * @param pageContext
+         * @param webBean
+         */
+        private void setForwardXxgamMcpGeneralPG(OAPageContext pageContext, 
+                                                 OAWebBean webBean)
+        {
+          //VErifica nulidad
+          if (pageContext == null || webBean == null)
+          return;
+          //Inicializa los parametros
+           HashMap hParameters = new HashMap();
+          String sURL = null;
+          /** Get lCodeCombID **/
+          String lCodeCombIDStr = null;
+          String lpCodeCombIDStr = null;
+          String lsCodeCombIDStr = null;
 
-    /**
-     * metodo para Inicializar parametros que se enviaran a la pagina
-     * de solicitud y compensacion de fondos
-     * @param pageContext
-     * @param webBean
-     */
-    private void setForwardXxgamMcpGeneralPG(OAPageContext pageContext, 
-                                             OAWebBean webBean) {
-        //VErifica nulidad
-        if (pageContext == null || webBean == null)
-            return;
-        //Inicializa los parametros
-        HashMap hParameters = new HashMap();
-        String sURL = null;
-        /** Get lCodeCombID **/
-        String lCodeCombIDStr = null;
-        String lpCodeCombIDStr = null;
-        String lsCodeCombIDStr = null;
+          lpCodeCombIDStr = pageContext.getParameter("pCodeCombID");
+          lsCodeCombIDStr = (String)pageContext.getSessionValue("sCodeCombID");
+          //NLV 
+           lCodeCombIDStr = lpCodeCombIDStr!=null?lpCodeCombIDStr:lsCodeCombIDStr;
+          
+          hParameters.put("pCodeCombId", lCodeCombIDStr /**"18991"**/);
+          sURL = "OA.jsp?page=/xxgam/oracle/apps/xbol/mcp/webui/XxgamMcpGeneralPG";
+          pageContext.setForwardURL(sURL
+                                  , null
+                                  ,OAWebBeanConstants.KEEP_MENU_CONTEXT
+                                  , null
+                                  , hParameters
+                                  , true
+                                  ,OAWebBeanConstants.ADD_BREAD_CRUMB_NO
+                                  ,OAWebBeanConstants.IGNORE_MESSAGES);
+              
+        } // END setForwardXxgamMcpGeneralPG
 
-        lpCodeCombIDStr = pageContext.getParameter("pCodeCombID");
-        lsCodeCombIDStr = (String)pageContext.getSessionValue("sCodeCombID");
-        //NLV 
-        lCodeCombIDStr = 
-                lpCodeCombIDStr != null ? lpCodeCombIDStr : lsCodeCombIDStr;
-
-        /**"18991"**/hParameters.put("pCodeCombId", lCodeCombIDStr);
-        sURL = 
-"OA.jsp?page=/xxgam/oracle/apps/xbol/mcp/webui/XxgamMcpGeneralPG";
-        pageContext.setForwardURL(sURL, null, 
-                                  OAWebBeanConstants.KEEP_MENU_CONTEXT, null, 
-                                  hParameters, true, 
-                                  OAWebBeanConstants.ADD_BREAD_CRUMB_NO, 
-                                  OAWebBeanConstants.IGNORE_MESSAGES);
-
-    } // END setForwardXxgamMcpGeneralPG
-
-
-    /**
-     * Metodo que recupera el el tipo de control que se tiene para acumular 
-     * los fondos disponibles en general segun el modulo de control presupuestal
-     * @param pageContext
-     * @param webBean
-     * @return
-     */
-    private String getMcpBudgetSummaryControlType(OAPageContext pageContext, 
-                                                  OAWebBean webBean) {
-        XxGamMaVsMcpBudgetControlVOImpl MaVsMcpBudgetControlVOImpl = null;
-        XxGamMaVsMcpBudgetControlVORowImpl MaVsMcpBudgetControlVORowImpl = 
-            null;
-        XxGamModAntAMImpl ModAntAMImpl = null;
-        String retval = null;
-        if (null != pageContext && null != webBean) {
-            ModAntAMImpl = 
-                    (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-            if (null != ModAntAMImpl) {
-                MaVsMcpBudgetControlVOImpl = 
-                        ModAntAMImpl.getXxGamMaVsMcpBudgetControlVO1();
-
-                if (null != MaVsMcpBudgetControlVOImpl) {
+    
+   /**
+      * Metodo que recupera el el tipo de control que se tiene para acumular 
+      * los fondos disponibles en general segun el modulo de control presupuestal
+      * @param pageContext
+      * @param webBean
+      * @return
+      */
+     private String getMcpBudgetSummaryControlType(OAPageContext pageContext, 
+                                                   OAWebBean webBean)
+     {
+       XxGamMaVsMcpBudgetControlVOImpl MaVsMcpBudgetControlVOImpl = null; 
+       XxGamMaVsMcpBudgetControlVORowImpl MaVsMcpBudgetControlVORowImpl = null; 
+       XxGamModAntAMImpl  ModAntAMImpl = null;
+       String retval = null; 
+       if(null!=pageContext&&null!=webBean){
+       ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                if(null!=ModAntAMImpl){
+                  MaVsMcpBudgetControlVOImpl = ModAntAMImpl.getXxGamMaVsMcpBudgetControlVO1();
+                  
+                  if(null!=MaVsMcpBudgetControlVOImpl){
                     MaVsMcpBudgetControlVOImpl.executeQuery();
-                }
-
-                RowSetIterator iter = 
-                    MaVsMcpBudgetControlVOImpl.createRowSetIterator(null);
-                iter.reset();
-                if (iter.hasNext()) {
+                  }
+                  
+                  RowSetIterator iter = MaVsMcpBudgetControlVOImpl.createRowSetIterator(null);
+                  iter.reset();
+                  if (iter.hasNext()) {
                     Row r = iter.next();
-                    MaVsMcpBudgetControlVORowImpl = 
-                            (XxGamMaVsMcpBudgetControlVORowImpl)r;
-                    if (null != 
-                        MaVsMcpBudgetControlVORowImpl.getLookupCode() && 
-                        !"".equals(MaVsMcpBudgetControlVORowImpl.getLookupCode())) {
-                        retval = MaVsMcpBudgetControlVORowImpl.getLookupCode();
+                    MaVsMcpBudgetControlVORowImpl = (XxGamMaVsMcpBudgetControlVORowImpl)r;
+                    if(null!=MaVsMcpBudgetControlVORowImpl.getLookupCode()&&!"".equals(MaVsMcpBudgetControlVORowImpl.getLookupCode())){
+                      retval = MaVsMcpBudgetControlVORowImpl.getLookupCode();
                     }
-                }
-                // close secondary row set iterator
-                iter.closeRowSetIterator();
-
-                /**** Comentado por deficiencia de codigo 07/12/2015 ***
+                  }
+                  // close secondary row set iterator
+                  iter.closeRowSetIterator();
+                  
+                  /**** Comentado por deficiencia de codigo 07/12/2015 ***
                   if(MaVsMcpBudgetControlVOImpl.getRowCount()>0){
                     MaVsMcpBudgetControlVORowImpl = (XxGamMaVsMcpBudgetControlVORowImpl)MaVsMcpBudgetControlVOImpl.first();
                     retval = MaVsMcpBudgetControlVORowImpl.getLookupCode();
                   }
                   ******************************************************/
+                  
+                }
+       }
+       
+       return retval;
+     }
 
-            }
-        }
-
-        return retval;
-    }
-
-
-    /**
+ 
+  /**
      * Metodo para validar el monto total del anticipo vs
      * los fondos disponibles de la combinacion contable de gasto 
      * asociada a la plantilla del anticipo 
      * @param pageContext
      * @param webBean
      */
-    private void valXxgamMaTotalAmountVsXxgamMcpAvailableFunds(OAPageContext pageContext, 
-                                                               OAWebBean webBean, 
-                                                               String lMcpBudgetSummaryControlType) {
-        String retval;
-        System.out.println("Debug52:Comienza validacion del monto tota vs los fondos disponibles de la combinacion contable asociada a la platilla de reporte de gasto");
-        XxGamModAntAMImpl ModAntAMImpl = null;
-        Number lTotalPayment = null;
-        Number lTotalFunds = null;
-        Number lPaymentAmount = null;
-        Number lPaymentAmountToMXN = null;
-        String lPaymentCurrencyCode = null;
-        oracle.jbo.domain.Date lsysdate = null;
-        oracle.jbo.domain.Date lStartDate = null;
-        oracle.jbo.domain.Date lEndDate = null;
-        oracle.jbo.domain.Date lQuarterStartDate = null;
-        oracle.jbo.domain.Date lYearStartDate = null;
-        float lSumPaymentAmountFloat = 0;
-        float llTotalFundsFloat = 0;
-        Number lSumPaymentAmountNumber = new Number(0);
-        NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
+    private void valXxgamMaTotalAmountVsXxgamMcpAvailableFunds(OAPageContext pageContext 
+                                                              ,OAWebBean webBean
+                                                              ,String lMcpBudgetSummaryControlType)
+    { 
+      String retval; 
+      System.out.println("Debug52:Comienza validacion del monto tota vs los fondos disponibles de la combinacion contable asociada a la platilla de reporte de gasto");
+      XxGamModAntAMImpl  ModAntAMImpl = null;
+      Number lTotalPayment = null;
+      Number lTotalFunds = null;
+      Number lPaymentAmount = null; 
+      Number lPaymentAmountToMXN = null;
+      String lPaymentCurrencyCode = null;
+      oracle.jbo.domain.Date  lsysdate = null; 
+      oracle.jbo.domain.Date  lStartDate = null;
+      oracle.jbo.domain.Date  lEndDate = null;
+      oracle.jbo.domain.Date  lQuarterStartDate = null; 
+      oracle.jbo.domain.Date  lYearStartDate = null; 
+      float lSumPaymentAmountFloat = 0;
+      float llTotalFundsFloat = 0;
+      Number lSumPaymentAmountNumber = new Number(0); 
+      NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 
-
-        DecimalFormat df = new DecimalFormat("$###,###,###,###,##0.00");
-        String lSumPaymentAmountStrDf = null;
-        String lTotalFundsStrDf = null;
-
-
-        ModAntAMImpl = 
-                (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-        if (null != ModAntAMImpl) {
-
-            OADBTransaction txn = ModAntAMImpl.getOADBTransaction();
-            lsysdate = txn.getCurrentDBDate();
-
-            XxGamMaGeneralReqVOImpl GeneralReqVOImpl = null;
-            XxGamMaGeneralReqVORowImpl GeneralReqVORowImpl = null;
-            GeneralReqVOImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
-
-            if (null != GeneralReqVOImpl) {
-                // create secondary row set iterator with system-assigned name
-                RowSetIterator iterMaGeneralReqVO = 
-                    GeneralReqVOImpl.createRowSetIterator(null);
-                iterMaGeneralReqVO.reset();
-                if (iterMaGeneralReqVO.hasNext()) {
-                    Row r = iterMaGeneralReqVO.next();
-                    GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)r;
-                    /*** Se comenta por deficiencia de codigo
+      
+     DecimalFormat df = new DecimalFormat("$###,###,###,###,##0.00");
+     String lSumPaymentAmountStrDf = null; 
+     String lTotalFundsStrDf = null; 
+      
+      
+      ModAntAMImpl = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+             if(null!=ModAntAMImpl){
+               
+              OADBTransaction txn = ModAntAMImpl.getOADBTransaction();
+              lsysdate = txn.getCurrentDBDate();
+             
+               XxGamMaGeneralReqVOImpl GeneralReqVOImpl = null; 
+               XxGamMaGeneralReqVORowImpl GeneralReqVORowImpl = null;
+               GeneralReqVOImpl = ModAntAMImpl.getXxGamMaGeneralReqVO1();
+         
+         if(null!=GeneralReqVOImpl){
+           // create secondary row set iterator with system-assigned name
+         RowSetIterator iterMaGeneralReqVO = GeneralReqVOImpl.createRowSetIterator(null);
+         iterMaGeneralReqVO.reset();
+         if(iterMaGeneralReqVO.hasNext()){
+              Row r = iterMaGeneralReqVO.next();
+              GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)r;
+               /*** Se comenta por deficiencia de codigo
                if(GeneralReqVOImpl.getRowCount()>0){
                  GeneralReqVORowImpl = (XxGamMaGeneralReqVORowImpl)GeneralReqVOImpl.getCurrentRow();
                  ******************************************************/
-                    lTotalPayment = GeneralReqVORowImpl.getTotalPayment();
-                    System.out.println("Debug53:lTotalPayment " + 
-                                       lTotalPayment);
-                    /*** Get Total Payment **/
+                 lTotalPayment = GeneralReqVORowImpl.getTotalPayment();
+                 System.out.println("Debug53:lTotalPayment "+lTotalPayment);
+                 /*** Get Total Payment **/
                     XxGamMaPaymentReqVOImpl MaPaymentReqVOImpl = null;
                     XxGamMaPaymentReqVORowImpl MaPaymentReqVORowImpl = null;
-                    MaPaymentReqVOImpl = 
-                            ModAntAMImpl.getXxGamMaPaymentReqVO2();
-
-                    if (null != MaPaymentReqVOImpl && 
-                        MaPaymentReqVOImpl.getRowCount() > 0) {
-                        // create secondary row set iterator with system-assigned name
-                        RowSetIterator iterMaPaymentReqVO = 
-                            MaPaymentReqVOImpl.createRowSetIterator(null);
-                        iterMaPaymentReqVO.reset();
-                        while (iterMaPaymentReqVO.hasNext()) {
-                            Row rowIterMaPaymentReqVO = 
-                                iterMaPaymentReqVO.next();
-                            MaPaymentReqVORowImpl = 
-                                    (XxGamMaPaymentReqVORowImpl)rowIterMaPaymentReqVO;
-                            lPaymentCurrencyCode = 
-                                    MaPaymentReqVORowImpl.getCurrencyCode();
-                            lPaymentAmount = MaPaymentReqVORowImpl.getAmount();
-                            lPaymentAmountToMXN = 
-                                    MaPaymentReqVORowImpl.getAmountMx();
-                            System.out.println("Debug61: lPaymentAmount " + 
-                                               lPaymentAmount + 
-                                               ", lPaymentCurrencyCode " + 
-                                               lPaymentCurrencyCode + 
-                                               ", lPaymentAmountToMXN " + 
-                                               lPaymentAmountToMXN);
-                            //TODO BUG01
-                            if ("MXN".equals(lPaymentAmountToMXN)) { /** Validacion de la moneda **/
-                                lSumPaymentAmountFloat = 
-                                        lSumPaymentAmountFloat + 
-                                        Float.valueOf(lPaymentAmount.toString());
-                                lSumPaymentAmountNumber = 
-                                        lSumPaymentAmountNumber.add(lPaymentAmount);
-                                lSumPaymentAmountStrDf = 
-                                        df.format(lSumPaymentAmountNumber.doubleValue());
-                                System.out.println(" defaultFormat lSumPaymentAmountNumber " + 
-                                                   defaultFormat.format(lSumPaymentAmountNumber.doubleValue()));
-                            } else {
-                                lSumPaymentAmountFloat = 
-                                        lSumPaymentAmountFloat + 
-                                        Float.valueOf(lPaymentAmountToMXN.toString());
-                                lSumPaymentAmountNumber = 
-                                        lSumPaymentAmountNumber.add(lPaymentAmountToMXN);
-                                lSumPaymentAmountStrDf = 
-                                        df.format(lSumPaymentAmountNumber.doubleValue());
-                                System.out.println("defaultFormat lSumPaymentAmountNumber " + 
-                                                   defaultFormat.format(lSumPaymentAmountNumber.doubleValue()));
-                            }
-
-                            // Do something with the current row.
-                        }
-                        // close secondary row set iterator
-                        iterMaPaymentReqVO.closeRowSetIterator();
-
-                        System.out.println("Debug62: lSumPaymentAmountFloat" + 
-                                           lSumPaymentAmountFloat);
-                    } // END if(null!=MaPaymentReqVOImpl&&MaPaymentReqVOImpl.getRowCount()>0){
-                    else {
-                        retval = 
-                                "NO_DATA_FOUND MaPaymentReqVO" + " Modulo XxgamMcp";
-                        throw new OAException(retval, OAException.ERROR);
-                    }
-                    /*** End Total Payment **/
-
-
-                    XxGamMaVsMcpPeriodsAmountVOImpl MaVsMcpPeriodsAmountVOImpl = 
-                        null;
-                    XxGamMaVsMcpPeriodsAmountVORowImpl MaVsMcpPeriodsAmountVORowImpl = 
-                        null;
-
-                    MaVsMcpPeriodsAmountVOImpl = 
-                            ModAntAMImpl.getXxGamMaVsMcpPeriodsAmountVO1();
-
-                    if (null != MaVsMcpPeriodsAmountVOImpl && 
-                        MaVsMcpPeriodsAmountVOImpl.getRowCount() > 0) {
-                        System.out.println("Debug54: validar las categorias asociadas a la plantilla que si generan lineas en la poliza de anticipo");
-                        // create secondary row set iterator with system-assigned name
-                        RowSetIterator iter = 
-                            MaVsMcpPeriodsAmountVOImpl.createRowSetIterator(null);
-                        while (iter.hasNext()) {
-                            Row iterRow = iter.next();
-                            // Do something with the current row.
-                            MaVsMcpPeriodsAmountVORowImpl = 
-                                    (XxGamMaVsMcpPeriodsAmountVORowImpl)iterRow;
-                            lStartDate = 
-                                    MaVsMcpPeriodsAmountVORowImpl.getStartDate();
-                            lEndDate = 
-                                    MaVsMcpPeriodsAmountVORowImpl.getEndDate();
-                            lTotalFunds = 
-                                    MaVsMcpPeriodsAmountVORowImpl.getTAmount();
-                            lQuarterStartDate = 
-                                    MaVsMcpPeriodsAmountVORowImpl.getQuarterStartDate();
-
-                            lYearStartDate = 
-                                    MaVsMcpPeriodsAmountVORowImpl.getYearStartDate();
-
-                            System.out.println("Debug57: lStartDate " + 
-                                               lStartDate);
-                            System.out.println("Debug58: lEndDate " + 
-                                               lEndDate);
-                            System.out.println("Debug59: lTotalFunds " + 
-                                               lTotalFunds);
-                            System.out.println("Debug59: lQuarterStartDate " + 
-                                               lQuarterStartDate);
-                            System.out.println("Debug59: lgetYearStartDate " + 
-                                               lYearStartDate);
-
-                            if ("PTD".equals(lMcpBudgetSummaryControlType)) {
-                                if (lsysdate.dateValue().getTime() >= 
-                                    lStartDate.dateValue().getTime() && 
-                                    (lsysdate.dateValue().getTime() <= 
-                                     lEndDate.dateValue().getTime())) {
-                                    /** "Debug57: validar el monto total del anticipo vs los fondos disponibles para este periodo que puede cambiar dinamicamente" +
+                     MaPaymentReqVOImpl = ModAntAMImpl.getXxGamMaPaymentReqVO2();
+                     
+                     if(null!=MaPaymentReqVOImpl&&MaPaymentReqVOImpl.getRowCount()>0){
+                       // create secondary row set iterator with system-assigned name
+                       RowSetIterator iterMaPaymentReqVO = MaPaymentReqVOImpl.createRowSetIterator(null);
+                       iterMaPaymentReqVO.reset();
+                       while (iterMaPaymentReqVO.hasNext()) {
+                       Row rowIterMaPaymentReqVO = iterMaPaymentReqVO.next();
+                       MaPaymentReqVORowImpl = (XxGamMaPaymentReqVORowImpl)rowIterMaPaymentReqVO;
+                         lPaymentCurrencyCode = MaPaymentReqVORowImpl.getCurrencyCode();
+                         lPaymentAmount = MaPaymentReqVORowImpl.getAmount();
+                         lPaymentAmountToMXN = MaPaymentReqVORowImpl.getAmountMx();
+                         System.out.println("Debug61: lPaymentAmount "+lPaymentAmount+", lPaymentCurrencyCode "+lPaymentCurrencyCode+", lPaymentAmountToMXN "+lPaymentAmountToMXN);  
+                         //TODO BUG01
+                         if("MXN".equals(lPaymentAmountToMXN)){  /** Validacion de la moneda **/
+                           lSumPaymentAmountFloat = lSumPaymentAmountFloat + Float.valueOf(lPaymentAmount.toString());
+                           lSumPaymentAmountNumber = lSumPaymentAmountNumber.add(lPaymentAmount); 
+                           lSumPaymentAmountStrDf = df.format(lSumPaymentAmountNumber.doubleValue()); 
+                           System.out.println(" defaultFormat lSumPaymentAmountNumber "+defaultFormat.format(lSumPaymentAmountNumber.doubleValue()));
+                         }else{
+                           lSumPaymentAmountFloat = lSumPaymentAmountFloat + Float.valueOf(lPaymentAmountToMXN.toString());
+                           lSumPaymentAmountNumber = lSumPaymentAmountNumber.add(lPaymentAmountToMXN); 
+                           lSumPaymentAmountStrDf = df.format(lSumPaymentAmountNumber.doubleValue()); 
+                           System.out.println("defaultFormat lSumPaymentAmountNumber "+defaultFormat.format(lSumPaymentAmountNumber.doubleValue()));
+                         }
+        
+                       // Do something with the current row.
+                       }
+                       // close secondary row set iterator
+                       iterMaPaymentReqVO.closeRowSetIterator();
+                       
+                       System.out.println("Debug62: lSumPaymentAmountFloat"+lSumPaymentAmountFloat);
+                     } // END if(null!=MaPaymentReqVOImpl&&MaPaymentReqVOImpl.getRowCount()>0){
+                     else{
+                       retval = "NO_DATA_FOUND MaPaymentReqVO"+" Modulo XxgamMcp";
+                       throw new OAException(retval, OAException.ERROR);
+                     }
+                 /*** End Total Payment **/
+                 
+                 
+                 XxGamMaVsMcpPeriodsAmountVOImpl MaVsMcpPeriodsAmountVOImpl = null; 
+                 XxGamMaVsMcpPeriodsAmountVORowImpl MaVsMcpPeriodsAmountVORowImpl = null;
+                 
+                 MaVsMcpPeriodsAmountVOImpl = ModAntAMImpl.getXxGamMaVsMcpPeriodsAmountVO1();
+                 
+                 if(null!=MaVsMcpPeriodsAmountVOImpl&&MaVsMcpPeriodsAmountVOImpl.getRowCount()>0){
+                   System.out.println("Debug54: validar las categorias asociadas a la plantilla que si generan lineas en la poliza de anticipo");
+                   // create secondary row set iterator with system-assigned name
+                   RowSetIterator iter = MaVsMcpPeriodsAmountVOImpl.createRowSetIterator(null);
+                   while(iter.hasNext()){
+                     Row iterRow = iter.next();
+                     // Do something with the current row.
+                     MaVsMcpPeriodsAmountVORowImpl = (XxGamMaVsMcpPeriodsAmountVORowImpl)iterRow;
+                      lStartDate = MaVsMcpPeriodsAmountVORowImpl.getStartDate();
+                        lEndDate = MaVsMcpPeriodsAmountVORowImpl.getEndDate();
+                     lTotalFunds = MaVsMcpPeriodsAmountVORowImpl.getTAmount();
+                     lQuarterStartDate = MaVsMcpPeriodsAmountVORowImpl.getQuarterStartDate();
+                     
+                     lYearStartDate = MaVsMcpPeriodsAmountVORowImpl.getYearStartDate();
+                     
+                     System.out.println("Debug57: lStartDate "+lStartDate);
+                     System.out.println("Debug58: lEndDate "+lEndDate);
+                     System.out.println("Debug59: lTotalFunds "+lTotalFunds);
+                     System.out.println("Debug59: lQuarterStartDate "+lQuarterStartDate);
+                     System.out.println("Debug59: lgetYearStartDate "+lYearStartDate);
+                     
+                     if("PTD".equals(lMcpBudgetSummaryControlType)){
+                       if (lsysdate.dateValue().getTime() >= lStartDate.dateValue().getTime()&&(lsysdate.dateValue().getTime() <= lEndDate.dateValue().getTime())){
+                          /** "Debug57: validar el monto total del anticipo vs los fondos disponibles para este periodo que puede cambiar dinamicamente" +
                           "deacuerdo a la configuracion de acumulados en el modulo del control presupuestal" **/
-                                    llTotalFundsFloat = 
-                                            Float.valueOf(lTotalFunds.toString());
-                                    lTotalFundsStrDf = 
-                                            df.format(lTotalFunds.doubleValue());
-                                    System.out.println("defaultFormat lTotalFunds" + 
-                                                       defaultFormat.format(lTotalFunds.doubleValue()));
-                                    break;
-                                }
-                            } //END if("PTD".equals(lMcpBudgetSummaryControlType)){
-                            else if ("QTDE".equals(lMcpBudgetSummaryControlType)) {
-                                if (lsysdate.dateValue().getTime() >= 
-                                    lQuarterStartDate.dateValue().getTime() && 
-                                    (lsysdate.dateValue().getTime() <= 
-                                     lEndDate.dateValue().getTime())) {
-                                    llTotalFundsFloat = 
-                                            Float.valueOf(lTotalFunds.toString());
-                                    lTotalFundsStrDf = 
-                                            df.format(lTotalFunds.doubleValue());
-                                    System.out.println("defaultFormat lTotalFunds" + 
-                                                       defaultFormat.format(lTotalFunds.doubleValue()));
-                                    break;
-                                }
-                            } else if ("YTDE".equals(lMcpBudgetSummaryControlType)) {
-                                if (lsysdate.dateValue().getTime() >= 
-                                    lYearStartDate.dateValue().getTime() && 
-                                    (lsysdate.dateValue().getTime() <= 
-                                     lEndDate.dateValue().getTime())) {
-                                    /**
+                           llTotalFundsFloat = Float.valueOf(lTotalFunds.toString());
+                           lTotalFundsStrDf = df.format(lTotalFunds.doubleValue());
+                           System.out.println("defaultFormat lTotalFunds"+defaultFormat.format(lTotalFunds.doubleValue()));
+                           break;
+                       }
+                     } //END if("PTD".equals(lMcpBudgetSummaryControlType)){
+                     else if("QTDE".equals(lMcpBudgetSummaryControlType)){
+                       if(lsysdate.dateValue().getTime() >= lQuarterStartDate.dateValue().getTime() &&( lsysdate.dateValue().getTime() <= lEndDate.dateValue().getTime() ) ){
+                         llTotalFundsFloat = Float.valueOf(lTotalFunds.toString());
+                         lTotalFundsStrDf = df.format(lTotalFunds.doubleValue());
+                         System.out.println("defaultFormat lTotalFunds"+defaultFormat.format(lTotalFunds.doubleValue()));
+                         break;
+                       }
+                     }else if("YTDE".equals(lMcpBudgetSummaryControlType)){
+                         if( lsysdate.dateValue().getTime() >= lYearStartDate.dateValue().getTime() &&( lsysdate.dateValue().getTime() <= lEndDate.dateValue().getTime() ) ){
+                       /**
                         * Ajsute para obtener fondos disponibles correctamente
                         * *if( lsysdate.dateValue().getTime() >= lQuarterStartDate.dateValue().getTime() &&( lsysdate.dateValue().getTime() <= lEndDate.dateValue().getTime() ) ){*
                         * */
-                                    llTotalFundsFloat = 
-                                            Float.valueOf(lTotalFunds.toString());
-                                    lTotalFundsStrDf = 
-                                            df.format(lTotalFunds.doubleValue());
-                                    System.out.println("defaultFormat lTotalFunds" + 
-                                                       defaultFormat.format(lTotalFunds.doubleValue()));
-                                    break;
-                                }
-
-                            } //END else if("YTDE".equals(lMcpBudgetSummaryControlType)){
-                            else {
-                                System.out.println("Debug64: no se encontro el tipo de control presupuestal ");
-                                retval = 
-                                        "No se encontro el tipo de control  presupuestal " + 
-                                        " ,Modulo XxgamMcp";
-                                throw new OAException(retval, 
-                                                      OAException.ERROR);
-                            }
-
-                        } // END while(iter.hasNext()){
-                        // close secondary row set iterator
-                        iter.closeRowSetIterator();
-
-                    } else {
-                        System.out.println("Debug54: NoAplica - validar las categorias asociadas a la plantilla que si generan lineas en la poliza de anticipo");
-                    }
-
-                } // END if(iterMaGeneralReqVO.hasNext()){
-                else {
-                    retval = 
-                            "NO_DATA_FOUND GeneralReqVO" + ", modulo XxgamMcp";
-                }
-
-                // close secondary row set iterator      
-                iterMaGeneralReqVO.closeRowSetIterator();
-            } // END if(null!=GeneralReqVOImpl){
-            //TODO GNOSIS2305 06 Aqui se hace la comprobacion del ctrl presupuestal con el anticipo
-            if (lSumPaymentAmountFloat > llTotalFundsFloat) {
-                System.out.println("Validacion: CP " + 
-                                   segment.substring(23, 28));
-                System.out.println("Debug65: lSumPaymentAmountFloat " + 
-                                   lSumPaymentAmountFloat);
-                System.out.println("Debug66: llTotalFundsFloat " + 
-                                   llTotalFundsFloat);
-                System.out.println("Debug65.1: lSumPaymentAmountStrDf " + 
-                                   lSumPaymentAmountStrDf);
-                System.out.println("Debug66.1: lTotalFundsStrDf " + 
-                                   lTotalFundsStrDf);
-
-                retval = 
-                        "El monto total del anticipo:" + lSumPaymentAmountStrDf + 
-                        " MXN sobrepasa los fondos disponibles:" + 
-                        lTotalFundsStrDf + " MXN ";
-                String auxSegment = null;
-                auxSegment = segment;
-                System.out.println("Cuenta: " + auxSegment);
-
-
-                segment = 
-                        segment.substring(segment.length() - 13, (segment.length() - 
-                                                                  13) + 5);
-                String summary = null;
-                String organization = null;
-                //Llamada para Ctrl presupuesta Cuenta
-                try {
-
-                    XxGamModAntAMImpl XxGamModAntAMImpl1 = 
-                        (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                    System.out.println("Llamando al AM1");
-                    organization = 
-                            XxGamModAntAMImpl1.getCtrlBudgetCuenta(auxSegment);
-                    System.out.println("Obtencion PKG nuevo procedure Cuenta: " + 
-                                       organization);
-
-                    System.out.println("Termina llamada al AM1");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-
-                //Llamada para Ctrl Presupuestal
-                try {
-
-                    XxGamModAntAMImpl XxGamModAntAMImpl1 = 
-                        (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
-                    System.out.println("Llamando al AM_");
-                    summary = XxGamModAntAMImpl1.getCtrlBudget(segment);
-                    System.out.println("Obtencion PKG nuevo procedure: " + 
-                                       summary);
-
-                    System.out.println("Termina llamada al AM");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-
-                System.out.println("antes---A " + segment);
-                System.out.println(segment);
-                System.out.println("DESPUES---A " + segment);
-
-
-                // segment = segment.substring(23, 28);
-
-
-                pageContext.putParameter("pRequestFundsOver", 
-                                         "valueRequestFundsOver");
-                pageContext.putSessionValue("sRequestFundsOver", 
-                                            "valueRequestFundsOver");
-
-                System.out.println("Evaluacion del IF CP: " + summary);
-                summary = summary.toUpperCase();
-                //validacion ctrl presupuestal
-                System.out.println("ctrlBudget" + summary);
-                if (((organization.equals("ADVISORY") || 
-                      (organization.equals("INFORMATIVA")))) && 
-                    ((summary.equals("ADVISORY")) || 
-                     (summary.equals("INFORMATIVA")))) {
-                    // Caso 1 WARNING
+                         llTotalFundsFloat = Float.valueOf(lTotalFunds.toString());
+                         lTotalFundsStrDf = df.format(lTotalFunds.doubleValue());
+                         System.out.println("defaultFormat lTotalFunds"+defaultFormat.format(lTotalFunds.doubleValue()));
+                         break;
+                       }
+                     
+                     }  //END else if("YTDE".equals(lMcpBudgetSummaryControlType)){
+                     else{
+                      System.out.println("Debug64: no se encontro el tipo de control presupuestal ");
+                      retval = "No se encontro el tipo de control  presupuestal "+" ,Modulo XxgamMcp";
+                       throw new OAException(retval, OAException.ERROR);
+                     }
+                     
+                   }   // END while(iter.hasNext()){
+                   // close secondary row set iterator
+                   iter.closeRowSetIterator();
+                   
+                 }else{
+                   System.out.println("Debug54: NoAplica - validar las categorias asociadas a la plantilla que si generan lineas en la poliza de anticipo");
+                 }
+                 
+               } // END if(iterMaGeneralReqVO.hasNext()){
+               else{
+                 retval = "NO_DATA_FOUND GeneralReqVO"+", modulo XxgamMcp";
+               }
+         
+           // close secondary row set iterator      
+         iterMaGeneralReqVO.closeRowSetIterator();
+         } // END if(null!=GeneralReqVOImpl){
+         //TODO GNOSIS2305 06 Aqui se hace la comprobacion del ctrl presupuestal con el anticipo
+         if(lSumPaymentAmountFloat>llTotalFundsFloat){
+         System.out.println("Validacion: CP "+ segment.substring(23, 28));
+           System.out.println("Debug65: lSumPaymentAmountFloat "+lSumPaymentAmountFloat);       
+           System.out.println("Debug66: llTotalFundsFloat "+llTotalFundsFloat);  
+           System.out.println("Debug65.1: lSumPaymentAmountStrDf "+lSumPaymentAmountStrDf);       
+           System.out.println("Debug66.1: lTotalFundsStrDf "+lTotalFundsStrDf);  
+           
+           retval ="El monto total del anticipo:"+lSumPaymentAmountStrDf+" MXN sobrepasa los fondos disponibles:"+lTotalFundsStrDf+" MXN ";
+           String auxSegment = null;
+             auxSegment=segment;
+           System.out.println("Cuenta: "+ auxSegment);
+           
+           
+           
+        
+             segment =  segment.substring(segment.length()-13, (segment.length()-13)+5);
+             String summary = null;
+             String organization = null;
+             //Llamada para Ctrl presupuesta Cuenta
+              try{
+                   
+                   XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                   System.out.println("Llamando al AM1");
+                  organization =   XxGamModAntAMImpl1.getCtrlBudgetCuenta(auxSegment);
+                  System.out.println("Obtencion PKG nuevo procedure Cuenta: "+organization);
+              
+                   System.out.println("Termina llamada al AM1");
+               }catch(Exception e) {
+                   System.out.println(e.getMessage());
+               }
+             
+             
+             
+             
+             
+           //Llamada para Ctrl Presupuestal
+           try{
+                
+                XxGamModAntAMImpl XxGamModAntAMImpl1 = (XxGamModAntAMImpl)pageContext.getApplicationModule(webBean);
+                System.out.println("Llamando al AM_");
+               summary =   XxGamModAntAMImpl1.getCtrlBudget(segment);
+               System.out.println("Obtencion PKG nuevo procedure: "+summary);
+      
+                System.out.println("Termina llamada al AM");
+            }catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+           
+           
+           
+           
+           System.out.println("antes---A "+segment);
+          System.out.println(segment);
+             System.out.println("DESPUES---A "+segment);
+             
+        
+           
+           
+           
+          // segment = segment.substring(23, 28);
+           
+           
+           pageContext.putParameter("pRequestFundsOver","valueRequestFundsOver");
+           pageContext.putSessionValue("sRequestFundsOver","valueRequestFundsOver");
+           
+           System.out.println("Evaluacion del IF CP: "+summary);
+             summary = summary.toUpperCase();
+           //validacion ctrl presupuestal
+           System.out.println("ctrlBudget"+summary);
+            if ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")))  )
+                       {
+                    // Caso 1
                     System.out.println("C1 Organizacion: ADISORY  y   Resumen: ADVISORY");
-                    System.out.println("Advisory");
-                    System.out.println("retval: " + summary);
-
-                    OAException localOAException = 
-                        new OAException(retval, OAException.WARNING);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.WARNING, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setOkButtonItemName("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals("ABSOLUTO") || 
-                             (organization.equals("ABSOLUTE")))) && 
-                           ((summary.equals("ABSOLUTO")) || 
-                            (summary.equals("ABSOLUTE")))) {
-                    // Caso 2    ERROR
-                    System.out.println("Organizacion: ABSOLUTE      y   Resumen: ABSOLUTE       ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-
-                } else if (((organization.equals("ABSOLUTE") || 
-                             (organization.equals("ABSOLUTO")))) && 
-                           ((summary.equals("INFORMATIVA")) || 
-                            (summary.equals("ADVISORY")))) {
-                    // Caso 3    ERROR
-                    System.out.println("Organizacion:  ABSOLUTE     y   Resumen: ADVISORY       ");
-
-                    System.out.println("Organizacion ABSOLUTA y summary INFORMATIVA");
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals("ADVISORY") || 
-                             (organization.equals("INFORMATIVA")))) && 
-                           ((summary.equals("ABSOLUTE")) || 
-                            (summary.equals("ABSOLUTO")))) {
-                    // Caso 4     ERROR
-                    System.out.println("Organizacion: ADVISORY      y   Resumen:  ABSOLUTO      ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                }
-
-                ///Validacion contra nada
-                if (((organization.equals("ADVISORY") || 
-                      (organization.equals("INFORMATIVA")))) && 
-                    ((summary.equals("")))) {
-                    // Caso 5 WARNING
-                    System.out.println("Organizacion: ADVISORY      y   Resumen:   NULL     ");
-
-                    System.out.println("Advisory");
-                    System.out.println("retval: " + summary);
-
-                    OAException localOAException = 
-                        new OAException(retval, OAException.WARNING);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.WARNING, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setOkButtonItemName("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals("ABSOLUTO") || 
-                             (organization.equals("ABSOLUTE")))) && 
-                           ((summary.equals("")))) {
-                    // Caso 6        ERROR
-                    System.out.println("Organizacion: ABSOLUTE       y   Resumen:   NULL     ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals("")) && 
-                            ((summary.equals("ABSOLUTO"))) || 
-                            (summary.equals("ABSOLUTE")))) {
-
-                    // Caso 7   ERROR
-                    System.out.println("Organizacion:  NULL     y   Resumen:  ABSOLUTE      ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals(""))) && 
-                           ((summary.equals("ADVISORY")) || 
-                            (summary.equals("INFORMATIVA")))) {
-                    // Caso 8  ERROR
-                    System.out.println("Organizacion:  NULL     y   Resumen:  ADVISORY      ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                } else if (((organization.equals(""))) && 
-                           ((summary.equals("")))) {
-                    //Caso 9        ERROR
-                    System.out.println("Organizacion:  NULL     y   Resumen:  NULL      ");
-
-                    System.out.println("Absolute");
-                    OAException localOAException = 
-                        new OAException(retval, OAException.ERROR);
-                    OADialogPage localOADialogPage = 
-                        new OADialogPage(OAException.ERROR, localOAException, 
-                                         null, "", null);
-                    localOADialogPage.setOkButtonToPost(true);
-                    localOADialogPage.setOkButtonLabel("Ok");
-                    localOADialogPage.setPostToCallingPage(true);
-                    Hashtable localHashtable = new Hashtable(1);
-                    localOADialogPage.setFormParameters(localHashtable);
-                    pageContext.redirectToDialogPage(localOADialogPage);
-                }
-
-
-                /*OAException localOAException = new OAException( retval, OAException.ERROR);
+                       System.out.println("Advisory");
+                       System.out.println("retval: "+summary);
+                        
+                           OAException localOAException = new OAException(retval, OAException.WARNING);
+                           OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
+                           localOADialogPage.setOkButtonToPost(true);
+                           localOADialogPage.setOkButtonLabel("Ok");
+                           localOADialogPage.setOkButtonItemName("Ok");
+                           localOADialogPage.setPostToCallingPage(true);
+                           Hashtable localHashtable = new Hashtable(1);
+                           localOADialogPage.setFormParameters(localHashtable);
+                           pageContext.redirectToDialogPage(localOADialogPage);
+                       }
+          else if  (  ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE")) ) ) ) //&& ( (summary.equals("ABSOLUTE")) || (summary.equals("ABSOLUTO")) ) )
+           {
+               // Caso 2
+                System.out.println("Organizacion: ABSOLUTE      y   Resumen: ABSOLUTE       ");
+                
+                       System.out.println("Absolute");
+                       OAException localOAException = new OAException(retval, OAException.ERROR);
+                       OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                       localOADialogPage.setOkButtonToPost(true);
+                       localOADialogPage.setOkButtonLabel("Ok");
+                       localOADialogPage.setPostToCallingPage(true);
+                       Hashtable localHashtable = new Hashtable(1);
+                       localOADialogPage.setFormParameters(localHashtable);
+                       pageContext.redirectToDialogPage(localOADialogPage);
+                       
+           }
+             else if  ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ABSOLUTE")) || (summary.equals("ABSOLUTO")))  )
+              {
+                  // Caso 4
+                          System.out.println("Organizacion: ADVISORY      y   Resumen:  ABSOLUTO      ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+              }
+              
+              ///Validacion contra nada
+               if (  ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && (((summary.equals("NONE"))||(summary.equals("NINGUNO")) || (summary.equals("")) )))
+                          {
+                              // Caso 5
+                               System.out.println("Organizacion: ADVISORY      y   Resumen:   NULL     ");
+                               
+                          System.out.println("Advisory");
+                          System.out.println("retval: "+summary);
+                           
+                              OAException localOAException = new OAException(retval, OAException.WARNING);
+                              OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
+                              localOADialogPage.setOkButtonToPost(true);
+                              localOADialogPage.setOkButtonLabel("Ok");
+                              localOADialogPage.setOkButtonItemName("Ok");
+                              localOADialogPage.setPostToCallingPage(true);
+                              Hashtable localHashtable = new Hashtable(1);
+                              localOADialogPage.setFormParameters(localHashtable);
+                              pageContext.redirectToDialogPage(localOADialogPage);
+                          }
+               else if  ( ( (organization.equals("ABSOLUTO")) || (organization.equals("ABSOLUTE")) ) && ( ((summary.equals("NONE"))||(summary.equals("NINGUNO"))) || (summary.equals("")) ) )
+               {
+                   // Caso 6
+                          System.out.println("Organizacion: ABSOLUTE       y   Resumen:   NULL     ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+               }
+                else if  ( (( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) ) && ( ( (summary.equals("ABSOLUTO")) || (summary.equals("ABSOLUTE")) )  ) )
+                 {
+                 
+                     // Caso 7
+                             System.out.println("Organizacion:  NULL     y   Resumen:  ABSOLUTE      ");
+                             
+                             System.out.println("Absolute");
+                             OAException localOAException = new OAException(retval, OAException.ERROR);
+                             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                             localOADialogPage.setOkButtonToPost(true);
+                             localOADialogPage.setOkButtonLabel("Ok");
+                             localOADialogPage.setPostToCallingPage(true);
+                             Hashtable localHashtable = new Hashtable(1);
+                             localOADialogPage.setFormParameters(localHashtable);
+                             pageContext.redirectToDialogPage(localOADialogPage);
+                 }
+                else if  ( ( ( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) ) && ( (summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")) )  )
+                 {
+                     // Caso 8
+                             System.out.println("Organizacion:  NULL     y   Resumen:  ADVISORY      ");
+                             
+                             System.out.println("Absolute");
+                             OAException localOAException = new OAException(retval, OAException.ERROR);
+                             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                             localOADialogPage.setOkButtonToPost(true);
+                             localOADialogPage.setOkButtonLabel("Ok");
+                             localOADialogPage.setPostToCallingPage(true);
+                             Hashtable localHashtable = new Hashtable(1);
+                             localOADialogPage.setFormParameters(localHashtable);
+                             pageContext.redirectToDialogPage(localOADialogPage);
+                 }
+             else if  (( ( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) )  && ( ((summary.equals("NONE"))||(summary.equals("NINGUNO"))) || (summary.equals("")) ) )
+              {
+                //Caso 9
+                          System.out.println("Organizacion:  NULL     y   Resumen:  NULL      ");
+                          
+                          System.out.println("Absolute");
+                          OAException localOAException = new OAException(retval, OAException.ERROR);
+                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
+                          localOADialogPage.setOkButtonToPost(true);
+                          localOADialogPage.setOkButtonLabel("Ok");
+                          localOADialogPage.setPostToCallingPage(true);
+                          Hashtable localHashtable = new Hashtable(1);
+                          localOADialogPage.setFormParameters(localHashtable);
+                          pageContext.redirectToDialogPage(localOADialogPage);
+              }
+           
+           
+            /*OAException localOAException = new OAException( retval, OAException.ERROR);
             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
             localOADialogPage.setOkButtonToPost(true);
             localOADialogPage.setOkButtonLabel("Ok");
@@ -1805,19 +1531,18 @@ pageContext.getMessage(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
             Hashtable localHashtable = new Hashtable(1);
             localOADialogPage.setFormParameters(localHashtable);
             pageContext.redirectToDialogPage(localOADialogPage);*/
-
-                /** throw new OAException(retval, OAException.ERROR); **/
-
-            }
-
-        } // END if(null!=ModAntAMImpl){
-        else {
-            retval = 
-                    " Excepcion al encontrar el modelo de aplicacion" + ", modulo XxgamMcp";
-            throw new OAException(retval, OAException.ERROR);
-        }
-
-    } // END private void valXxgamMaTotalAmountVsXxgamMcpAvailableFunds
-
-
+                                  
+          /** throw new OAException(retval, OAException.ERROR); **/
+         
+         }
+       
+       } // END if(null!=ModAntAMImpl){
+       else{
+         retval = " Excepcion al encontrar el modelo de aplicacion"+", modulo XxgamMcp";
+         throw new OAException(retval, OAException.ERROR);
+       }
+       
+   }// END private void valXxgamMaTotalAmountVsXxgamMcpAvailableFunds
+   
+ 
 }
