@@ -2,8 +2,8 @@ package xxgam.oracle.apps.xbol.bref.server;
 
 import oracle.apps.fnd.framework.server.OAViewObjectImpl;
 
-
-public class BankReferenceVOImpl extends OAViewObjectImpl {
+public class BankReferenceVOImpl
+  extends OAViewObjectImpl {
     /**This is the default constructor (do not remove)
      */
     public BankReferenceVOImpl() {
