@@ -57,7 +57,13 @@
 /*     */     }
 /*     */     
 /*  59 */     OAViewObject vo = (OAViewObject)getBankReferenceVO1();
-/*  60 */     vo.executeQuery();
+                try{
+                    vo.executeQuery();   
+                }catch(Exception e) {
+                    System.out.println("vo.executeQuery() "+e.getMessage());
+                }
+
+
 /*  61 */     if (!vo.hasNext()) {
 /*  62 */       System.out.println("Error que yo quiero");
 /*     */     } else {

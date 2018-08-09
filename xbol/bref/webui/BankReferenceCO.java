@@ -1,4 +1,3 @@
-
 /*    */ package xxgam.oracle.apps.xbol.bref.webui;
 /*    */ 
 /*    */ import java.io.PrintStream;
@@ -70,9 +69,18 @@ import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 /* 62 */         BankRefAM.FindInfo();
 /* 63 */         BankRefVO = BankRefAM.getBankReferenceVO1();
 /*    */         
-/* 65 */         if (BankRefVO.first().getAttribute("Nombrebanco") != null) {
-/* 66 */             BancoS = BankRefVO.first().getAttribute("Nombrebanco").toString();
-/*    */         }
+                    try{
+                    
+                        /* 65 */         if (BankRefVO.first().getAttribute("Nombrebanco") != null) {
+                        /* 66 */             BancoS = BankRefVO.first().getAttribute("Nombrebanco").toString();
+                        /*    */         }
+                    }
+                    catch(Exception ex) {
+                       System.out.println("BankRefVO "+ex.getMessage()); 
+                    }
+
+
+
 /* 68 */         if (BankRefVO.first().getAttribute("Cuenta") != null) {
 /*    */             CuentaS = BankRefVO.first().getAttribute("Cuenta").toString();
 /*    */         }
