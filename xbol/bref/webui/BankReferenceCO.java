@@ -1,4 +1,8 @@
 /*    */ package xxgam.oracle.apps.xbol.bref.webui;
+<<<<<<< HEAD
+=======
+/*    */ 
+>>>>>>> U2F_1
 /*    */ import java.io.PrintStream;
 /*    */ import oracle.apps.fnd.common.VersionInfo;
 /*    */ import oracle.apps.fnd.framework.webui.OAControllerImpl;
@@ -57,6 +61,7 @@ import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 /*    */     String NumeroempS = null;
 /*    */     OAHeaderBean Region = null; 
 /*    */     OASubmitButtonBean Button = null;
+/*    */     
 /* 56 */     if (!pageContext.isFormSubmission()) {
 /* 57 */       BankRefAM = (BankReferenceAMImpl)pageContext.getApplicationModule(webBean);
 /* 58 */       Region = (OAHeaderBean) webBean.findChildRecursive("VentanillaRN");
@@ -67,9 +72,18 @@ import oracle.apps.fnd.framework.webui.beans.message.OAMessageTextInputBean;
 /* 62 */         BankRefAM.FindInfo();
 /* 63 */         BankRefVO = BankRefAM.getBankReferenceVO1();
 /*    */         
-/* 65 */         if (BankRefVO.first().getAttribute("Nombrebanco") != null) {
-/* 66 */             BancoS = BankRefVO.first().getAttribute("Nombrebanco").toString();
-/*    */         }
+                    try{
+                    
+                        /* 65 */         if (BankRefVO.first().getAttribute("Nombrebanco") != null) {
+                        /* 66 */             BancoS = BankRefVO.first().getAttribute("Nombrebanco").toString();
+                        /*    */         }
+                    }
+                    catch(Exception ex) {
+                       System.out.println("BankRefVO "+ex.getMessage()); 
+                    }
+
+
+
 /* 68 */         if (BankRefVO.first().getAttribute("Cuenta") != null) {
 /*    */             CuentaS = BankRefVO.first().getAttribute("Cuenta").toString();
 /*    */         }

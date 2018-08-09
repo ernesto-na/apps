@@ -1,6 +1,5 @@
 package xxgam.oracle.apps.xbol.maf.server;
 
-import oracle.apps.fnd.framework.OAAttrValException;
 import oracle.apps.fnd.framework.OAException;
 import oracle.apps.fnd.framework.server.OAEntityDefImpl;
 import oracle.apps.fnd.framework.server.OAEntityImpl;
@@ -22,64 +21,61 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaGeneralReqEOImpl extends OAEntityImpl
-{
-  public static final int ID = 0;
-  public static final int STATUSREQUEST = 1;
-  public static final int EMPLOYEEID = 2;
-  public static final int REQUESTPAYMENTDATE = 3;
-  public static final int APPROVALDATE = 4;
-  public static final int PURPOSE = 5;
-  public static final int TOTALPAYMENT = 6;
-  public static final int APPROVERID = 7;
-  public static final int COSTCENTER = 8;
-  public static final int COSTCENTERFLEX = 9;
-  public static final int GROUPPAYMENT = 10;
-  public static final int TEMPLATEPAYMENT = 11;
-  public static final int CURRENCYCODE = 12;
-  public static final int VIRTUALCARD = 13;
-  public static final int STATUSNOTIFICATION = 14;
-  public static final int CREATIONDATE = 15;
-  public static final int CREATEDBY = 16;
-  public static final int LASTUPDATELOGIN = 17;
-  public static final int LASTUPDATEDBY = 18;
-  public static final int LASTUPDATEDATE = 19;
-  public static final int STATUSFRANCHISE = 20;
-  public static final int NUMBERPAYMENT = 21;
-  public static final int ASSOCIATEDREPORT = 22;
-  public static final int APPROVERALTID = 23;
-  public static final int REASON = 24;
-  public static final int COMMENTS = 25;
-  public static final int OPERATINGUNIT = 26;
-  public static final int ORIGIN = 27;
-  public static final int ARRIVALTIME = 28;
-  public static final int DEPARTTIME = 29;
-  public static final int XXGAMMAPAYMENTREQEO = 30;
-  public static final int XXGAMMATICKETPEO = 31;
-  public static final int XXGAMMAPAYMENTREQEO1 = 32;
+public class XxGamMaGeneralReqEOImpl extends OAEntityImpl {
+    public static final int ID = 0;
+    public static final int STATUSREQUEST = 1;
+    public static final int EMPLOYEEID = 2;
+    public static final int REQUESTPAYMENTDATE = 3;
+    public static final int APPROVALDATE = 4;
+    public static final int PURPOSE = 5;
+    public static final int TOTALPAYMENT = 6;
+    public static final int APPROVERID = 7;
+    public static final int COSTCENTER = 8;
+    public static final int COSTCENTERFLEX = 9;
+    public static final int GROUPPAYMENT = 10;
+    public static final int TEMPLATEPAYMENT = 11;
+    public static final int CURRENCYCODE = 12;
+    public static final int VIRTUALCARD = 13;
+    public static final int STATUSNOTIFICATION = 14;
+    public static final int CREATIONDATE = 15;
+    public static final int CREATEDBY = 16;
+    public static final int LASTUPDATELOGIN = 17;
+    public static final int LASTUPDATEDBY = 18;
+    public static final int LASTUPDATEDATE = 19;
+    public static final int STATUSFRANCHISE = 20;
+    public static final int NUMBERPAYMENT = 21;
+    public static final int ASSOCIATEDREPORT = 22;
+    public static final int APPROVERALTID = 23;
+    public static final int REASON = 24;
+    public static final int COMMENTS = 25;
+    public static final int OPERATINGUNIT = 26;
+    public static final int ORIGIN = 27;
+    public static final int ARRIVALTIME = 28;
+    public static final int DEPARTTIME = 29;
+    public static final int XXGAMMAPAYMENTREQEO = 30;
+    public static final int XXGAMMATICKETPEO = 31;
+    public static final int XXGAMMAPAYMENTREQEO1 = 32;
 
 
-  private static OAEntityDefImpl mDefinitionObject;
+    private static OAEntityDefImpl mDefinitionObject;
 
-  /**This is the default constructor (do not remove)
-   */
+    /**This is the default constructor (do not remove)
+     */
     public XxGamMaGeneralReqEOImpl() {
     }
 
 
-  /**Retrieves the definition object for this instance class.
-   */
-  public static synchronized EntityDefImpl getDefinitionObject()
-  {
-    if (mDefinitionObject == null)
-    {
-      mDefinitionObject = 
-          (OAEntityDefImpl)EntityDefImpl.findDefObject("xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEO");
+    /**Retrieves the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        if (mDefinitionObject == null) {
+            mDefinitionObject = 
+                    (OAEntityDefImpl)EntityDefImpl.findDefObject("xxgam.oracle.apps.xbol.maf.server.XxGamMaGeneralReqEO");
+        }
+        return mDefinitionObject;
     }
-    return mDefinitionObject;
-  }
 
-  public void setCreationDate(Date date) {
+    public void setCreationDate(Date date) {
     }
 
     public void setCreatedBy(Number number) {
@@ -93,7 +89,6 @@ public class XxGamMaGeneralReqEOImpl extends OAEntityImpl
 
     public void setLastUpdateLogin(Number number) {
     }
-
 
 
     /**Gets the attribute value for Id, using the alias name Id
@@ -305,172 +300,170 @@ public class XxGamMaGeneralReqEOImpl extends OAEntityImpl
      */
     public void setStatusFranchise(String value) {
         setAttributeInternal(STATUSFRANCHISE, value);
-       
+
     }
 
     /**getAttrInvokeAccessor: generated method. Do not modify.
      */
-    protected Object getAttrInvokeAccessor(int index,
+    protected Object getAttrInvokeAccessor(int index, 
                                            AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case ID:
-      return getId();
-    case STATUSREQUEST:
-      return getStatusRequest();
-    case EMPLOYEEID:
-      return getEmployeeId();
-    case REQUESTPAYMENTDATE:
-      return getRequestPaymentDate();
-    case APPROVALDATE:
-      return getApprovalDate();
-    case PURPOSE:
-      return getPurpose();
-    case TOTALPAYMENT:
-      return getTotalPayment();
-    case APPROVERID:
-      return getApproverId();
-    case COSTCENTER:
-      return getCostCenter();
-    case COSTCENTERFLEX:
-      return getCostCenterFlex();
-    case GROUPPAYMENT:
-      return getGroupPayment();
-    case TEMPLATEPAYMENT:
-      return getTemplatePayment();
-    case CURRENCYCODE:
-      return getCurrencyCode();
-    case VIRTUALCARD:
-      return getVirtualCard();
-    case STATUSNOTIFICATION:
-      return getStatusNotification();
-    case CREATIONDATE:
-      return getCreationDate();
-    case CREATEDBY:
-      return getCreatedBy();
-    case LASTUPDATELOGIN:
-      return getLastUpdateLogin();
-    case LASTUPDATEDBY:
-      return getLastUpdatedBy();
-    case LASTUPDATEDATE:
-      return getLastUpdateDate();
-    case STATUSFRANCHISE:
-      return getStatusFranchise();
-    case NUMBERPAYMENT:
-      return getNumberPayment();
-    case ASSOCIATEDREPORT:
-      return getAssociatedReport();
-    case APPROVERALTID:
-      return getApproverAltId();
-    case REASON:
-      return getReason();
-    case COMMENTS:
-      return getComments();
-    case OPERATINGUNIT:
-      return getOperatingUnit();
-    case ORIGIN:
-      return getOrigin();
-    case ARRIVALTIME:
-      return getArrivalTime();
-    case DEPARTTIME:
-      return getDepartTime();
-    case XXGAMMAPAYMENTREQEO1:
-      return getXxGamMaPaymentReqEO1();
-    case XXGAMMATICKETPEO:
-      return getXxGamMaTicketPEO();
-    case XXGAMMAPAYMENTREQEO:
-      return getXxGamMaPaymentReqEO();
-    default:
-      return super.getAttrInvokeAccessor(index, attrDef);
+        switch (index) {
+        case ID:
+            return getId();
+        case STATUSREQUEST:
+            return getStatusRequest();
+        case EMPLOYEEID:
+            return getEmployeeId();
+        case REQUESTPAYMENTDATE:
+            return getRequestPaymentDate();
+        case APPROVALDATE:
+            return getApprovalDate();
+        case PURPOSE:
+            return getPurpose();
+        case TOTALPAYMENT:
+            return getTotalPayment();
+        case APPROVERID:
+            return getApproverId();
+        case COSTCENTER:
+            return getCostCenter();
+        case COSTCENTERFLEX:
+            return getCostCenterFlex();
+        case GROUPPAYMENT:
+            return getGroupPayment();
+        case TEMPLATEPAYMENT:
+            return getTemplatePayment();
+        case CURRENCYCODE:
+            return getCurrencyCode();
+        case VIRTUALCARD:
+            return getVirtualCard();
+        case STATUSNOTIFICATION:
+            return getStatusNotification();
+        case CREATIONDATE:
+            return getCreationDate();
+        case CREATEDBY:
+            return getCreatedBy();
+        case LASTUPDATELOGIN:
+            return getLastUpdateLogin();
+        case LASTUPDATEDBY:
+            return getLastUpdatedBy();
+        case LASTUPDATEDATE:
+            return getLastUpdateDate();
+        case STATUSFRANCHISE:
+            return getStatusFranchise();
+        case NUMBERPAYMENT:
+            return getNumberPayment();
+        case ASSOCIATEDREPORT:
+            return getAssociatedReport();
+        case APPROVERALTID:
+            return getApproverAltId();
+        case REASON:
+            return getReason();
+        case COMMENTS:
+            return getComments();
+        case OPERATINGUNIT:
+            return getOperatingUnit();
+        case ORIGIN:
+            return getOrigin();
+        case ARRIVALTIME:
+            return getArrivalTime();
+        case DEPARTTIME:
+            return getDepartTime();
+        case XXGAMMAPAYMENTREQEO1:
+            return getXxGamMaPaymentReqEO1();
+        case XXGAMMATICKETPEO:
+            return getXxGamMaTicketPEO();
+        case XXGAMMAPAYMENTREQEO:
+            return getXxGamMaPaymentReqEO();
+        default:
+            return super.getAttrInvokeAccessor(index, attrDef);
+        }
     }
-  }
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
-    protected void setAttrInvokeAccessor(int index, Object value,
+    protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
-    switch (index)
-    {
-    case ID:
-      setId((Number)value);
-      return;
-    case STATUSREQUEST:
-      setStatusRequest((String)value);
-      return;
-    case EMPLOYEEID:
-      setEmployeeId((Number)value);
-      return;
-    case REQUESTPAYMENTDATE:
-      setRequestPaymentDate((Date)value);
-      return;
-    case APPROVALDATE:
-      setApprovalDate((Date)value);
-      return;
-    case PURPOSE:
-      setPurpose((String)value);
-      return;
-    case TOTALPAYMENT:
-      setTotalPayment((Number)value);
-      return;
-    case APPROVERID:
-      setApproverId((Number)value);
-      return;
-    case COSTCENTER:
-      setCostCenter((Number)value);
-      return;
-    case COSTCENTERFLEX:
-      setCostCenterFlex((String)value);
-      return;
-    case GROUPPAYMENT:
-      setGroupPayment((String)value);
-      return;
-    case TEMPLATEPAYMENT:
-      setTemplatePayment((Number)value);
-      return;
-    case CURRENCYCODE:
-      setCurrencyCode((String)value);
-      return;
-    case VIRTUALCARD:
-      setVirtualCard((String)value);
-      return;
-    case STATUSNOTIFICATION:
-      setStatusNotification((String)value);
-      return;
-    case STATUSFRANCHISE:
-      setStatusFranchise((String)value);
-      return;
-    case NUMBERPAYMENT:
-      setNumberPayment((String)value);
-      return;
-    case ASSOCIATEDREPORT:
-      setAssociatedReport((String)value);
-      return;
-    case APPROVERALTID:
-      setApproverAltId((Number)value);
-      return;
-    case REASON:
-      setReason((String)value);
-      return;
-    case COMMENTS:
-      setComments((String)value);
-      return;
-    case OPERATINGUNIT:
-      setOperatingUnit((String)value);
-      return;
-    case ORIGIN:
-      setOrigin((String)value);
-      return;
-    case ARRIVALTIME:
-      setArrivalTime((String)value);
-      return;
-    case DEPARTTIME:
-      setDepartTime((String)value);
-      return;
-    default:
-      super.setAttrInvokeAccessor(index, value, attrDef);
-      return;
+        switch (index) {
+        case ID:
+            setId((Number)value);
+            return;
+        case STATUSREQUEST:
+            setStatusRequest((String)value);
+            return;
+        case EMPLOYEEID:
+            setEmployeeId((Number)value);
+            return;
+        case REQUESTPAYMENTDATE:
+            setRequestPaymentDate((Date)value);
+            return;
+        case APPROVALDATE:
+            setApprovalDate((Date)value);
+            return;
+        case PURPOSE:
+            setPurpose((String)value);
+            return;
+        case TOTALPAYMENT:
+            setTotalPayment((Number)value);
+            return;
+        case APPROVERID:
+            setApproverId((Number)value);
+            return;
+        case COSTCENTER:
+            setCostCenter((Number)value);
+            return;
+        case COSTCENTERFLEX:
+            setCostCenterFlex((String)value);
+            return;
+        case GROUPPAYMENT:
+            setGroupPayment((String)value);
+            return;
+        case TEMPLATEPAYMENT:
+            setTemplatePayment((Number)value);
+            return;
+        case CURRENCYCODE:
+            setCurrencyCode((String)value);
+            return;
+        case VIRTUALCARD:
+            setVirtualCard((String)value);
+            return;
+        case STATUSNOTIFICATION:
+            setStatusNotification((String)value);
+            return;
+        case STATUSFRANCHISE:
+            setStatusFranchise((String)value);
+            return;
+        case NUMBERPAYMENT:
+            setNumberPayment((String)value);
+            return;
+        case ASSOCIATEDREPORT:
+            setAssociatedReport((String)value);
+            return;
+        case APPROVERALTID:
+            setApproverAltId((Number)value);
+            return;
+        case REASON:
+            setReason((String)value);
+            return;
+        case COMMENTS:
+            setComments((String)value);
+            return;
+        case OPERATINGUNIT:
+            setOperatingUnit((String)value);
+            return;
+        case ORIGIN:
+            setOrigin((String)value);
+            return;
+        case ARRIVALTIME:
+            setArrivalTime((String)value);
+            return;
+        case DEPARTTIME:
+            setDepartTime((String)value);
+            return;
+        default:
+            super.setAttrInvokeAccessor(index, value, attrDef);
+            return;
+        }
     }
-  }
 
     /**Gets the associated entity oracle.jbo.RowIterator
      */
@@ -505,35 +498,35 @@ public class XxGamMaGeneralReqEOImpl extends OAEntityImpl
 
     /**Add attribute defaulting logic in this method.
      */
-        public void create(AttributeList attributeList) {
+    public void create(AttributeList attributeList) {
 
-            //Declaraci�n de los recursos
-            Number nReqId = null;
-            String sSecuencia = null;
-            
-            try{
+        //Declaraci�n de los recursos
+        Number nReqId = null;
+        String sSecuencia = null;
 
-                //Obtiene la secuencia para clave primaria del registro
-                sSecuencia = XxGamConstantsUtil.XX_GAM_MA_REQ_S;
-                nReqId = getOADBTransaction().getSequenceValue(sSecuencia);
-                
-                //Verifica nulidad
-                if (nReqId == null)
-                    throw new OAException("No es posible generar la clave del registro",
-                                          OAException.ERROR);
-                
-                //Inicializa los valores
-                setId(nReqId);
-                
-                setRequestPaymentDate(XxGamMAnticiposUtil.getFechaActual());
-                
-            }catch(Exception exception){
-                
-                //Propaga el error generado
-                throw new OAException(exception.getMessage(),OAException.ERROR);
-            }
-            super.create(attributeList);
+        try {
+
+            //Obtiene la secuencia para clave primaria del registro
+            sSecuencia = XxGamConstantsUtil.XX_GAM_MA_REQ_S;
+            nReqId = getOADBTransaction().getSequenceValue(sSecuencia);
+
+            //Verifica nulidad
+            if (nReqId == null)
+                throw new OAException("No es posible generar la clave del registro", 
+                                      OAException.ERROR);
+
+            //Inicializa los valores
+            setId(nReqId);
+
+            setRequestPaymentDate(XxGamMAnticiposUtil.getFechaActual());
+
+        } catch (Exception exception) {
+
+            //Propaga el error generado
+            throw new OAException(exception.getMessage(), OAException.ERROR);
         }
+        super.create(attributeList);
+    }
 
     /**Gets the attribute value for CostCenterFlex, using the alias name CostCenterFlex
      */
@@ -596,96 +589,85 @@ public class XxGamMaGeneralReqEOImpl extends OAEntityImpl
     }
 
 
-  /**Gets the attribute value for OperatingUnit, using the alias name OperatingUnit
-   */
-  public String getOperatingUnit()
-  {
-    return (String)getAttributeInternal(OPERATINGUNIT);
-  }
+    /**Gets the attribute value for OperatingUnit, using the alias name OperatingUnit
+     */
+    public String getOperatingUnit() {
+        return (String)getAttributeInternal(OPERATINGUNIT);
+    }
 
-  /**Sets <code>value</code> as the attribute value for OperatingUnit
-   */
-  public void setOperatingUnit(String value)
-  {
-    setAttributeInternal(OPERATINGUNIT, value);
-  }
+    /**Sets <code>value</code> as the attribute value for OperatingUnit
+     */
+    public void setOperatingUnit(String value) {
+        setAttributeInternal(OPERATINGUNIT, value);
+    }
 
-  /**Gets the attribute value for Origin, using the alias name Origin
-   */
-  public String getOrigin()
-  {
-    return (String)getAttributeInternal(ORIGIN);
-  }
+    /**Gets the attribute value for Origin, using the alias name Origin
+     */
+    public String getOrigin() {
+        return (String)getAttributeInternal(ORIGIN);
+    }
 
-  /**Sets <code>value</code> as the attribute value for Origin
-   */
-  public void setOrigin(String value)
-  {
-    System.out.println("setOrigin value:"+value);
-    /****************************************************
+    /**Sets <code>value</code> as the attribute value for Origin
+     */
+    public void setOrigin(String value) {
+        System.out.println("setOrigin value:" + value);
+        /****************************************************
     if(null==value||"".equals(value)){
       throw // EO name
         // EO PK
         // Attribute Name
         // Attribute value
         // Message product short name
-        new OAAttrValException(OAException.TYP_ENTITY_OBJECT, 
-                               getEntityDef().getFullName(), getPrimaryKey(), 
-                               "Origin", value, "XBOL", 
+        new OAAttrValException(OAException.TYP_ENTITY_OBJECT,
+                               getEntityDef().getFullName(), getPrimaryKey(),
+                               "Origin", value, "XBOL",
                                "XXGAM_MAF_ORIGIN_NULL"); // Message name
-                               
+
     }
     *******************************************************/
-    
-    setAttributeInternal(ORIGIN, value);
-  }
 
-  /**Add entity remove logic in this method.
-   */
-  public void remove()
-  {
-    super.remove();
-  }
+        setAttributeInternal(ORIGIN, value);
+    }
 
-  /**Add Entity validation code in this method.
-   */
-  protected void validateEntity()
-  {
-    super.validateEntity();
-  }
+    /**Add entity remove logic in this method.
+     */
+    public void remove() {
+        super.remove();
+    }
 
-  /**Gets the attribute value for ArrivalTime, using the alias name ArrivalTime
-   */
-  public String getArrivalTime()
-  {
-    return (String)getAttributeInternal(ARRIVALTIME);
-  }
+    /**Add Entity validation code in this method.
+     */
+    protected void validateEntity() {
+        super.validateEntity();
+    }
 
-  /**Sets <code>value</code> as the attribute value for ArrivalTime
-   */
-  public void setArrivalTime(String value)
-  {
-    setAttributeInternal(ARRIVALTIME, value);
-  }
+    /**Gets the attribute value for ArrivalTime, using the alias name ArrivalTime
+     */
+    public String getArrivalTime() {
+        return (String)getAttributeInternal(ARRIVALTIME);
+    }
 
-  /**Gets the attribute value for DepartTime, using the alias name DepartTime
-   */
-  public String getDepartTime()
-  {
-    return (String)getAttributeInternal(DEPARTTIME);
-  }
+    /**Sets <code>value</code> as the attribute value for ArrivalTime
+     */
+    public void setArrivalTime(String value) {
+        setAttributeInternal(ARRIVALTIME, value);
+    }
 
-  /**Sets <code>value</code> as the attribute value for DepartTime
-   */
-  public void setDepartTime(String value)
-  {
-    setAttributeInternal(DEPARTTIME, value);
-  }
+    /**Gets the attribute value for DepartTime, using the alias name DepartTime
+     */
+    public String getDepartTime() {
+        return (String)getAttributeInternal(DEPARTTIME);
+    }
 
-  /**Creates a Key object based on given key constituents
-   */
-  public static Key createPrimaryKey(Number id)
-  {
-    return new Key(new Object[]{id});
-  }
+    /**Sets <code>value</code> as the attribute value for DepartTime
+     */
+    public void setDepartTime(String value) {
+        setAttributeInternal(DEPARTTIME, value);
+    }
+
+    /**Creates a Key object based on given key constituents
+     */
+    public static Key createPrimaryKey(Number id) {
+        return new Key(new Object[] { id });
+    }
 }

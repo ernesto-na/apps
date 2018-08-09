@@ -58,6 +58,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamAOLMessages;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamConstantsUtil;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil2;
+import oracle.apps.fnd.framework.webui.OAPageContext; 
 
 
 /**
@@ -85,11 +86,22 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
      */
     public void processRequest(OAPageContext pageContext, OAWebBean webBean) {
         super.processRequest(pageContext, webBean);
-
+        OAPageContext oAPageContext = (OAPageContext)pageContext;
+        String lang = oAPageContext.getBaseLanguage();
         String msgError = null;
         String urlBase = XxGamConstantsUtil.URL_PAGE_OAF;
         HashMap hmap = new HashMap();
         String bandera = pageContext.getParameter("returnDialogPage");
+        
+        //TODO Borrar si no funciona
+        
+        if(null != pageContext.getParameter("Ok")){
+        System.out.println("Entro en el Ok");
+        System.out.println("Evento que mando: "+pageContext.getParameter(EVENT_PARAM));
+                 XxGamMAnticiposUtil.exePaymentReqProcessFromRequest(pageContext, 
+                                                                     webBean, 
+                                                                     "reserveFunds");
+              }
 
         if (pageContext != null && webBean != null && (bandera == null || "".equals(bandera))) {
             
@@ -770,6 +782,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                 }else{
                     System.out.println("Debug63: lMcpBudgetSummaryControlType "+lMcpBudgetSummaryControlType);
                     valXxgamMaTotalAmountVsXxgamMcpAvailableFunds(pageContext,webBean,lMcpBudgetSummaryControlType);
+                    
                 }
           }
           
@@ -1382,7 +1395,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
             if ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")))  )
                        {
                     // Caso 1
-                    System.out.println("Organizacion: ADISORY  y   Resumen: ADVISORY");
+                    System.out.println("C1 Organizacion: ADISORY  y   Resumen: ADVISORY");
                        System.out.println("Advisory");
                        System.out.println("retval: "+summary);
                         
@@ -1390,12 +1403,13 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                            OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
                            localOADialogPage.setOkButtonToPost(true);
                            localOADialogPage.setOkButtonLabel("Ok");
+                           localOADialogPage.setOkButtonItemName("Ok");
                            localOADialogPage.setPostToCallingPage(true);
                            Hashtable localHashtable = new Hashtable(1);
                            localOADialogPage.setFormParameters(localHashtable);
                            pageContext.redirectToDialogPage(localOADialogPage);
                        }
-          else if  (  ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE"))) ) && ((summary.equals("ABSOLUTO")) || (summary.equals("ABSOLUTE"))) )
+          else if  (  ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE")) ) ) ) //&& ( (summary.equals("ABSOLUTE")) || (summary.equals("ABSOLUTO")) ) )
            {
                // Caso 2
                 System.out.println("Organizacion: ABSOLUTE      y   Resumen: ABSOLUTE       ");
@@ -1409,23 +1423,8 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                        Hashtable localHashtable = new Hashtable(1);
                        localOADialogPage.setFormParameters(localHashtable);
                        pageContext.redirectToDialogPage(localOADialogPage);
+                       
            }
-             else if  ( ( (organization.equals("ABSOLUTE")||(organization.equals("ABSOLUTO"))) ) && ((summary.equals("INFORMATIVA")) || (summary.equals("ADVISORY")))  )
-              {
-                  // Caso 3
-                   System.out.println("Organizacion:  ABSOLUTE     y   Resumen: ADVISORY       ");
-                   
-                  System.out.println("Organizacion ABSOLUTA y summary INFORMATIVA");
-                          System.out.println("Absolute");
-                          OAException localOAException = new OAException(retval, OAException.ERROR);
-                          OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);
-                          localOADialogPage.setOkButtonToPost(true);
-                          localOADialogPage.setOkButtonLabel("Ok");
-                          localOADialogPage.setPostToCallingPage(true);
-                          Hashtable localHashtable = new Hashtable(1);
-                          localOADialogPage.setFormParameters(localHashtable);
-                          pageContext.redirectToDialogPage(localOADialogPage);
-              }
              else if  ( ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals("ABSOLUTE")) || (summary.equals("ABSOLUTO")))  )
               {
                   // Caso 4
@@ -1443,7 +1442,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
               }
               
               ///Validacion contra nada
-               if (  ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && ((summary.equals(""))   ))
+               if (  ( (organization.equals("ADVISORY")||(organization.equals("INFORMATIVA"))) ) && (((summary.equals("NONE"))||(summary.equals("NINGUNO")) || (summary.equals("")) )))
                           {
                               // Caso 5
                                System.out.println("Organizacion: ADVISORY      y   Resumen:   NULL     ");
@@ -1455,12 +1454,13 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                               OADialogPage localOADialogPage = new OADialogPage(OAException.WARNING , localOAException, null, "", null);
                               localOADialogPage.setOkButtonToPost(true);
                               localOADialogPage.setOkButtonLabel("Ok");
+                              localOADialogPage.setOkButtonItemName("Ok");
                               localOADialogPage.setPostToCallingPage(true);
                               Hashtable localHashtable = new Hashtable(1);
                               localOADialogPage.setFormParameters(localHashtable);
                               pageContext.redirectToDialogPage(localOADialogPage);
                           }
-               else if  ( ( (organization.equals("ABSOLUTO")||(organization.equals("ABSOLUTE"))) )&& ((summary.equals(""))  ))
+               else if  ( ( (organization.equals("ABSOLUTO")) || (organization.equals("ABSOLUTE")) ) && ( ((summary.equals("NONE"))||(summary.equals("NINGUNO"))) || (summary.equals("")) ) )
                {
                    // Caso 6
                           System.out.println("Organizacion: ABSOLUTE       y   Resumen:   NULL     ");
@@ -1475,7 +1475,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                           localOADialogPage.setFormParameters(localHashtable);
                           pageContext.redirectToDialogPage(localOADialogPage);
                }
-                else if  ( ( (organization.equals("") ) && ((summary.equals("ABSOLUTO")) ) || (summary.equals("ABSOLUTE")))  )
+                else if  ( (( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) ) && ( ( (summary.equals("ABSOLUTO")) || (summary.equals("ABSOLUTE")) )  ) )
                  {
                  
                      // Caso 7
@@ -1491,7 +1491,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                              localOADialogPage.setFormParameters(localHashtable);
                              pageContext.redirectToDialogPage(localOADialogPage);
                  }
-                else if  ( ( (organization.equals("") )) && ((summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")))  )
+                else if  ( ( ( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) ) && ( (summary.equals("ADVISORY")) || (summary.equals("INFORMATIVA")) )  )
                  {
                      // Caso 8
                              System.out.println("Organizacion:  NULL     y   Resumen:  ADVISORY      ");
@@ -1506,7 +1506,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                              localOADialogPage.setFormParameters(localHashtable);
                              pageContext.redirectToDialogPage(localOADialogPage);
                  }
-             else if  ( ( (organization.equals("") )) && ((summary.equals(""))  ) )
+             else if  (( ( (organization.equals("NONE")) || (organization.equals("NINGUNO")) ) || (organization.equals("")) )  && ( ((summary.equals("NONE"))||(summary.equals("NINGUNO"))) || (summary.equals("")) ) )
               {
                 //Caso 9
                           System.out.println("Organizacion:  NULL     y   Resumen:  NULL      ");
@@ -1521,6 +1521,7 @@ public class XxGamPaymentReqReviewCO extends OAControllerImpl {
                           localOADialogPage.setFormParameters(localHashtable);
                           pageContext.redirectToDialogPage(localOADialogPage);
               }
+           
            
             /*OAException localOAException = new OAException( retval, OAException.ERROR);
             OADialogPage localOADialogPage = new OADialogPage(OAException.ERROR , localOAException, null, "", null);

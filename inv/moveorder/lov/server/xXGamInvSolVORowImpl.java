@@ -1,8 +1,10 @@
 package xxgam.oracle.apps.inv.moveorder.lov.server;
 
 import oracle.apps.fnd.framework.server.OAViewRowImpl;
+
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.AttributeDefImpl;
+
 
 public class xXGamInvSolVORowImpl extends OAViewRowImpl {
 
@@ -16,22 +18,23 @@ public class xXGamInvSolVORowImpl extends OAViewRowImpl {
 
 
     public String getNroSolicitud() {
-      return (String)this.getAttributeInternal(0);
-   }
+        return (String)this.getAttributeInternal(0);
+    }
 
-   public void setNroSolicitud(String value) {
-      this.setAttributeInternal(0, value);
-   }
+    public void setNroSolicitud(String value) {
+        this.setAttributeInternal(0, value);
+    }
 
-   public Number getSoliId() {
-      return (Number)this.getAttributeInternal(1);
-   }
+    public Number getSoliId() {
+        return (Number)this.getAttributeInternal(1);
+    }
 
-   public void setSoliId(Number value) {
-      this.setAttributeInternal(1, value);
-   }
+    public void setSoliId(Number value) {
+        this.setAttributeInternal(1, value);
+    }
 
-   protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef) throws Exception {
+    protected Object getAttrInvokeAccessor(int index, 
+                                           AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case NROSOLICITUD:
             return getNroSolicitud();
@@ -42,7 +45,8 @@ public class xXGamInvSolVORowImpl extends OAViewRowImpl {
         }
     }
 
-   protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef) throws Exception {
+    protected void setAttrInvokeAccessor(int index, Object value, 
+                                         AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         default:
             super.setAttrInvokeAccessor(index, value, attrDef);

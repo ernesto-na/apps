@@ -1,7 +1,5 @@
 package xxgam.oracle.apps.xbol.maf.server;
 
-import java.sql.SQLException;
-
 import oracle.apps.fnd.framework.OAException;
 import oracle.apps.fnd.framework.OARow;
 import oracle.apps.fnd.framework.server.OAViewObjectImpl;
@@ -52,16 +50,16 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
             rowActual.setEmail(rowBase.getEmail());
             rowActual.setTypeEmission(rowBase.getTypeEmission());
             rowActual.setBenefits(rowBase.getBenefits());
-          /**  rowActual.setBeneficiary(rowBase.getBeneficiary()); **/
+            /**  rowActual.setBeneficiary(rowBase.getBeneficiary()); **/
             rowActual.setCompany(rowBase.getCompany());
             rowActual.setRelationship(rowBase.getRelationship());
-            
-            /*Campos a�adidos para la nueva estructura de franquicia GNOSISHCM/AHH*/  
+
+            /*Campos a�adidos para la nueva estructura de franquicia GNOSISHCM/AHH*/
             rowActual.setTicketClass(rowBase.getTicketClass());
             rowActual.setTicketRate(rowBase.getTicketRate());
             rowActual.setTicketAvailable(rowBase.getTicketAvailable());
             rowActual.setTicketEmbargoed(rowBase.getTicketEmbargoed());
-            
+
             rowActual.setNewRowState(Row.STATUS_NEW);
 
         } catch (Exception exception) {
@@ -158,16 +156,16 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
     public void addNewTicket(String filial) {
         XxGamMaTicketPVOImpl voXxGamMaTicket = 
             this.getXxGamModAntAM().getXxGamMaTicketPVO3();
-        if(voXxGamMaTicket != null){
-            if(!voXxGamMaTicket.isPreparedForExecution()){
-                voXxGamMaTicket.executeQuery();    
+        if (voXxGamMaTicket != null) {
+            if (!voXxGamMaTicket.isPreparedForExecution()) {
+                voXxGamMaTicket.executeQuery();
             }
-            
+
             XxGamMaTicketPVORowImpl rowXxGamMaTicketP = 
                 (XxGamMaTicketPVORowImpl)voXxGamMaTicket.createRow();
             rowXxGamMaTicketP.setNewRowState(OARow.STATUS_INITIALIZED);
             rowXxGamMaTicketP.setTypeEmission("ELECTRONICA");
-            if(null != filial)
+            if (null != filial)
                 rowXxGamMaTicketP.setFilial(filial);
             voXxGamMaTicket.insertRow(rowXxGamMaTicketP);
         }
@@ -181,11 +179,11 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
         //Verifica nulidad
         XxGamMaTicketPVOImpl voXxGamMaTicket = 
             this.getXxGamModAntAM().getXxGamMaTicketPVO4();
-        if(voXxGamMaTicket != null){
-            if(!voXxGamMaTicket.isPreparedForExecution()){
+        if (voXxGamMaTicket != null) {
+            if (!voXxGamMaTicket.isPreparedForExecution()) {
                 voXxGamMaTicket.executeQuery();
             }
-            
+
             XxGamMaTicketPVORowImpl rowXxGamMaTicketP = 
                 (XxGamMaTicketPVORowImpl)voXxGamMaTicket.createRow();
             rowXxGamMaTicketP.setNewRowState(OARow.STATUS_INITIALIZED);
@@ -213,7 +211,8 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
                 System.out.println(filas.length);
                 if (filas.length > 0) {
                     setCurrentRow(filas[0]);
-                    XxGamMaTicketPVORowImpl r = (XxGamMaTicketPVORowImpl)getCurrentRow();
+                    XxGamMaTicketPVORowImpl r = 
+                        (XxGamMaTicketPVORowImpl)getCurrentRow();
                     id = r.getId();
                 }
             }
@@ -362,7 +361,7 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
             rowXxGamMaTicketP.setRelationshipdescription(relationShip);
         }
     }
-    
+
     /**
      * Asigna el valor para el tipo o porcentaje de beneficio
      * @param benefitsDesc contiene la descripcion de beneficio
@@ -374,7 +373,7 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
             rowXxGamMaTicketP.setBenefitsDescription(benefitsDesc);
         }
     }
-    
+
     /**
      * Obtiene el valor de tipo o porcentaje de beneficio
      * @return devuelve valor de codigo de beneficio
@@ -522,8 +521,8 @@ public class XxGamMaTicketPVOImpl extends OAViewObjectImpl {
         XxGamMaFlightInf0VORowImpl rowXxGamMaFlightInf = null;
         for (Row rowIter: row) {
             rowXxGamMaFlightInf = (XxGamMaFlightInf0VORowImpl)rowIter;
-            vuelos =  vuelos+
-                    rowXxGamMaFlightInf.getTravelingFrom() + "-" + rowXxGamMaFlightInf.getTravelingTo() + 
+            vuelos = 
+                    vuelos + rowXxGamMaFlightInf.getTravelingFrom() + "-" + rowXxGamMaFlightInf.getTravelingTo() + 
                     " : "; //change by dihu 22 Oct 2014 para correguir el orden de las rutas en el workflow
         }
         return vuelos;

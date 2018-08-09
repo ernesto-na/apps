@@ -45,9 +45,10 @@ public class XxGamMaFlightInf0VOImpl extends OAViewObjectImpl {
         try {
 
             rowActual = (XxGamMaFlightInf0VORowImpl)iterNuevo.createRow();
-            
-            
-            oracle.jbo.domain.Date currentDate = XxGamMAnticiposUtil.getFechaActual();
+
+
+            oracle.jbo.domain.Date currentDate = 
+                XxGamMAnticiposUtil.getFechaActual();
 
             //Inicializa los valores del registro
             rowActual.setTravelingFrom(rowBase.getTravelingFrom());
@@ -124,53 +125,54 @@ public class XxGamMaFlightInf0VOImpl extends OAViewObjectImpl {
             }
             clearViewCriterias();
         } catch (Exception exception) {
-             clearViewCriterias();
+            clearViewCriterias();
         }
         return;
     }
-    
+
     public void deleteFlightEmployee(Number flightId) {
         Row[] deleteRows = null;
         deleteRows = getFilteredRows("Id", flightId);
-        if(deleteRows != null){
+        if (deleteRows != null) {
             if (deleteRows.length > 0) {
                 deleteRows[0].remove();
                 deleteRows = null;
                 deleteRows = getFilteredRows("Id", flightId);
-                if(deleteRows != null){
-                    if(deleteRows.length > 0){
-                        throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                                          XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_ERROR,
-                                                              null, OAException.ERROR, null);
-                    }else{
-                        throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                                          XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_INFO,
-                                                              null, OAException.INFORMATION, null);
+                if (deleteRows != null) {
+                    if (deleteRows.length > 0) {
+                        throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                              XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_ERROR, 
+                                              null, OAException.ERROR, null);
+                    } else {
+                        throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                              XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_INFO, 
+                                              null, OAException.INFORMATION, 
+                                              null);
                     }
-                }else{
-                    throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                                      XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_INFO,
-                                                          null, OAException.INFORMATION, null);
+                } else {
+                    throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                          XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_DEL_INFO, 
+                                          null, OAException.INFORMATION, null);
                 }
             } else {
-                throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                                  XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_NF_ERROR,
-                                                      null, OAException.WARNING, null);
+                throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                      XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_NF_ERROR, 
+                                      null, OAException.WARNING, null);
             }
-        }else{
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                              XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_NF_ERROR,
-                                                  null, OAException.WARNING, null);
+        } else {
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_TKT_F_NF_ERROR, 
+                                  null, OAException.WARNING, null);
         }
     }
-    
+
     /**
      * Obtiene la oficina de boletos
      * @return Oficina de boletos
      */
     public String findRouteFlight(Number flightId) {
         String routeFlight = null;
-        
+
         //Verifica nulidad
         if (flightId == null)
             return null;
@@ -199,17 +201,17 @@ public class XxGamMaFlightInf0VOImpl extends OAViewObjectImpl {
             }
             clearViewCriterias();
         } catch (Exception exception) {
-             clearViewCriterias();
+            clearViewCriterias();
         }
         return routeFlight;
     }
-    
+
     /**
      * Inicializa las descripciones de las routas de los vuelos
      * @return devuelve true si la inicializacion es correcta o false en caso contrario
      */
     public boolean setFlightRouteDescription() {
-       System.out.println("Comienza Capa View Object Impl setFlightRouteDescription"); 
+        System.out.println("Comienza Capa View Object Impl setFlightRouteDescription");
         boolean isSuccess = false;
         RowSetIterator flightIter = createRowSetIterator(null);
         flightIter.setRangeStart(0);
@@ -227,7 +229,8 @@ public class XxGamMaFlightInf0VOImpl extends OAViewObjectImpl {
                 if (currentFlight != null) {
 
                     if (currentFlight.getTravelingFrom() != null) {
-                    System.out.println("currentFlight.getTravelingFrom()-->"+currentFlight.getTravelingFrom());
+                        System.out.println("currentFlight.getTravelingFrom()-->" + 
+                                           currentFlight.getTravelingFrom());
                         XxGamMaFlightRouteLovVORowImpl routeFromRow = 
                             amLov.getFlightRouteLovRow(currentFlight.getTravelingFrom());
                         if (routeFromRow != null) {
@@ -247,16 +250,16 @@ public class XxGamMaFlightInf0VOImpl extends OAViewObjectImpl {
                     }
                 }
             }
-            
+
             flightIter.closeRowSetIterator();
-            
+
             if (isNotFound) {
                 isSuccess = false;
             } else {
                 isSuccess = true;
             }
         }
-      System.out.println("Finaliza setFlightRouteDescription"); 
+        System.out.println("Finaliza setFlightRouteDescription");
         return isSuccess;
     }
 }

@@ -31,13 +31,13 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
  */
 public class XxGamATicketConsultationCO extends OAControllerImpl {
     public static final String RCS_ID = "$Header$";
-    public static final boolean RCS_ID_RECORDED =
+    public static final boolean RCS_ID_RECORDED = 
         VersionInfo.recordClassVersion(RCS_ID, "%packagename%");
 
     /**
      * Resumen de la pagina de pago de la solicitud de anticipo.
      */
-    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG =
+    public static final String XX_GAM_PAYMENT_REQ_REVIEW_PG = 
         "XxGamPaymentReqTicketPlanePG";
 
     /**
@@ -48,35 +48,41 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
     public void processRequest(OAPageContext pageContext, OAWebBean webBean) {
         super.processRequest(pageContext, webBean);
 
-        if(!pageContext.isFormSubmission()){    
+        if (!pageContext.isFormSubmission()) {
             System.out.println("FormSubmissionTickConsulPGBug1");
-            if(null!=pageContext.getParameter("pfranchiseType")&&!"".equals(pageContext.getParameter("pfranchiseType"))){
-              pageContext.putSessionValue("sfranchiseType",pageContext.getParameter("pfranchiseType")); 
+            if (null != pageContext.getParameter("pfranchiseType") && 
+                !"".equals(pageContext.getParameter("pfranchiseType"))) {
+                pageContext.putSessionValue("sfranchiseType", 
+                                            pageContext.getParameter("pfranchiseType"));
             }
-            if(null!=pageContext.getParameter("pRequest")&&!"".equals(pageContext.getParameter("pRequest"))){
-              pageContext.putSessionValue("sRequest",pageContext.getParameter("pRequest")); 
-            } 
-            
+            if (null != pageContext.getParameter("pRequest") && 
+                !"".equals(pageContext.getParameter("pRequest"))) {
+                pageContext.putSessionValue("sRequest", 
+                                            pageContext.getParameter("pRequest"));
+            }
+
             /**** Inicializar View Objects por tipo de franquicias *****/
-            exeQueryConsultationTickets(pageContext,webBean); 
-            
-          }else{
-           System.out.println("FormSubmissionTickConsulPGBug2");
-           if(null==pageContext.getParameter("pfranchiseType")){
-             if(null!=pageContext.getSessionValue("sfranchiseType")){
-               pageContext.putParameter("pfranchiseType",pageContext.getSessionValue("sfranchiseType"));
-             }
-           } 
-          if(null==pageContext.getParameter("pRequest")){
-            if(null!=pageContext.getSessionValue("sRequest")){
-              pageContext.putParameter("pRequest",pageContext.getSessionValue("sRequest"));
+            exeQueryConsultationTickets(pageContext, webBean);
+
+        } else {
+            System.out.println("FormSubmissionTickConsulPGBug2");
+            if (null == pageContext.getParameter("pfranchiseType")) {
+                if (null != pageContext.getSessionValue("sfranchiseType")) {
+                    pageContext.putParameter("pfranchiseType", 
+                                             pageContext.getSessionValue("sfranchiseType"));
+                }
             }
-          }
+            if (null == pageContext.getParameter("pRequest")) {
+                if (null != pageContext.getSessionValue("sRequest")) {
+                    pageContext.putParameter("pRequest", 
+                                             pageContext.getSessionValue("sRequest"));
+                }
+            }
         }
-        
+
         //deshabilita la cache de la lista para tipos de anticipos
- 
-         OAMessageChoiceBean statusNotificationLov = 
+
+        OAMessageChoiceBean statusNotificationLov = 
             (OAMessageChoiceBean)webBean.findChildRecursive("StatusNotificationLov");
         if (statusNotificationLov != null) {
             statusNotificationLov.setPickListCacheEnabled(false);
@@ -93,7 +99,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
      * @param pageContext the current OA page context
      * @param webBean the web bean corresponding to the region
      */
-    public void processFormRequest(OAPageContext pageContext,
+    public void processFormRequest(OAPageContext pageContext, 
                                    OAWebBean webBean) {
         super.processFormRequest(pageContext, webBean);
 
@@ -102,15 +108,18 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
         searchButton = pageContext.getParameter(XxGamConstantsUtil.SEARCH);
         if (searchButton != null)
             searchTicketRequest(pageContext, webBean);
-            
-                //showDetailReq
+
+        //showDetailReq
         //Redirecciona a la siguiente pagina enviando el detalle.
         if (XxGamConstantsUtil.SHOW_DETAIL_REQUEST.equals(pageContext.getParameter(EVENT_PARAM))) {
-            System.out.println("miEventoShow"+XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString()+ " EVENT_PARAM ");
-                setForwardWhitParameters(pageContext, webBean);
-        }else
-        {
-        System.out.println("miEventoShow"+XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString()+ " EVENT_PARAM ");
+            System.out.println("miEventoShow" + 
+                               XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString() + 
+                               " EVENT_PARAM ");
+            setForwardWhitParameters(pageContext, webBean);
+        } else {
+            System.out.println("miEventoShow" + 
+                               XxGamConstantsUtil.SHOW_DETAIL_REQUEST.toString() + 
+                               " EVENT_PARAM ");
             setForwardWhitParameters(pageContext, webBean);
         }
 
@@ -122,7 +131,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
      * @param pageContext Contexto de la pagina.
      * @param webBean Web bean.
      */
-    public void searchTicketRequest(OAPageContext pageContext,
+    public void searchTicketRequest(OAPageContext pageContext, 
                                     OAWebBean webBean) {
         //Verifica nulidad
         System.out.println("Comienza searchTicketRequest CAPA CO ");
@@ -139,33 +148,34 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
         String operatingUnit = null;
 
         //Nombre del solicitante
-        nameRequester =
-                pageContext.getParameter(XxGamConstantsUtil.NAME_MI);
+        nameRequester = pageContext.getParameter(XxGamConstantsUtil.NAME_MI);
 
         //Folio de la solicitud.
-        numberPayment = pageContext.getParameter(XxGamConstantsUtil.NUMBER_PAYMENT);
+        numberPayment = 
+                pageContext.getParameter(XxGamConstantsUtil.NUMBER_PAYMENT);
 
         //Tipo de emisión
         typeEm = pageContext.getParameter(XxGamConstantsUtil.TYPE_EMP_MI);
 
         //Fecha inicio.
-        fromDate =
+        fromDate = 
                 XxGamMAnticiposUtil.converteDate(pageContext, pageContext.getParameter(XxGamConstantsUtil.FROM_DATE));
 
         //Fecha fin.
-        toDate =
+        toDate = 
                 XxGamMAnticiposUtil.converteDate(pageContext, pageContext.getParameter(XxGamConstantsUtil.TO_DATE));
-                
+
         //deshabilita la cache de la lista para tipos de anticipos
         OAMessageChoiceBean statusNotificationLov = 
             (OAMessageChoiceBean)webBean.findChildRecursive("StatusNotificationLov");
         if (statusNotificationLov != null) {
-            statusNotiCode = statusNotificationLov.getSelectionValue(pageContext);
+            statusNotiCode = 
+                    statusNotificationLov.getSelectionValue(pageContext);
         }
         //Unidad operativa 
-        
-         operatingUnit = pageContext.getParameter("OperatingUnitSearch");
-         System.out.println("Criterio Unidad Operativa:"+operatingUnit);
+
+        operatingUnit = pageContext.getParameter("OperatingUnitSearch");
+        System.out.println("Criterio Unidad Operativa:" + operatingUnit);
         //Inicia la busqueda de la solicitud
         /**
         XxGamMAnticiposUtil.searchTicketRequest(pageContext
@@ -177,21 +187,16 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
                                                 ,fromDate
                                                 ,toDate
                                                 ,statusNotiCode);
-        **/         
+        **/
         // Llamar a un metodo sobrecargado 
-         XxGamMAnticiposUtil.searchTicketRequest(pageContext
-                                                 ,webBean
-                                                 ,nameRequester
-                                                 ,numberPayment
-                                                 ,typeEm
-                                                 ,statusReq
-                                                 ,fromDate
-                                                 ,toDate
-                                                 ,statusNotiCode
-                                                 ,operatingUnit);
-                                                 
-                                                
-      System.out.println("Finaliza searchTicketRequest CAPA CO ");                                         
+        XxGamMAnticiposUtil.searchTicketRequest(pageContext, webBean, 
+                                                nameRequester, numberPayment, 
+                                                typeEm, statusReq, fromDate, 
+                                                toDate, statusNotiCode, 
+                                                operatingUnit);
+
+
+        System.out.println("Finaliza searchTicketRequest CAPA CO ");
     }
 
     /**
@@ -200,7 +205,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
      * @param pageContext Contexto de la pagina
      * @param webBean Web bean.
      */
-    private void setForwardWhitParameters(OAPageContext pageContext,
+    private void setForwardWhitParameters(OAPageContext pageContext, 
                                           OAWebBean webBean) {
 
         //VErifica nulidad
@@ -222,83 +227,103 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
             //Obtiene los parametros y los inicializa
             sParam = pageContext.getParameter(XxGamConstantsUtil.TICKET_ID);
             nRequestId = XxGamMAnticiposUtil.converteNumber(sParam);
-            typeRequest = pageContext.getParameter(XxGamConstantsUtil.TYPE_REQUEST_TICKET);
-            paymentId = XxGamMAnticiposUtil.converteNumber(pageContext.getParameter(XxGamConstantsUtil.PAYMENT_ID));
-            generalId = XxGamMAnticiposUtil.converteNumber(pageContext.getParameter(XxGamConstantsUtil.GENERAL_ID));
-            operatingUnit = pageContext.getParameter(XxGamConstantsUtil.OPERATING_UNIT);
-            
-                    
+            typeRequest = 
+                    pageContext.getParameter(XxGamConstantsUtil.TYPE_REQUEST_TICKET);
+            paymentId = 
+                    XxGamMAnticiposUtil.converteNumber(pageContext.getParameter(XxGamConstantsUtil.PAYMENT_ID));
+            generalId = 
+                    XxGamMAnticiposUtil.converteNumber(pageContext.getParameter(XxGamConstantsUtil.GENERAL_ID));
+            operatingUnit = 
+                    pageContext.getParameter(XxGamConstantsUtil.OPERATING_UNIT);
+
+
             OAMessageChoiceBean statusNotificationLov = 
                 (OAMessageChoiceBean)webBean.findChildRecursive("StatusNotificationLov");
             /*if (statusNotificationLov != null) {
                 statusNotiCode = statusNotificationLov.getSelectionValue(pageContext);
-                
+
             }*/
-            System.out.println("***typeRequest: "+typeRequest+" ***");
-            System.out.println("***operatingUnit: "+operatingUnit+" ***");
-            
+            System.out.println("***typeRequest: " + typeRequest + " ***");
+            System.out.println("***operatingUnit: " + operatingUnit + " ***");
+
             if (typeRequest.equals(XxGamConstantsUtil.REQUEST_TYPE_FRANCHISE)) {
-                statusNotiCode = pageContext.getParameter("StatusNotificationDesc");
+                statusNotiCode = 
+                        pageContext.getParameter("StatusNotificationDesc");
             } else {
-                statusNotiCode = pageContext.getParameter("StatusNotificationDesc1"); 
+                statusNotiCode = 
+                        pageContext.getParameter("StatusNotificationDesc1");
             }
-            System.out.println("***statusNotiC: "+statusNotiCode+" ***");
-            
-            sURL = XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
-            System.out.println("URL: "+sURL);
-            
+            System.out.println("***statusNotiC: " + statusNotiCode + " ***");
+
+            sURL = 
+XxGamConstantsUtil.URL_PAGE_OAF + XX_GAM_PAYMENT_REQ_REVIEW_PG;
+            System.out.println("URL: " + sURL);
+
             hParameters.put(XxGamConstantsUtil.TICKET_ID, sParam);
             hParameters.put(XxGamConstantsUtil.PAYMENT_ID, paymentId);
             hParameters.put(XxGamConstantsUtil.GENERAL_ID, generalId);
             hParameters.put(XxGamConstantsUtil.OPERATING_UNIT, operatingUnit);
-            hParameters.put(XxGamConstantsUtil.TYPE_REQUEST_TICKET, typeRequest);
+            hParameters.put(XxGamConstantsUtil.TYPE_REQUEST_TICKET, 
+                            typeRequest);
             hParameters.put("statusNotiCode", statusNotiCode);
-            
-          /*******/
-           String strFranchiseType = null; 
-           String strRequestType = null; 
-           String nvlFranchiseType = null; 
-           String nvlRequestType = null; 
-                       
-                  
-           if(null!=pageContext.getParameter("pfranchiseType")&&!"".equals(pageContext.getParameter("pfranchiseType"))){
-           strFranchiseType = pageContext.getParameter("pfranchiseType"); 
-           }
-                        
-           if(null!=pageContext.getParameter("pRequest")&&!"".equals(pageContext.getParameter("pRequest"))){
-           strRequestType = pageContext.getParameter("pRequest"); 
-           } 
-                      
-           nvlFranchiseType = (null==strFranchiseType)?(String)pageContext.getSessionValue("sfranchiseType"):strFranchiseType; 
-           nvlRequestType = (null==strRequestType)?(String)pageContext.getSessionValue("sRequest"):strRequestType; 
-           
-          XxGamMAnticiposUtil.debugMessage(XxGamConstantsUtil.DEBUG_OUTLINE_MODE,"franchiseType TickConPG: "+nvlFranchiseType,pageContext,webBean);
-          XxGamMAnticiposUtil.debugMessage(XxGamConstantsUtil.DEBUG_OUTLINE_MODE,"Request TickConPG: "+nvlRequestType,pageContext,webBean);
-                
-                
-           if(null==pageContext.getParameter("pfranchiseType")){
-             pageContext.putParameter("pfranchiseType",nvlFranchiseType);
-           }
-           if(null==pageContext.getParameter("pRequest")){
-             pageContext.putParameter("pRequest",nvlRequestType);
-           }
-          /*******/
-          
-            
-            
-            System.out.println("***statusNotiCode0: "+statusNotiCode+" ***");
+
+            /*******/
+            String strFranchiseType = null;
+            String strRequestType = null;
+            String nvlFranchiseType = null;
+            String nvlRequestType = null;
+
+
+            if (null != pageContext.getParameter("pfranchiseType") && 
+                !"".equals(pageContext.getParameter("pfranchiseType"))) {
+                strFranchiseType = pageContext.getParameter("pfranchiseType");
+            }
+
+            if (null != pageContext.getParameter("pRequest") && 
+                !"".equals(pageContext.getParameter("pRequest"))) {
+                strRequestType = pageContext.getParameter("pRequest");
+            }
+
+            nvlFranchiseType = 
+                    (null == strFranchiseType) ? (String)pageContext.getSessionValue("sfranchiseType") : 
+                    strFranchiseType;
+            nvlRequestType = 
+                    (null == strRequestType) ? (String)pageContext.getSessionValue("sRequest") : 
+                    strRequestType;
+
+            XxGamMAnticiposUtil.debugMessage(XxGamConstantsUtil.DEBUG_OUTLINE_MODE, 
+                                             "franchiseType TickConPG: " + 
+                                             nvlFranchiseType, pageContext, 
+                                             webBean);
+            XxGamMAnticiposUtil.debugMessage(XxGamConstantsUtil.DEBUG_OUTLINE_MODE, 
+                                             "Request TickConPG: " + 
+                                             nvlRequestType, pageContext, 
+                                             webBean);
+
+
+            if (null == pageContext.getParameter("pfranchiseType")) {
+                pageContext.putParameter("pfranchiseType", nvlFranchiseType);
+            }
+            if (null == pageContext.getParameter("pRequest")) {
+                pageContext.putParameter("pRequest", nvlRequestType);
+            }
+            /*******/
+
+
+            System.out.println("***statusNotiCode0: " + statusNotiCode + 
+                               " ***");
             //Inicializa los parametros
-            XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean,
+            XxGamMAnticiposUtil.setForwardWhitParameters(pageContext, webBean, 
                                                          hParameters, sURL);
 
         } catch (Exception exception) {
-        System.out.println("--- "+exception.getMessage());
-            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                              XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR,
-                                              null, OAException.WARNING, null);
+            System.out.println("--- " + exception.getMessage());
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_DATANF_ERROR, 
+                                  null, OAException.WARNING, null);
         }
     }
-    
+
     /**
      * Procesa y muestra mensajes informativos y de error
      * @param pageContext contiene el objeto de OAPageContext procedente de la pantalla de solicitud de boletos
@@ -311,7 +336,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
 
             String msg = null;
             msg = 
-    pageContext.getParameter(XxGamConstantsUtil.LOAD_PAGE_MSG_INFO);
+pageContext.getParameter(XxGamConstantsUtil.LOAD_PAGE_MSG_INFO);
             if (msg != null) {
                 //Propaga la excepcion.
                 throw new OAException(msg, OAException.INFORMATION);
@@ -319,7 +344,7 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
 
             msg = null;
             msg = 
-    pageContext.getParameter(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR);
+pageContext.getParameter(XxGamConstantsUtil.LOAD_PAGE_MSG_ERROR);
             if (msg != null) {
                 //Propaga la excepcion.
                 throw new OAException(msg, OAException.WARNING);
@@ -327,37 +352,31 @@ public class XxGamATicketConsultationCO extends OAControllerImpl {
         }
     }
 
- /**
-   * Metodo para inicializar view Objects por tipos de franquicias
-   * @param pageContext
-   * @param webBean
-   */
-  private void exeQueryConsultationTickets(OAPageContext pageContext, 
-                                           OAWebBean webBean)
-  {
-    if (pageContext == null || webBean == null)
-        return;
+    /**
+     * Metodo para inicializar view Objects por tipos de franquicias
+     * @param pageContext
+     * @param webBean
+     */
+    private void exeQueryConsultationTickets(OAPageContext pageContext, 
+                                             OAWebBean webBean) {
+        if (pageContext == null || webBean == null)
+            return;
 
-    String nameRequester = null;
-    String numberPayment = null;
-    String typeEm = null;
-    String statusReq = null;
-    Date fromDate = null;
-    Date toDate = null;
-    String statusNotiCode = null;
-    String operatingUnit = null;
-    // Llamar a un metodo sobrecargado 
-     XxGamMAnticiposUtil.searchTicketRequest(pageContext
-                                             ,webBean
-                                             ,nameRequester
-                                             ,numberPayment
-                                             ,typeEm
-                                             ,statusReq
-                                             ,fromDate
-                                             ,toDate
-                                             ,statusNotiCode
-                                             ,operatingUnit);
-    
-  }
-  
+        String nameRequester = null;
+        String numberPayment = null;
+        String typeEm = null;
+        String statusReq = null;
+        Date fromDate = null;
+        Date toDate = null;
+        String statusNotiCode = null;
+        String operatingUnit = null;
+        // Llamar a un metodo sobrecargado 
+        XxGamMAnticiposUtil.searchTicketRequest(pageContext, webBean, 
+                                                nameRequester, numberPayment, 
+                                                typeEm, statusReq, fromDate, 
+                                                toDate, statusNotiCode, 
+                                                operatingUnit);
+
+    }
+
 }

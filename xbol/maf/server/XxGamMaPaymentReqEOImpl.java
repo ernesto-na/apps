@@ -10,7 +10,6 @@ import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.AttributeDefImpl;
 import oracle.jbo.server.EntityDefImpl;
-
 import oracle.jbo.server.TransactionEvent;
 
 import xxgam.oracle.apps.xbol.maf.utils.XxGamConstantsUtil;
@@ -62,17 +61,20 @@ public class XxGamMaPaymentReqEOImpl extends OAEntityImpl {
     }
 
     public void postChanges(TransactionEvent transactionEvent) {
-            XxGamMaGeneralReqEOImpl generalReq = getXxGamMaGeneralReqEO();
-            if (generalReq != null && (generalReq.getPostState() == STATUS_NEW || generalReq.getPostState() == STATUS_MODIFIED)){
-                generalReq.postChanges(transactionEvent);
-            }
-            super.postChanges(transactionEvent);
+        XxGamMaGeneralReqEOImpl generalReq = getXxGamMaGeneralReqEO();
+        if (generalReq != null && 
+            (generalReq.getPostState() == STATUS_NEW || generalReq.getPostState() == 
+             STATUS_MODIFIED)) {
+            generalReq.postChanges(transactionEvent);
+        }
+        super.postChanges(transactionEvent);
     }
-    
-    protected void validateEntity() { 
 
-        String isValidate = (String)getOADBTransaction().getTransientValue("IsValidateEntityDetail");
-        if(isValidate == null || !"false".equals(isValidate)){
+    protected void validateEntity() {
+
+        String isValidate = 
+            (String)getOADBTransaction().getTransientValue("IsValidateEntityDetail");
+        if (isValidate == null || !"false".equals(isValidate)) {
             super.validateEntity();
         }
     }
@@ -237,7 +239,7 @@ public class XxGamMaPaymentReqEOImpl extends OAEntityImpl {
 
     /**getAttrInvokeAccessor: generated method. Do not modify.
      */
-    protected Object getAttrInvokeAccessor(int index,
+    protected Object getAttrInvokeAccessor(int index, 
                                            AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case ID:
@@ -285,7 +287,7 @@ public class XxGamMaPaymentReqEOImpl extends OAEntityImpl {
 
     /**setAttrInvokeAccessor: generated method. Do not modify.
      */
-    protected void setAttrInvokeAccessor(int index, Object value,
+    protected void setAttrInvokeAccessor(int index, Object value, 
                                          AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case ID:
@@ -334,7 +336,7 @@ public class XxGamMaPaymentReqEOImpl extends OAEntityImpl {
 
 
         Number PaymentId = null;
-        PaymentId =
+        PaymentId = 
                 getOADBTransaction().getSequenceValue(XxGamConstantsUtil.XXGAM_MA_PAYMENT_REQ_S);
 
         //Inicializa la clave primaria
@@ -400,6 +402,6 @@ public class XxGamMaPaymentReqEOImpl extends OAEntityImpl {
     /**Creates a Key object based on given key constituents
      */
     public static Key createPrimaryKey(Number id) {
-        return new Key(new Object[]{id});
+        return new Key(new Object[] { id });
     }
 }

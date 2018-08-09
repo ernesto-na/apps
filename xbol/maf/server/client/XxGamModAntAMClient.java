@@ -20,10 +20,10 @@ public class XxGamModAntAMClient extends ApplicationModuleImpl implements XxGamM
         return (ApplicationModule)findApplicationModule("XxGamModAntLovAM1");
     }
 
-  public void duplicatePayment(String sReference)
-  {
-    Object _ret = 
-      this.riInvokeExportedMethod(this,"duplicatePayment",new String [] {"java.lang.String"},new Object[] {sReference});
-    return;
-  }
+    public void duplicatePayment(String sReference) {
+        Object _ret = 
+            this.riInvokeExportedMethod(this, "duplicatePayment", new String[] { "java.lang.String" }, 
+                                        new Object[] { sReference });
+        return;
+    }
 }

@@ -4,6 +4,7 @@ import oracle.apps.fnd.common.MessageToken;
 import oracle.apps.fnd.framework.OARowValException;
 import oracle.apps.fnd.framework.server.OAEntityDefImpl;
 import oracle.apps.fnd.framework.server.OAEntityImpl;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
 import oracle.jbo.domain.Date;
@@ -11,6 +12,7 @@ import oracle.jbo.domain.Number;
 import oracle.jbo.server.AttributeDefImpl;
 import oracle.jbo.server.EntityDefImpl;
 import oracle.jbo.server.TransactionEvent;
+
 
 public class xXGamInvSoliDtlEOImpl extends OAEntityImpl {
 
@@ -70,278 +72,279 @@ public class xXGamInvSoliDtlEOImpl extends OAEntityImpl {
     }
 
     public Number getSoliId() {
-      return (Number)this.getAttributeInternal(0);
-   }
-
-   public void setSoliId(Number value) {
-      this.setAttributeInternal(0, value);
-   }
-
-   public Number getSoliDtlId() {
-      return (Number)this.getAttributeInternal(1);
-   }
-
-   public void setSoliDtlId(Number value) {
-      this.setAttributeInternal(1, value);
-   }
-
-   public Number getDotaId() {
-      return (Number)this.getAttributeInternal(2);
-   }
-
-   public void setDotaId(Number value) {
-      this.setAttributeInternal(2, value);
-   }
-
-   public Number getTallaId() {
-      return (Number)this.getAttributeInternal(3);
-   }
-
-   public void setTallaId(Number value) {
-      this.setAttributeInternal(3, value);
-   }
-
-   public Number getQtyNbr() {
-      return (Number)this.getAttributeInternal(4);
-   }
-
-   public void setQtyNbr(Number value) {
-      this.setAttributeInternal(4, value);
-   }
-
-   public Date getLastDelivDate() {
-      return (Date)this.getAttributeInternal(5);
-   }
-
-   public void setLastDelivDate(Date value) {
-      this.setAttributeInternal(5, value);
-   }
-
-   public Number getLineNumber() {
-      return (Number)this.getAttributeInternal(6);
-   }
-
-   public void setLineNumber(Number value) {
-      this.setAttributeInternal(6, value);
-   }
-
-   public String getStatus() {
-      return (String)this.getAttributeInternal(7);
-   }
-
-   public void setStatus(String value) {
-      this.setAttributeInternal(7, value);
-   }
-
-   public Number getQtyPlanta() {
-      return (Number)this.getAttributeInternal(8);
-   }
-
-   public void setQtyPlanta(Number value) {
-      this.setAttributeInternal(8, value);
-   }
-
-   public Number getQtyEventual() {
-      return (Number)this.getAttributeInternal(9);
-   }
-
-   public void setQtyEventual(Number value) {
-      this.setAttributeInternal(9, value);
-   }
-
-   public String getMonthDota() {
-      return (String)this.getAttributeInternal(10);
-   }
-
-   public void setMonthDota(String value) {
-      this.setAttributeInternal(10, value);
-   }
-
-   public Number getLineId() {
-      return (Number)this.getAttributeInternal(11);
-   }
-
-   public void setLineId(Number value) {
-      this.setAttributeInternal(11, value);
-   }
-
-   public String getMessageError() {
-      return (String)this.getAttributeInternal(12);
-   }
-
-   public void setMessageError(String value) {
-      this.setAttributeInternal(12, value);
-   }
-
-   public Number getDotaIdF() {
-      return (Number)this.getAttributeInternal(13);
-   }
-
-   public void setDotaIdF(Number value) {
-      this.setAttributeInternal(13, value);
-   }
-
-   public String getAttribute1() {
-      return (String)this.getAttributeInternal(14);
-   }
-
-   public void setAttribute1(String value) {
-      this.setAttributeInternal(14, value);
-   }
-
-   public String getAttribute2() {
-      return (String)this.getAttributeInternal(15);
-   }
-
-   public void setAttribute2(String value) {
-      this.setAttributeInternal(15, value);
-   }
-
-   public String getAttribute3() {
-      return (String)this.getAttributeInternal(16);
-   }
-
-   public void setAttribute3(String value) {
-      this.setAttributeInternal(16, value);
-   }
-
-   public String getAttribute4() {
-      return (String)this.getAttributeInternal(17);
-   }
-
-   public void setAttribute4(String value) {
-      this.setAttributeInternal(17, value);
-   }
-
-   public String getAttribute5() {
-      return (String)this.getAttributeInternal(18);
-   }
-
-   public void setAttribute5(String value) {
-      this.setAttributeInternal(18, value);
-   }
-
-   public String getAttribute6() {
-      return (String)this.getAttributeInternal(19);
-   }
-
-   public void setAttribute6(String value) {
-      this.setAttributeInternal(19, value);
-   }
-
-   public String getAttribute7() {
-      return (String)this.getAttributeInternal(20);
-   }
-
-   public void setAttribute7(String value) {
-      this.setAttributeInternal(20, value);
-   }
-
-   public String getAttribute8() {
-      return (String)this.getAttributeInternal(21);
-   }
-
-   public void setAttribute8(String value) {
-      this.setAttributeInternal(21, value);
-   }
-
-   public String getAttribute9() {
-      return (String)this.getAttributeInternal(22);
-   }
-
-   public void setAttribute9(String value) {
-      this.setAttributeInternal(22, value);
-   }
-
-   public String getAttribute10() {
-      return (String)this.getAttributeInternal(23);
-   }
-
-   public void setAttribute10(String value) {
-      this.setAttributeInternal(23, value);
-   }
-
-   public Number getCreatedBy() {
-      return (Number)this.getAttributeInternal(24);
-   }
-
-   public void setCreatedBy(Number value) {
-      this.setAttributeInternal(24, value);
-   }
-
-   public Date getCreationDate() {
-      return (Date)this.getAttributeInternal(25);
-   }
-
-   public void setCreationDate(Date value) {
-      this.setAttributeInternal(25, value);
-   }
-
-   public Number getLastUpdatedBy() {
-      return (Number)this.getAttributeInternal(26);
-   }
-
-   public void setLastUpdatedBy(Number value) {
-      this.setAttributeInternal(26, value);
-   }
-
-   public Date getLastUpdateDate() {
-      return (Date)this.getAttributeInternal(27);
-   }
-
-   public void setLastUpdateDate(Date value) {
-      this.setAttributeInternal(27, value);
-   }
-
-   public Number getLastUpdateLogin() {
-      return (Number)this.getAttributeInternal(28);
-   }
-
-   public void setLastUpdateLogin(Number value) {
-      this.setAttributeInternal(28, value);
-   }
-
-   public String getObservacionesSltud() {
-      return (String)this.getAttributeInternal(29);
-   }
-
-   public void setObservacionesSltud(String value) {
-      this.setAttributeInternal(29, value);
-   }
-
-   public String getMotivo() {
-      return (String)this.getAttributeInternal(30);
-   }
-
-   public void setMotivo(String value) {
-      this.setAttributeInternal(30, value);
-   }
-
-   public Number getTallaDevId() {
-      return (Number)this.getAttributeInternal(31);
-   }
-
-   public void setTallaDevId(Number value) {
-      this.setAttributeInternal(31, value);
-   }
-
-   public Number getQtyDev() {
-      return (Number)this.getAttributeInternal(32);
-   }
-
-   public void setQtyDev(Number value) {
-      this.setAttributeInternal(32, value);
-   }
-
-   public String getObservacionesDev() {
-      return (String)this.getAttributeInternal(33);
-   }
-
-   public void setObservacionesDev(String value) {
-      this.setAttributeInternal(33, value);
-   }
-
-   protected Object getAttrInvokeAccessor(int index, AttributeDefImpl attrDef) throws Exception {
+        return (Number)this.getAttributeInternal(0);
+    }
+
+    public void setSoliId(Number value) {
+        this.setAttributeInternal(0, value);
+    }
+
+    public Number getSoliDtlId() {
+        return (Number)this.getAttributeInternal(1);
+    }
+
+    public void setSoliDtlId(Number value) {
+        this.setAttributeInternal(1, value);
+    }
+
+    public Number getDotaId() {
+        return (Number)this.getAttributeInternal(2);
+    }
+
+    public void setDotaId(Number value) {
+        this.setAttributeInternal(2, value);
+    }
+
+    public Number getTallaId() {
+        return (Number)this.getAttributeInternal(3);
+    }
+
+    public void setTallaId(Number value) {
+        this.setAttributeInternal(3, value);
+    }
+
+    public Number getQtyNbr() {
+        return (Number)this.getAttributeInternal(4);
+    }
+
+    public void setQtyNbr(Number value) {
+        this.setAttributeInternal(4, value);
+    }
+
+    public Date getLastDelivDate() {
+        return (Date)this.getAttributeInternal(5);
+    }
+
+    public void setLastDelivDate(Date value) {
+        this.setAttributeInternal(5, value);
+    }
+
+    public Number getLineNumber() {
+        return (Number)this.getAttributeInternal(6);
+    }
+
+    public void setLineNumber(Number value) {
+        this.setAttributeInternal(6, value);
+    }
+
+    public String getStatus() {
+        return (String)this.getAttributeInternal(7);
+    }
+
+    public void setStatus(String value) {
+        this.setAttributeInternal(7, value);
+    }
+
+    public Number getQtyPlanta() {
+        return (Number)this.getAttributeInternal(8);
+    }
+
+    public void setQtyPlanta(Number value) {
+        this.setAttributeInternal(8, value);
+    }
+
+    public Number getQtyEventual() {
+        return (Number)this.getAttributeInternal(9);
+    }
+
+    public void setQtyEventual(Number value) {
+        this.setAttributeInternal(9, value);
+    }
+
+    public String getMonthDota() {
+        return (String)this.getAttributeInternal(10);
+    }
+
+    public void setMonthDota(String value) {
+        this.setAttributeInternal(10, value);
+    }
+
+    public Number getLineId() {
+        return (Number)this.getAttributeInternal(11);
+    }
+
+    public void setLineId(Number value) {
+        this.setAttributeInternal(11, value);
+    }
+
+    public String getMessageError() {
+        return (String)this.getAttributeInternal(12);
+    }
+
+    public void setMessageError(String value) {
+        this.setAttributeInternal(12, value);
+    }
+
+    public Number getDotaIdF() {
+        return (Number)this.getAttributeInternal(13);
+    }
+
+    public void setDotaIdF(Number value) {
+        this.setAttributeInternal(13, value);
+    }
+
+    public String getAttribute1() {
+        return (String)this.getAttributeInternal(14);
+    }
+
+    public void setAttribute1(String value) {
+        this.setAttributeInternal(14, value);
+    }
+
+    public String getAttribute2() {
+        return (String)this.getAttributeInternal(15);
+    }
+
+    public void setAttribute2(String value) {
+        this.setAttributeInternal(15, value);
+    }
+
+    public String getAttribute3() {
+        return (String)this.getAttributeInternal(16);
+    }
+
+    public void setAttribute3(String value) {
+        this.setAttributeInternal(16, value);
+    }
+
+    public String getAttribute4() {
+        return (String)this.getAttributeInternal(17);
+    }
+
+    public void setAttribute4(String value) {
+        this.setAttributeInternal(17, value);
+    }
+
+    public String getAttribute5() {
+        return (String)this.getAttributeInternal(18);
+    }
+
+    public void setAttribute5(String value) {
+        this.setAttributeInternal(18, value);
+    }
+
+    public String getAttribute6() {
+        return (String)this.getAttributeInternal(19);
+    }
+
+    public void setAttribute6(String value) {
+        this.setAttributeInternal(19, value);
+    }
+
+    public String getAttribute7() {
+        return (String)this.getAttributeInternal(20);
+    }
+
+    public void setAttribute7(String value) {
+        this.setAttributeInternal(20, value);
+    }
+
+    public String getAttribute8() {
+        return (String)this.getAttributeInternal(21);
+    }
+
+    public void setAttribute8(String value) {
+        this.setAttributeInternal(21, value);
+    }
+
+    public String getAttribute9() {
+        return (String)this.getAttributeInternal(22);
+    }
+
+    public void setAttribute9(String value) {
+        this.setAttributeInternal(22, value);
+    }
+
+    public String getAttribute10() {
+        return (String)this.getAttributeInternal(23);
+    }
+
+    public void setAttribute10(String value) {
+        this.setAttributeInternal(23, value);
+    }
+
+    public Number getCreatedBy() {
+        return (Number)this.getAttributeInternal(24);
+    }
+
+    public void setCreatedBy(Number value) {
+        this.setAttributeInternal(24, value);
+    }
+
+    public Date getCreationDate() {
+        return (Date)this.getAttributeInternal(25);
+    }
+
+    public void setCreationDate(Date value) {
+        this.setAttributeInternal(25, value);
+    }
+
+    public Number getLastUpdatedBy() {
+        return (Number)this.getAttributeInternal(26);
+    }
+
+    public void setLastUpdatedBy(Number value) {
+        this.setAttributeInternal(26, value);
+    }
+
+    public Date getLastUpdateDate() {
+        return (Date)this.getAttributeInternal(27);
+    }
+
+    public void setLastUpdateDate(Date value) {
+        this.setAttributeInternal(27, value);
+    }
+
+    public Number getLastUpdateLogin() {
+        return (Number)this.getAttributeInternal(28);
+    }
+
+    public void setLastUpdateLogin(Number value) {
+        this.setAttributeInternal(28, value);
+    }
+
+    public String getObservacionesSltud() {
+        return (String)this.getAttributeInternal(29);
+    }
+
+    public void setObservacionesSltud(String value) {
+        this.setAttributeInternal(29, value);
+    }
+
+    public String getMotivo() {
+        return (String)this.getAttributeInternal(30);
+    }
+
+    public void setMotivo(String value) {
+        this.setAttributeInternal(30, value);
+    }
+
+    public Number getTallaDevId() {
+        return (Number)this.getAttributeInternal(31);
+    }
+
+    public void setTallaDevId(Number value) {
+        this.setAttributeInternal(31, value);
+    }
+
+    public Number getQtyDev() {
+        return (Number)this.getAttributeInternal(32);
+    }
+
+    public void setQtyDev(Number value) {
+        this.setAttributeInternal(32, value);
+    }
+
+    public String getObservacionesDev() {
+        return (String)this.getAttributeInternal(33);
+    }
+
+    public void setObservacionesDev(String value) {
+        this.setAttributeInternal(33, value);
+    }
+
+    protected Object getAttrInvokeAccessor(int index, 
+                                           AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case SOLIID:
             return getSoliId();
@@ -418,7 +421,8 @@ public class xXGamInvSoliDtlEOImpl extends OAEntityImpl {
         }
     }
 
-   protected void setAttrInvokeAccessor(int index, Object value, AttributeDefImpl attrDef) throws Exception {
+    protected void setAttrInvokeAccessor(int index, Object value, 
+                                         AttributeDefImpl attrDef) throws Exception {
         switch (index) {
         case SOLIID:
             setSoliId((Number)value);
@@ -528,63 +532,97 @@ public class xXGamInvSoliDtlEOImpl extends OAEntityImpl {
         }
     }
 
-   public void create(AttributeList attributeList) {
-      super.create(attributeList);
-   }
+    public void create(AttributeList attributeList) {
+        super.create(attributeList);
+    }
 
-   public void remove() {
-      super.remove();
-   }
+    public void remove() {
+        super.remove();
+    }
 
-   protected void validateEntity() {
-      super.validateEntity();
-      
-      if(null==this.getAttribute2()||"".equals(this.getAttribute2())){
-        MessageToken[] tokens5 = new MessageToken[]{new MessageToken("MESSAGE", "El attributo2 esta vacio.")};
-        throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens5);
-      }
-      
-      if(this.getQtyNbr() != null) {
-         Long lCntIngresada = Long.valueOf(this.getQtyNbr().longValue());
-         /************************** Se excluye validacion por aquellos kits con cantidades en 0 ******
+    protected void validateEntity() {
+        super.validateEntity();
+
+        if (null == this.getAttribute2() || "".equals(this.getAttribute2())) {
+            MessageToken[] tokens5 = 
+                new MessageToken[] { new MessageToken("MESSAGE", 
+                                                      "El attributo2 esta vacio.") };
+            throw new OARowValException(121, this.getEntityDef().getFullName(), 
+                                        this.getPrimaryKey(), "FND", 
+                                        "FND_GENERIC_MESSAGE", tokens5);
+        }
+
+        if (this.getQtyNbr() != null) {
+            Long lCntIngresada = Long.valueOf(this.getQtyNbr().longValue());
+            /************************** Se excluye validacion por aquellos kits con cantidades en 0 ******
          if(this.getQtyNbr().compareTo(0) == 0) {
             MessageToken[] tokens = new MessageToken[]{new MessageToken("MESSAGE", "La cantidad ingresada no debe ser cero.")};
             throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens);
          }
          *****************************************************************************************/
 
-         if(this.getTallaId() == null) {
-            MessageToken[] tokens1 = new MessageToken[]{new MessageToken("MESSAGE", "Si ingresa la Cantidad, debe seleccionar la Talla.")};
-            throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens1);
-         }
-
-         if(lCntIngresada != null) {
-            Long lpermitida = Long.valueOf(this.getAttribute2());
-            if(this.getAttribute3() != null) {
-               Long lTopeSust = Long.valueOf(this.getAttribute3());
-               if(lTopeSust.compareTo(lCntIngresada) < 0) {
-                  MessageToken[] tokens2 = new MessageToken[]{new MessageToken("MESSAGE", "La cantidad ingresada " + lCntIngresada.toString() + " no puede mayor que la permitida por sustitucion " + lTopeSust.toString() + ".")};
-                  throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens2);
-               }
-            } else if(lpermitida.compareTo(lCntIngresada) < 0) {
-               MessageToken[] tokens3 = new MessageToken[]{new MessageToken("MESSAGE", "La cantidad ingresada " + lCntIngresada.toString() + " no puede mayor que la permitida " + lpermitida.toString() + ".")};
-               throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens3);
+            if (this.getTallaId() == null) {
+                MessageToken[] tokens1 = 
+                    new MessageToken[] { new MessageToken("MESSAGE", 
+                                                          "Si ingresa la Cantidad, debe seleccionar la Talla.") };
+                throw new OARowValException(121, 
+                                            this.getEntityDef().getFullName(), 
+                                            this.getPrimaryKey(), "FND", 
+                                            "FND_GENERIC_MESSAGE", tokens1);
             }
-         }
-      } else if(this.getTallaId() != null) {
-         MessageToken[] tokens4 = new MessageToken[]{new MessageToken("MESSAGE", "Si ingresa la Talla, debe seleccionar la Cantidad.")};
-         throw new OARowValException(121, this.getEntityDef().getFullName(), this.getPrimaryKey(), "FND", "FND_GENERIC_MESSAGE", tokens4);
-      }
 
-   }
+            if (lCntIngresada != null) {
+                Long lpermitida = Long.valueOf(this.getAttribute2());
+                if (this.getAttribute3() != null) {
+                    Long lTopeSust = Long.valueOf(this.getAttribute3());
+                    if (lTopeSust.compareTo(lCntIngresada) < 0) {
+                        MessageToken[] tokens2 = 
+                            new MessageToken[] { new MessageToken("MESSAGE", 
+                                                                  "La cantidad ingresada " + 
+                                                                  lCntIngresada.toString() + 
+                                                                  " no puede mayor que la permitida por sustitucion " + 
+                                                                  lTopeSust.toString() + 
+                                                                  ".") };
+                        throw new OARowValException(121, 
+                                                    this.getEntityDef().getFullName(), 
+                                                    this.getPrimaryKey(), 
+                                                    "FND", 
+                                                    "FND_GENERIC_MESSAGE", 
+                                                    tokens2);
+                    }
+                } else if (lpermitida.compareTo(lCntIngresada) < 0) {
+                    MessageToken[] tokens3 = 
+                        new MessageToken[] { new MessageToken("MESSAGE", 
+                                                              "La cantidad ingresada " + 
+                                                              lCntIngresada.toString() + 
+                                                              " no puede mayor que la permitida " + 
+                                                              lpermitida.toString() + 
+                                                              ".") };
+                    throw new OARowValException(121, 
+                                                this.getEntityDef().getFullName(), 
+                                                this.getPrimaryKey(), "FND", 
+                                                "FND_GENERIC_MESSAGE", 
+                                                tokens3);
+                }
+            }
+        } else if (this.getTallaId() != null) {
+            MessageToken[] tokens4 = 
+                new MessageToken[] { new MessageToken("MESSAGE", 
+                                                      "Si ingresa la Talla, debe seleccionar la Cantidad.") };
+            throw new OARowValException(121, this.getEntityDef().getFullName(), 
+                                        this.getPrimaryKey(), "FND", 
+                                        "FND_GENERIC_MESSAGE", tokens4);
+        }
 
-   public void lock() {
-      super.lock();
-   }
+    }
 
-   protected void doDML(int operation, TransactionEvent e) {
-      super.doDML(operation, e);
-   }
+    public void lock() {
+        super.lock();
+    }
+
+    protected void doDML(int operation, TransactionEvent e) {
+        super.doDML(operation, e);
+    }
 
     /**Gets the associated entity xXGamInvSoliEOImpl
      */
@@ -601,6 +639,6 @@ public class xXGamInvSoliDtlEOImpl extends OAEntityImpl {
     /**Creates a Key object based on given key constituents
      */
     public static Key createPrimaryKey(Number soliDtlId) {
-        return new Key(new Object[]{soliDtlId});
+        return new Key(new Object[] { soliDtlId });
     }
 }

@@ -29,8 +29,7 @@ import xxgam.oracle.apps.xbol.maf.utils.XxGamMAnticiposUtil;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
-{
+public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl {
     /**This is the default constructor (do not remove)
      */
     public XxGamMaGeneralReqVOImpl() {
@@ -39,13 +38,13 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
     /**
      * Busca las solicitudes seleccionadas.
      */
-    public void searchRequests(OAPageContext pageContext,
-                                        OAWebBean webBean,Number idSolicitud) {
+    public void searchRequests(OAPageContext pageContext, OAWebBean webBean, 
+                               Number idSolicitud) {
 
         //Obtiene el registro y lo asigna como current row
-         
-         System.out.println("Comienza XxGamMaGeneralReqVOImpl.searchRequests"); 
-         
+
+        System.out.println("Comienza XxGamMaGeneralReqVOImpl.searchRequests");
+
         try {
             XxGamMaGeneralReqVORowImpl rowActual = null;
             rowActual = getRowRequest(idSolicitud);
@@ -55,7 +54,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
                 //Inicializa el current row
                 setCurrentRow(rowActual);
-                if(rowActual.getTipoSolicitud().equals("Solicitud de anticipos")){
+                if (rowActual.getTipoSolicitud().equals("Solicitud de anticipos")) {
                     XxGamMaTicketPVORowImpl rowTicket = null;
                     XxGamMaPaymentReqVORowImpl rowPayment = null;
 
@@ -66,29 +65,31 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
                     //Obtiene su detalle Payment
                     if (riPayment != null && riPayment.getRowCount() > 0) {
 
-                        rowPayment = (XxGamMaPaymentReqVORowImpl)riPayment.first();
+                        rowPayment = 
+                                (XxGamMaPaymentReqVORowImpl)riPayment.first();
                         riTicket = rowPayment.getXxGamMaTicketPVO();
                         //Obtiene el detalle de flight
                         if (riTicket != null && riTicket.getRowCount() > 0) {
-                            rowTicket = (XxGamMaTicketPVORowImpl)riTicket.first();
+                            rowTicket = 
+                                    (XxGamMaTicketPVORowImpl)riTicket.first();
                             rowTicket.getXxGamMaFlightInf0VO();
                         }
                     }
-                }else if(rowActual.getTipoSolicitud().equals("Franquicias")){
+                } else if (rowActual.getTipoSolicitud().equals("Franquicias")) {
 
                     XxGamMaTicketPVORowImpl rowTicket = null;
                     RowIterator riTicket = null;
                     riTicket = rowActual.getXxGamMaTicketPVO();
-                   if (riTicket != null && riTicket.getRowCount() > 0) {
+                    if (riTicket != null && riTicket.getRowCount() > 0) {
                         rowTicket = (XxGamMaTicketPVORowImpl)riTicket.first();
                         rowTicket.getXxGamMaFlightInf0VO();
                     }
                 }
             }
         } catch (Exception exception) {
-             throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL,
-                                               XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_NF_ERROR,
-                                               null, OAException.ERROR, null);
+            throw new OAException(XxGamAOLMessages.GenericType.SHORT_NAME_XBOL, 
+                                  XxGamAOLMessages.GenericType.XXGAM_MAF_REQ_NF_ERROR, 
+                                  null, OAException.ERROR, null);
         }
     }
 
@@ -100,7 +101,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      */
     private XxGamMaGeneralReqVORowImpl getRowRequest(Number idSolicitud) {
 
-      System.out.println("Comienza XxGamMaGeneralReqVOImpl.getRowRequest"); 
+        System.out.println("Comienza XxGamMaGeneralReqVOImpl.getRowRequest");
         //Verifica nulidad
         if (idSolicitud == null)
             return null;
@@ -108,7 +109,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         //Declaración de los recursos
         ViewCriteria vcSolicitudes = null;
         ViewCriteriaRow vcSolicitudesRow = null;
-        
+
         setWhereClause(null);
         setWhereClauseParams(null);
         clearViewCriterias();
@@ -125,10 +126,10 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Obtiene el registro.
         XxGamMaGeneralReqVORowImpl rowActual = null;
-        if(getEstimatedRowCount() > 0){
-            rowActual = (XxGamMaGeneralReqVORowImpl)first();    
+        if (getEstimatedRowCount() > 0) {
+            rowActual = (XxGamMaGeneralReqVORowImpl)first();
         }
-        
+
         clearViewCriterias();
         return rowActual;
 
@@ -159,8 +160,8 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
             return;
 
         //Busca el current row.
-        if(idSolicitud != null){
-            searchRequests(null,null,idSolicitud);    
+        if (idSolicitud != null) {
+            searchRequests(null, null, idSolicitud);
         }
 
         //Obtiene el current row
@@ -172,11 +173,11 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
             return;
 
         //Cambia el estatus a la solicitud
-        if(rowActual.getStatusRequest() != null){
-            rowActual.setStatusRequest(sStatus);    
-        }else{
-            if(rowActual.getStatusFranchise() != null){
-                rowActual.setStatusFranchise(sStatus);        
+        if (rowActual.getStatusRequest() != null) {
+            rowActual.setStatusRequest(sStatus);
+        } else {
+            if (rowActual.getStatusFranchise() != null) {
+                rowActual.setStatusFranchise(sStatus);
             }
         }
     }
@@ -194,25 +195,23 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
             return false;
 
         try {
-        
+
             //Crea un nuevo registro
             XxGamMaGeneralReqVORowImpl rowNuevo = null;
             rowNuevo = getNewRequest();
 
             //Duplica los registros
             rowNuevo.setEmployeeId(rowActual.getEmployeeId());
-            
+
             String prefix = null;
             String sequenceName = null;
             if (rowActual.getStatusRequest() != null) {
                 prefix = XxGamConstantsUtil.PREFIX_NUMBER_EMPLOYEE;
-                sequenceName =
-                        XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
+                sequenceName = XxGamConstantsUtil.SEQUENCES_NUMBER_EMPLOYEE;
             } else {
                 if (rowActual.getStatusFranchise() != null) {
-                    prefix =
-                            XxGamConstantsUtil.PREFIX_NUMBER_FRANCHISE;
-                    sequenceName =
+                    prefix = XxGamConstantsUtil.PREFIX_NUMBER_FRANCHISE;
+                    sequenceName = 
                             XxGamConstantsUtil.SEQUENCES_NUMBER_FRANCHISE;
                 }
             }
@@ -223,26 +222,26 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
                     seqNum = trx.getSequenceValue(sequenceName);
                 }
             }
-            
-            if(prefix != null && seqNum != null){
-                rowNuevo.setNumberPayment(prefix+seqNum);    
+
+            if (prefix != null && seqNum != null) {
+                rowNuevo.setNumberPayment(prefix + seqNum);
             }
-            
+
             Date currentReqDate = null;
             currentReqDate = XxGamMAnticiposUtil.getFechaActual();
             rowNuevo.setRequestPaymentDate(currentReqDate);
-            
-            if(rowActual.getStatusRequest() != null){
-                rowNuevo.setStatusRequest(XxGamConstantsUtil.XXGAM_MA_INPROGRESS_CODE);    
+
+            if (rowActual.getStatusRequest() != null) {
+                rowNuevo.setStatusRequest(XxGamConstantsUtil.XXGAM_MA_INPROGRESS_CODE);
             }
-            if(rowActual.getStatusFranchise() != null){
-                rowNuevo.setStatusFranchise(XxGamConstantsUtil.XXGAM_STATUS_FRANCHISE_INPROGRESS);    
+            if (rowActual.getStatusFranchise() != null) {
+                rowNuevo.setStatusFranchise(XxGamConstantsUtil.XXGAM_STATUS_FRANCHISE_INPROGRESS);
             }
-            
+
             //OAApplicationModuleImpl oaapplicationmoduleimpl = (OAApplicationModuleImpl)getRootApplicationModule();
             //OADBTransactionImpl oadbtransactionimpl = (OADBTransactionImpl)oaapplicationmoduleimpl.getOADBTransaction();
             //Integer u = oadbtransactionimpl.getUserId();
-            
+
             rowNuevo.setTotalPayment(rowActual.getTotalPayment());
             rowNuevo.setPurpose(rowActual.getPurpose());
             rowNuevo.setApprovalDate(null);
@@ -254,32 +253,36 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
             rowNuevo.setTemplatePayment(rowActual.getTemplatePayment());
             rowNuevo.setCurrencyCode(rowActual.getCurrencyCode());
             rowNuevo.setVirtualCard(rowActual.getVirtualCard());
-          /**  rowNuevo.setStatusNotification(rowActual.getStatusNotification()); GnosisHCM 22/05/2015 para reiniciar estatus de emitido y no emitido**/
+            /**  rowNuevo.setStatusNotification(rowActual.getStatusNotification()); GnosisHCM 22/05/2015 para reiniciar estatus de emitido y no emitido**/
             rowNuevo.setReason(rowActual.getReason());
             rowNuevo.setComments(rowActual.getComments());
             rowNuevo.setOperatingUnit(rowActual.getOperatingUnit());
             rowNuevo.setOrigin(rowActual.getOrigin());
-        
-            if(rowActual.getStatusFranchise() != null){
-                addRequestAirplane(rowActual.getXxGamMaTicketPVO(), rowNuevo.getXxGamMaTicketPVO(), true); 
-            }else{
-            
+
+            if (rowActual.getStatusFranchise() != null) {
+                addRequestAirplane(rowActual.getXxGamMaTicketPVO(), 
+                                   rowNuevo.getXxGamMaTicketPVO(), true);
+            } else {
+
                 //Obtiene el detalle de la solicitud
-                RowIterator detalleReqActual = rowActual.getXxGamMaPaymentReqVO();
-                RowIterator detalleReqNuevo = rowNuevo.getXxGamMaPaymentReqVO();
+                RowIterator detalleReqActual = 
+                    rowActual.getXxGamMaPaymentReqVO();
+                RowIterator detalleReqNuevo = 
+                    rowNuevo.getXxGamMaPaymentReqVO();
 
                 //Verifica nulidad
-                if (detalleReqActual == null || detalleReqActual.getRowCount() == 0)
+                if (detalleReqActual == null || 
+                    detalleReqActual.getRowCount() == 0)
                     return true;
-            
+
                 XxGamMaPaymentReqVORowImpl rowDetalleNuevo = null;
                 XxGamMaPaymentReqVORowImpl rowSeleccionado = null;
-                
+
                 //Copia el detalle de la solciitud
-                while (detalleReqActual.hasNext() &&
+                while (detalleReqActual.hasNext() && 
                        detalleReqActual.getRowCount() > 0) {
 
-                    rowSeleccionado =
+                    rowSeleccionado = 
                             (XxGamMaPaymentReqVORowImpl)detalleReqActual.next();
 
                     //Verifica que el registro tenga valor
@@ -287,26 +290,26 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
                         continue;
 
                     //Obtiene el nuevo registro
-                    rowDetalleNuevo =
-                            getPaymentReq((XxGamMaPaymentReqVORowImpl)rowSeleccionado,
+                    rowDetalleNuevo = 
+                            getPaymentReq((XxGamMaPaymentReqVORowImpl)rowSeleccionado, 
                                           detalleReqNuevo);
 
                     //Inserta el nuevo registro
                     if (rowDetalleNuevo != null) {
 
                         //Inicializa las solicitudes de avión existentes
-                        addRequestAirplane(rowSeleccionado.getXxGamMaTicketPVO(),
-                                           rowDetalleNuevo.getXxGamMaTicketPVO(),
+                        addRequestAirplane(rowSeleccionado.getXxGamMaTicketPVO(), 
+                                           rowDetalleNuevo.getXxGamMaTicketPVO(), 
                                            false);
                     }
                 }
             }
         } catch (Exception execption) {
-            if(getDBTransaction() != null){
-                getDBTransaction().rollback();    
+            if (getDBTransaction() != null) {
+                getDBTransaction().rollback();
             }
             //Propaga la excepcion
-            throw new OAException("No es posible duplicar el registro seleccionado",
+            throw new OAException("No es posible duplicar el registro seleccionado", 
                                   OAException.ERROR);
         }
         return true;
@@ -318,12 +321,12 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param iterBase Iterador base.
      * @param iterNuevo Iterador nuevo.
      */
-    private void addRequestAirplane(RowIterator iterBase,
-                                    RowIterator iterNuevo,
+    private void addRequestAirplane(RowIterator iterBase, 
+                                    RowIterator iterNuevo, 
                                     boolean isFranchise) {
 
         //Verifica nulidad
-        if (iterBase == null || iterNuevo == null ||
+        if (iterBase == null || iterNuevo == null || 
             iterBase.getRowCount() == 0)
             return;
 
@@ -339,24 +342,26 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
                 rowSeleccionado = (XxGamMaTicketPVORowImpl)iterBase.next();
                 if (rowSeleccionado != null) {
 
-                    rowNuevo = getPaymentReqAirplane(rowSeleccionado, iterNuevo, isFranchise);
+                    rowNuevo = 
+                            getPaymentReqAirplane(rowSeleccionado, iterNuevo, 
+                                                  isFranchise);
                     iterNuevo.insertRow(rowNuevo);
 
                     //Inicializa el detalle del registro
-                    addRequestFlight(rowSeleccionado.getXxGamMaFlightInf0VO(),
-                                     rowNuevo.getXxGamMaFlightInf0VO(),
+                    addRequestFlight(rowSeleccionado.getXxGamMaFlightInf0VO(), 
+                                     rowNuevo.getXxGamMaFlightInf0VO(), 
                                      isFranchise);
                     //Inicializa el detalle del registro Informacion de pasajeros             
                     //Agregado para que tambien copie la informacion de pasajero 
-                    addRequestPasajerosInfo(rowSeleccionado.getXxGamMaPasajerosInfoVO()
-                                           ,rowNuevo.getXxGamMaPasajerosInfoVO()
-                                           ,isFranchise);
-                                     
+                    addRequestPasajerosInfo(rowSeleccionado.getXxGamMaPasajerosInfoVO(), 
+                                            rowNuevo.getXxGamMaPasajerosInfoVO(), 
+                                            isFranchise);
+
                 }
             }
         } catch (Exception exception) {
-            if(getDBTransaction() != null){
-                getDBTransaction().rollback();    
+            if (getDBTransaction() != null) {
+                getDBTransaction().rollback();
             }
             //Propaga la excepcion generada
             throw new OAException(exception.getMessage(), OAException.ERROR);
@@ -369,12 +374,11 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param iterBase Iterador base.
      * @param iterNuevo Iterador nuevo.
      */
-    private void addRequestFlight(RowIterator iterBase,
-                                  RowIterator iterNuevo,
+    private void addRequestFlight(RowIterator iterBase, RowIterator iterNuevo, 
                                   boolean isFranchise) {
 
         //Verifica nulidad
-        if (iterBase == null || iterNuevo == null ||
+        if (iterBase == null || iterNuevo == null || 
             iterBase.getRowCount() == 0)
             return;
 
@@ -389,19 +393,19 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
                 rowSeleccionado = (XxGamMaFlightInf0VORowImpl)iterBase.next();
                 if (rowSeleccionado != null) {
-                    rowNuevo = getPaymentFlight(rowSeleccionado, iterNuevo, isFranchise);
+                    rowNuevo = 
+                            getPaymentFlight(rowSeleccionado, iterNuevo, isFranchise);
                     iterNuevo.insertRow(rowNuevo);
                 }
             }
         } catch (Exception exception) {
-            if(getDBTransaction() != null){
-                getDBTransaction().rollback();    
+            if (getDBTransaction() != null) {
+                getDBTransaction().rollback();
             }
             //Propaga la excepcion generada
             throw new OAException(exception.getMessage(), OAException.ERROR);
         }
     }
-    
 
 
     /**
@@ -410,7 +414,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param rowBase Registro a duplicar.
      * @return registro nuevo.
      */
-    private XxGamMaPaymentReqVORowImpl getPaymentReq(XxGamMaPaymentReqVORowImpl rowBase,
+    private XxGamMaPaymentReqVORowImpl getPaymentReq(XxGamMaPaymentReqVORowImpl rowBase, 
                                                      RowIterator detalleReqNuevo) {
 
         if (rowBase == null)
@@ -428,9 +432,8 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Obtiene el nuevo registro
         voXxGamMaPaymentReqVO = amXxGamModAntAM.getXxGamMaPaymentReqVO2();
-        rowXxGamMaPaymentReqVO =
-                    voXxGamMaPaymentReqVO.getPaymentReq(rowBase,
-                                                        detalleReqNuevo);
+        rowXxGamMaPaymentReqVO = 
+                voXxGamMaPaymentReqVO.getPaymentReq(rowBase, detalleReqNuevo);
 
         //Regresa la respuesta
         return rowXxGamMaPaymentReqVO;
@@ -442,8 +445,8 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param rowBase Registro a duplicar.
      * @return registro nuevo.
      */
-    private XxGamMaTicketPVORowImpl getPaymentReqAirplane(XxGamMaTicketPVORowImpl rowBase,
-                                                          RowIterator iterNuevo,
+    private XxGamMaTicketPVORowImpl getPaymentReqAirplane(XxGamMaTicketPVORowImpl rowBase, 
+                                                          RowIterator iterNuevo, 
                                                           boolean isFranchise) {
 
         if (rowBase == null)
@@ -461,20 +464,20 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Obtiene el nuevo registro
         try {
-            if(isFranchise){
+            if (isFranchise) {
                 voXxGamMaTicketPVO = amXxGamModAntAM.getXxGamMaTicketPVO4();
-            }else{
-                voXxGamMaTicketPVO = amXxGamModAntAM.getXxGamMaTicketPVO3();    
+            } else {
+                voXxGamMaTicketPVO = amXxGamModAntAM.getXxGamMaTicketPVO3();
             }
-            
-            rowXxGamMaTicketPVORow =
-                    voXxGamMaTicketPVO.getPaymentReqAirplane(rowBase,
+
+            rowXxGamMaTicketPVORow = 
+                    voXxGamMaTicketPVO.getPaymentReqAirplane(rowBase, 
                                                              iterNuevo);
 
         } catch (Exception exception) {
 
             //Propaga la excepcion
-            throw new OAException("No es posible duplicar el registro seleccionado",
+            throw new OAException("No es posible duplicar el registro seleccionado", 
                                   OAException.ERROR);
         }
 
@@ -488,8 +491,8 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param rowBase Row a copiar.
      * @return registro nuevo.
      */
-    private XxGamMaFlightInf0VORowImpl getPaymentFlight(XxGamMaFlightInf0VORowImpl rowBase,
-                                                        RowIterator iterNuevo,
+    private XxGamMaFlightInf0VORowImpl getPaymentFlight(XxGamMaFlightInf0VORowImpl rowBase, 
+                                                        RowIterator iterNuevo, 
                                                         boolean isFranchise) {
 
         if (rowBase == null)
@@ -507,19 +510,21 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Obtiene el nuevo registro
         try {
-            if(isFranchise){
-                voXxGamMaFlightInf0VO = amXxGamModAntAM.getXxGamMaFlightInf0VO4();
-            }else{
-                voXxGamMaFlightInf0VO = amXxGamModAntAM.getXxGamMaFlightInf0VO3();    
+            if (isFranchise) {
+                voXxGamMaFlightInf0VO = 
+                        amXxGamModAntAM.getXxGamMaFlightInf0VO4();
+            } else {
+                voXxGamMaFlightInf0VO = 
+                        amXxGamModAntAM.getXxGamMaFlightInf0VO3();
             }
-            
-            rowXxGamMaFlightInf0VORow =
+
+            rowXxGamMaFlightInf0VORow = 
                     voXxGamMaFlightInf0VO.getPaymentFlight(rowBase, iterNuevo);
 
         } catch (Exception exception) {
 
             //Propaga la excepcion
-            throw new OAException("No es posible duplicar el registro de vuelos",
+            throw new OAException("No es posible duplicar el registro de vuelos", 
                                   OAException.ERROR);
         }
 
@@ -527,15 +532,15 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         return rowXxGamMaFlightInf0VORow;
 
     }
-    
+
     /**
      * Obtiene el registro de las reservaciones de vuelo.
      *
      * @param rowBase Row a copiar.
      * @return registro nuevo.
      */
-    private XxGamMaFlightInf0VORowImpl getPaymentFlightFranchise(XxGamMaFlightInf0VORowImpl rowBase,
-                                                        RowIterator iterNuevo) {
+    private XxGamMaFlightInf0VORowImpl getPaymentFlightFranchise(XxGamMaFlightInf0VORowImpl rowBase, 
+                                                                 RowIterator iterNuevo) {
 
         if (rowBase == null)
             return null;
@@ -553,13 +558,13 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         //Obtiene el nuevo registro
         try {
             voXxGamMaFlightInf0VO = amXxGamModAntAM.getXxGamMaFlightInf0VO4();
-            rowXxGamMaFlightInf0VORow =
+            rowXxGamMaFlightInf0VORow = 
                     voXxGamMaFlightInf0VO.getPaymentFlight(rowBase, iterNuevo);
 
         } catch (Exception exception) {
 
             //Propaga la excepcion
-            throw new OAException("No es posible duplicar el registro seleccionado",
+            throw new OAException("No es posible duplicar el registro seleccionado", 
                                   OAException.ERROR);
         }
 
@@ -590,9 +595,9 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
     /**
      * Busca las solicitudes seleccionadas.
      */
-    public void searchRequests(String idSolicitud, String sName,
-                               String nCostCenter, String nAdvanceTemplate,
-                               String purpose, Date dStartDate, Date dEndDate,
+    public void searchRequests(String idSolicitud, String sName, 
+                               String nCostCenter, String nAdvanceTemplate, 
+                               String purpose, Date dStartDate, Date dEndDate, 
                                String sTypeReuqest) {
 
         //Declaración de los recursos
@@ -609,9 +614,9 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Verifica nulidad
         if (idSolicitud != null && !"".equals(idSolicitud))
-            vcSolicitudesRow.setAttribute("NumberPayment",
-                                          XxGamConstantsUtil.LIKE_OPEN +
-                                          idSolicitud +
+            vcSolicitudesRow.setAttribute("NumberPayment", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          idSolicitud + 
                                           XxGamConstantsUtil.LIKE_CLOSE);
 
         //Verifica nulidad
@@ -620,36 +625,36 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
         //Verifica nulidad
         if (nAdvanceTemplate != null && !"".equals(nAdvanceTemplate))
-            vcSolicitudesRow.setAttribute("ReportType",
-                                          XxGamConstantsUtil.LIKE_OPEN +
-                                          nAdvanceTemplate +
+            vcSolicitudesRow.setAttribute("ReportType", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          nAdvanceTemplate + 
                                           XxGamConstantsUtil.LIKE_CLOSE);
 
         //Verifica nulidad
         if (purpose != null && !purpose.equals(""))
-            vcSolicitudesRow.setAttribute("PurposeDescription",
-                                          XxGamConstantsUtil.LIKE_OPEN +
-                                          purpose +
+            vcSolicitudesRow.setAttribute("PurposeDescription", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          purpose + 
                                           XxGamConstantsUtil.LIKE_CLOSE);
 
         //Verifica nulidad
         if (dStartDate != null && dEndDate != null)
-            vcSolicitudesRow.setAttribute("RequestPaymentDate",
-                                          "BETWEEN " + getClausuleWhereDate(dStartDate) +
-                                          " AND " +
+            vcSolicitudesRow.setAttribute("RequestPaymentDate", 
+                                          "BETWEEN " + getClausuleWhereDate(dStartDate) + 
+                                          " AND " + 
                                           getClausuleWhereDate(dEndDate));
         //Verifica nulidad
         if (sName != null && !"".equals(sName))
-            vcSolicitudesRow.setAttribute("EmployeName",
-                                          XxGamConstantsUtil.LIKE_OPEN +
-                                          sName +
+            vcSolicitudesRow.setAttribute("EmployeName", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          sName + 
                                           XxGamConstantsUtil.LIKE_CLOSE);
 
 
         if (sTypeReuqest != null && !"".equals(sTypeReuqest))
-            vcSolicitudesRow.setAttribute("TipoSolicitud",
-                                          XxGamConstantsUtil.LIKE_OPEN +
-                                          sTypeReuqest +
+            vcSolicitudesRow.setAttribute("TipoSolicitud", 
+                                          XxGamConstantsUtil.LIKE_OPEN + 
+                                          sTypeReuqest + 
                                           XxGamConstantsUtil.LIKE_CLOSE);
 
 
@@ -699,13 +704,13 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      * @param dateFrom Fecha inicio.
      * @param dateTo Fecha fin.
      */
-    public void searchAdvanceConsultantion(String advanceNum,
-                                           String employeeName,
-                                           String nameApprover,
-                                           String costCenter,
-                                           String virtualCard,
-                                           String statusRequest,
-                                           String statusTicket, Date dateFrom,
+    public void searchAdvanceConsultantion(String advanceNum, 
+                                           String employeeName, 
+                                           String nameApprover, 
+                                           String costCenter, 
+                                           String virtualCard, 
+                                           String statusRequest, 
+                                           String statusTicket, Date dateFrom, 
                                            Date dateTo) {
 
         //Inicia la busqueda
@@ -722,23 +727,23 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
             //Verifica nulidad
             if (advanceNum != null && !"".equals(advanceNum))
-                vcSolicitudesRow.setAttribute("NumberPayment",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              advanceNum +
+                vcSolicitudesRow.setAttribute("NumberPayment", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              advanceNum + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
             //Nombre del empleado
             if (employeeName != null && !employeeName.equals(""))
-                vcSolicitudesRow.setAttribute("EmployeName",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              employeeName +
+                vcSolicitudesRow.setAttribute("EmployeName", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              employeeName + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
             //Nombre del aprovador
             if (nameApprover != null && !nameApprover.equals(""))
-                vcSolicitudesRow.setAttribute("ApproverName",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              nameApprover +
+                vcSolicitudesRow.setAttribute("ApproverName", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              nameApprover + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
             //Centro de costos
@@ -747,34 +752,34 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
 
             //Tarjeta virtual
             if (virtualCard != null && !virtualCard.equals(""))
-                vcSolicitudesRow.setAttribute("VirtualCard",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              virtualCard +
+                vcSolicitudesRow.setAttribute("VirtualCard", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              virtualCard + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
             //Status de la solicitud
             if (statusRequest != null && !statusRequest.equals(""))
 
-                vcSolicitudesRow.setAttribute("StatusDescription",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              statusRequest +
+                vcSolicitudesRow.setAttribute("StatusDescription", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              statusRequest + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
             //Status de la solicitud
             if (statusTicket != null && !statusTicket.equals(""))
 
-                vcSolicitudesRow.setAttribute("StatusNotification",
-                                              XxGamConstantsUtil.LIKE_OPEN +
-                                              statusTicket +
+                vcSolicitudesRow.setAttribute("StatusNotification", 
+                                              XxGamConstantsUtil.LIKE_OPEN + 
+                                              statusTicket + 
                                               XxGamConstantsUtil.LIKE_CLOSE);
 
 
             //Verifica nulidad
             if (dateFrom != null && dateTo != null)
-                vcSolicitudesRow.setAttribute("RequestPaymentDate",
-                                              "BETWEEN " +
-                                              getClausuleWhereDate(dateFrom) +
-                                              " AND " +
+                vcSolicitudesRow.setAttribute("RequestPaymentDate", 
+                                              "BETWEEN " + 
+                                              getClausuleWhereDate(dateFrom) + 
+                                              " AND " + 
                                               getClausuleWhereDate(dateTo));
 
             //Aplica el criteria y ejecuta los criterios
@@ -788,7 +793,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         } catch (Exception exception) {
 
             //Propaga excepcion
-            throw new OAException("No es posible obtener los registros solicitados",
+            throw new OAException("No es posible obtener los registros solicitados", 
                                   OAException.WARNING);
         }
     }
@@ -804,13 +809,13 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         XMLNode xmlNode = null;
 
         try {
-            xmlNode =
+            xmlNode = 
                     (XMLNode)writeXML(0, XMLInterface.XML_IGNORE_DEPTH_COUNT);
 
         } catch (Exception exception) {
 
             //Propaga la excepcion
-            throw new OAException("No es posible obtener los datos solicitados",
+            throw new OAException("No es posible obtener los datos solicitados", 
                                   OAException.WARNING);
         }
 
@@ -829,7 +834,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         RowIterator riXxGamMaGeneralReqPVO = null;
         //Verificando que el current row no sea nulo
         if (rowXxGamMaGeneralReq == null)
-            throw new OAException("No es posible crear el registro de vuelo, Ticket no existe",
+            throw new OAException("No es posible crear el registro de vuelo, Ticket no existe", 
                                   OAException.ERROR);
         //Obteniendo el row iterador de ticket para generar un nuevo Ticket asociado a el General Req
         riXxGamMaGeneralReqPVO = rowXxGamMaGeneralReq.getXxGamMaTicketPVO();
@@ -900,13 +905,13 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         //initQuery();
         System.out.println("initQuery.");
     }
-   /**
-    * 
+    /**
+    *
     * */
     //private void initQuery2() {
-    
+
     //}
-    
+
     /**
      * Inicializa valores del query
      */
@@ -928,8 +933,8 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
             //Verifica si tiene registros
             //if (iterator == null || iterator.getRowCount() == 0)
             //    return;
-            
-            
+
+
             //Itera sobre cada registro
             while (iterator.hasNext()) {
 
@@ -939,12 +944,12 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
                     continue;
 
                 employeeId = rowActual.getEmployeeId();
-                
+
                 costCenter = rowActual.getCostCenter();
                 sTypeRequest = getTypeRequest(rowActual.getTipoSolicitud());
 
                 //Verifica si el tipo de solicitud tiene valor
-                sTypeRequest =
+                sTypeRequest = 
                         getCostCenterDsc(employeeId, costCenter, sTypeRequest);
 
                 //Inicializa el valor
@@ -954,7 +959,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         } catch (Exception exception) {
             exception.printStackTrace();
             //Atrapa la excepciones
-            throw new OAException("No es posible mostrar los registros",
+            throw new OAException("No es posible mostrar los registros", 
                                   OAException.WARNING);
         }
         //Cierra el iterador
@@ -1008,7 +1013,7 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
      *
      * @return descripción del cost center
      */
-    private String getCostCenterDsc(Number employeId, Number costCenter,
+    private String getCostCenterDsc(Number employeId, Number costCenter, 
                                     String sType) {
 
         if (employeId == null || costCenter == null || sType == null)
@@ -1045,88 +1050,97 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         return sCostCenterDsc;
     }
 
-     /**
+    /**
      * Obntiene El virtual card del General actual
      * @return Oficina de boletos
      */
-     public String findVirtualCard(){
-         String virtualCard = null ;
-         XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
-         virtualCard = voXxGamMaGeneralReq.getVirtualCard();
-         return virtualCard;
-     }
-     
-     
+    public String findVirtualCard() {
+        String virtualCard = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
+        virtualCard = voXxGamMaGeneralReq.getVirtualCard();
+        return virtualCard;
+    }
+
+
     /**
-    * Obntiene El virtual card del General actual
-    * @return Id de empleado
-    */
-    public Number findEmployeeId(){
-        Number employeeId = null ;
-        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
+     * Obntiene El virtual card del General actual
+     * @return Id de empleado
+     */
+    public Number findEmployeeId() {
+        Number employeeId = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
         employeeId = voXxGamMaGeneralReq.getEmployeeId();
         return employeeId;
     }
-  
+
     /**
-    * Obntiene el id de la solicitud de anticipo empleado o franquicia
-    * @return Id de la solicitud
-    */
-    public Number requestAdvId(){
-        Number requestId = null ;
-        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
+     * Obntiene el id de la solicitud de anticipo empleado o franquicia
+     * @return Id de la solicitud
+     */
+    public Number requestAdvId() {
+        Number requestId = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
         requestId = voXxGamMaGeneralReq.getId();
         return requestId;
     }
-  
+
     /**
-    * Obtiene el id del aprobador de la solicitud de anticipo o franquicia
-    * @return Id de aprobador
-    */
-    public Number findApproverId(){
-        Number approverId = null ;
-        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
+     * Obtiene el id del aprobador de la solicitud de anticipo o franquicia
+     * @return Id de aprobador
+     */
+    public Number findApproverId() {
+        Number approverId = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
         approverId = voXxGamMaGeneralReq.getApproverId();
         return approverId;
-    }  
+    }
 
-    
+
     /**
-    * Obntiene en Status de general req
-    * @return el folio del ticket
-    */
-    public String findStatusGeneral(){
-       String status = null;
-       XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
-       if(voXxGamMaGeneralReq.getTipoSolicitud()!=null && voXxGamMaGeneralReq.getTipoSolicitud().equals(XxGamConstantsUtil.REQUEST_TYPE_ADVANCE))
-           status = voXxGamMaGeneralReq.getStatusRequest();
-       else if(voXxGamMaGeneralReq.getTipoSolicitud()!=null && voXxGamMaGeneralReq.getTipoSolicitud().equals(XxGamConstantsUtil.REQUEST_TYPE_FRANCHISE)) 
-          status = voXxGamMaGeneralReq.getStatusFranchise();
+     * Obntiene en Status de general req
+     * @return el folio del ticket
+     */
+    public String findStatusGeneral() {
+        String status = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
+        if (voXxGamMaGeneralReq.getTipoSolicitud() != null && 
+            voXxGamMaGeneralReq.getTipoSolicitud().equals(XxGamConstantsUtil.REQUEST_TYPE_ADVANCE))
+            status = voXxGamMaGeneralReq.getStatusRequest();
+        else if (voXxGamMaGeneralReq.getTipoSolicitud() != null && 
+                 voXxGamMaGeneralReq.getTipoSolicitud().equals(XxGamConstantsUtil.REQUEST_TYPE_FRANCHISE))
+            status = voXxGamMaGeneralReq.getStatusFranchise();
         return status;
     }
 
     /**
-    * Obtiene el tipo de solicitud de anticipo
-    * @return devuelve valor cadena del tipo de solicitud
-    */
-    public String getRequestType(){
-       String requestType = null;
-       XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
-       if(voXxGamMaGeneralReq != null){
-           requestType = voXxGamMaGeneralReq.getTipoSolicitud();    
-       }
-       return requestType;
+     * Obtiene el tipo de solicitud de anticipo
+     * @return devuelve valor cadena del tipo de solicitud
+     */
+    public String getRequestType() {
+        String requestType = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
+        if (voXxGamMaGeneralReq != null) {
+            requestType = voXxGamMaGeneralReq.getTipoSolicitud();
+        }
+        return requestType;
     }
 
 
     /**
-    * Obntiene en Status de general req
-    * @return el folio del ticket
-    */
-    public Number getRequestId(){
-       Number requestId = null;
-       XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl) getCurrentRow();
-       requestId = voXxGamMaGeneralReq.getId();
+     * Obntiene en Status de general req
+     * @return el folio del ticket
+     */
+    public Number getRequestId() {
+        Number requestId = null;
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
+        requestId = voXxGamMaGeneralReq.getId();
         return requestId;
     }
 
@@ -1143,105 +1157,111 @@ public class XxGamMaGeneralReqVOImpl extends OAViewObjectImpl
         setNamedWhereClauseParam("pUserId", value);
     }
 
-  /**
-  * Obtiene el id del aprobador Alterno de la solicitud de anticipo o franquicia
-  * @return Id de aprobador Alterno
-  */
-  
-  public Number findApproverAltId()
-  {
+    /**
+     * Obtiene el id del aprobador Alterno de la solicitud de anticipo o franquicia
+     * @return Id de aprobador Alterno
+     */
+    public
+
+    Number findApproverAltId() {
         Number approverAltId = null;
-        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = (XxGamMaGeneralReqVORowImpl)getCurrentRow();
+        XxGamMaGeneralReqVORowImpl voXxGamMaGeneralReq = 
+            (XxGamMaGeneralReqVORowImpl)getCurrentRow();
         approverAltId = voXxGamMaGeneralReq.getApproverAltId();
-        return approverAltId;     
-  }
+        return approverAltId;
+    }
 
-  /**
-   * Copia el detalle de los registros para la informacion de pasajeros 
-   *
-   * @param iterBase Iterador base.
-   * @param iterNuevo Iterador nuevo.
-   */
-   
-  private void addRequestPasajerosInfo(RowIterator iterBase, 
-                                       RowIterator iterNuevo, 
-                                       boolean isFranchise)
-  {
-   //Valida nulidad 
-    if ((iterBase == null) || (iterNuevo == null) || (iterBase.getRowCount() == 0))
-        {
-          return;
-        }else{
-          //declaracion de los recursos
-          XxGamMaPasajerosInfoVORowImpl rowSeleccionado = null;
-          XxGamMaPasajerosInfoVORowImpl rowNuevo = null;
-          
-          try {
+    /**
+     * Copia el detalle de los registros para la informacion de pasajeros 
+     *
+     * @param iterBase Iterador base.
+     * @param iterNuevo Iterador nuevo.
+     */
+    private
 
-              //Itera sobre las solicitudes de boletos de avion
-              while (iterBase.hasNext()) {
+    void addRequestPasajerosInfo(RowIterator iterBase, RowIterator iterNuevo, 
+                                 boolean isFranchise) {
+        //Valida nulidad 
+        if ((iterBase == null) || (iterNuevo == null) || 
+            (iterBase.getRowCount() == 0)) {
+            return;
+        } else {
+            //declaracion de los recursos
+            XxGamMaPasajerosInfoVORowImpl rowSeleccionado = null;
+            XxGamMaPasajerosInfoVORowImpl rowNuevo = null;
 
-                  rowSeleccionado = (XxGamMaPasajerosInfoVORowImpl)iterBase.next();
-                  if (rowSeleccionado != null) {
-                      rowNuevo = getPasajerosInfo(rowSeleccionado, iterNuevo, isFranchise);
-                      iterNuevo.insertRow(rowNuevo);
-                  }
-              }
-          } catch (Exception exception) {
-              if(getDBTransaction() != null){
-                  getDBTransaction().rollback();    
-              }
-              //Propaga la excepcion generada
-              throw new OAException(exception.getMessage(), OAException.ERROR);
-          }
-          
+            try {
+
+                //Itera sobre las solicitudes de boletos de avion
+                while (iterBase.hasNext()) {
+
+                    rowSeleccionado = 
+                            (XxGamMaPasajerosInfoVORowImpl)iterBase.next();
+                    if (rowSeleccionado != null) {
+                        rowNuevo = 
+                                getPasajerosInfo(rowSeleccionado, iterNuevo, isFranchise);
+                        iterNuevo.insertRow(rowNuevo);
+                    }
+                }
+            } catch (Exception exception) {
+                if (getDBTransaction() != null) {
+                    getDBTransaction().rollback();
+                }
+                //Propaga la excepcion generada
+                throw new OAException(exception.getMessage(), 
+                                      OAException.ERROR);
+            }
+
         }
-  }
+    }
 
-  /**
-   * Obtiene el registro de la informacion de empleados para  las reservaciones de vuelo.
-   *
-   * @param rowBase Row a copiar.
-   * @return registro nuevo.
-   */
-   
-  private XxGamMaPasajerosInfoVORowImpl getPasajerosInfo(XxGamMaPasajerosInfoVORowImpl rowBase, 
-                                                         RowIterator iterNuevo, 
-                                                         boolean isFranchise)
-  {
-       XxGamModAntAMImpl amXxGamModAntAM = null;
-       XxGamMaPasajerosInfoVOImpl PasajerosInfoVOImpl = null;
-       XxGamMaPasajerosInfoVORowImpl PasajerosInfoVORowImpl = null;
-       amXxGamModAntAM = (XxGamModAntAMImpl)getApplicationModule();
-      //Verifica nulidad
-        if (amXxGamModAntAM == null)
-        {
-          return null;
-        }else{
-   
-          //Obtiene el nuevo registro
-          try {
-              if(isFranchise){
-                  PasajerosInfoVOImpl = amXxGamModAntAM.getXxGamMaPasajerosInfoVO4();
-              }else{
-                   //null;
-                   PasajerosInfoVOImpl = amXxGamModAntAM.getXxGamMaPasajerosInfoVO4();  
-              }
-              
-              PasajerosInfoVORowImpl = PasajerosInfoVOImpl.getPasajerosInfo(rowBase, iterNuevo);
+    /**
+     * Obtiene el registro de la informacion de empleados para  las reservaciones de vuelo.
+     *
+     * @param rowBase Row a copiar.
+     * @return registro nuevo.
+     */
+    private
 
-          } catch (Exception exception) {
+    XxGamMaPasajerosInfoVORowImpl getPasajerosInfo(XxGamMaPasajerosInfoVORowImpl rowBase, 
+                                                   RowIterator iterNuevo, 
+                                                   boolean isFranchise) {
+        XxGamModAntAMImpl amXxGamModAntAM = null;
+        XxGamMaPasajerosInfoVOImpl PasajerosInfoVOImpl = null;
+        XxGamMaPasajerosInfoVORowImpl PasajerosInfoVORowImpl = null;
+        amXxGamModAntAM = (XxGamModAntAMImpl)getApplicationModule();
+        //Verifica nulidad
+        if (amXxGamModAntAM == null) {
+            return null;
+        } else {
 
-              //Propaga la excepcion
-              throw new OAException("No es posible duplicar el registro de vuelos",
-                                    OAException.ERROR);
-          }
+            //Obtiene el nuevo registro
+            try {
+                if (isFranchise) {
+                    PasajerosInfoVOImpl = 
+                            amXxGamModAntAM.getXxGamMaPasajerosInfoVO4();
+                } else {
+                    //null;
+                    PasajerosInfoVOImpl = 
+                            amXxGamModAntAM.getXxGamMaPasajerosInfoVO4();
+                }
 
-          //Regresa la respuesta
-          return PasajerosInfoVORowImpl;
-          
+                PasajerosInfoVORowImpl = 
+                        PasajerosInfoVOImpl.getPasajerosInfo(rowBase, 
+                                                             iterNuevo);
+
+            } catch (Exception exception) {
+
+                //Propaga la excepcion
+                throw new OAException("No es posible duplicar el registro de vuelos", 
+                                      OAException.ERROR);
+            }
+
+            //Regresa la respuesta
+            return PasajerosInfoVORowImpl;
+
         }
-  }
-  
-  
+    }
+
+
 }
